@@ -6,6 +6,7 @@ public class playerController : MonoBehaviour {
 
 	// Movement variables
 	public float runSpeed;
+    public float walkSpeed;
 
 	Rigidbody myRB;
 	Animator  myAnim;
@@ -32,6 +33,18 @@ public class playerController : MonoBehaviour {
         myAnim.SetFloat("speed", Mathf.Abs(move));
 
         myRB.velocity = new Vector3(move * runSpeed, myRB.velocity.y, 0);
+
+        float sneaking = Input.GetAxisRaw("Fire3");
+        myAnim.SetFloat("sneaking", sneaking);
+
+        if(sneaking > 0)
+        {
+            myRB.velocity = new Vector3(move * walkSpeed, myRB.velocity.y, 0);
+        }
+        else
+        {
+            myRB.velocity = new Vector3(move * runSpeed, myRB.velocity.y, 0);
+        }
 
         if (move > 0 && !facingRight)
             Flip();

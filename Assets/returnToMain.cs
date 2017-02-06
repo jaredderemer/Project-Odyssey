@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class returnToMain : MonoBehaviour
 {
-	//private Button mainMenu;
 	GameObject UI;
 
 	// Use this for initialization
@@ -13,7 +12,8 @@ public class returnToMain : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	public void ReturnToMain () {
+	public void ReturnToMain ()
+	{
 		SceneManager.LoadScene ("mainMenu");
 		Destroy (UI);
 	}

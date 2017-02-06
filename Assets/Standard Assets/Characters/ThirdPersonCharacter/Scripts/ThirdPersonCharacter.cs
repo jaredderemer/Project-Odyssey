@@ -5,6 +5,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 	[RequireComponent(typeof(Rigidbody))]
 	[RequireComponent(typeof(CapsuleCollider))]
 	[RequireComponent(typeof(Animator))]
+
 	public class ThirdPersonCharacter : MonoBehaviour
 	{
 		[SerializeField] float m_MovingTurnSpeed = 360;
@@ -15,7 +16,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		[SerializeField] float m_MoveSpeedMultiplier = 1f;
 		[SerializeField] float m_AnimSpeedMultiplier = 1f;
 		[SerializeField] float m_GroundCheckDistance = 0.1f;
-
+        [SerializeField] int   health = 10;
+        
 		Rigidbody m_Rigidbody;
 		Animator m_Animator;
 		bool m_IsGrounded;
@@ -28,6 +30,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		Vector3 m_CapsuleCenter;
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
+        
 
 
 		void Start()
@@ -198,6 +201,14 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			}
 		}
 
+        // Triggers when the players touches a pickup
+        void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("Pickups"))
+            {
+                other.gameObject.SetActive(false);
+            }
+        }
 
 		void CheckGroundStatus()
 		{

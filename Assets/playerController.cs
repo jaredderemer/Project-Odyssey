@@ -13,6 +13,15 @@ public class playerController : MonoBehaviour {
 
     bool facingRight;
 
+    // for jumping
+    // Character is starting slightly off the ground, otherwise change to TRUE
+    bool grounded = false;
+    Collider[] groundCollisions;
+    float groundCheckRadius = 0.2f;
+    public LayerMask groundLayer;
+    public Transform groundCheck;
+    public float jumpHeight;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -29,6 +38,21 @@ public class playerController : MonoBehaviour {
 
     private void FixedUpdate()
     {
+        if (grounded && Input.GetAxis("Jump") > 0)
+        {
+            grounded = false;
+            myAnim.SetBool("grounded", grounded);
+            myRB.AddForce(new Vector3(0, jumpHeight, 0));
+        }
+        groundCollisions = Physics.OverlapSphere(groundCheck.position, groundCheckRadius, groundLayer);
+
+        if (groundCollisions.Length > 0)
+            grounded = true;
+        else
+            grounded = false;
+
+        myAnim.SetBool("grounded", grounded);
+
         float move = Input.GetAxis("Horizontal");
         myAnim.SetFloat("speed", Mathf.Abs(move));
 
@@ -37,7 +61,7 @@ public class playerController : MonoBehaviour {
         float sneaking = Input.GetAxisRaw("Fire3");
         myAnim.SetFloat("sneaking", sneaking);
 
-        if(sneaking > 0)
+        if(sneaking > 0 && grounded)
         {
             myRB.velocity = new Vector3(move * walkSpeed, myRB.velocity.y, 0);
         }

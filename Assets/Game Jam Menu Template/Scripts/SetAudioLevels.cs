@@ -7,10 +7,12 @@ public class SetAudioLevels : MonoBehaviour {
 
 	public AudioMixer mainMixer;					//Used to hold a reference to the AudioMixer mainMixer
 	public Slider musicSlider;
+	public Slider sfxSlider;
 
 	void Start()
 	{
 		SetMusicLevel (PlayerPrefs.GetFloat ("musicVol"));
+		SetSfxLevel (PlayerPrefs.GetFloat ("sfxLevel"));
 	}
 
 	//Call this function and pass in the float parameter musicLvl to set the volume of the AudioMixerGroup Music in mainMixer
@@ -44,22 +46,25 @@ public class SetAudioLevels : MonoBehaviour {
 	{
 		mainMixer.SetFloat("sfxVol", sfxLevel);
 		PlayerPrefs.SetFloat("sfxVol", sfxLevel);
-		SetMusicSlider (sfxLevel);
+		SetSfxSlider (sfxLevel);
 	}
 
-	//Set the Music slider position
+	//Set the Sound effects slider position
 	public void SetSfxSlider(float sfxLevel)
 	{
+		Debug.Log ("setting sfxSlider to: " + sfxLevel);
 		// Find which settings menu to set
-		if (GameObject.Find ("MusicSfxSliderOptions"))
+		if (GameObject.Find ("SfxVolSliderOptions"))
 		{
-			musicSlider = GameObject.Find ("MusicVolSliderOptions").GetComponent <Slider> ();
-			musicSlider.value = PlayerPrefs.GetFloat ("musicVol");
+			sfxSlider = GameObject.Find ("SfxVolSliderOptions").GetComponent <Slider> ();
+			sfxSlider.value = PlayerPrefs.GetFloat ("sfxVol");
 		}
 		else if(GameObject.Find ("SfxVolSlider"))
 		{
-			musicSlider = GameObject.Find ("SfxVolSlider").GetComponent <Slider> ();
-			musicSlider.value = PlayerPrefs.GetFloat ("sfxVol");
+			sfxSlider = GameObject.Find ("SfxVolSlider").GetComponent <Slider> ();
+			sfxSlider.value = PlayerPrefs.GetFloat ("sfxVol");
 		}
+
+		Debug.Log (PlayerPrefs.GetFloat ("sfxVol"));
 	}
 }

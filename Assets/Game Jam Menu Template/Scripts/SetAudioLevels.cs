@@ -12,7 +12,7 @@ public class SetAudioLevels : MonoBehaviour {
 	void Start()
 	{
 		SetMusicLevel (PlayerPrefs.GetFloat ("musicVol"));
-		SetSfxLevel (PlayerPrefs.GetFloat ("sfxLevel"));
+		SetSfxLevel (PlayerPrefs.GetFloat ("sfxVol"));
 	}
 
 	//Call this function and pass in the float parameter musicLvl to set the volume of the AudioMixerGroup Music in mainMixer
@@ -52,7 +52,6 @@ public class SetAudioLevels : MonoBehaviour {
 	//Set the Sound effects slider position
 	public void SetSfxSlider(float sfxLevel)
 	{
-		Debug.Log ("setting sfxSlider to: " + sfxLevel);
 		// Find which settings menu to set
 		if (GameObject.Find ("SfxVolSliderOptions"))
 		{
@@ -64,7 +63,5 @@ public class SetAudioLevels : MonoBehaviour {
 			sfxSlider = GameObject.Find ("SfxVolSlider").GetComponent <Slider> ();
 			sfxSlider.value = PlayerPrefs.GetFloat ("sfxVol");
 		}
-
-		Debug.Log (PlayerPrefs.GetFloat ("sfxVol"));
 	}
 }

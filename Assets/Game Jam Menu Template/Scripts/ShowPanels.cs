@@ -4,12 +4,26 @@ using UnityEngine.UI;
 
 public class ShowPanels : MonoBehaviour {
 
+	public GameObject controlsPanel;						//Store a reference to the Game Object ControlsPanel
 	public GameObject optionsPanel;							//Store a reference to the Game Object OptionsPanel 
-	public GameObject panelTint;							//Store a reference to the Game Object OptionsTint 
 	public GameObject creditsPanel;							//Store a reference to the Game Object CreditsPanel
 	public GameObject menuPanel;							//Store a reference to the Game Object MenuPanel 
 	public GameObject pausePanel;							//Store a reference to the Game Object PausePanel
+	public GameObject panelTint;							//Store a reference to the Game Object OptionsTint 
 
+	//Call this function to activate and display the Control panel during the main menu
+	public void ShowControlsPanel()
+	{
+		controlsPanel.SetActive(true);
+		panelTint.SetActive(true);
+	}
+
+	//Call this function to deactivate and hide the Control panel during the main menu
+	public void HideControlsPanel()
+	{
+		controlsPanel.SetActive(false);
+		panelTint.SetActive(false);
+	}
 
 	//Call this function to activate and display the Options panel during the main menu
 	public void ShowOptionsPanel()

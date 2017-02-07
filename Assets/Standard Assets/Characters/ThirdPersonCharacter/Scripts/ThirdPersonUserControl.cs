@@ -49,10 +49,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             float h = CrossPlatformInputManager.GetAxis("Horizontal");
             float v = CrossPlatformInputManager.GetAxis("Vertical");
             bool crouch = Input.GetKey(KeyCode.C);
-<<<<<<< HEAD
-=======
-            bool shoot  = Input.GetKey(KeyCode.E);
->>>>>>> 6db18b4fbf7c2a3176a63ab77af35e5841d10e70
 
             // calculate move direction to pass to character
             if (m_Cam != null)

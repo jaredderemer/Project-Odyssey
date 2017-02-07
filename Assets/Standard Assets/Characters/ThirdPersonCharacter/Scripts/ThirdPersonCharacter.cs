@@ -5,17 +5,30 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 	[RequireComponent(typeof(Rigidbody))]
 	[RequireComponent(typeof(CapsuleCollider))]
 	[RequireComponent(typeof(Animator))]
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6db18b4fbf7c2a3176a63ab77af35e5841d10e70
 	public class ThirdPersonCharacter : MonoBehaviour
 	{
 		[SerializeField] float m_MovingTurnSpeed = 360;
 		[SerializeField] float m_StationaryTurnSpeed = 180;
+<<<<<<< HEAD
 		[SerializeField] float m_JumpPower = 12f;
+=======
+		[SerializeField] float m_JumpPower = 18f;
+>>>>>>> 6db18b4fbf7c2a3176a63ab77af35e5841d10e70
 		[Range(1f, 4f)][SerializeField] float m_GravityMultiplier = 2f;
 		[SerializeField] float m_RunCycleLegOffset = 0.2f; //specific to the character in sample assets, will need to be modified to work with others
 		[SerializeField] float m_MoveSpeedMultiplier = 1f;
 		[SerializeField] float m_AnimSpeedMultiplier = 1f;
 		[SerializeField] float m_GroundCheckDistance = 0.1f;
+<<<<<<< HEAD
 
+=======
+        [SerializeField] int   health = 10;
+        
+>>>>>>> 6db18b4fbf7c2a3176a63ab77af35e5841d10e70
 		Rigidbody m_Rigidbody;
 		Animator m_Animator;
 		bool m_IsGrounded;
@@ -28,6 +41,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		Vector3 m_CapsuleCenter;
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 6db18b4fbf7c2a3176a63ab77af35e5841d10e70
 
 
 		void Start()
@@ -198,6 +215,18 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			}
 		}
 
+<<<<<<< HEAD
+=======
+        // Triggers when the players touches a pickup
+        void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("Pickups"))
+            {
+                //other.gameObject.SetActive(false);
+				other.GetComponent<Rigidbody>().useGravity = false;
+            }
+        }
+>>>>>>> 6db18b4fbf7c2a3176a63ab77af35e5841d10e70
 
 		void CheckGroundStatus()
 		{

@@ -115,6 +115,14 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		}
 
 
+		void OnTriggerEnter(Collider other)
+		{
+			if (other.gameObject.CompareTag("Pickups"))
+			{
+				other.GetComponent<Rigidbody>().useGravity = false;
+			}
+		}
+		
 		void UpdateAnimator(Vector3 move)
 		{
 			// update the animator parameters

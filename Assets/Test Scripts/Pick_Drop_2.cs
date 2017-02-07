@@ -25,4 +25,10 @@ public class Pick_Drop_2 : MonoBehaviour
 			other.GetComponent<Rigidbody>().useGravity = false;
 		}
 	}
+	
+	void OnCollisionEnter (Collision col)
+    {
+		
+		
+	}
 }

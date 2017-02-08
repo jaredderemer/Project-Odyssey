@@ -28,13 +28,8 @@ public class healthPickup : MonoBehaviour {
 	// Activates upon contact with player
 	void onTriggerEnter(Collider other)
 	{
-	   if(tag == "Player")
-	   {
-         
-    
-	   }
-
-       if (other.gameObject.CompareTag("Pickups"))
+	   
+       if (other.gameObject.CompareTag("Player"))
        {
            other.gameObject.SetActive(false);
        }

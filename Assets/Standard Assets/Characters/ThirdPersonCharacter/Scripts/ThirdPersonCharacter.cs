@@ -114,12 +114,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			}
 		}
 
-
+        // Turns off the gravity on the Pick-ups
 		void OnTriggerEnter(Collider other)
 		{
 			if (other.gameObject.CompareTag("Pickups"))
 			{
-				other.GetComponent<Rigidbody>().useGravity = false;
+                other.gameObject.SetActive(false);
 			}
 		}
 		

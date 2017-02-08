@@ -3,14 +3,15 @@ using System.Collections;
 
 public class playerHealth : MonoBehaviour
 {
-   public float fullHealth;
-   float currentHealth;
+   public float fullHealth; // Player's max health
+   float currentHealth;     // The current level of health for the character
 
    public GameObject playerDeathFX;
 
    // Use this for initialization
    void Start ()
    {
+      // Character starts at full health
       currentHealth = fullHealth;
    }
 
@@ -19,10 +20,12 @@ public class playerHealth : MonoBehaviour
    {
 
    }
-
+   
+   // Character receives damage, loses health
    public void addDamage (float damage)
    {
       currentHealth -= damage;
+
       if (currentHealth <= 0)
       {
          makeDead();

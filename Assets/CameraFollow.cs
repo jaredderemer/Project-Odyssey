@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public Transform target; // What the camera is going to follow
-    public float smoothing = 5f; // 
+    public float smoothing = 7.5f; // 
 
     Vector3 offset; // Distance from target camera maintains
 

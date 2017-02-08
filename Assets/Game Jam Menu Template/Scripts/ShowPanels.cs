@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ShowPanels : MonoBehaviour {
 
@@ -23,6 +24,12 @@ public class ShowPanels : MonoBehaviour {
 	{
 		controlsPanel.SetActive(false);
 		panelTint.SetActive(false);
+
+		// Check if you are in game
+		if(SceneManager.GetActiveScene().buildIndex != 0)
+		{
+			ShowPausePanel ();
+		}
 	}
 
 	//Call this function to activate and display the Options panel during the main menu

@@ -6,7 +6,7 @@ using UnityEngine;
 public class scrollingText : MonoBehaviour {
 
 	Text scrollText;
-	float speed;
+	public float speed;
 	Vector3 startingPosition;
 	private Button creditsBack;
 
@@ -14,7 +14,6 @@ public class scrollingText : MonoBehaviour {
 	void Start () {
 		scrollText = GameObject.Find("scrollText").GetComponent<Text>();
 		startingPosition = scrollText.transform.position;
-		speed = .3f;
 
 		creditsBack = GameObject.Find ("CreditsBack").GetComponent<Button> ();
 		creditsBack.onClick.AddListener(() => ResetCredits());

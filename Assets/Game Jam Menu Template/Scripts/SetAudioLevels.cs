@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class SetAudioLevels : MonoBehaviour {
 
 	public AudioMixer mainMixer;					//Used to hold a reference to the AudioMixer mainMixer
-	public Slider musicSlider;
-	public Slider sfxSlider;
+	private Slider musicSlider;
+	private Slider sfxSlider;
 
 	void Start()
 	{

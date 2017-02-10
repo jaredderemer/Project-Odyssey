@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayAmbientSound : MonoBehaviour {
 
    AudioSource ambientAS;
+
 	// Use this for initialization
 	void Start () {
       ambientAS = GetComponent<AudioSource> ();

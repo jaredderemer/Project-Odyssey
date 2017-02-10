@@ -6,32 +6,38 @@ public class MoveObject : MonoBehaviour {
 
    private float min;
    private float max;
+
+   private GameObject target;
+
+   private Vector3 offset;
+
    public float length;
    public float speed;
-   private GameObject target;
-   private Vector3 offset;
 
    // Use this for initialization
    void Start () {
-      min = transform.position.x;
-      max = transform.position.x + length;
+      min    = transform.position.x;
+      max    = transform.position.x + length;
       target = null;
    }
 
-   void OnTriggerStay(Collider thing)
+   void OnTriggerStay(Collider collider)
    {
-      target = thing.gameObject;
+      target = collider.gameObject;
       offset = target.transform.position - transform.position;
    }
-   void OnTriggerExit(Collider thing)
+
+   void OnTriggerExit(Collider collider)
    {
       target = null;
    }
+
    // Update is called once per frame
-   void Update () {
-      transform.position =new Vector3(Mathf.PingPong(Time.time*speed,max-min)+min, 
-                                      transform.position.y, 
-                                      transform.position.z);
+   void Update () 
+   {
+      transform.position = new Vector3(Mathf.PingPong(Time.time*speed,max-min)+min, 
+                                       transform.position.y, 
+                                       transform.position.z);
 
       if (target != null) 
       {

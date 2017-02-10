@@ -5,7 +5,7 @@ using UnityEngine;
 public class DestroyItem : MonoBehaviour {
 
 
-   void OnTriggerEnter(Collider item)
+   void OnTriggerStay(Collider item)
    {
       if (Input.GetKey (KeyCode.E)) 
       {

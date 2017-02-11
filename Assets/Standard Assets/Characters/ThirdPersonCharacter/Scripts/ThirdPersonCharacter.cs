@@ -28,7 +28,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		Vector3 m_CapsuleCenter;
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
-
+        Vector3 pickupSpawn = new Vector3(0f, 2f, 0f);
+        public GameObject healthAmount;
 
 		void Start()
 		{
@@ -40,6 +41,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 			m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 			m_OrigGroundCheckDistance = m_GroundCheckDistance;
+
+            healthAmount = GameObject.Find("Health_Amount.prefab");
 		}
 
 
@@ -120,6 +123,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			if (other.gameObject.CompareTag("Pickups"))
 			{
                 other.gameObject.SetActive(false);
+
+                Instantiate(healthAmount, m_Rigidbody.position + pickupSpawn, Quaternion.identity);
 			}
 		}
 		

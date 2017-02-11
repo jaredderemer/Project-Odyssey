@@ -17,7 +17,8 @@ public class healthPickup : MonoBehaviour {
     void Update() 
 	{   
        // Auto increments item timer and destroys it if it isnt picked up
-       timer += 1;
+       
+       //timer += 1;
        if (timer == 1000)
        {
            Destroy(gameObject);
@@ -31,7 +32,7 @@ public class healthPickup : MonoBehaviour {
 	   
        if (other.gameObject.CompareTag("Player"))
        {
-           other.gameObject.SetActive(false);
+           // other.gameObject.SetActive(false);
        }
 	}
 }

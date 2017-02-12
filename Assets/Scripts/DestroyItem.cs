@@ -5,13 +5,13 @@ using UnityEngine;
 public class DestroyItem : MonoBehaviour {
 
 
-   void OnTriggerStay(Collider item)
+   void OnTriggerStay(Collider collider)
    {
       if (Input.GetKey (KeyCode.E)) 
       {
-         if (item.gameObject.tag == "Item") 
+         if (collider.gameObject.tag == "Player") 
          {
-            Destroy (item.gameObject);
+            Destroy (gameObject);
          }
       }
    }

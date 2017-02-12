@@ -3,21 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayAmbientSound : MonoBehaviour {
+   public AudioClip ambientSound;
 
-   AudioSource ambientAS;
+   public float minPosition;
+   public float maxPosition;
+   public Transform target;
 
-	// Use this for initialization
-	void Start () {
-      ambientAS = GetComponent<AudioSource> ();
-	}
-	
-   void OnTriggerEnter(Collider thing)
+   void Update ()
    {
-      ambientAS.Play ();
-   }
-
-   void OnTriggerExit(Collider thing)
-   {
-      ambientAS.Stop ();
+      if (target.position.x >= minPosition && target.position.x <= maxPosition) 
+      {
+         AudioSource.PlayClipAtPoint (ambientSound, target.position, 0.3f);
+      } 
    }
 }

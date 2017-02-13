@@ -42,7 +42,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 			m_OrigGroundCheckDistance = m_GroundCheckDistance;
 
-            healthAmount = GameObject.Find("Health_Amount.prefab");
+            healthAmount = GameObject.Find("Assets/Instatiated Objects/Health_Amount.prefab");
 		}
 
 

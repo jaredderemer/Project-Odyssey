@@ -41,7 +41,7 @@ public class playerController : MonoBehaviour {
         if (grounded && Input.GetAxis("Jump") > 0)
         {
             grounded = false;
-            myAnim.SetBool("grounded", grounded);
+            //myAnim.SetBool("grounded", grounded);
             myRB.AddForce(new Vector3(0, jumpHeight, 0));
         }
         groundCollisions = Physics.OverlapSphere(groundCheck.position, groundCheckRadius, groundLayer);
@@ -51,23 +51,23 @@ public class playerController : MonoBehaviour {
         else
             grounded = false;
 
-        myAnim.SetBool("grounded", grounded);
+        //myAnim.SetBool("grounded", grounded);
 
         float move = Input.GetAxis("Horizontal");
-        myAnim.SetFloat("speed", Mathf.Abs(move));
+        //myAnim.SetFloat("speed", Mathf.Abs(move));
 
         myRB.velocity = new Vector3(move * runSpeed, myRB.velocity.y, 0);
 
-        float sneaking = Input.GetAxisRaw("Fire3");
-        myAnim.SetFloat("sneaking", sneaking);
+        float running = Input.GetAxisRaw("Fire3");
+        //myAnim.SetFloat("sneaking", running);
 
-        if(sneaking > 0 && grounded)
+		if(running > 0 && grounded)
         {
-            myRB.velocity = new Vector3(move * walkSpeed, myRB.velocity.y, 0);
+            myRB.velocity = new Vector3(move * runSpeed, myRB.velocity.y, 0);
         }
         else
         {
-            myRB.velocity = new Vector3(move * runSpeed, myRB.velocity.y, 0);
+			myRB.velocity = new Vector3(move * walkSpeed, myRB.velocity.y, 0);
         }
 
         if (move > 0 && !facingRight)
@@ -83,4 +83,13 @@ public class playerController : MonoBehaviour {
         zedScale.z          *= -1;
         transform.localScale = zedScale;
     }
+
+	// To pick up objects
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.CompareTag("Pickups"))
+		{
+			other.gameObject.SetActive(false);
+		}
+	}
 }

@@ -31,6 +31,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         Vector3 pickupSpawn = new Vector3(0f, 2f, 0f);
         public GameObject healthAmount;
 
+        
+
 		void Start()
 		{
 			m_Animator = GetComponent<Animator>();
@@ -42,7 +44,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 			m_OrigGroundCheckDistance = m_GroundCheckDistance;
 
-            healthAmount = GameObject.Find("Assets/Instatiated Objects/Health_Amount.prefab");
+            // healthAmount = GameObject.Find("Assets/Instatiated Objects/Health_Amount.prefab");
+            public GameObject healAmount = (GameObject)Instantiate(Resources.Load("Health_Amount"));
 		}
 
 
@@ -117,14 +120,14 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			}
 		}
 
-        // Turns off the gravity on the Pick-ups
+        // Picks up objects.
 		void OnTriggerEnter(Collider other)
 		{
 			if (other.gameObject.CompareTag("Pickups"))
 			{
                 other.gameObject.SetActive(false);
 
-                Instantiate(healthAmount, m_Rigidbody.position + pickupSpawn, Quaternion.identity);
+                Instantiate(healAmount, m_Rigidbody.position + pickupSpawn, Quaternion.identity);
 			}
 		}
 		

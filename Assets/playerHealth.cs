@@ -4,7 +4,7 @@ using System.Collections;
 public class playerHealth : MonoBehaviour
 {
    public float fullHealth; // Player's max health
-   float currentHealth;     // The current level of health for the character
+   public float currentHealth;     // The current level of health for the character
 
    public GameObject playerDeathFX;
 
@@ -30,6 +30,15 @@ public class playerHealth : MonoBehaviour
       {
          makeDead();
       }
+   }
+
+   // Character received Hit Points 
+   public void addHealth(float healthAmount)
+   {
+       if (currentHealth <= 20)
+           currentHealth += healthAmount;
+       else
+           currentHealth = fullHealth;
    }
 
    public void makeDead()

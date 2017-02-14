@@ -84,12 +84,4 @@ public class playerController : MonoBehaviour {
         transform.localScale = zedScale;
     }
 
-	// To pick up objects
-	void OnTriggerEnter(Collider other)
-	{
-		if (other.gameObject.CompareTag("Pickups"))
-		{
-			other.gameObject.SetActive(false);
-		}
-	}
 }

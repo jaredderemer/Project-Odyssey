@@ -58,10 +58,10 @@ public class playerController : MonoBehaviour {
 
         myRB.velocity = new Vector3(move * runSpeed, myRB.velocity.y, 0);
 
-        float sneaking = Input.GetAxisRaw("Fire3");
-        myAnim.SetFloat("sneaking", sneaking);
+        float sprinting = Input.GetAxisRaw("Fire3");
+        myAnim.SetFloat("sprinting", sprinting);
 
-        if(sneaking > 0 && grounded)
+        if(sprinting > 0 && grounded)
         {
             myRB.velocity = new Vector3(move * walkSpeed, myRB.velocity.y, 0);
         }

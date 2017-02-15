@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class healthPickup : MonoBehaviour {
-
-	public int healthAmount,
-               timer;
+public class ammoPickup : MonoBehaviour 
+{
+    public int ammoAmount;
 
 	// Use this for initialization
 	void Start () 
@@ -16,10 +15,7 @@ public class healthPickup : MonoBehaviour {
 	// Update is called once per frame
     void Update() 
 	{   
-       // Auto increments item timer and destroys it if it isnt picked up
        
-      
-
 	}
 	
 	// Activates upon contact with player
@@ -28,7 +24,7 @@ public class healthPickup : MonoBehaviour {
 	{
         if (other.gameObject.CompareTag("Player"))
         {
-            other.GetComponent<playerHealth>().addHealth(healthAmount);
+            other.GetComponent<playerAmmo>().ammoPickup(ammoAmount);
             Destroy(gameObject);
         }
 	}

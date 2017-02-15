@@ -20,7 +20,16 @@ public class playerHealth : MonoBehaviour
    {
 
    }
-   
+
+   // Adds health to the player upon collecting Health Item
+   public void addHealth(float healthAmount)
+   {
+      if ((fullHealth - currentHealth) > healthAmount)
+         currentHealth += healthAmount;
+      else
+         currentHealth = fullHealth;
+   }
+
    // Character receives damage, loses health
    public void addDamage (float damage)
    {
@@ -32,6 +41,7 @@ public class playerHealth : MonoBehaviour
       }
    }
 
+   // calls death animation...
    public void makeDead()
    {
       Instantiate(playerDeathFX, transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));

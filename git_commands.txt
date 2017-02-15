@@ -1,0 +1,9 @@
+************************************************
+* HOW TO KEEP A GIT BRANCH IN SYNC WITH MASTER *
+************************************************
+git checkout master
+git pull
+git checkout Environment
+git merge master
+git commit -m "your commit message here"
+git push

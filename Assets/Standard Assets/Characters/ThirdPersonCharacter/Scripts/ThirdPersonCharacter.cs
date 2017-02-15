@@ -120,16 +120,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			}
 		}
 
-        // Picks up objects.
-		void OnTriggerEnter(Collider other)
-		{
-			if (other.gameObject.CompareTag("Pickups"))
-			{
-                other.gameObject.SetActive(false);
-
-                Instantiate(healAmount, m_Rigidbody.position + pickupSpawn, Quaternion.identity);
-			}
-		}
 		
 		void UpdateAnimator(Vector3 move)
 		{

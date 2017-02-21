@@ -12,9 +12,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class healthPickup : MonoBehaviour {
+public class healthPickup : MonoBehaviour 
+{
 
 	public int healthAmount;
+    public Rigidbody healthText;
 
 	// Triggers when an object collides with a banana object
 	void OnTriggerEnter(Collider other)
@@ -24,6 +26,7 @@ public class healthPickup : MonoBehaviour {
         {
 			// Add health to Player and destroy the banana object
             other.GetComponent<playerHealth>().addHealth(healthAmount);
+            Rigidbody healthTextbox = Instantiate(healthText, gameObject.transform.position, Quaternion.identity) as Rigidbody;
             Destroy(gameObject);
         }
 	}

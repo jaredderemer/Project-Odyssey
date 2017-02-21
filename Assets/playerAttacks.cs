@@ -39,5 +39,7 @@ public class playerAttacks : MonoBehaviour
    public void rangeAttack()
    {
        Rigidbody coconutInstance = Instantiate(coconut, FireTransform.position, FireTransform.rotation) as Rigidbody;
+       Debug.Log(FireTransform.position);
+       //Instantiate(coconutInstance);
    }
 }

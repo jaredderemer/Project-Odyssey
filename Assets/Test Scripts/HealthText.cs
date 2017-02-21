@@ -14,7 +14,7 @@ public class HealthText : MonoBehaviour {
 	void Update ()
     {
         timer += 1;
-        if (timer == 1000)
+        if (timer == 100)
         {
             Destroy(gameObject);
         }

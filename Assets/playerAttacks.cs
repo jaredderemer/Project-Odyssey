@@ -38,8 +38,8 @@ public class playerAttacks : MonoBehaviour
    // Creates a coconut infront of player
    public void rangeAttack()
    {
-       Rigidbody coconutInstance = Instantiate(coconut, FireTransform.position, FireTransform.rotation) as Rigidbody;
-       Debug.Log(FireTransform.position);
+       Rigidbody coconutInstance = Instantiate(coconut, FireTransform.position + gameObject.transform.position, FireTransform.rotation) as Rigidbody;
+       Debug.Log(FireTransform.position + gameObject.transform.position);
        //Instantiate(coconutInstance);
    }
 }

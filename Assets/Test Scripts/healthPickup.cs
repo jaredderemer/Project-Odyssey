@@ -1,4 +1,4 @@
-﻿u/********************************************************************** 
+﻿/********************************************************************** 
 * Author            MM/DD/YY HH24:MM   Description                    * 
 * Nicholas Oliver   02/05/17 23:05     Created script to handle adding*
 *									   health to player when colliding* 

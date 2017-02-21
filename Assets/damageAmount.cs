@@ -21,10 +21,11 @@ public class damageAmount : MonoBehaviour {
     // Applies damage to the enemy once contact is made
     void OnTriggerEnter(Collider other)
     {
-        print("contact made");
+       
        if (other.gameObject.CompareTag("Enemy"))
        {
            other.GetComponent<enemyHealth>().addDamage(damage);
+           //this.GetComponent<Collider>().isTrigger = false;
        }
 
     }

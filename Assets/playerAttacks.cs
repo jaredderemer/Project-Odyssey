@@ -5,9 +5,10 @@ using UnityEngine;
 public class playerAttacks : MonoBehaviour 
 {
 
-    public int hasStick; // player's power, will get used by 2 other scripts 
-                      // for reference. Stick and enemy to get power and
-                      // see how much damage to do. 
+    public int hasStick;
+    public Rigidbody coconut;
+    public Transform FireTransform;
+    private string Fire_Button;
 
 	// Use this for initialization
 	void Start () 
@@ -18,18 +19,12 @@ public class playerAttacks : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
-		
+    //    Rigidbody coconutInstance = Instantiate(coconut, FireTransform.position, FireTransform.rotation) as Rigidbody;
 	}
 
     
 
-    // Allows the player to melee
-    // **** missing button input ****
-    // ****       NOTE        ****
-    // ** the stick will have an onTrigger and
-    // ** will call it's own script to hurt enemies.
-    // ** it must detect colision so that's Nick's job
-    // ** to apply damage on the monkey.
+    
    void meleeAttack()
    {
       if(hasStick == 1)
@@ -37,5 +32,12 @@ public class playerAttacks : MonoBehaviour
           /// ATTACK!!
       }
 
+   }
+
+
+   // Creates a coconut infront of player
+   public void rangeAttack()
+   {
+       Rigidbody coconutInstance = Instantiate(coconut, FireTransform.position, FireTransform.rotation) as Rigidbody;
    }
 }

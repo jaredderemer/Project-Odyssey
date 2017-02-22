@@ -2,37 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class healthPickup : MonoBehaviour {
+// This script is on the Health Object and calls the heal function on the player
+public class healthPickup : MonoBehaviour 
+{
 
-	public int healthAmount,
+	public float healthAmount,
                timer;
 
 	// Use this for initialization
 	void Start () 
 	{
-       
+        healthAmount = 10f;
 	}
 	
 	// Update is called once per frame
     void Update() 
 	{   
        // Auto increments item timer and destroys it if it isnt picked up
-       
+        
        //timer += 1;
-       if (timer == 1000)
-       {
-           Destroy(gameObject);
-       }
+      // if (timer == 1000)
+      // {
+      //     Destroy(gameObject);
+      // }
 
 	}
 	
 	// Activates upon contact with player
-	void onTriggerEnter(Collider other)
+	void OnTriggerEnter(Collider other)
 	{
-	   
-       if (other.gameObject.CompareTag("Player"))
-       {
-           // other.gameObject.SetActive(false);
-       }
+     if (other.gameObject.CompareTag("Player"))
+     {
+           other.GetComponent<playerHealth>().addHealth(healthAmount);
+           Destroy(gameObject);
+     }
 	}
 }

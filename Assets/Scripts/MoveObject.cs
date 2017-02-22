@@ -25,6 +25,7 @@ public class MoveObject : MonoBehaviour {
    {
       target = collider.gameObject;
       offset = target.transform.position - transform.position;
+      move ();
    }
 
    void OnTriggerExit(Collider collider)
@@ -33,7 +34,7 @@ public class MoveObject : MonoBehaviour {
    }
 
    // Update is called once per frame
-   void Update () 
+   void move () 
    {
       transform.position = new Vector3(Mathf.PingPong(Time.time*speed,max-min)+min, 
          transform.position.y, 

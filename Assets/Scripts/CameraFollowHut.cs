@@ -17,6 +17,6 @@ public class CameraFollowHut : MonoBehaviour
    }
 }
 
-x: -4.9269787
-y: -0.00868765
-z: -2.831221
+//x: -4.9269787
+//y: -0.00868765
+//z: -2.831221

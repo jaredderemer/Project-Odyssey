@@ -3,8 +3,9 @@ using System.Collections;
 
 public class playerHealth : MonoBehaviour
 {
-   public float fullHealth; // Player's max health
-   float currentHealth;     // The current level of health for the character
+   public int fullHealth;    // Player's max health
+
+          int currentHealth; // The current level of health for the character
 
    public GameObject playerDeathFX;
 
@@ -22,7 +23,7 @@ public class playerHealth : MonoBehaviour
    }
    
    // Character receives damage, loses health
-   public void addDamage (float damage)
+   public void addDamage (int damage)
    {
       currentHealth -= damage;
 
@@ -32,7 +33,7 @@ public class playerHealth : MonoBehaviour
       }
    }
 
-   public void addHealth (float healthAmount)
+   public void addHealth (int healthAmount)
    {
       if ((fullHealth - currentHealth) > healthAmount)
          currentHealth += healthAmount;

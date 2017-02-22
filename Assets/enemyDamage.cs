@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class enemyDamage : MonoBehaviour {
 
-   public float damage; // Amount of damage enemy can do
+   public int   damage; // Amount of damage enemy can do
    public float damageRate; // How often damage can be applied to character
    public float pushBackForce; // Force applied to character when entering damage zone
 

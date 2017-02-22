@@ -9,13 +9,18 @@ ModelImporter:
     100002: //RootNode
     100004: GL-Manmade-01-LOD2
     100006: Lamp
+    100008: GL_Manmade_02
     400000: Camera
     400002: //RootNode
     400004: GL-Manmade-01-LOD2
     400006: Lamp
+    400008: GL_Manmade_02
     2300000: GL-Manmade-01-LOD2
+    2300002: GL_Manmade_02
     3300000: GL-Manmade-01-LOD2
+    3300002: GL_Manmade_02
     4300000: GL-Manmade-01-LOD2
+    4300002: GL_Manmade_02
   materials:
     importMaterials: 1
     materialName: 0

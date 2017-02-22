@@ -36,8 +36,8 @@ public class MoveObject : MonoBehaviour {
    void Update () 
    {
       transform.position = new Vector3(Mathf.PingPong(Time.time*speed,max-min)+min, 
-                                       transform.position.y, 
-                                       transform.position.z);
+         transform.position.y, 
+         transform.position.z);
 
       if (target != null) 
       {

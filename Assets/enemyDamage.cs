@@ -19,7 +19,7 @@ public class enemyDamage : MonoBehaviour {
 	void Start ()
    {
       nextDamage = Time.time; // Damaged immediately by object
-      thePlayer = GameObject.FindGameObjectWithTag("Player"); // Player is the player
+      thePlayer = GameObject.FindGameObjectWithTag("Player"); // "Player" tag must be on the player
       thePlayerHealth = thePlayer.GetComponent<playerHealth>(); // Get the player's health
 	}
 	
@@ -53,8 +53,8 @@ public class enemyDamage : MonoBehaviour {
    {
       if (nextDamage <= Time.time)
       {
-         thePlayerHealth.addDamage(damage);
-         nextDamage = Time.time + damageRate;
+         thePlayerHealth.addDamage(damage); // Damage the player, removing some player health
+         nextDamage = Time.time + damageRate; // Set the time the player can be attacked again
 
          pushBack(thePlayer.transform);
       }

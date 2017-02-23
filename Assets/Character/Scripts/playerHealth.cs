@@ -25,7 +25,7 @@ public class playerHealth : MonoBehaviour
    public void addDamage (float damage)
    {
       currentHealth -= damage;
-
+      print("John got hurt!!");
       if (currentHealth <= 0)
       {
          makeDead();

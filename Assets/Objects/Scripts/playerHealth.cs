@@ -4,7 +4,7 @@ using System.Collections;
 public class playerHealth : MonoBehaviour
 {
    public float fullHealth; // Player's max health
-   public float currentHealth;     // The current level of health for the character
+   float currentHealth;     // The current level of health for the character
 
    public GameObject playerDeathFX;
 
@@ -20,7 +20,16 @@ public class playerHealth : MonoBehaviour
    {
 
    }
-   
+
+   // Adds health to the player upon collecting Health Item
+   public void addHealth(float healthAmount)
+   {
+      if ((fullHealth - currentHealth) > healthAmount)
+         currentHealth += healthAmount;
+      else
+         currentHealth = fullHealth;
+   }
+
    // Character receives damage, loses health
    public void addDamage (float damage)
    {
@@ -29,19 +38,11 @@ public class playerHealth : MonoBehaviour
       if (currentHealth <= 0)
       {
          makeDead();
-         print("JOHN SUN DIED!!!");
       }
    }
 
-   public void addHealth (float healthAmount)
-   {
-      if ((fullHealth - currentHealth) > healthAmount)
-         currentHealth += healthAmount;
-      else
-         currentHealth = fullHealth;
-   }
-
-   public void makeDead ()
+   // calls death animation...
+   public void makeDead()
    {
       Instantiate(playerDeathFX, transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
       Destroy(gameObject);

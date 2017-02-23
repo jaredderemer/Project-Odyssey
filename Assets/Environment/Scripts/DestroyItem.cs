@@ -7,6 +7,7 @@ public class DestroyItem : MonoBehaviour {
 
    public GameObject objOne;
    public GameObject objTwo;
+   public GameObject objThree;
 
    private int index;
 
@@ -15,6 +16,7 @@ public class DestroyItem : MonoBehaviour {
       objList = new List<GameObject>();
       objList.Add (objOne);
       objList.Add (objTwo);
+      objList.Add (objThree);
    }
 
    void OnTriggerStay(Collider collider)
@@ -24,9 +26,9 @@ public class DestroyItem : MonoBehaviour {
          if (collider.gameObject.tag == "Player") 
          {
             Destroy (gameObject);
-            index = (int)Random.Range (0, 2);
+            index = (int)Random.Range (0, 3);
             Instantiate (objList [index], 
-                         transform.position + (transform.forward * -0.5f), 
+                         transform.position + (transform.forward * 0.1f), 
                          transform.rotation);
          }
       }

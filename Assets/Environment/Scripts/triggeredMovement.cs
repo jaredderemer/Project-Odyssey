@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class test2 : MonoBehaviour {
+public class triggeredMovement : MonoBehaviour {
    
    public Transform lift; // Manipulated when key is triggered
    public float length;   // Length required to move up lift

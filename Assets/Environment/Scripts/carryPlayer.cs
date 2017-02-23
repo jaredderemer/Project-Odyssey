@@ -5,13 +5,11 @@ using UnityEngine;
 public class carryPlayer : MonoBehaviour {
 
    private Transform target;
-
    private Vector3 offset;
 
-
    // Use this for initialization
-   void Start () {
-
+   void Start () 
+   {
       target = null;
    }
 
@@ -35,5 +33,4 @@ public class carryPlayer : MonoBehaviour {
          target.position = transform.position + offset;
       }
    }
-
 }

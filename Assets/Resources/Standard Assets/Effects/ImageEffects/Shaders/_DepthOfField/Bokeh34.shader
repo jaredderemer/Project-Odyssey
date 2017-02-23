@@ -60,7 +60,7 @@ SubShader {
 	ENDCG
 
 	Pass {
-		Blend OneMinusDstColor One 
+		Blend OneminusDstColor One 
 		ZTest Always Cull Off ZWrite Off
 
 		CGPROGRAM

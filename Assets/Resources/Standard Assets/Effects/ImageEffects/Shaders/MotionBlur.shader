@@ -7,7 +7,7 @@ Properties {
     SubShader { 
 		ZTest Always Cull Off ZWrite Off
 		Pass {
-			Blend SrcAlpha OneMinusSrcAlpha
+			Blend SrcAlpha OneminusSrcAlpha
 			ColorMask RGB
 		    BindChannels { 
 				Bind "vertex", vertex 
@@ -99,7 +99,7 @@ Properties {
 SubShader {
 	ZTest Always Cull Off ZWrite Off
 	Pass {
-		Blend SrcAlpha OneMinusSrcAlpha
+		Blend SrcAlpha OneminusSrcAlpha
 		ColorMask RGB
 		SetTexture [_MainTex] {
 			ConstantColor (0,0,0,[_AccumOrig])

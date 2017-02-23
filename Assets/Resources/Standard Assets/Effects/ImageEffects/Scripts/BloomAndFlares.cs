@@ -42,7 +42,7 @@ namespace UnityStandardAssets.ImageEffects
         public float sepBlurSpread = 1.5f;
         public float useSrcAlphaAsMask = 0.5f;
 
-        public float bloomIntensity = 1.0f;
+        public float bloomintensity = 1.0f;
         public float bloomThreshold = 0.5f;
         public int bloomBlurIterations = 2;
 
@@ -262,7 +262,7 @@ namespace UnityStandardAssets.ImageEffects
 
             // screen blend bloom results to color buffer
 
-            screenBlend.SetFloat("_Intensity", bloomIntensity);
+            screenBlend.SetFloat("_Intensity", bloomintensity);
             screenBlend.SetTexture("_ColorBuffer", source);
             Graphics.Blit(quarterRezColor, destination, screenBlend, (int)realBlendMode);
 

@@ -31,7 +31,7 @@ namespace UnityStandardAssets.Utility
 					for(int n=0; n<r.sharedMaterials.Length; ++n)
 					{
 						var material = r.sharedMaterials[n];
-						if (material.shader == replacementDef.original)
+						if (material.shader == replacementDef.min)
 						{
 							if (modifiedMaterials == null)
 							{
@@ -69,7 +69,7 @@ namespace UnityStandardAssets.Utility
         [Serializable]
         public class ReplacementDefinition
         {
-            public Shader original = null;
+            public Shader min = null;
             public Shader replacement = null;
         }
 
@@ -103,8 +103,8 @@ namespace UnityStandardAssets.Utility.Inspector
             EditorGUI.indentLevel = 0;
 
             var items = property.FindPropertyRelative("items");
-            var titles = new string[] {"Original", "Replacement", ""};
-            var props = new string[] {"original", "replacement", "-"};
+            var titles = new string[] {"min", "Replacement", ""};
+            var props = new string[] {"min", "replacement", "-"};
             var widths = new float[] {.45f, .45f, .1f};
             const float lineHeight = 18;
             bool changedLength = false;

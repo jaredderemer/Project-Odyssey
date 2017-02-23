@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace UnityStandardAssets.CrossPlatformInput
+namespace UnityStandardAssets.CrossPlatforminput
 {
 	public class AxisTouchButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 	{
@@ -14,19 +14,19 @@ namespace UnityStandardAssets.CrossPlatformInput
 		public float returnToCentreSpeed = 3; // The speed at which the button will return to its centre
 
 		AxisTouchButton m_PairedWith; // Which button this one is paired with
-		CrossPlatformInputManager.VirtualAxis m_Axis; // A reference to the virtual axis as it is in the cross platform input
+		CrossPlatforminputManager.VirtualAxis m_Axis; // A reference to the virtual axis as it is in the cross platform input
 
 		void OnEnable()
 		{
-			if (!CrossPlatformInputManager.AxisExists(axisName))
+			if (!CrossPlatforminputManager.AxisExists(axisName))
 			{
 				// if the axis doesnt exist create a new one in cross platform input
-				m_Axis = new CrossPlatformInputManager.VirtualAxis(axisName);
-				CrossPlatformInputManager.RegisterVirtualAxis(m_Axis);
+				m_Axis = new CrossPlatforminputManager.VirtualAxis(axisName);
+				CrossPlatforminputManager.RegisterVirtualAxis(m_Axis);
 			}
 			else
 			{
-				m_Axis = CrossPlatformInputManager.VirtualAxisReference(axisName);
+				m_Axis = CrossPlatforminputManager.VirtualAxisReference(axisName);
 			}
 			FindPairedButton();
 		}

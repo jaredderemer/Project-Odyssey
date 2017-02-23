@@ -136,8 +136,8 @@ namespace UnityStandardAssets.ImageEffects
                 GUILayout.Label ("Bokeh Settings", EditorStyles.boldLabel);
                 EditorGUILayout.PropertyField (bokehDestination, new GUIContent("Destination"));
                 bokehIntensity.floatValue = EditorGUILayout.Slider ("Intensity", bokehIntensity.floatValue, 0.0f, 1.0f);
-                bokehThresholdLuminance.floatValue = EditorGUILayout.Slider ("Min luminance", bokehThresholdLuminance.floatValue, 0.0f, 0.99f);
-                bokehThresholdContrast.floatValue = EditorGUILayout.Slider ("Min contrast", bokehThresholdContrast.floatValue, 0.0f, 0.25f);
+                bokehThresholdLuminance.floatValue = EditorGUILayout.Slider ("min luminance", bokehThresholdLuminance.floatValue, 0.0f, 0.99f);
+                bokehThresholdContrast.floatValue = EditorGUILayout.Slider ("min contrast", bokehThresholdContrast.floatValue, 0.0f, 0.25f);
                 bokehDownsample.intValue = EditorGUILayout.IntSlider ("Downsample", bokehDownsample.intValue, 1, 3);
                 bokehScale.floatValue = EditorGUILayout.Slider ("Size scale", bokehScale.floatValue, 0.0f, 20.0f);
                 EditorGUILayout.PropertyField (bokehTexture , new GUIContent("Texture mask"));

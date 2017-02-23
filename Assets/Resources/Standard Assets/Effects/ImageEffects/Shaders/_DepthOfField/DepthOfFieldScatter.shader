@@ -76,7 +76,7 @@
 		return o;
 	} 
 
-	v2fBlur vertBlurPlusMinus (appdata_img v) 
+	v2fBlur vertBlurPlusminus (appdata_img v) 
 	{
 		v2fBlur o;
 		o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
@@ -609,7 +609,7 @@ Subshader
       CGPROGRAM
 
       #pragma target 3.0
-      #pragma vertex vertBlurPlusMinus
+      #pragma vertex vertBlurPlusminus
       #pragma fragment fragGaussBlur
 
       ENDCG
@@ -623,7 +623,7 @@ Subshader
       CGPROGRAM
 
       #pragma target 3.0
-      #pragma vertex vertBlurPlusMinus
+      #pragma vertex vertBlurPlusminus
       #pragma fragment fragBlurForFgCoc
 
       ENDCG
@@ -698,7 +698,7 @@ Subshader
  Pass {
 	  ZTest Always Cull Off ZWrite Off
 	  ColorMask RGB
-	  Blend SrcAlpha OneMinusSrcAlpha
+	  Blend SrcAlpha OneminusSrcAlpha
 
       CGPROGRAM
 
@@ -878,7 +878,7 @@ Subshader
       CGPROGRAM
 
       #pragma target 3.0
-      #pragma vertex vertBlurPlusMinus
+      #pragma vertex vertBlurPlusminus
       #pragma fragment fragBlurAlphaWeighted
 
       ENDCG
@@ -904,7 +904,7 @@ Subshader
 	  ZTest Always Cull Off ZWrite Off
 
 	  BlendOp Add, Add
-	  Blend DstAlpha OneMinusDstAlpha, Zero One
+	  Blend DstAlpha OneminusDstAlpha, Zero One
 
       CGPROGRAM
 

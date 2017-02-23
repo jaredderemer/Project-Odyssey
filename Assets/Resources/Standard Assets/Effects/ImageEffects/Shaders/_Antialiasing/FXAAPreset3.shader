@@ -222,7 +222,7 @@ FXAA_EDGE_THRESHOLD - The minimum amount of local contrast required
                       1.0/8.0  - applies to more edges
                       1.0/16.0 - overkill
 ------------------------------------------------------------------------------
-FXAA_EDGE_THRESHOLD_MIN - Trims the algorithm from processing darks.
+FXAA_EDGE_THRESHOLD_min - Trims the algorithm from processing darks.
                           Perf optimization.
                           1.0/32.0 - visible limit (smaller isn't visible)
                           1.0/16.0 - good compromise
@@ -267,7 +267,7 @@ FXAA_SUBPIX_CAP - Insures fine detail is not completely removed.
 /*--------------------------------------------------------------------------*/
 #if (FXAA_PRESET == 0)
     #define FXAA_EDGE_THRESHOLD      (1.0/4.0)
-    #define FXAA_EDGE_THRESHOLD_MIN  (1.0/12.0)
+    #define FXAA_EDGE_THRESHOLD_min  (1.0/12.0)
     #define FXAA_SEARCH_STEPS        2
     #define FXAA_SEARCH_ACCELERATION 4
     #define FXAA_SEARCH_THRESHOLD    (1.0/4.0)
@@ -279,7 +279,7 @@ FXAA_SUBPIX_CAP - Insures fine detail is not completely removed.
 /*--------------------------------------------------------------------------*/
 #if (FXAA_PRESET == 1)
     #define FXAA_EDGE_THRESHOLD      (1.0/8.0)
-    #define FXAA_EDGE_THRESHOLD_MIN  (1.0/16.0)
+    #define FXAA_EDGE_THRESHOLD_min  (1.0/16.0)
     #define FXAA_SEARCH_STEPS        4
     #define FXAA_SEARCH_ACCELERATION 3
     #define FXAA_SEARCH_THRESHOLD    (1.0/4.0)
@@ -291,7 +291,7 @@ FXAA_SUBPIX_CAP - Insures fine detail is not completely removed.
 /*--------------------------------------------------------------------------*/
 #if (FXAA_PRESET == 2)
     #define FXAA_EDGE_THRESHOLD      (1.0/8.0)
-    #define FXAA_EDGE_THRESHOLD_MIN  (1.0/24.0)
+    #define FXAA_EDGE_THRESHOLD_min  (1.0/24.0)
     #define FXAA_SEARCH_STEPS        8
     #define FXAA_SEARCH_ACCELERATION 2
     #define FXAA_SEARCH_THRESHOLD    (1.0/4.0)
@@ -303,7 +303,7 @@ FXAA_SUBPIX_CAP - Insures fine detail is not completely removed.
 /*--------------------------------------------------------------------------*/
 #if (FXAA_PRESET == 3)
     #define FXAA_EDGE_THRESHOLD      (1.0/8.0)
-    #define FXAA_EDGE_THRESHOLD_MIN  (1.0/24.0)
+    #define FXAA_EDGE_THRESHOLD_min  (1.0/24.0)
     #define FXAA_SEARCH_STEPS        16
     #define FXAA_SEARCH_ACCELERATION 1
     #define FXAA_SEARCH_THRESHOLD    (1.0/4.0)
@@ -315,7 +315,7 @@ FXAA_SUBPIX_CAP - Insures fine detail is not completely removed.
 /*--------------------------------------------------------------------------*/
 #if (FXAA_PRESET == 4)
     #define FXAA_EDGE_THRESHOLD      (1.0/8.0)
-    #define FXAA_EDGE_THRESHOLD_MIN  (1.0/24.0)
+    #define FXAA_EDGE_THRESHOLD_min  (1.0/24.0)
     #define FXAA_SEARCH_STEPS        24
     #define FXAA_SEARCH_ACCELERATION 1
     #define FXAA_SEARCH_THRESHOLD    (1.0/4.0)
@@ -327,7 +327,7 @@ FXAA_SUBPIX_CAP - Insures fine detail is not completely removed.
 /*--------------------------------------------------------------------------*/
 #if (FXAA_PRESET == 5)
     #define FXAA_EDGE_THRESHOLD      (1.0/8.0)
-    #define FXAA_EDGE_THRESHOLD_MIN  (1.0/24.0)
+    #define FXAA_EDGE_THRESHOLD_min  (1.0/24.0)
     #define FXAA_SEARCH_STEPS        32
     #define FXAA_SEARCH_ACCELERATION 1
     #define FXAA_SEARCH_THRESHOLD    (1.0/4.0)
@@ -408,7 +408,7 @@ Given the following neighborhood,
 If the difference in local maximum and minimum luma (contrast "range") 
 is lower than a threshold proportional to the maximum local luma ("rangeMax"), 
 then the shader early exits (no visible aliasing). 
-This threshold is clamped at a minimum value ("FXAA_EDGE_THRESHOLD_MIN")
+This threshold is clamped at a minimum value ("FXAA_EDGE_THRESHOLD_min")
 to avoid processing in really dark areas.    
 ----------------------------------------------------------------------------*/
     float3 rgbN = FxaaTexOff(tex, pos.xy, FxaaInt2( 0,-1), rcpFrame).xyz;
@@ -421,13 +421,13 @@ to avoid processing in really dark areas.
     float lumaM = FxaaLuma(rgbM);
     float lumaE = FxaaLuma(rgbE);
     float lumaS = FxaaLuma(rgbS);
-    float rangeMin = min(lumaM, min(min(lumaN, lumaW), min(lumaS, lumaE)));
+    float rangemin = min(lumaM, min(min(lumaN, lumaW), min(lumaS, lumaE)));
     float rangeMax = max(lumaM, max(max(lumaN, lumaW), max(lumaS, lumaE)));
-    float range = rangeMax - rangeMin;
+    float range = rangeMax - rangemin;
     #if FXAA_DEBUG
         float lumaO = lumaM / (1.0 + (0.587/0.299));
     #endif        
-    if(range < max(FXAA_EDGE_THRESHOLD_MIN, rangeMax * FXAA_EDGE_THRESHOLD)) {
+    if(range < max(FXAA_EDGE_THRESHOLD_min, rangeMax * FXAA_EDGE_THRESHOLD)) {
         #if FXAA_DEBUG
             return FxaaFilterReturn(FxaaToFloat3(lumaO));
         #endif

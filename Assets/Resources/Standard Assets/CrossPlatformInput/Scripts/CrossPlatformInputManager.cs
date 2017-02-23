@@ -1,10 +1,10 @@
 using System;
 using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput.PlatformSpecific;
+using UnityStandardAssets.CrossPlatforminput.PlatformSpecific;
 
-namespace UnityStandardAssets.CrossPlatformInput
+namespace UnityStandardAssets.CrossPlatforminput
 {
-	public static class CrossPlatformInputManager
+	public static class CrossPlatforminputManager
 	{
 		public enum ActiveInputMethod
 		{
@@ -19,7 +19,7 @@ namespace UnityStandardAssets.CrossPlatformInput
 		private static VirtualInput s_HardwareInput;
 
 
-		static CrossPlatformInputManager()
+		static CrossPlatforminputManager()
 		{
 			s_TouchInput = new MobileInput();
 			s_HardwareInput = new StandaloneInput();

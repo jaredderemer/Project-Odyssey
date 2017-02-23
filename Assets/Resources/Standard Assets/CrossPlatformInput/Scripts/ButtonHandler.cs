@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace UnityStandardAssets.CrossPlatformInput
+namespace UnityStandardAssets.CrossPlatforminput
 {
     public class ButtonHandler : MonoBehaviour
     {
@@ -15,31 +15,31 @@ namespace UnityStandardAssets.CrossPlatformInput
 
         public void SetDownState()
         {
-            CrossPlatformInputManager.SetButtonDown(Name);
+            CrossPlatforminputManager.SetButtonDown(Name);
         }
 
 
         public void SetUpState()
         {
-            CrossPlatformInputManager.SetButtonUp(Name);
+            CrossPlatforminputManager.SetButtonUp(Name);
         }
 
 
         public void SetAxisPositiveState()
         {
-            CrossPlatformInputManager.SetAxisPositive(Name);
+            CrossPlatforminputManager.SetAxisPositive(Name);
         }
 
 
         public void SetAxisNeutralState()
         {
-            CrossPlatformInputManager.SetAxisZero(Name);
+            CrossPlatforminputManager.SetAxisZero(Name);
         }
 
 
         public void SetAxisNegativeState()
         {
-            CrossPlatformInputManager.SetAxisNegative(Name);
+            CrossPlatforminputManager.SetAxisNegative(Name);
         }
 
         public void Update()

@@ -1,0 +1,8 @@
+~~~Kaoru~~~
+
+The the Objects Folder contains all the scripts and prefabs for the
+Objects i have been working on. If there is anything you need to have change
+Please let me know since i have multiple scripts calling eachother.
+
+All scripts should be working and i have tested them multiple times. 
+Please contact me asap if you want to make a change, and or if a minor change.

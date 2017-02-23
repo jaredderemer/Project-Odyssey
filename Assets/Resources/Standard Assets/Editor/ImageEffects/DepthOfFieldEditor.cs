@@ -150,7 +150,7 @@ namespace UnityStandardAssets.ImageEffects
                 EditorGUILayout.PropertyField(dx11BokehTexture, new GUIContent(" Bokeh Texture"));
                 EditorGUILayout.Slider(dx11BokehScale, 0.0f, 50.0f, new GUIContent(" Bokeh Scale"));
                 EditorGUILayout.Slider(dx11BokehIntensity, 0.0f, 100.0f, new GUIContent(" Bokeh Intensity"));
-                EditorGUILayout.Slider(dx11BokehThreshold, 0.0f, 1.0f, new GUIContent(" Min Luminance"));
+                EditorGUILayout.Slider(dx11BokehThreshold, 0.0f, 1.0f, new GUIContent(" min Luminance"));
                 EditorGUILayout.Slider(dx11SpawnHeuristic, 0.01f, 1.0f, new GUIContent(" Spawn Heuristic"));
             }
             EditorGUILayout.EndFadeGroup();

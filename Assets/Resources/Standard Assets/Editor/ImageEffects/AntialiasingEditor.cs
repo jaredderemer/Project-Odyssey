@@ -16,7 +16,7 @@ namespace UnityStandardAssets.ImageEffects
         private SerializedProperty blurRadius;
         private SerializedProperty dlaaSharp;
 
-        private SerializedProperty edgeThresholdMin;
+        private SerializedProperty edgeThresholdmin;
         private SerializedProperty edgeThreshold;
         private SerializedProperty edgeSharpness;
 
@@ -32,7 +32,7 @@ namespace UnityStandardAssets.ImageEffects
             blurRadius = serObj.FindProperty("blurRadius");
             dlaaSharp = serObj.FindProperty("dlaaSharp");
 
-            edgeThresholdMin = serObj.FindProperty("edgeThresholdMin");
+            edgeThresholdmin = serObj.FindProperty("edgeThresholdmin");
             edgeThreshold = serObj.FindProperty("edgeThreshold");
             edgeSharpness = serObj.FindProperty("edgeSharpness");
         }
@@ -64,7 +64,7 @@ namespace UnityStandardAssets.ImageEffects
             }
             else if (mode.enumValueIndex == (int) AAMode.FXAA3Console)
             {
-                EditorGUILayout.PropertyField(edgeThresholdMin, new GUIContent("Edge Min Threshhold"));
+                EditorGUILayout.PropertyField(edgeThresholdmin, new GUIContent("Edge min Threshhold"));
                 EditorGUILayout.PropertyField(edgeThreshold, new GUIContent("Edge Threshhold"));
                 EditorGUILayout.PropertyField(edgeSharpness, new GUIContent("Edge Sharpness"));
             }

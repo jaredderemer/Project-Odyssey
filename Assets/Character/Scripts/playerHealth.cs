@@ -4,7 +4,7 @@ using System.Collections;
 public class playerHealth : MonoBehaviour
 {
    public float fullHealth; // Player's max health
-   float currentHealth;     // The current level of health for the character
+   public float currentHealth;     // The current level of health for the character
 
    public GameObject playerDeathFX;
 
@@ -29,6 +29,7 @@ public class playerHealth : MonoBehaviour
       if (currentHealth <= 0)
       {
          makeDead();
+         print("JOHN SUN DIED!!!");
       }
    }
 

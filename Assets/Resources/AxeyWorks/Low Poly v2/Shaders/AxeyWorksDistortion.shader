@@ -26,7 +26,7 @@ Shader "AxeyWorks/Distortion"
 	SubShader
 	{
 		Tags { "Queue" = "Geometry" "RenderType" = "Opaque" }
-		Blend SrcAlpha OneMinusSrcAlpha
+		Blend SrcAlpha OneminusSrcAlpha
 
 		Pass
 		{

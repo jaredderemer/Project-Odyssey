@@ -20,7 +20,7 @@ You'll probably want to add a camera rig so that the camera follows the characte
 
 The ThirdPersonCharacter script exposes a number of properties which determine the jump power, the amount of control while in air, and various other speed and behaviour modifiers. For more detail about each setting, see the comments in the script.
 
-The ThirdPersonUserControl script takes input from the "CrossPlatformInput" class included in the sample assets, however if you're not targeting mobile or prefer to use a different system to read input, you can simply use Unity's built-in Input class in place of CrossPlatformInput. For more information, see the CrossPlatformInput guidelines.
+The ThirdPersonUserControl script takes input from the "CrossPlatforminput" class included in the sample assets, however if you're not targeting mobile or prefer to use a different system to read input, you can simply use Unity's built-in Input class in place of CrossPlatforminput. For more information, see the CrossPlatforminput guidelines.
 
 The sample scenes provided works on standalone and also include cross platform touch controls which are set up and ready to publish to mobile.
 

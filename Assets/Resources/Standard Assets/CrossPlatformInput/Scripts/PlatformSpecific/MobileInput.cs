@@ -1,21 +1,21 @@
 using System;
 using UnityEngine;
 
-namespace UnityStandardAssets.CrossPlatformInput.PlatformSpecific
+namespace UnityStandardAssets.CrossPlatforminput.PlatformSpecific
 {
     public class MobileInput : VirtualInput
     {
         private void AddButton(string name)
         {
             // we have not registered this button yet so add it, happens in the constructor
-            CrossPlatformInputManager.RegisterVirtualButton(new CrossPlatformInputManager.VirtualButton(name));
+            CrossPlatforminputManager.RegisterVirtualButton(new CrossPlatforminputManager.VirtualButton(name));
         }
 
 
         private void AddAxes(string name)
         {
             // we have not registered this button yet so add it, happens in the constructor
-            CrossPlatformInputManager.RegisterVirtualAxis(new CrossPlatformInputManager.VirtualAxis(name));
+            CrossPlatforminputManager.RegisterVirtualAxis(new CrossPlatforminputManager.VirtualAxis(name));
         }
 
 

@@ -16,7 +16,7 @@ namespace UnityStandardAssets.ImageEffects
         SerializedProperty quality;
         SerializedProperty sepBlurSpread;
 
-        SerializedProperty bloomIntensity;
+        SerializedProperty bloomintensity;
         SerializedProperty bloomThresholdColor;
         SerializedProperty bloomThreshold;
         SerializedProperty bloomBlurIterations;
@@ -45,7 +45,7 @@ namespace UnityStandardAssets.ImageEffects
 
             sepBlurSpread = serObj.FindProperty("sepBlurSpread");
 
-            bloomIntensity = serObj.FindProperty("bloomIntensity");
+            bloomintensity = serObj.FindProperty("bloomintensity");
             bloomThreshold = serObj.FindProperty("bloomThreshold");
             bloomThresholdColor = serObj.FindProperty("bloomThresholdColor");
             bloomBlurIterations = serObj.FindProperty("bloomBlurIterations");
@@ -90,7 +90,7 @@ namespace UnityStandardAssets.ImageEffects
                 }
             }
 
-            EditorGUILayout.PropertyField (bloomIntensity, new GUIContent("Intensity"));
+            EditorGUILayout.PropertyField (bloomintensity, new GUIContent("Intensity"));
             bloomThreshold.floatValue = EditorGUILayout.Slider ("Threshold", bloomThreshold.floatValue, -0.05f, 4.0f);
             if (1 == tweakMode.intValue) {
                 EditorGUILayout.PropertyField(bloomThresholdColor, new GUIContent(" RGB Threshold"));

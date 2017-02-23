@@ -25,7 +25,7 @@ namespace UnityStandardAssets.ImageEffects
         public float offsetScale = 0.2f;
         public float blurRadius = 18.0f;
 
-        public float edgeThresholdMin = 0.05f;
+        public float edgeThresholdmin = 0.05f;
         public float edgeThreshold = 0.2f;
         public float edgeSharpness = 4.0f;
 
@@ -118,7 +118,7 @@ namespace UnityStandardAssets.ImageEffects
 
             if (mode == AAMode.FXAA3Console && (materialFXAAIII != null))
             {
-                materialFXAAIII.SetFloat("_EdgeThresholdMin", edgeThresholdMin);
+                materialFXAAIII.SetFloat("_EdgeThresholdmin", edgeThresholdmin);
                 materialFXAAIII.SetFloat("_EdgeThreshold", edgeThreshold);
                 materialFXAAIII.SetFloat("_EdgeSharpness", edgeSharpness);
 

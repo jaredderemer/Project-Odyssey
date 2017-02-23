@@ -20,7 +20,7 @@ CGPROGRAM
 
 uniform sampler2D _MainTex; // currently adapted to
 uniform sampler2D _CurTex; // new value to adapt to
-uniform float4 _AdaptParams; // x=adaptLerp, y=limitMinimum, z=limitMaximum
+uniform float4 _AdaptParams; // x=adaptLerp, y=limitminimum, z=limitMaximum
 half4 _MainTex_ST;
 half4 _CurTex_ST;
 
@@ -39,10 +39,10 @@ float4 frag (v2f_img i) : SV_Target  {
 	//
 	// So we make sure the change we do is at least 1/255th of the
 	// color range - this way we'll always change the value.
-	const float kMinChange = 1.0/255.0;
+	const float kminChange = 1.0/255.0;
 	float2 delta = (valCur-valAdapted) * _AdaptParams.x;
-	delta.x = sign(delta.x) * max( kMinChange, abs(delta.x) );
-	delta.y = sign(delta.y) * max( kMinChange, abs(delta.y) );
+	delta.x = sign(delta.x) * max( kminChange, abs(delta.x) );
+	delta.y = sign(delta.y) * max( kminChange, abs(delta.y) );
 
 	float4 valNew;
 	valNew.xy = valAdapted + delta;

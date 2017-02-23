@@ -275,24 +275,24 @@
 	}
 		
 	half4 fragDarkenForBokeh(v2fRadius i) : SV_Target {		
-		half4 fromOriginal = tex2D(_MainTex, i.uv.xy);
-		half4 lowRez = BokehPrereqs (_MainTex, i.uv1, fromOriginal, _Threshhold.z);
-		half4 outColor = half4(0,0,0, fromOriginal.a);
-		half modulate = fromOriginal.a;		
+		half4 frommin = tex2D(_MainTex, i.uv.xy);
+		half4 lowRez = BokehPrereqs (_MainTex, i.uv1, frommin, _Threshhold.z);
+		half4 outColor = half4(0,0,0, frommin.a);
+		half modulate = frommin.a;		
 		
 		// this code imitates the if-then-else conditions below
-		half2 conditionCheck = half2( dot(abs(fromOriginal.rgb-lowRez.rgb), half3(0.3,0.5,0.2)), Luminance(fromOriginal.rgb));
-		conditionCheck *= fromOriginal.a;
+		half2 conditionCheck = half2( dot(abs(frommin.rgb-lowRez.rgb), half3(0.3,0.5,0.2)), Luminance(frommin.rgb));
+		conditionCheck *= frommin.a;
 		conditionCheck = saturate(_Threshhold.xy - conditionCheck);
-		outColor = lerp (outColor, fromOriginal, saturate (dot(conditionCheck, half2(1000.0,1000.0))));
+		outColor = lerp (outColor, frommin, saturate (dot(conditionCheck, half2(1000.0,1000.0))));
 		
 		/*
-		if ( abs(dot(fromOriginal.rgb - lowRez.rgb,  half3 (0.3,0.5,0.2))) * modulate < _Threshhold.x)
-			outColor = fromOriginal; // no darkening
-		if (Luminance(fromOriginal.rgb) * modulate < _Threshhold.y)
-			outColor = fromOriginal; // no darkening
+		if ( abs(dot(frommin.rgb - lowRez.rgb,  half3 (0.3,0.5,0.2))) * modulate < _Threshhold.x)
+			outColor = frommin; // no darkening
+		if (Luminance(frommin.rgb) * modulate < _Threshhold.y)
+			outColor = frommin; // no darkening
 		if (lowRez.a < _Threshhold.z) // need to make foreground not cast false bokeh's
-			outColor = fromOriginal; // no darkenin
+			outColor = frommin; // no darkenin
 		*/	
 		 
 		return outColor;
@@ -429,7 +429,7 @@ Subshader {
  
  Pass {
 	  ZTest Always Cull Off ZWrite Off
-	  Blend SrcAlpha OneMinusSrcAlpha
+	  Blend SrcAlpha OneminusSrcAlpha
 	  ColorMask RGB
 
       CGPROGRAM

@@ -26,13 +26,13 @@ void swap(inout float v0, inout float v1) {
 }
 
 
-bool isIntersecting(float rayZMin, float rayZMax, float sceneZ, float layerThickness) {
-	return (rayZMax >= sceneZ - layerThickness) && (rayZMin <= sceneZ);
+bool isIntersecting(float rayZmin, float rayZMax, float sceneZ, float layerThickness) {
+	return (rayZMax >= sceneZ - layerThickness) && (rayZmin <= sceneZ);
 }
 
 void rayIterations(inout float2 P, inout float stepDirection, inout float end, inout int stepCount, inout int maxSteps, inout bool intersecting,
 		inout float sceneZ, inout float2 dP, inout float3 Q, inout float3 dQ, inout float k, inout float dk,
-		inout float rayZMin, inout float rayZMax, inout float prevZMaxEstimate, inout bool permute, inout float2 hitPixel, 
+		inout float rayZmin, inout float rayZMax, inout float prevZMaxEstimate, inout bool permute, inout float2 hitPixel, 
 		inout float2 invSize, inout float layerThickness) {
 
     UNITY_LOOP
@@ -44,12 +44,12 @@ void rayIterations(inout float2 P, inout float stepDirection, inout float end, i
                 
         // The depth range that the ray covers within this loop iteration. 
 		// Assume that the ray is moving in increasing z and swap if backwards.
-        rayZMin = prevZMaxEstimate;
-        //rayZMin = (dQ.z * -0.5 + Q.z) / (dk * -0.5 + k);
+        rayZmin = prevZMaxEstimate;
+        //rayZmin = (dQ.z * -0.5 + Q.z) / (dk * -0.5 + k);
 		// Compute the value at 1/2 pixel into the future
         rayZMax = (dQ.z * 0.5 + Q.z) / (dk * 0.5 + k);
 		prevZMaxEstimate = rayZMax;
-        if (rayZMin > rayZMax) { swap(rayZMin, rayZMax); }
+        if (rayZmin > rayZMax) { swap(rayZmin, rayZMax); }
 
         // Undo the homogeneous operation to obtain the camera-space
         // Q at each point
@@ -58,7 +58,7 @@ void rayIterations(inout float2 P, inout float stepDirection, inout float end, i
         sceneZ = tex2Dlod(_CameraDepthTexture, float4(hitPixel * invSize,0,0)).r;
     	sceneZ = -LinearEyeDepth(sceneZ);
     	
-		intersecting = isIntersecting(rayZMin, rayZMax, sceneZ, layerThickness);
+		intersecting = isIntersecting(rayZmin, rayZMax, sceneZ, layerThickness);
     		
     } // pixel on ray
     P -= dP, Q.z -= dQ.z, k -= dk;
@@ -118,28 +118,28 @@ bool castDenseScreenSpaceRay
     float2 P0 = H0.xy * k0;
     float2 P1 = H1.xy * k1;
 
-    // Switch the original points to values that interpolate linearly in 2D:
+    // Switch the min points to values that interpolate linearly in 2D:
     float3 Q0 = csOrigin * k0; 
     float3 Q1 = csEndPoint * k1;
 
 #if 1 // Clipping to the screen coordinates. We could simply modify maxSteps instead
     float yMax = csZBufferSize.y - 0.5;
-    float yMin = 0.5;
+    float ymin = 0.5;
     float xMax = csZBufferSize.x - 0.5;
-    float xMin = 0.5;
+    float xmin = 0.5;
 
     // 2D interpolation parameter
     float alpha = 0.0;
     // P0 must be in bounds
-    if (P1.y > yMax || P1.y < yMin) {
-        float yClip = (P1.y > yMax) ? yMax : yMin;
+    if (P1.y > yMax || P1.y < ymin) {
+        float yClip = (P1.y > yMax) ? yMax : ymin;
         float yAlpha = (P1.y - yClip) / (P1.y - P0.y); // Denominator is not zero, since P0 != P1 (or P0 would have been clipped!)
         alpha = yAlpha;
     } 
 
     // P0 must be in bounds
-    if (P1.x > xMax || P1.x < xMin) {
-        float xClip = (P1.x > xMax) ? xMax : xMin;
+    if (P1.x > xMax || P1.x < xmin) {
+        float xClip = (P1.x > xMax) ? xMax : xmin;
         float xAlpha = (P1.x - xClip) / (P1.x - P0.x); // Denominator is not zero, since P0 != P1 (or P0 would have been clipped!)
         alpha = max(alpha, xAlpha);
     } 
@@ -195,14 +195,14 @@ bool castDenseScreenSpaceRay
 	// per iteration.
 	float prevZMaxEstimate = csOrigin.z;
     stepCount = 0.0;
-    float rayZMax = prevZMaxEstimate, rayZMin = prevZMaxEstimate;
+    float rayZMax = prevZMaxEstimate, rayZmin = prevZMaxEstimate;
     float sceneZ = 100000;
 
     // P1.x is never modified after this point, so pre-scale it by 
     // the step direction for a signed comparison
     float end = P1.x * stepDirection;
 
-	bool intersecting = isIntersecting(rayZMin, rayZMax, sceneZ, layerThickness);
+	bool intersecting = isIntersecting(rayZmin, rayZMax, sceneZ, layerThickness);
     // We only advance the z field of Q in the inner loop, since
     // Q.xy is never used until after the loop terminates
    
@@ -211,21 +211,21 @@ bool castDenseScreenSpaceRay
 
 	float2 P = P0;
 
-	int originalStepCount = 0;
-	rayIterations(P, stepDirection, end,  originalStepCount,  maxSteps, intersecting,
+	int minStepCount = 0;
+	rayIterations(P, stepDirection, end,  minStepCount,  maxSteps, intersecting,
 		 sceneZ, dP, Q, dQ,  k,  dk, 
-		 rayZMin,  rayZMax,  prevZMaxEstimate, permute, hitPixel, 
+		 rayZmin,  rayZMax,  prevZMaxEstimate, permute, hitPixel, 
 		 invSize,  layerThickness);
 	
 		 
-	stepCount = originalStepCount;
+	stepCount = minStepCount;
 	if (refine && intersecting && stepRate > 1) {
 	
 		
 		// We're going back a step.
 		P -= dP, Q.z -= dQ.z, k -= dk;
 		prevZMaxEstimate = Q.z / k;
-		rayZMin = prevZMaxEstimate;
+		rayZmin = prevZMaxEstimate;
 		rayZMax = prevZMaxEstimate;
 		
 		intersecting = false;
@@ -240,7 +240,7 @@ bool castDenseScreenSpaceRay
     	// Refinement
     	rayIterations(P, stepDirection, end,  refinementStepCount,  refinementMaxSteps, intersecting,
 		 	sceneZ, dP, Q, dQ,  k,  dk,
-		 	rayZMin,  rayZMax,  prevZMaxEstimate, permute, hitPixel, 
+		 	rayZmin,  rayZMax,  prevZMaxEstimate, permute, hitPixel, 
 		 	invSize,  layerThickness);
 		stepCount += refinementStepCount * refinementConstant - 1.0;
 		//stepCount = refinementStepCount;

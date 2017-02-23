@@ -2,18 +2,18 @@ using System;
 using System.Collections.Generic;
 using UnityEditor;
 
-namespace UnityStandardAssets.CrossPlatformInput.Inspector
+namespace UnityStandardAssets.CrossPlatforminput.Inspector
 {
     [InitializeOnLoad]
-    public class CrossPlatformInitialize
+    public class CrossPlatforminitialize
     {
         // Custom compiler defines:
         //
-        // CROSS_PLATFORM_INPUT : denotes that cross platform input package exists, so that other packages can use their CrossPlatformInput functions.
+        // CROSS_PLATFORM_INPUT : denotes that cross platform input package exists, so that other packages can use their CrossPlatforminput functions.
         // EDITOR_MOBILE_INPUT : denotes that mobile input should be used in editor, if a mobile build target is selected. (i.e. using Unity Remote app).
         // MOBILE_INPUT : denotes that mobile input should be used right now!
 
-        static CrossPlatformInitialize()
+        static CrossPlatforminitialize()
         {
             var defines = GetDefinesList(buildTargetGroups[0]);
             if (!defines.Contains("CROSS_PLATFORM_INPUT"))

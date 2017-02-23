@@ -31,7 +31,7 @@ DAMAGES.
 Shader "Hidden/FXAA III (Console)" {
 	Properties {
 		_MainTex ("-", 2D) = "white" {}
-		_EdgeThresholdMin ("Edge threshold min",float) = 0.125
+		_EdgeThresholdmin ("Edge threshold min",float) = 0.125
 		_EdgeThreshold("Edge Threshold", float) = 0.25
 		_EdgeSharpness("Edge sharpness",float) = 4.0
 	}
@@ -47,7 +47,7 @@ Shader "Hidden/FXAA III (Console)" {
 		#include "UnityCG.cginc"
 
 		uniform sampler2D _MainTex;
-		uniform half _EdgeThresholdMin;
+		uniform half _EdgeThresholdmin;
 		uniform half _EdgeThreshold;
 		uniform half _EdgeSharpness;
 		half4 _MainTex_ST;
@@ -116,36 +116,36 @@ Shader "Hidden/FXAA III (Console)" {
 			
 			half lumaMaxNwSw = max( lumaNw , lumaSw );
 			lumaNe += 1.0/384.0;
-			half lumaMinNwSw = min( lumaNw , lumaSw );
+			half lumaminNwSw = min( lumaNw , lumaSw );
 			
 			half lumaMaxNeSe = max( lumaNe , lumaSe );
-			half lumaMinNeSe = min( lumaNe , lumaSe );
+			half lumaminNeSe = min( lumaNe , lumaSe );
 			
 			half lumaMax = max( lumaMaxNeSe, lumaMaxNwSw );
-			half lumaMin = min( lumaMinNeSe, lumaMinNwSw );
+			half lumamin = min( lumaminNeSe, lumaminNwSw );
 			
 			half lumaMaxScaled = lumaMax * _EdgeThreshold;
 			
-			half lumaMinCentre = min( lumaMin , lumaCentre );
-			half lumaMaxScaledClamped = max( _EdgeThresholdMin , lumaMaxScaled );
+			half lumaminCentre = min( lumamin , lumaCentre );
+			half lumaMaxScaledClamped = max( _EdgeThresholdmin , lumaMaxScaled );
 			half lumaMaxCentre = max( lumaMax , lumaCentre );
-			half dirSWMinusNE = lumaSw - lumaNe;
-			half lumaMaxCMinusMinC = lumaMaxCentre - lumaMinCentre;
-			half dirSEMinusNW = lumaSe - lumaNw;
+			half dirSWminusNE = lumaSw - lumaNe;
+			half lumaMaxCminusminC = lumaMaxCentre - lumaminCentre;
+			half dirSEminusNW = lumaSe - lumaNw;
 			
-			if(lumaMaxCMinusMinC < lumaMaxScaledClamped)
+			if(lumaMaxCminusminC < lumaMaxScaledClamped)
 				return centre;
 			
 			half2 dir;
-			dir.x = dirSWMinusNE + dirSEMinusNW;
-			dir.y = dirSWMinusNE - dirSEMinusNW;
+			dir.x = dirSWminusNE + dirSEminusNW;
+			dir.y = dirSWminusNE - dirSEminusNW;
 			
 			dir = normalize(dir);			
 			half3 col1 = FxaaTexTop(_MainTex, pos.xy - dir * rcpSize.zw).rgb;
 			half3 col2 = FxaaTexTop(_MainTex, pos.xy + dir * rcpSize.zw).rgb;
 			
-			half dirAbsMinTimesC = min( abs( dir.x ) , abs( dir.y ) ) * _EdgeSharpness;
-			dir = clamp(dir.xy/dirAbsMinTimesC, -2.0, 2.0);
+			half dirAbsminTimesC = min( abs( dir.x ) , abs( dir.y ) ) * _EdgeSharpness;
+			dir = clamp(dir.xy/dirAbsminTimesC, -2.0, 2.0);
 			
 			half3 col3 = FxaaTexTop(_MainTex, pos.xy - dir * rcpSize2.zw).rgb;
 			half3 col4 = FxaaTexTop(_MainTex, pos.xy + dir * rcpSize2.zw).rgb;
@@ -153,7 +153,7 @@ Shader "Hidden/FXAA III (Console)" {
 			half3 rgbyA = col1 + col2;
 			half3 rgbyB = ((col3 + col4) * 0.25) + (rgbyA * 0.25);
 			
-			if((Luminance(rgbyA) < lumaMin) || (Luminance(rgbyB) > lumaMax))
+			if((Luminance(rgbyA) < lumamin) || (Luminance(rgbyB) > lumaMax))
 				return rgbyA * 0.5;
 			else
 				return rgbyB;

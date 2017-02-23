@@ -27,7 +27,7 @@ namespace UnityStandardAssets.ImageEffects
         [Range(0.2f, 2.0f)]
         public float m_OcclusionAttenuation = 1.0f;
         [Range(0.00001f, 0.5f)]
-        public float m_MinZ = 0.01f;
+        public float m_minZ = 0.01f;
 
         public Shader m_SSAOShader;
         private Material m_SSAOMaterial;
@@ -105,7 +105,7 @@ namespace UnityStandardAssets.ImageEffects
 
             m_Downsampling = Mathf.Clamp (m_Downsampling, 1, 6);
             m_Radius = Mathf.Clamp (m_Radius, 0.05f, 1.0f);
-            m_MinZ = Mathf.Clamp (m_MinZ, 0.00001f, 0.5f);
+            m_minZ = Mathf.Clamp (m_minZ, 0.00001f, 0.5f);
             m_OcclusionIntensity = Mathf.Clamp (m_OcclusionIntensity, 0.5f, 4.0f);
             m_OcclusionAttenuation = Mathf.Clamp (m_OcclusionAttenuation, 0.2f, 2.0f);
             m_Blur = Mathf.Clamp (m_Blur, 0, 4);
@@ -127,7 +127,7 @@ namespace UnityStandardAssets.ImageEffects
             m_SSAOMaterial.SetVector ("_NoiseScale", new Vector3 ((float)rtAO.width / noiseWidth, (float)rtAO.height / noiseHeight, 0.0f));
             m_SSAOMaterial.SetVector ("_Params", new Vector4(
                                                      m_Radius,
-                                                     m_MinZ,
+                                                     m_minZ,
                                                      1.0f / m_OcclusionAttenuation,
                                                      m_OcclusionIntensity));
 
@@ -142,7 +142,7 @@ namespace UnityStandardAssets.ImageEffects
                                           new Vector4 ((float)m_Blur / source.width, 0,0,0));
                 m_SSAOMaterial.SetTexture ("_SSAO", rtAO);
                 Graphics.Blit (null, rtBlurX, m_SSAOMaterial, 3);
-                RenderTexture.ReleaseTemporary (rtAO); // original rtAO not needed anymore
+                RenderTexture.ReleaseTemporary (rtAO); // min rtAO not needed anymore
 
                 // Blur SSAO vertically
                 RenderTexture rtBlurY = RenderTexture.GetTemporary (source.width, source.height, 0);

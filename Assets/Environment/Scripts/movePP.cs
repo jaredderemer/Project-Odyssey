@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveObject : MonoBehaviour {
+public class movePP : MonoBehaviour {
 
    private float min;
    private float max;

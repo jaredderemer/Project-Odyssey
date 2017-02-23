@@ -19,7 +19,7 @@ Shader "Hidden/FastBloom" {
 		uniform half4 _OffsetsA;
 		uniform half4 _OffsetsB;
 		
-		#define ONE_MINUS_THRESHHOLD_TIMES_INTENSITY _Parameter.w
+		#define ONE_minUS_THRESHHOLD_TIMES_INTENSITY _Parameter.w
 		#define THRESHHOLD _Parameter.z
 
 		struct v2f_simple 
@@ -91,7 +91,7 @@ Shader "Hidden/FastBloom" {
 			color += tex2D (_MainTex, i.uv21);
 			color += tex2D (_MainTex, i.uv22);
 			color += tex2D (_MainTex, i.uv23);
-			return max(color/4 - THRESHHOLD, 0) * ONE_MINUS_THRESHHOLD_TIMES_INTENSITY;
+			return max(color/4 - THRESHHOLD, 0) * ONE_minUS_THRESHHOLD_TIMES_INTENSITY;
 		}
 	
 		// weight curves

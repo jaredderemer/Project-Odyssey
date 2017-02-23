@@ -16,7 +16,7 @@ namespace UnityStandardAssets.ImageEffects
         SerializedProperty sepBlurSpread;
         SerializedProperty useSrcAlphaAsMask;
 
-        SerializedProperty bloomIntensity;
+        SerializedProperty bloomintensity;
         SerializedProperty bloomthreshold;
         SerializedProperty bloomBlurIterations;
 
@@ -44,7 +44,7 @@ namespace UnityStandardAssets.ImageEffects
             sepBlurSpread = serObj.FindProperty("sepBlurSpread");
             useSrcAlphaAsMask = serObj.FindProperty("useSrcAlphaAsMask");
 
-            bloomIntensity = serObj.FindProperty("bloomIntensity");
+            bloomintensity = serObj.FindProperty("bloomintensity");
             bloomthreshold = serObj.FindProperty("bloomThreshold");
             bloomBlurIterations = serObj.FindProperty("bloomBlurIterations");
 
@@ -87,7 +87,7 @@ namespace UnityStandardAssets.ImageEffects
 
             EditorGUILayout.Separator ();
 
-            EditorGUILayout.PropertyField (bloomIntensity, new GUIContent("Intensity"));
+            EditorGUILayout.PropertyField (bloomintensity, new GUIContent("Intensity"));
             bloomthreshold.floatValue = EditorGUILayout.Slider ("threshold", bloomthreshold.floatValue, -0.05f, 4.0f);
             bloomBlurIterations.intValue = EditorGUILayout.IntSlider ("Blur iterations", bloomBlurIterations.intValue, 1, 4);
             sepBlurSpread.floatValue = EditorGUILayout.Slider ("Blur spread", sepBlurSpread.floatValue, 0.1f, 10.0f);

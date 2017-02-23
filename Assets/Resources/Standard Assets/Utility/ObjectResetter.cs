@@ -7,18 +7,18 @@ namespace UnityStandardAssets.Utility
 {
     public class ObjectResetter : MonoBehaviour
     {
-        private Vector3 originalPosition;
-        private Quaternion originalRotation;
-        private List<Transform> originalStructure;
+        private Vector3 minPosition;
+        private Quaternion minRotation;
+        private List<Transform> minStructure;
 
         private Rigidbody Rigidbody;
 
         // Use this for initialization
         private void Start()
         {
-            originalStructure = new List<Transform>(GetComponentsInChildren<Transform>());
-            originalPosition = transform.position;
-            originalRotation = transform.rotation;
+            minStructure = new List<Transform>(GetComponentsInChildren<Transform>());
+            minPosition = transform.position;
+            minRotation = transform.rotation;
 
             Rigidbody = GetComponent<Rigidbody>();
         }
@@ -37,14 +37,14 @@ namespace UnityStandardAssets.Utility
             // remove any gameobjects added (fire, skid trails, etc)
             foreach (var t in GetComponentsInChildren<Transform>())
             {
-                if (!originalStructure.Contains(t))
+                if (!minStructure.Contains(t))
                 {
                     t.parent = null;
                 }
             }
 
-            transform.position = originalPosition;
-            transform.rotation = originalRotation;
+            transform.position = minPosition;
+            transform.rotation = minRotation;
             if (Rigidbody)
             {
                 Rigidbody.velocity = Vector3.zero;

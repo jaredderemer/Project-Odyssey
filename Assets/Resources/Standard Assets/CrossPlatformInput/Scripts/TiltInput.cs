@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-namespace UnityStandardAssets.CrossPlatformInput
+namespace UnityStandardAssets.CrossPlatforminput
 {
     // helps with managing tilt input on mobile devices
     public class TiltInput : MonoBehaviour
@@ -40,15 +40,15 @@ namespace UnityStandardAssets.CrossPlatformInput
         public float centreAngleOffset = 0;
 
 
-        private CrossPlatformInputManager.VirtualAxis m_SteerAxis;
+        private CrossPlatforminputManager.VirtualAxis m_SteerAxis;
 
 
         private void OnEnable()
         {
             if (mapping.type == AxisMapping.MappingType.NamedAxis)
             {
-                m_SteerAxis = new CrossPlatformInputManager.VirtualAxis(mapping.axisName);
-                CrossPlatformInputManager.RegisterVirtualAxis(m_SteerAxis);
+                m_SteerAxis = new CrossPlatforminputManager.VirtualAxis(mapping.axisName);
+                CrossPlatforminputManager.RegisterVirtualAxis(m_SteerAxis);
             }
         }
 
@@ -78,13 +78,13 @@ namespace UnityStandardAssets.CrossPlatformInput
                     m_SteerAxis.Update(axisValue);
                     break;
                 case AxisMapping.MappingType.MousePositionX:
-                    CrossPlatformInputManager.SetVirtualMousePositionX(axisValue*Screen.width);
+                    CrossPlatforminputManager.SetVirtualMousePositionX(axisValue*Screen.width);
                     break;
                 case AxisMapping.MappingType.MousePositionY:
-                    CrossPlatformInputManager.SetVirtualMousePositionY(axisValue*Screen.width);
+                    CrossPlatforminputManager.SetVirtualMousePositionY(axisValue*Screen.width);
                     break;
                 case AxisMapping.MappingType.MousePositionZ:
-                    CrossPlatformInputManager.SetVirtualMousePositionZ(axisValue*Screen.width);
+                    CrossPlatforminputManager.SetVirtualMousePositionZ(axisValue*Screen.width);
                     break;
             }
         }
@@ -98,7 +98,7 @@ namespace UnityStandardAssets.CrossPlatformInput
 }
 
 
-namespace UnityStandardAssets.CrossPlatformInput.Inspector
+namespace UnityStandardAssets.CrossPlatforminput.Inspector
 {
 #if UNITY_EDITOR
     [CustomPropertyDrawer(typeof (TiltInput.AxisMapping))]

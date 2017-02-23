@@ -86,7 +86,7 @@
 	float _DisplayVelocityScale;
 
 	float _MaxVelocity;
-	float _MinVelocity;
+	float _minVelocity;
 	
 	float4 _BlurDirectionPacked;
 	
@@ -417,7 +417,7 @@
 		float4 centerTap = tex2D(_MainTex, x);
 		float4 sum = centerTap;
 
-		blurDir *= smoothstep(_MinVelocity * 0.25f, _MinVelocity * 2.5, velMag);
+		blurDir *= smoothstep(_minVelocity * 0.25f, _minVelocity * 2.5, velMag);
 
 		blurDir *= _MainTex_TexelSize.xy;
 		blurDir /= MOTION_SAMPLES;

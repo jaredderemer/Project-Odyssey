@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace UnityStandardAssets.CrossPlatformInput
+namespace UnityStandardAssets.CrossPlatforminput
 {
 	[RequireComponent(typeof(Image))]
 	public class TouchPad : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
@@ -37,8 +37,8 @@ namespace UnityStandardAssets.CrossPlatformInput
 		Vector3 m_JoytickOutput;
 		bool m_UseX; // Toggle for using the x axis
 		bool m_UseY; // Toggle for using the Y axis
-		CrossPlatformInputManager.VirtualAxis m_HorizontalVirtualAxis; // Reference to the joystick in the cross platform input
-		CrossPlatformInputManager.VirtualAxis m_VerticalVirtualAxis; // Reference to the joystick in the cross platform input
+		CrossPlatforminputManager.VirtualAxis m_HorizontalVirtualAxis; // Reference to the joystick in the cross platform input
+		CrossPlatforminputManager.VirtualAxis m_VerticalVirtualAxis; // Reference to the joystick in the cross platform input
 		bool m_Dragging;
 		int m_Id = -1;
 		Vector2 m_PreviousTouchPos; // swipe style control touch
@@ -73,13 +73,13 @@ namespace UnityStandardAssets.CrossPlatformInput
 			// create new axes based on axes to use
 			if (m_UseX)
 			{
-				m_HorizontalVirtualAxis = new CrossPlatformInputManager.VirtualAxis(horizontalAxisName);
-				CrossPlatformInputManager.RegisterVirtualAxis(m_HorizontalVirtualAxis);
+				m_HorizontalVirtualAxis = new CrossPlatforminputManager.VirtualAxis(horizontalAxisName);
+				CrossPlatforminputManager.RegisterVirtualAxis(m_HorizontalVirtualAxis);
 			}
 			if (m_UseY)
 			{
-				m_VerticalVirtualAxis = new CrossPlatformInputManager.VirtualAxis(verticalAxisName);
-				CrossPlatformInputManager.RegisterVirtualAxis(m_VerticalVirtualAxis);
+				m_VerticalVirtualAxis = new CrossPlatforminputManager.VirtualAxis(verticalAxisName);
+				CrossPlatforminputManager.RegisterVirtualAxis(m_VerticalVirtualAxis);
 			}
 		}
 
@@ -146,11 +146,11 @@ namespace UnityStandardAssets.CrossPlatformInput
 
 		void OnDisable()
 		{
-			if (CrossPlatformInputManager.AxisExists(horizontalAxisName))
-				CrossPlatformInputManager.UnRegisterVirtualAxis(horizontalAxisName);
+			if (CrossPlatforminputManager.AxisExists(horizontalAxisName))
+				CrossPlatforminputManager.UnRegisterVirtualAxis(horizontalAxisName);
 
-			if (CrossPlatformInputManager.AxisExists(verticalAxisName))
-				CrossPlatformInputManager.UnRegisterVirtualAxis(verticalAxisName);
+			if (CrossPlatforminputManager.AxisExists(verticalAxisName))
+				CrossPlatforminputManager.UnRegisterVirtualAxis(verticalAxisName);
 		}
 	}
 }

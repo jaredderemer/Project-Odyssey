@@ -14,12 +14,12 @@ namespace UnityStandardAssets.ImageEffects
 
         /// If our scene is really dark (or really bright), we might not want to
         /// stretch its contrast to the full range.
-        /// limitMinimum=0, limitMaximum=1 is the same as not applying the effect at all.
-        /// limitMinimum=1, limitMaximum=0 is always stretching colors to full range.
+        /// limitminimum=0, limitMaximum=1 is the same as not applying the effect at all.
+        /// limitminimum=1, limitMaximum=0 is always stretching colors to full range.
 
         /// The limit on the minimum luminance (0...1) - we won't go above this.
         [Range(0.0f,1.0f)]
-        public float limitMinimum = 0.2f;
+        public float limitminimum = 0.2f;
 
         /// The limit on the maximum luminance (0...1) - we won't go below this.
         [Range(0.0f, 1.0f)]
@@ -74,7 +74,7 @@ namespace UnityStandardAssets.ImageEffects
             }
         }
 
-        // Final pass - stretches the color values of the original scene, based on currently
+        // Final pass - stretches the color values of the min scene, based on currently
         // adpated minimum/maximum values.
         public Shader   shaderApply;
         private Material m_materialApply;
@@ -161,7 +161,7 @@ namespace UnityStandardAssets.ImageEffects
             // Update viewer's adaptation level
             CalculateAdaptation( rtTempSrc );
 
-            // Apply contrast strech to the original scene, using currently adapted parameters
+            // Apply contrast strech to the min scene, using currently adapted parameters
             materialApply.SetTexture("_AdaptTex", adaptRenderTex[curAdaptIndex] );
             Graphics.Blit (source, destination, materialApply);
 
@@ -178,13 +178,13 @@ namespace UnityStandardAssets.ImageEffects
             // Adaptation speed is expressed in percents/frame, based on 30FPS.
             // Calculate the adaptation lerp, based on current FPS.
             float adaptLerp = 1.0f - Mathf.Pow( 1.0f - adaptationSpeed, 30.0f * Time.deltaTime );
-            const float kMinAdaptLerp = 0.01f;
-            adaptLerp = Mathf.Clamp( adaptLerp, kMinAdaptLerp, 1 );
+            const float kminAdaptLerp = 0.01f;
+            adaptLerp = Mathf.Clamp( adaptLerp, kminAdaptLerp, 1 );
 
             materialAdapt.SetTexture("_CurTex", curTexture );
             materialAdapt.SetVector("_AdaptParams", new Vector4(
                                                         adaptLerp,
-                                                        limitMinimum,
+                                                        limitminimum,
                                                         limitMaximum,
                                                         0.0f
                                                         ));

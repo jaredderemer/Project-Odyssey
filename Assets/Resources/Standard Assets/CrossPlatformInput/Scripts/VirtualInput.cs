@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace UnityStandardAssets.CrossPlatformInput
+namespace UnityStandardAssets.CrossPlatforminput
 {
     public abstract class VirtualInput
     {
         public Vector3 virtualMousePosition { get; private set; }
         
         
-        protected Dictionary<string, CrossPlatformInputManager.VirtualAxis> m_VirtualAxes =
-            new Dictionary<string, CrossPlatformInputManager.VirtualAxis>();
+        protected Dictionary<string, CrossPlatforminputManager.VirtualAxis> m_VirtualAxes =
+            new Dictionary<string, CrossPlatforminputManager.VirtualAxis>();
             // Dictionary to store the name relating to the virtual axes
-        protected Dictionary<string, CrossPlatformInputManager.VirtualButton> m_VirtualButtons =
-            new Dictionary<string, CrossPlatformInputManager.VirtualButton>();
+        protected Dictionary<string, CrossPlatforminputManager.VirtualButton> m_VirtualButtons =
+            new Dictionary<string, CrossPlatforminputManager.VirtualButton>();
         protected List<string> m_AlwaysUseVirtual = new List<string>();
             // list of the axis and button names that have been flagged to always use a virtual axis or button
         
@@ -30,7 +30,7 @@ namespace UnityStandardAssets.CrossPlatformInput
         }
 
 
-        public void RegisterVirtualAxis(CrossPlatformInputManager.VirtualAxis axis)
+        public void RegisterVirtualAxis(CrossPlatforminputManager.VirtualAxis axis)
         {
             // check if we already have an axis with that name and log and error if we do
             if (m_VirtualAxes.ContainsKey(axis.name))
@@ -51,7 +51,7 @@ namespace UnityStandardAssets.CrossPlatformInput
         }
 
 
-        public void RegisterVirtualButton(CrossPlatformInputManager.VirtualButton button)
+        public void RegisterVirtualButton(CrossPlatforminputManager.VirtualButton button)
         {
             // check if already have a buttin with that name and log an error if we do
             if (m_VirtualButtons.ContainsKey(button.name))
@@ -93,7 +93,7 @@ namespace UnityStandardAssets.CrossPlatformInput
 
 
         // returns a reference to a named virtual axis if it exists otherwise null
-        public CrossPlatformInputManager.VirtualAxis VirtualAxisReference(string name)
+        public CrossPlatforminputManager.VirtualAxis VirtualAxisReference(string name)
         {
             return m_VirtualAxes.ContainsKey(name) ? m_VirtualAxes[name] : null;
         }

@@ -45,7 +45,7 @@
 	float _VelocityScale;
 	float _DisplayVelocityScale;
 
-	float _MinVelocity;
+	float _minVelocity;
 		
 	float _SoftZDistance;
 	

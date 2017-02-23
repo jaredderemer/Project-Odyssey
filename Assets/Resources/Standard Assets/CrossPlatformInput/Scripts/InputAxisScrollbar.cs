@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace UnityStandardAssets.CrossPlatformInput
+namespace UnityStandardAssets.CrossPlatforminput
 {
     public class InputAxisScrollbar : MonoBehaviour
     {
@@ -11,7 +11,7 @@ namespace UnityStandardAssets.CrossPlatformInput
 
 	    public void HandleInput(float value)
         {
-            CrossPlatformInputManager.SetAxis(axis, (value*2f) - 1f);
+            CrossPlatforminputManager.SetAxis(axis, (value*2f) - 1f);
         }
     }
 }

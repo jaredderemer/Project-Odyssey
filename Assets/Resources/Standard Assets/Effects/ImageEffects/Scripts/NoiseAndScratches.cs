@@ -15,9 +15,9 @@ namespace UnityStandardAssets.ImageEffects
         public bool monochrome = true;
         private bool rgbFallback = false;
 
-        // Noise grain takes random intensity from Min to Max.
+        // Noise grain takes random intensity from min to Max.
         [Range(0.0f,5.0f)]
-        public float grainIntensityMin = 0.1f;
+        public float grainIntensitymin = 0.1f;
         [Range(0.0f, 5.0f)]
         public float grainIntensityMax = 0.2f;
 
@@ -25,9 +25,9 @@ namespace UnityStandardAssets.ImageEffects
         [Range(0.1f, 50.0f)]
         public float grainSize = 2.0f;
 
-        // Scratches take random intensity from Min to Max.
+        // Scratches take random intensity from min to Max.
         [Range(0.0f, 5.0f)]
-        public float scratchIntensityMin = 0.05f;
+        public float scratchIntensitymin = 0.05f;
         [Range(0.0f, 5.0f)]
         public float scratchIntensityMax = 0.25f;
 
@@ -93,9 +93,9 @@ namespace UnityStandardAssets.ImageEffects
 
         private void SanitizeParameters()
         {
-            grainIntensityMin = Mathf.Clamp( grainIntensityMin, 0.0f, 5.0f );
+            grainIntensitymin = Mathf.Clamp( grainIntensitymin, 0.0f, 5.0f );
             grainIntensityMax = Mathf.Clamp( grainIntensityMax, 0.0f, 5.0f );
-            scratchIntensityMin = Mathf.Clamp( scratchIntensityMin, 0.0f, 5.0f );
+            scratchIntensitymin = Mathf.Clamp( scratchIntensitymin, 0.0f, 5.0f );
             scratchIntensityMax = Mathf.Clamp( scratchIntensityMax, 0.0f, 5.0f );
             scratchFPS = Mathf.Clamp( scratchFPS, 1, 30 );
             scratchJitter = Mathf.Clamp( scratchJitter, 0.0f, 1.0f );
@@ -133,8 +133,8 @@ namespace UnityStandardAssets.ImageEffects
                                                      (float)Screen.height / (float) scratchTexture.height
                                                      ));
             mat.SetVector("_Intensity", new Vector4(
-                                            Random.Range(grainIntensityMin, grainIntensityMax),
-                                            Random.Range(scratchIntensityMin, scratchIntensityMax),
+                                            Random.Range(grainIntensitymin, grainIntensityMax),
+                                            Random.Range(scratchIntensitymin, scratchIntensityMax),
                                             0, 0 ));
             Graphics.Blit (source, destination, mat);
         }

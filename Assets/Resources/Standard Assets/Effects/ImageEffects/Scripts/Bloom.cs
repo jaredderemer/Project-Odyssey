@@ -49,7 +49,7 @@ namespace UnityStandardAssets.ImageEffects
 
         public BloomQuality quality = BloomQuality.High;
 
-        public float bloomIntensity = 0.5f;
+        public float bloomintensity = 0.5f;
         public float bloomThreshold = 0.5f;
         public Color bloomThresholdColor = Color.white;
         public int bloomBlurIterations = 2;
@@ -293,7 +293,7 @@ namespace UnityStandardAssets.ImageEffects
             //if (Mathf.Abs(chromaticBloom) < Mathf.Epsilon)
             //	blendPass += 4;
 
-            screenBlend.SetFloat ("_Intensity", bloomIntensity);
+            screenBlend.SetFloat ("_Intensity", bloomintensity);
             screenBlend.SetTexture ("_ColorBuffer", source);
 
             if (quality > BloomQuality.Cheap)

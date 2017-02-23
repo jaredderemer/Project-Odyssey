@@ -51,7 +51,7 @@ Shader "Toon/Basic Outline" {
 			Cull Front
 			ZWrite On
 			ColorMask RGB
-			Blend SrcAlpha OneMinusSrcAlpha
+			Blend SrcAlpha OneminusSrcAlpha
 
 			CGPROGRAM
 			#pragma vertex vert

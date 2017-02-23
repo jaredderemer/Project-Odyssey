@@ -3,18 +3,64 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class test2 : MonoBehaviour {
-   public GameObject cart;
+   
+   public Transform lift; // Manipulated when key is triggered
+   public float length;   // Length required to move up lift
+   public float speed;    // Speed required to move up lift
 
-   void OnTriggerStay(Collider collider)
+   private float min;
+   private float max;
+   private Vector3 newPos;
+   private bool isClicked;
+
+//   private float degrees;
+//   Vector3 rotateObj;
+//   void Start()
+//   {
+//      degrees = 120.0f;
+//      rotateObj = new Vector3 (0, 0, degrees);
+//   }
+//
+//   void Update()
+//   {
+//      transform.eulerAngles = Vector3.Lerp(transform.rotation.eulerAngles, rotateObj, Time.deltaTime); 
+//   }
+
+   void Start () {
+      min  = lift.position.y;
+      max       = lift.position.y + length;
+      isClicked = false;
+   }
+
+   void OnTriggerEnter(Collider collider)
    {
-      if (Input.GetKey (KeyCode.E)) 
+      if (collider.tag == "Player") // NOTE: CHANGE TO WEAPON WHEN COCONUTS ARE READY
       {
-         if (collider.gameObject.tag == "Player") 
-         {
-            //cart.SetActive(true);
-            cart.GetComponent<MoveObject> ().enabled = true;
-         }
+         isClicked = true;
       }
    }
 
+   void Update()
+   {
+      
+      if (isClicked) 
+      {
+         StartCoroutine (animateTile());
+      }
+   }
+
+   IEnumerator animateTile()
+   {
+      newPos = updateNewPosition (max);
+      lift.position = Vector3.Lerp (lift.position, newPos, speed * Time.deltaTime);
+      yield return new WaitForSeconds (5.0f);
+      newPos = updateNewPosition (min);
+      lift.position = Vector3.Lerp (lift.position, newPos, speed * Time.deltaTime);
+      isClicked = false;
+   }
+
+   Vector3 updateNewPosition(float newY)
+   {
+      return (new Vector3(lift.position.x, newY, lift.position.z));
+   }
 }

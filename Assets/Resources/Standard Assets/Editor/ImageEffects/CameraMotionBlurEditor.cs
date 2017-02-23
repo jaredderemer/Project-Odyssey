@@ -65,7 +65,7 @@ namespace UnityStandardAssets.ImageEffects
             }
             else
                 EditorGUILayout.Slider (maxVelocity, 2.0f, 10.0f, new GUIContent(" Velocity Max"));
-            EditorGUILayout.Slider(minVelocity, 0.0f, 10.0f, new GUIContent(" Velocity Min"));
+            EditorGUILayout.Slider(minVelocity, 0.0f, 10.0f, new GUIContent(" Velocity min"));
 
             EditorGUILayout.Separator ();
 

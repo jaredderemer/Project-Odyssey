@@ -34,9 +34,9 @@ public class Buoyancy_notmine : MonoBehaviour
 	{
 		forces = new List<Vector3[]>(); // For drawing force gizmos
 
-		// Store original rotation and position
-		var originalRotation = transform.rotation;
-		var originalPosition = transform.position;
+		// Store min rotation and position
+		var minRotation = transform.rotation;
+		var minPosition = transform.position;
 		transform.rotation = Quaternion.identity;
 		transform.position = Vector3.zero;
 
@@ -73,9 +73,9 @@ public class Buoyancy_notmine : MonoBehaviour
 
 		voxels = SliceIntoVoxels(isMeshCollider && isConcave);
 
-		// Restore original rotation and position
-		transform.rotation = originalRotation;
-		transform.position = originalPosition;
+		// Restore min rotation and position
+		transform.rotation = minRotation;
+		transform.position = minPosition;
 
 		float volume = GetComponent<Rigidbody>().mass / density;
 
@@ -186,7 +186,7 @@ public class Buoyancy_notmine : MonoBehaviour
 	/// <param name="secondIndex">Index of the second point in the list. It's always greater than the first index.</param>
 	private static void FindClosestPoints(IList<Vector3> list, out int firstIndex, out int secondIndex)
 	{
-		float minDistance = float.MaxValue, maxDistance = float.MinValue;
+      float minDistance = float.MaxValue, maxDistance = float.MinValue;
 		firstIndex = 0;
 		secondIndex = 1;
 

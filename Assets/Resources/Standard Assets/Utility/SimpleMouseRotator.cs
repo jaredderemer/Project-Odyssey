@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
+using UnityStandardAssets.CrossPlatforminput;
 
 namespace UnityStandardAssets.Utility
 {
@@ -26,27 +26,27 @@ namespace UnityStandardAssets.Utility
         private Vector3 m_TargetAngles;
         private Vector3 m_FollowAngles;
         private Vector3 m_FollowVelocity;
-        private Quaternion m_OriginalRotation;
+        private Quaternion m_minRotation;
 
 
         private void Start()
         {
-            m_OriginalRotation = transform.localRotation;
+            m_minRotation = transform.localRotation;
         }
 
 
         private void Update()
         {
-            // we make initial calculations from the original local rotation
-            transform.localRotation = m_OriginalRotation;
+            // we make initial calculations from the min local rotation
+            transform.localRotation = m_minRotation;
 
             // read input from mouse or mobile controls
             float inputH;
             float inputV;
             if (relative)
             {
-                inputH = CrossPlatformInputManager.GetAxis("Mouse X");
-                inputV = CrossPlatformInputManager.GetAxis("Mouse Y");
+                inputH = CrossPlatforminputManager.GetAxis("Mouse X");
+                inputV = CrossPlatforminputManager.GetAxis("Mouse Y");
 
                 // wrap values to avoid springing quickly the wrong way from positive to negative
                 if (m_TargetAngles.y > 180)
@@ -107,7 +107,7 @@ namespace UnityStandardAssets.Utility
             m_FollowAngles = Vector3.SmoothDamp(m_FollowAngles, m_TargetAngles, ref m_FollowVelocity, dampingTime);
 
             // update the actual gameobject's rotation
-            transform.localRotation = m_OriginalRotation*Quaternion.Euler(-m_FollowAngles.x, m_FollowAngles.y, 0);
+            transform.localRotation = m_minRotation*Quaternion.Euler(-m_FollowAngles.x, m_FollowAngles.y, 0);
         }
     }
 }

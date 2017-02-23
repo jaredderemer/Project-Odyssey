@@ -58,9 +58,9 @@ CGINCLUDE
 			o.uv.y = 1-o.uv.y;
 		#endif				
 		
-		int frustumIndex = v.texcoord.x + (2 * o.uv.y);
-		o.interpolatedRay = _FrustumCornersWS[frustumIndex];
-		o.interpolatedRay.w = frustumIndex;
+		int frustumindex = v.texcoord.x + (2 * o.uv.y);
+		o.interpolatedRay = _FrustumCornersWS[frustumindex];
+		o.interpolatedRay.w = frustumindex;
 		
 		return o;
 	}
@@ -147,7 +147,7 @@ CGINCLUDE
 			fogFac = 1.0;
 		//return fogFac; // for debugging
 		
-		// Lerp between fog color & original scene color
+		// Lerp between fog color & min scene color
 		// by fog amount
 		return lerp (unity_FogColor, sceneColor, fogFac);
 	}

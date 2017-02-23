@@ -20,11 +20,11 @@ half4 _MainTex_ST;
 
 fixed4 frag (v2f_img i) : SV_Target
 {
-	fixed4 original = tex2D(_MainTex, UnityStereoScreenSpaceUVAdjust(i.uv, _MainTex_ST));
-	fixed grayscale = Luminance(original.rgb);
+	fixed4 min = tex2D(_MainTex, UnityStereoScreenSpaceUVAdjust(i.uv, _MainTex_ST));
+	fixed grayscale = Luminance(min.rgb);
 	half2 remap = half2 (grayscale + _RampOffset, .5);
 	fixed4 output = tex2D(_RampTex, remap);
-	output.a = original.a;
+	output.a = min.a;
 	return output;
 }
 ENDCG

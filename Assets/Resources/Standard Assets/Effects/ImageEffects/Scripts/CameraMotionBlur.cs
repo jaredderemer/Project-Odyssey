@@ -208,7 +208,7 @@ namespace UnityStandardAssets.ImageEffects
 
             motionBlurMaterial.SetFloat ("_MaxVelocity", _maxVelocity);
             motionBlurMaterial.SetFloat ("_MaxRadiusOrKInPaper", _maxVelocity);
-            motionBlurMaterial.SetFloat ("_MinVelocity", minVelocity);
+            motionBlurMaterial.SetFloat ("_minVelocity", minVelocity);
             motionBlurMaterial.SetFloat ("_VelocityScale", velocityScale);
             motionBlurMaterial.SetFloat ("_Jitter", jitter);
 
@@ -305,7 +305,7 @@ namespace UnityStandardAssets.ImageEffects
             else {
                 if (filterType == MotionBlurFilter.ReconstructionDX11 && !fallbackFromDX11) {
                     // need to reset some parameters for dx11 shader
-                    dx11MotionBlurMaterial.SetFloat ("_MinVelocity", minVelocity);
+                    dx11MotionBlurMaterial.SetFloat ("_minVelocity", minVelocity);
                     dx11MotionBlurMaterial.SetFloat ("_VelocityScale", velocityScale);
                     dx11MotionBlurMaterial.SetFloat ("_Jitter", jitter);
 

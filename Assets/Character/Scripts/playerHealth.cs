@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class playerHealth : MonoBehaviour
 {
    public float fullHealth; // Player's max health
    public float currentHealth;     // The current level of health for the character
 
+   public Slider healthSlider;
    public GameObject playerDeathFX;
 
    // Use this for initialization
@@ -25,6 +27,9 @@ public class playerHealth : MonoBehaviour
    public void addDamage (float damage)
    {
       currentHealth -= damage;
+        
+      // Update health slider
+      updateHealthSlider();
 
       if (currentHealth <= 0)
       {
@@ -39,6 +44,15 @@ public class playerHealth : MonoBehaviour
          currentHealth += healthAmount;
       else
          currentHealth = fullHealth;
+        
+      // Update health slider
+      updateHealthSlider();
+     
+   }
+   
+   public void updateHealthSlider ()
+   {
+       healthSlider.value = currentHealth;
    }
 
    public void makeDead ()

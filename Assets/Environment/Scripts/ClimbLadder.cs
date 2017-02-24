@@ -1,21 +1,49 @@
-﻿using System.Collections;
+﻿/********************************************************************** 
+* Author            MM/DD/YY HH24:MM   Description                    * 
+* Jonathan Rigsby   02/23/17 21:30     Script to climb ladder in      *
+*									            decision hut                   * 
+**********************************************************************/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ClimbLadder : MonoBehaviour
 {
    public Transform CameraView;
-    
+   
+   GameObject       player;
+   playerController controller;
+   
+   void start ()
+   {
+      player = GameObject.Find("fishermanplain");
+      controller = player.GetComponent<playerController>();
+   }
+   
    void LateUpdate ()
    {
-      // While the player is positioned in front of the ladder and pressing W
-      if (transform.position.x < -16.5f && transform.position.x > -17.5f &&
-          transform.position.y > -1f && transform.position.y < 12f && Input.GetKey("q"))
+      // Climb if the player is positioned in front of the ladder and pressing W
+      if (transform.position.x > 6.2f && transform.position.x < 7.5f && Input.GetKey("q"))
       {
-         transform.Translate(Vector3.up * 0.1f, Space.World);
-         Debug.Log("Climbing");
+         // Make sure the character is rotated in the right direction
+         if(controller.facingRight)
+         {
+            transform.Rotate(0.0f, -90.0f, 0.0f);
+         }
+         else
+         {
+            transform.Rotate(0.0f, 90.0f, 0.0f);
+         }
+         
+         while(transform.position.y < 4.6f)
+         {
+            transform.Translate(Vector3.up * 0.15f, Space.World);
+            CameraView.Translate(Vector3.up * 0.15f, Space.World);
+            Debug.Log("Climbing");
+         }
       }
-      else if (transform.position.x < -16f && transform.position.x > -18f)
+      else if (transform.position.x > 6.2f && transform.position.x < 7.5f)
       {
          // Display "W" key prompt
       }

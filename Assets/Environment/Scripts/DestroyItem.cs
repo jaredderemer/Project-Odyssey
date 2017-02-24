@@ -23,7 +23,7 @@ public class DestroyItem : MonoBehaviour {
    {
       if (Input.GetKey (KeyCode.E)) 
       {
-         if (collider.gameObject.tag == "Player") 
+         if (collider.tag == "Player") 
          {
             Destroy (gameObject);
             index = (int)Random.Range (0, 3);

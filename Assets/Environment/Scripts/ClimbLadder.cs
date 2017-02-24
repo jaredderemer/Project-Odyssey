@@ -18,8 +18,8 @@ public class ClimbLadder : MonoBehaviour
    void Start ()
    {
       Debug.Log("start");
-      target = new Vector3(6.9f, 4.6f, 0.0f);
-      Debug.Log(target);
+     //target = new Vector3(6.9f, 4.6f, 0.0f);
+     // Debug.Log(target);
       Debug.Log("target");
    }
    
@@ -36,7 +36,7 @@ public class ClimbLadder : MonoBehaviour
             Debug.Log("player position");
             // Move toward target position
             float step = speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, target, step);
+            transform.position = Vector3.MoveTowards(transform.position, target.position, step);
             
          }
          else if (gameObject.GetComponent<playerController>().facingRight)

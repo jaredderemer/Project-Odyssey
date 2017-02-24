@@ -18,7 +18,8 @@ public class ClimbLadder : MonoBehaviour
    void start ()
    {
       player = GameObject.Find("fishermanplain");
-      controller = player.GetComponent<playerController>();
+      controller = gameObject.GetComponent<playerController>(); // Nick...not sure why it doesnt work right either. went for a more direct approach
+      
    }
    
    void LateUpdate ()
@@ -27,7 +28,7 @@ public class ClimbLadder : MonoBehaviour
       if (transform.position.x > 6.2f && transform.position.x < 7.5f && Input.GetKey("q"))
       {
          // Make sure the character is rotated in the right direction
-         if(controller.facingRight)
+          if (gameObject.GetComponent<playerController>().facingRight) // NICK's  I change this and it works now..
          {
             transform.Rotate(0.0f, -90.0f, 0.0f);
          }
@@ -42,7 +43,12 @@ public class ClimbLadder : MonoBehaviour
             CameraView.Translate(Vector3.up * 0.15f, Space.World);
             Debug.Log("Climbing");
          }
+
+         
       }
+
+
+
       else if (transform.position.x > 6.2f && transform.position.x < 7.5f)
       {
          // Display "W" key prompt

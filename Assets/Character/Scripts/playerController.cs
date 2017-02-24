@@ -12,7 +12,7 @@ public class playerController : MonoBehaviour
    Rigidbody myRB;
    // Animator myAnim;
 
-   [HideInInspector] public bool facingRight;
+    public bool facingRight;
 
    // for jumping
    // Character is starting slightly off the ground, otherwise change to TRUE

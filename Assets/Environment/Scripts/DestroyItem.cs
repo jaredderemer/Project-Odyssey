@@ -29,7 +29,7 @@ public class DestroyItem : MonoBehaviour {
             index = (int)Random.Range (0, 3);
             Instantiate (objList [index], 
                          transform.position + (transform.forward * 0.1f), 
-                         transform.rotation);
+                         Quaternion.identity);
          }
       }
    }

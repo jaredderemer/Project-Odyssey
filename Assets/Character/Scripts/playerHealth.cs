@@ -6,6 +6,9 @@ public class playerHealth : MonoBehaviour
 {
    public float fullHealth; // Player's max health
    public float currentHealth;     // The current level of health for the character
+   public Image healthBarFill;
+   private Color MaxHealthColor = Color.green;
+   private Color MinHealthColor = Color.red;
 
    public Slider healthSlider;
    public GameObject playerDeathFX;
@@ -52,7 +55,25 @@ public class playerHealth : MonoBehaviour
    
    public void updateHealthSlider ()
    {
+       float newRedColor = 0.0f;
+       float newGreenColor = 0.0f;
        healthSlider.value = currentHealth;
+       
+       // Change health bar color
+       if(currentHealth <= (fullHealth / 2.0f))
+       {
+           newGreenColor = ((currentHealth / fullHealth) * 2);
+           Debug.Log("new red: " +(newGreenColor * 255.0f));
+           healthBarFill.color = new Color(1, newGreenColor, 0);
+       }
+       else
+       {
+           newRedColor = (1.0f - (currentHealth / fullHealth));
+           Debug.Log("new green: " + (newRedColor * 255.0f));
+           healthBarFill.color = new Color(newRedColor, 1, 0);
+       }
+       
+       
    }
 
    public void makeDead ()

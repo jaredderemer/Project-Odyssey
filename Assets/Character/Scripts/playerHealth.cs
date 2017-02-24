@@ -41,6 +41,7 @@ public class playerHealth : MonoBehaviour
       }
    }
 
+   // Add health to character
    public void addHealth (float healthAmount)
    {
       if ((fullHealth - currentHealth) > healthAmount)
@@ -53,27 +54,23 @@ public class playerHealth : MonoBehaviour
      
    }
    
+   // Update the health bar color based on health percentage
    public void updateHealthSlider ()
    {
-       float newRedColor = 0.0f;
-       float newGreenColor = 0.0f;
+       float currHealthPercent = (currentHealth / fullHealth);
+       
+       // Update health bar slider value
        healthSlider.value = currentHealth;
        
        // Change health bar color
-       if(currentHealth <= (fullHealth / 2.0f))
-       {
-           newGreenColor = ((currentHealth / fullHealth) * 2);
-           Debug.Log("new red: " +(newGreenColor * 255.0f));
-           healthBarFill.color = new Color(1, newGreenColor, 0);
-       }
+       if(currHealthPercent > .65)
+           healthBarFill.color = new Color(.3f, .69f, .31f);  // Green
+       else if(currHealthPercent > .4)
+           healthBarFill.color = new Color(1.0f, .76f, .03f); // Yellow
+       else if(currHealthPercent > .2)
+           healthBarFill.color = new Color(1.0f, .34f, .13f); // Orange
        else
-       {
-           newRedColor = (1.0f - (currentHealth / fullHealth));
-           Debug.Log("new green: " + (newRedColor * 255.0f));
-           healthBarFill.color = new Color(newRedColor, 1, 0);
-       }
-       
-       
+           healthBarFill.color = new Color(.96f, .26f, .21f); // Red
    }
 
    public void makeDead ()

@@ -10,9 +10,9 @@ public class playerController : MonoBehaviour
    public float sprintSpeed;
 
    Rigidbody myRB;
-   Animator myAnim;
+   // Animator myAnim;
 
-   bool facingRight;
+   [HideInInspector] public bool facingRight;
 
    // for jumping
    // Character is starting slightly off the ground, otherwise change to TRUE
@@ -27,7 +27,7 @@ public class playerController : MonoBehaviour
    void Start()
    {
       myRB = GetComponent<Rigidbody>();
-      myAnim = GetComponent<Animator>();
+      // myAnim = GetComponent<Animator>();
       facingRight = true;
    }
 
@@ -42,7 +42,7 @@ public class playerController : MonoBehaviour
       if (grounded && Input.GetAxis("Jump") > 0)
       {
          grounded = false;
-         myAnim.SetBool("grounded", grounded);
+         //myAnim.SetBool("grounded", grounded);
          myRB.AddForce(new Vector3(0, jumpHeight, 0));
       }
       groundCollisions = Physics.OverlapSphere(groundCheck.position, groundCheckRadius, groundLayer);
@@ -52,15 +52,15 @@ public class playerController : MonoBehaviour
       else
          grounded = false;
 
-      myAnim.SetBool("grounded", grounded);
+      //myAnim.SetBool("grounded", grounded);
 
       float move = Input.GetAxis("Horizontal");
-      myAnim.SetFloat("speed", Mathf.Abs(move));
+      // myAnim.SetFloat("speed", Mathf.Abs(move));
 
       myRB.velocity = new Vector3(move * runSpeed, myRB.velocity.y, 0);
 
       float sprinting = Input.GetAxisRaw("Fire3");
-      myAnim.SetFloat("sprinting", sprinting);
+      //myAnim.SetFloat("sprinting", sprinting);
 
       if (sprinting > 0 && grounded)
       {

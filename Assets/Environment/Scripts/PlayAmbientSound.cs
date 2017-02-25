@@ -1,7 +1,7 @@
 ﻿/*******************************************************************************
 * Author          MM/DD/YY  HH24:MM    Description                             *
-* Juju Moong      02/24/17  15:32                                              *
-*                                                                              *
+* Juju Moong      02/24/17  15:32      Play the ambient sound when entering    *
+*                                      a certain area                          *
 *                                                                              *
 *******************************************************************************/
 
@@ -16,25 +16,25 @@ public class PlayAmbientSound : MonoBehaviour {
 
    public Transform target;
 
-   AudioSource ambientAS;
-   bool musicOn;
+   private AudioSource ambientAS;
+   private bool musicOn;
 
    void Start()
    {
       musicOn = false;
-      ambientAS = GetComponent<AudioSource> ();
+      ambientAS = GetComponent<AudioSource> (); // Get the audio source
    }
    void Update ()
    {
-      // if the target is within the area and music is not on, play the ambient sound effect
-      if (target.position.x >= minPosition && target.position.x <= maxPosition) 
+      // if the target is within the area and music is not on, play the ambient 
+      // sound effect
+      if (target.position.x >= minPosition && 
+          target.position.x <= maxPosition &&
+          !musicOn) 
       {
-         if (!musicOn) 
-         {
-            musicOn = true;
-            ambientAS.Play ();  
-         }
-      } 
+         musicOn = true;
+         ambientAS.Play ();  
+      }
       else 
       {
          musicOn = false;

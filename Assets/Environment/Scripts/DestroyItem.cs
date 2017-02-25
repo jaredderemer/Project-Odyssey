@@ -18,8 +18,10 @@ public class DestroyItem : MonoBehaviour {
 
    private int index;
 
+
    void Start()
    {
+      // Create a list and add items to it
       objList = new List<GameObject>();
       objList.Add (objOne);
       objList.Add (objTwo);
@@ -28,18 +30,17 @@ public class DestroyItem : MonoBehaviour {
 
    void OnTriggerStay(Collider collider)
    {
-      if (Input.GetKey (KeyCode.E)) 
+      // When the player hits an action key, destroy the item the player 
+      // collides with, and randomly generate an item from the item list.
+      if (Input.GetKey (KeyCode.E) && collider.tag == "Player") 
       {
-         if (collider.tag == "Player") 
-         {
-            Destroy (gameObject);
-            index = (int)Random.Range (0, 3);
-            Instantiate (objList [index], 
-                         new Vector3 (transform.position.x, 
-                                      transform.position.y + 0.7f, 
-                                      transform.position.z + 0.132f), 
-                         Quaternion.identity);
-         }
+         Destroy (gameObject);
+         index = (int)Random.Range (0, 3);
+         Instantiate (objList [index], 
+                      new Vector3 (transform.position.x, 
+                                   transform.position.y + 0.7f, 
+                                   transform.position.z + 0.132f), 
+                      Quaternion.identity);
       }
    }
 }

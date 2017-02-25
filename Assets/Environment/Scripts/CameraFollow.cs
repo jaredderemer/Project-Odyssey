@@ -1,7 +1,8 @@
 ﻿/*******************************************************************************
 * Author          MM/DD/YY  HH24:MM    Description                             *
-* Juju Moong      02/24/17  15:32                                              *
-*                                                                              *
+* Juju Moong      02/24/17  15:32      Make the camera follows the player      *
+*                                      Set X endpoints so that the camera      *
+*                                      won't go pass them                      *
 *                                                                              *
 *******************************************************************************/
 using System.Collections;
@@ -10,18 +11,18 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-   public Transform target; // What the camera is going to follow
-   public float smoothing = 7.5f; // 
-    
+   public Transform target;      // What the camera is going to follow
+
    public float edgeLeft;
    public float edgeRight;
+   public float smoothing;       // 
 
    private float halfWidth;
    private float maxPosX;
    private float minPosX;
 
-   Vector3 offset; // Distance from target camera maintains
-   Vector3 targetCamPos;
+   private Vector3 offset;       // Distance from target camera maintains
+   private Vector3 targetCamPos; // 
 
    // Use this for initialization
    void Start ()
@@ -37,17 +38,23 @@ public class CameraFollow : MonoBehaviour
    {
       if (target.position.x >= maxPosX) 
       {
-         targetCamPos = new Vector3 (maxPosX, transform.position.y, transform.position.z);
+         targetCamPos = new Vector3 (maxPosX, 
+                                     transform.position.y, 
+                                     transform.position.z);
       } 
       else if (target.position.x <= minPosX) 
       {
-         targetCamPos = new Vector3 (minPosX, transform.position.y, transform.position.z);
+         targetCamPos = new Vector3 (minPosX, 
+                                     transform.position.y, 
+                                     transform.position.z);
       }
       else 
       {
          targetCamPos = target.position + offset;
       }
 
-      transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);
+      transform.position = Vector3.Lerp(transform.position, 
+                                        targetCamPos, 
+                                        smoothing * Time.deltaTime);
   }
 }

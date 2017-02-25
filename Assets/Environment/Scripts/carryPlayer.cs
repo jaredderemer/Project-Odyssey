@@ -1,7 +1,8 @@
 ﻿/*******************************************************************************
 * Author          MM/DD/YY  HH24:MM    Description                             *
-* Juju Moong      02/24/17  15:32                                              *
-*                                                                              *
+* Juju Moong      02/24/17  15:32      When the player collides with a moving  *
+*                                      object, take him with it to the new     *
+*                                      position.                               *
 *                                                                              *
 *******************************************************************************/
 
@@ -34,7 +35,7 @@ public class carryPlayer : MonoBehaviour {
    // Update is called once per frame
    void Update () 
    {
-
+      // When there is collision, move both game objects
       if (target != null) 
       {
          target.position = transform.position + offset;

@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿/*******************************************************************************
+* Author          MM/DD/YY  HH24:MM    Description                             *
+* Juju Moong      02/24/17  15:32      destroy an item                         *
+* Juju Moong      02/24/17  15:32      instantiate a random object             *                                                               *
+*                                                                              *
+*******************************************************************************/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,7 +35,9 @@ public class DestroyItem : MonoBehaviour {
             Destroy (gameObject);
             index = (int)Random.Range (0, 3);
             Instantiate (objList [index], 
-                         transform.position + (transform.forward * 0.1f), 
+                         new Vector3 (transform.position.x, 
+                                      transform.position.y + 0.7f, 
+                                      transform.position.z + 0.132f), 
                          Quaternion.identity);
          }
       }

@@ -5,17 +5,20 @@ using UnityEngine;
 public class CameraFollowHut : MonoBehaviour
 {
    public Transform target;
+   
+   public float leftEdge;
+   public float rightEdge;
  
    // Updates the coordinates the camera is focused on
    void LateUpdate ()
    {
-      if (target.position.x > 2.0f && target.position.x < 5.1f)
+      if (target.position.x > leftEdge && target.position.x < rightEdge)
       {
          transform.LookAt (target.transform);
       }
    }
 }
 
-//x: 17.979
-//y: -8.293
+//x: 2.0f
+//y: 5.1f
 //z: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraFollowHut : MonoBehaviour
 {
-   public  Transform target;
+   public Transform target;
  
    // Updates the coordinates the camera is focused on
    void LateUpdate ()

@@ -33,9 +33,10 @@ public class cartController : MonoBehaviour {
    public float length;      // Length required to move
    public float speed;       // Speed required to move
 
+   private AudioSource movingAS;
+
    private bool isTriggered; // Check if the object is triggered
    private bool isRight;     // Check the position of the object
-
    private float min;        // Minimum position to move
    private float max;        // Maximum position to move
 
@@ -47,6 +48,7 @@ public class cartController : MonoBehaviour {
 
    void Start () 
    {
+      movingAS    = GetComponent<AudioSource> ();
       min         = transform.position.x;
       max         = transform.position.x + length;
       isTriggered = false;
@@ -54,6 +56,10 @@ public class cartController : MonoBehaviour {
       target      = null;
    }
 
+   void OnTriggerEnter(Collider collider)
+   {
+      movingAS.Play ();
+   }
    void OnTriggerStay (Collider collider)
    {
       if (collider.tag == "Player")
@@ -61,6 +67,7 @@ public class cartController : MonoBehaviour {
          isTriggered = true;
          target      = collider.transform;
          offset      = target.position - transform.position;
+         //movingAS.Play ();
       }
    }
 
@@ -69,6 +76,7 @@ public class cartController : MonoBehaviour {
       isTriggered = false;
       target      = null;
       isRight     = !isRight;
+      movingAS.Stop ();
    }
 
    void Update ()

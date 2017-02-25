@@ -50,7 +50,7 @@ public class ClimbLadder : MonoBehaviour
             transform.Rotate(0.0f, 90.0f, 0.0f);
          }
       }
-     // else if (transform.position.x > 6.2f && transform.position.x < 7.5f)
+     // else if (transform.position.x > leftLimit && transform.position.x < rightLimit)
      // {
          // Display "W" key prompt
      // }

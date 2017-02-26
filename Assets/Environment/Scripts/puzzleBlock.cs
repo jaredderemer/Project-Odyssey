@@ -4,42 +4,46 @@ using UnityEngine;
 
 public class puzzleBlock : MonoBehaviour {
 
-   public GameObject tile;
+   public GameObject block;
+   public int damage;
+   private bool isActive;
 
-   private Color[] colorSet = new Color[4];
-   private Renderer[] rList;
-   private int index;
+   private int hitCount;
 
 	// Use this for initialization
-	void Start () {
-      colorSet[0] = Color.red;
-      colorSet[1] = Color.blue;
-      colorSet[2] = Color.cyan;
-      colorSet[3] = Color.yellow;
-
-      index = Random.Range (0, colorSet.Length);
-      rList = gameObject.GetComponentsInChildren<Renderer> ();
-
-      foreach (Renderer r in rList) 
-      {
-         r.material.color = colorSet [index];
-      }
-         
-   
-      Debug.Log (colorSet[index]);
-
+	void Start () 
+   {
+      isActive = false;
+      hitCount = 0;
 	}
 	
-   IEnumerator OnTriggerEnter(Collider collider)
+   void OnTriggerEnter(Collider collider)
    {
       if (collider.tag == "Player") 
       {
-         yield return new WaitForSeconds (0.5f);
-         tile.SetActive (true);
+         Debug.Log ("first " + hitCount);
+         hitCount += 1;
+         Debug.Log ("Second " + hitCount);
+         makeBlock ();
       }
+//      if (collider.tag == "Player" && !isActive) 
+//      {
+//         yield return new WaitForSeconds (0.5f);
+//         tile.SetActive (true);
+//         isActive = true;
+//      }
    }
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+   void makeBlock()
+   {
+      if (hitCount == damage) 
+      {
+         Instantiate (block, 
+            new Vector3 (transform.position.x + 0.5f, 
+                         transform.position.y + 1.5f, 
+                         transform.position.z), 
+            Quaternion.identity);
+         Destroy (gameObject);
+      }   
+   }
 }

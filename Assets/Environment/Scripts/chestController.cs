@@ -13,7 +13,7 @@ using UnityEngine;
 public class chestController : MonoBehaviour {
 
    public GameObject collectible;
-
+   public GameObject hidden;
    private Animator chestAnim;
    private AudioSource chestOpenAS;
    private bool isUsed;
@@ -27,7 +27,7 @@ public class chestController : MonoBehaviour {
       isUsed      = false;
 
       // Get every child's renderer and add it to the array
-      hiddenList = GameObject.Find ("hidden").GetComponentsInChildren<Renderer>();
+      hiddenList = hidden.GetComponentsInChildren<Renderer>();
 	}
 	
    IEnumerator OnTriggerStay(Collider target)
@@ -49,7 +49,7 @@ public class chestController : MonoBehaviour {
          // seconds
          foreach (Renderer r in hiddenList) 
          {
-            yield return new WaitForSeconds (5.0f);
+            yield return new WaitForSeconds (3.0f);
             r.enabled = true;
          }
       }

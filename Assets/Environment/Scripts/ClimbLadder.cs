@@ -15,13 +15,13 @@ public class ClimbLadder : MonoBehaviour
    public Transform target;
           //Vector3   target;
    
-   void Start ()
-   {
-      Debug.Log("start");
+  // void Start ()
+ // {
+     // Debug.Log("start");
      //target = new Vector3(6.9f, 4.6f, 0.0f);
      // Debug.Log(target);
-      Debug.Log("target");
-   }
+     // Debug.Log("target");
+  // }
    
    void Update ()
    {
@@ -31,9 +31,9 @@ public class ClimbLadder : MonoBehaviour
          // Make sure the character is rotated in the correct direction
          if (transform.rotation.y == 0.0f)
          {
-            Debug.Log("In first nested if");
-            Debug.Log(transform.position);
-            Debug.Log("player position");
+            //Debug.Log("In first nested if");
+            //Debug.Log(transform.position);
+            //Debug.Log("player position");
             // Move toward target position
             float step = speed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, target.position, step);
@@ -41,12 +41,12 @@ public class ClimbLadder : MonoBehaviour
          }
          else if (gameObject.GetComponent<playerController>().facingRight)
          {
-            Debug.Log("In nested else if");
+            //Debug.Log("In nested else if");
             transform.Rotate(0.0f, -90.0f, 0.0f);
          }
          else
          {
-            Debug.Log("In nested else");
+            //Debug.Log("In nested else");
             transform.Rotate(0.0f, 90.0f, 0.0f);
          }
       }

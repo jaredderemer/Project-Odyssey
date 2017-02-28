@@ -28,12 +28,15 @@ public class ambientSoundPlayer : MonoBehaviour {
    {
       // if the target is within the area and music is not on, play the ambient 
       // sound effect
-      if (target.position.x >= minPosition && 
-          target.position.x <= maxPosition &&
-          !musicOn) 
+      if (target.position.x >= minPosition &&
+          target.position.x <= maxPosition) 
       {
-         musicOn = true;
-         ambientAS.Play ();  
+         if (!musicOn) 
+         {
+            musicOn = true;
+            ambientAS.Play ();  
+            Debug.Log ("playing");
+         }
       }
       else 
       {

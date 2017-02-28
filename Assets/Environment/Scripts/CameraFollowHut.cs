@@ -25,18 +25,18 @@ public class CameraFollowHut : MonoBehaviour
    void LateUpdate ()
    {
       // Pivot the camera to follow the object
-      if (target.position.x >= cameraLeftEdge && target.position.x <= cameraRightEdge)
+      if (target.position.x >= cameraLeftLimit && target.position.x <= cameraRightLimit)
       {
          transform.LookAt (target.transform);
       }
       
-      if (target.position.y + cameraOffset > transform.position.y && 
-          target.position.y + cameraOffset < cameraUpperLimit)
+      if ((target.position.y + cameraOffset) > transform.position.y && 
+          (target.position.y + cameraOffset) < cameraUpperLimit)
       {
          transform.Translate (0.0f, target.position.y - cameraOffset, 0.0f);
       }
-      else if (target.position.y + cameraOffset < transform.position.y && 
-               target.position.y + cameraOffset > cameraLowerLimit)
+      else if ((target.position.y + cameraOffset) < transform.position.y && 
+               (target.position.y + cameraOffset) > cameraLowerLimit)
       {
          transform.Translate (0.0f, cameraOffset - target.position.y, 0.0f);
       }

@@ -11,12 +11,15 @@ public class CameraFollowHut : MonoBehaviour
 {
    public Transform target;
    
-   public float cameraLeftEdge;
-   public float cameraRightEdge;
-   public float cameraLowerEdge;
-   public float cameraUpperEdge;
-   public float playerLowerEdge;
-   public float playerUpperEdge;
+   public float cameraLeftLimit;
+   public float cameraRightLimit;
+   public float cameraLowerLimit;
+   public float cameraUpperLimit;
+   
+   void Start ()
+   {
+      float cameraOffset = transform.position.y - target.position.y;
+   }
  
    // Updates the coordinates the camera is focused on
    void LateUpdate ()
@@ -27,14 +30,25 @@ public class CameraFollowHut : MonoBehaviour
          transform.LookAt (target.transform);
       }
       
-      // Move the camera up and down to follow the object
-      if (target.position.y >= playerLowerEdge && 
-          target.position.y <= playerUpperEdge &&
-          transform.position.y >= cameraLowerEdge && 
-          transform.position.y <= cameraUpperEdge)
+      if (target.position.y + cameraOffset > transform.position.y && 
+          target.position.y + cameraOffset < cameraUpperLimit)
       {
-         Debug.Log("move if");
-         transform.Translate (0.0f, transform.position.y-target.position.y, 0.0f);
+         transform.Translate (0.0f, target.position.y - cameraOffset, 0.0f);
       }
+      else if (target.position.y + cameraOffset < transform.position.y && 
+               target.position.y + cameraOffset > cameraLowerLimit)
+      {
+         transform.Translate (0.0f, cameraOffset - target.position.y, 0.0f);
+      }
+      
+      // Move the camera up and down to follow the object
+     //if (target.position.y >= playerLowerEdge && 
+       //   target.position.y <= playerUpperEdge &&
+      //    transform.position.y >= cameraLowerEdge && 
+      //    transform.position.y <= cameraUpperEdge)
+    //  {
+     //    Debug.Log("move if");
+     //    transform.Translate (0.0f, transform.position.y-target.position.y, 0.0f);
+     // }
    }
 }

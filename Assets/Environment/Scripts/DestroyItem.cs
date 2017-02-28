@@ -14,22 +14,38 @@ using UnityEngine;
 public class DestroyItem : MonoBehaviour {
 
    public GameObject[] objList;
+   public float delay;
 
    private int index;
 
-   void OnTriggerStay(Collider collider)
+   IEnumerator OnTriggerStay(Collider col)
    {
+      
       // When the player hits an action key, destroy the item the player 
       // collides with, and randomly generate an item from the item list.
-      if (Input.GetKey (KeyCode.E) && collider.tag == "Player") 
+      if (Input.GetKey (KeyCode.E)) 
       {
-         Destroy (gameObject);
-         index = (int)Random.Range (0, objList.Length);
-         Instantiate (objList [index], 
-                      new Vector3 (transform.position.x, 
-                                   transform.position.y + 0.7f, 
-                                   transform.position.z + 0.132f), 
-                      Quaternion.identity);
+         if (col.tag == "Player") 
+         {
+            Destroy (gameObject, delay);
+            index = (int)Random.Range (0, objList.Length);
+            Instantiate (objList [index], 
+               new Vector3 (transform.position.x, 
+                  transform.position.y + 0.7f, 
+                  transform.position.z + 0.132f), 
+               Quaternion.identity);
+         } 
+         // ******************************************************************
+         else if (col.tag == "Key") // NEED TO TEST WHEN PLAYER CAN CARRY KEYS
+         {
+            Destroy (gameObject, delay);
+            yield return new WaitForSeconds (2.0f);
+            Instantiate (objList [0], 
+               new Vector3 (transform.position.x, 
+                  transform.position.y + 0.7f, 
+                  transform.position.z + 0.132f), 
+               Quaternion.identity);
+         }
       }
    }
 }

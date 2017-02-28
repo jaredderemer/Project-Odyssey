@@ -9,7 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayAmbientSound : MonoBehaviour {
+public class ambientSoundPlayer : MonoBehaviour {
 
    public float minPosition; // the endpoints of the area sound will be playing
    public float maxPosition;

@@ -65,7 +65,7 @@ public class enemyDamage : MonoBehaviour {
    void pushBack(Transform pushedObject)
    {
       // Pushes the character straight up away from the object
-      Vector3 pushDirection = new Vector3(0, (pushedObject.position.y - transform.position.y), 0).normalized;
+      Vector3 pushDirection = new Vector3(thePlayer.GetComponent<playerController>().facingRight? -100.0f:100.0f, (pushedObject.position.y - transform.position.y), 0).normalized;
 
       // Set the direction of the push back
       pushDirection *= pushBackForce;

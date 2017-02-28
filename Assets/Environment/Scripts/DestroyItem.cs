@@ -19,8 +19,7 @@ public class DestroyItem : MonoBehaviour {
    private int index;
 
    IEnumerator OnTriggerStay(Collider col)
-   {
-      
+   {      
       // When the player hits an action key, destroy the item the player 
       // collides with, and randomly generate an item from the item list.
       if (Input.GetKey (KeyCode.E)) 
@@ -35,7 +34,8 @@ public class DestroyItem : MonoBehaviour {
                   transform.position.z + 0.132f), 
                Quaternion.identity);
          } 
-         // ******************************************************************
+         //*********************************************************************
+         // Can only destroy when player has master key
          else if (col.tag == "Key") // NEED TO TEST WHEN PLAYER CAN CARRY KEYS
          {
             Destroy (gameObject, delay);

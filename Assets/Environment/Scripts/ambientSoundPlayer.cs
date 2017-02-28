@@ -34,8 +34,7 @@ public class ambientSoundPlayer : MonoBehaviour {
          if (!musicOn) 
          {
             musicOn = true;
-            ambientAS.Play ();  
-            Debug.Log ("playing");
+            ambientAS.Play ();
          }
       }
       else 

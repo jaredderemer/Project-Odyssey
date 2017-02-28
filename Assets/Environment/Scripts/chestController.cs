@@ -33,6 +33,9 @@ public class chestController : MonoBehaviour {
    IEnumerator OnTriggerStay(Collider target)
    {
       // When the player hits action key for the first time, open the chest
+      //************************************************************************
+      // Need to check if the player has a key if not show that he needs key to 
+      // open chest
       if (Input.GetKey (KeyCode.E) && !isUsed && target.tag == "Player") 
       {
          chestAnim.SetTrigger ("activateChest");

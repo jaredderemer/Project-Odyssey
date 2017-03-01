@@ -15,31 +15,34 @@ public class CameraFollowHut : MonoBehaviour
    public float cameraRightLimit;
    public float cameraLowerLimit;
    public float cameraUpperLimit;
-   
+          float cameraOffset;
    void Start ()
    {
-      float cameraOffset = transform.position.y - target.position.y;
+      cameraOffset = transform.position.y - target.position.y + 0.5f;
    }
  
    // Updates the coordinates the camera is focused on
    void LateUpdate ()
    {
-      // Pivot the camera to follow the object
-//      if (target.position.x >= cameraLeftEdge && target.position.x <= cameraRightEdge)
-//      {
-//         transform.LookAt (target.transform);
-//      }
-//      
-//      if (target.position.y + cameraOffset > transform.position.y && 
-//          target.position.y + cameraOffset < cameraUpperLimit)
-//      {
-//         transform.Translate (0.0f, target.position.y - cameraOffset, 0.0f);
-//      }
-//      else if (target.position.y + cameraOffset < transform.position.y && 
-//               target.position.y + cameraOffset > cameraLowerLimit)
-//      {
-//         transform.Translate (0.0f, cameraOffset - target.position.y, 0.0f);
-//      }
+      // Pivot camera to follow the object
+      if (target.position.x >= cameraLeftLimit && target.position.x <= cameraRightLimit)
+      {
+         transform.LookAt (target.transform);
+      }
+      
+      // Move camera up and down to follow the object
+      if (target.position.y + cameraOffset > transform.position.y && 
+          target.position.y + cameraOffset < cameraUpperLimit)
+      {
+         Debug.Log("greater if");
+         transform.Translate (0.0f, target.position.y - cameraOffset, 0.0f);
+      }
+      else if (target.position.y + cameraOffset < transform.position.y && 
+               target.position.y + cameraOffset > cameraLowerLimit)
+      {
+         Debug.Log("lesser if");
+         transform.Translate (0.0f, cameraOffset - target.position.y, 0.0f);
+      }
       
       // Move the camera up and down to follow the object
      //if (target.position.y >= playerLowerEdge && 

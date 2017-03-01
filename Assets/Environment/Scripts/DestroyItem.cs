@@ -1,35 +1,50 @@
-﻿using System.Collections;
+﻿/*******************************************************************************
+* Author          MM/DD/YY  HH24:MM    Description                             *
+* Juju Moong      02/24/17  15:32      Destroy an item                         *
+* Juju Moong      02/24/17  15:32      Instantiate a random object             *
+* Juju Moong      02/26/17  14:10      Change List type variable to public     *
+*                                      array of GameObject                     *
+*                                                                              *
+*******************************************************************************/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DestroyItem : MonoBehaviour {
-   List<GameObject> objList;
 
-   public GameObject objOne;
-   public GameObject objTwo;
-   public GameObject objThree;
+   public GameObject[] objList;
+   public float delay;
 
    private int index;
 
-   void Start()
-   {
-      objList = new List<GameObject>();
-      objList.Add (objOne);
-      objList.Add (objTwo);
-      objList.Add (objThree);
-   }
-
-   void OnTriggerStay(Collider collider)
-   {
+   IEnumerator OnTriggerStay(Collider col)
+   {      
+      // When the player hits an action key, destroy the item the player 
+      // collides with, and randomly generate an item from the item list.
       if (Input.GetKey (KeyCode.E)) 
       {
-         if (collider.tag == "Player") 
+         if (col.tag == "Player") 
          {
-            Destroy (gameObject);
-            index = (int)Random.Range (0, 3);
+            Destroy (gameObject, delay);
+            index = (int)Random.Range (0, objList.Length);
             Instantiate (objList [index], 
-                         transform.position + (transform.forward * 0.1f), 
-                         transform.rotation);
+               new Vector3 (transform.position.x, 
+                  transform.position.y + 0.7f, 
+                  transform.position.z + 0.132f), 
+               Quaternion.identity);
+         } 
+         //*********************************************************************
+         // Can only destroy when player has master key
+         else if (col.tag == "Key") // NEED TO TEST WHEN PLAYER CAN CARRY KEYS
+         {
+            Destroy (gameObject, delay);
+            yield return new WaitForSeconds (2.0f);
+            Instantiate (objList [0], 
+               new Vector3 (transform.position.x, 
+                  transform.position.y + 0.7f, 
+                  transform.position.z + 0.132f), 
+               Quaternion.identity);
          }
       }
    }

@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*******************************************************************************
+* THIS SCRIPT MIGHT GET DELETED BECAUSE IT IS NOT USED CURRENTLY.              *
+* IT IS KEPT FOR FUTURE REFERENCE.                                             *
+*                                                                              *
+*******************************************************************************/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

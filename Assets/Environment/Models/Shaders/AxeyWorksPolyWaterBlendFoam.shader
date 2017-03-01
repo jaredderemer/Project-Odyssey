@@ -196,7 +196,7 @@ Subshader
 	GrabPass { "_RefractionTex" }
 	
 	Pass {
-			Blend SrcAlpha OneminusSrcAlpha
+			Blend SrcAlpha OneMinusSrcAlpha
 			ZTest LEqual
 			ZWrite Off
 			Cull Off

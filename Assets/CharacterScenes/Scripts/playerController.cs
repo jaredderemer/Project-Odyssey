@@ -37,7 +37,7 @@ public class playerController : MonoBehaviour
 
    }
 
-   private void FixedUpdate()
+   void FixedUpdate()
    {
       if (grounded && Input.GetAxis("Jump") > 0)
       {

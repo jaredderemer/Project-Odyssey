@@ -15,8 +15,8 @@ public class CameraFollowHut : MonoBehaviour
    public float cameraRightLimit;
    public float cameraLowerLimit;
    public float cameraUpperLimit;
-          float cameraOffset;
-          float yTranslate;
+           float cameraOffset;
+           float yTranslate;
    
    void Start ()
    {
@@ -42,7 +42,7 @@ public class CameraFollowHut : MonoBehaviour
       }
       // Move camera down to follow the object
       else if (target.position.y + cameraOffset < transform.position.y && 
-               transform.position.y > cameraLowerLimit)
+                transform.position.y > cameraLowerLimit)
       {
          yTranslate = transform.position.y - (cameraOffset + target.position.y);
          Debug.Log(yTranslate);

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class playerHealth : MonoBehaviour
@@ -7,17 +8,27 @@ public class playerHealth : MonoBehaviour
    public float fullHealth; // Player's max health
    public float currentHealth;     // The current level of health for the character
    public Image healthBarFill;
-   private Color MaxHealthColor = Color.green;
-   private Color MinHealthColor = Color.red;
 
    public Slider healthSlider;
    public GameObject playerDeathFX;
+   
+   public static playerHealth Instance; // For access to playerHealth functions
 
    // Use this for initialization
    void Start ()
    {
-      // Character starts at full health
-      currentHealth = fullHealth;
+      // Initialize character health
+      if(GameObject.Find("globalController") != null)
+      {
+         currentHealth = globalController.Instance.playerHealth;
+         updateHealthSlider();
+      }
+      else
+      {
+         currentHealth = fullHealth;
+      }
+      
+      
    }
 
    // Update is called once per frame
@@ -77,5 +88,10 @@ public class playerHealth : MonoBehaviour
    {
       Instantiate(playerDeathFX, transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
       Destroy(gameObject);
+   }
+   
+   public void savePlayerHealth ()
+   {
+      globalController.Instance.playerHealth = currentHealth;
    }
 }

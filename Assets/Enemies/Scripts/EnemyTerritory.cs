@@ -22,12 +22,12 @@ public class EnemyTerritory : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		if (playerInTerritory = true)
+		if (playerInTerritory == true)
 		{
 			basicenemy.MoveToPlayer ();
 		}
 
-		if (playerInTerritory = false)
+		if (playerInTerritory == false)
 		{
 			basicenemy.Rest ();
 		}

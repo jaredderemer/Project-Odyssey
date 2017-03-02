@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class LoadNextScene : MonoBehaviour {
-
+public class LoadNextScene : MonoBehaviour
+{
     private int loadingCounter = 0;
     public Text progressText;
     private string levelName;
@@ -14,7 +14,15 @@ public class LoadNextScene : MonoBehaviour {
     // Initialize level to be loaded and start scene load
     public void Start()
     {
-        levelName = "scene1";
+       if(GameObject.Find("globalController") != null)
+       {
+          levelName = globalController.Instance.nextSceneToLoad;
+       }
+       else
+       {
+          levelName = "scene1";
+       }
+        
         StartCoroutine ("load");
     }
 

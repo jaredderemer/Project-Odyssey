@@ -10,15 +10,15 @@ using UnityEngine;
 public class ClimbLadder : MonoBehaviour
 {
    public float     speed;
-   public float     leftLimit;
-   public float     rightLimit;
    public Transform target;
+          bool      byLadder;
    
-   void Update ()
+   void OnTriggerEnter(Collider other)
    {
-      // Climb if the player is positioned in front of the ladder and pressing W
-      if (transform.position.x > leftLimit && transform.position.x < rightLimit && Input.GetKey("w"))
+      if (other.gameObject.CompareTag("Climb"))
       {
+         byLadder = true;
+         
          if (transform.rotation.y != 0.0f)
          {
             transform.Rotate(0.0f, -90.0f, 0.0f);
@@ -29,24 +29,38 @@ public class ClimbLadder : MonoBehaviour
          {
             gameObject.GetComponent<playerController>().Flip();
          }
-         
-         float step = speed * Time.deltaTime;
-         transform.position = Vector3.MoveTowards(transform.position, target.position, step);
-         
-        // else if (gameObject.GetComponent<playerController>().facingRight)
-        // {
-            //Debug.Log("In nested else if");
-        //    transform.Rotate(0.0f, -90.0f, 0.0f);
-        // }
-        // else
-        // {
-            //Debug.Log("In nested else");
-        //    transform.Rotate(0.0f, 90.0f, 0.0f);
-        // }
       }
-     // else if (transform.position.x > leftLimit && transform.position.x < rightLimit)
-     // {
-         // Display "W" key prompt
-     // }
+   }
+   
+   void OnTriggerExit(Collider other)
+   {
+      if (other.gameObject.CompareTag("Climb"))
+      {
+         byLadder = false;
+         
+         transform.Rotate(0.0f, 90.0f, 0.0f);
+      }
+   }
+   
+   void Update ()
+   {
+      // Climb if the player is positioned in front of the ladder and pressing W
+      if (byLadder == true)
+      {
+         if (Input.GetKey("w"))
+         {
+            float step = speed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+         }
+         else
+         {
+            // Make sure the character is rotated in the correct direction
+            if (!gameObject.GetComponent<playerController>().facingRight)
+            {
+               gameObject.GetComponent<playerController>().Flip();
+            }
+         }
+         
+      }
    }
 }

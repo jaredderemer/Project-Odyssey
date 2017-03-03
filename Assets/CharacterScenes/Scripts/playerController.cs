@@ -62,7 +62,7 @@ public class playerController : MonoBehaviour
       float sprinting = Input.GetAxisRaw("Fire3");
       myAnim.SetFloat("sprinting", sprinting);
 
-      if (sprinting > 0 && grounded)
+      if (sprinting > 0)/* && grounded)*/
       {
          myRB.velocity = new Vector3(move * sprintSpeed, myRB.velocity.y, 0);
       }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-   public Transform target; // What the camera is going to follow
+   /*public Transform target; // What the camera is going to follow
    public float smoothing = 7.5f; // 
 
 
@@ -14,9 +14,17 @@ public class CameraFollow : MonoBehaviour
    float maxPosition;
    float minPosition;
 
-   Vector3 offset; // Distance from target camera maintains
-
-   // Use this for initialization
+   Vector3 offset; // Distance from target camera maintains*/
+   
+   public float dampTime = 0.2f;
+   public GameObject player;
+   [HideInInspector] public Transform target;
+   
+   private Camera camera;
+   private Vector3 moveVelocity;
+   private Vector3 desiredPosition;
+   
+   /*// Use this for initialization
    void Start()
    {
       //offset = transform.position - target.position;
@@ -24,13 +32,7 @@ public class CameraFollow : MonoBehaviour
       maxPosition = edgeRight - halfWidth;
       minPosition = edgeLeft - halfWidth;
    }
-
-   // Update is called once per frame
-   void Update()
-   {
-
-   }
-
+   
    void FixedUpdate()
    {
       Vector3 targetCamPos = target.position;// + offset;
@@ -51,5 +53,50 @@ public class CameraFollow : MonoBehaviour
 
 
       transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);
+   }*/
+   
+   private void Awake()
+   {
+      camera = GetComponentInChildren<Camera>();
+   }
+   
+   private void FixedUpdate()
+   {
+      Move();
+   }
+   
+   private void Move()
+   {
+      FindPosition();
+      
+      transform.position = Vector3.SmoothDamp(transform.position, desiredPosition, ref moveVelocity, dampTime
+   }
+   
+   private void FindPosition()
+   {
+      Vector3 pos = new Vector3();
+      
+      pos = player.position;
+      pos.y = transform.position.y;
+      pos.x += 10; // Keeps camera slightly in front of player
+      
+      desiredPostion = pos;
+   }
+   
+   public void StopCamera(Vector3 pos, bool freezeX, bool freezeY)
+   {
+      FindPosition();
+      
+      if (freezeX)
+      {
+         desiredPosition.x = pos.x;
+      }
+      
+      if (freezeY)
+      {
+         desiredPosition.y = pos.y;
+      }
+      
+      transform.position = Vector3.SmoothDamp(transform.position, desiredPosition, ref moveVelocity, dampTime
    }
 }

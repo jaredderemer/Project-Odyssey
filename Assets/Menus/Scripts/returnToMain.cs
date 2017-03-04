@@ -11,5 +11,10 @@ public class returnToMain : MonoBehaviour
    {
       SceneManager.LoadScene ("mainMenu");
       Destroy (UI);
+      
+      if(GameObject.Find("globalController") != null)
+      {
+         Destroy(GameObject.Find("globalController"));
+      }
    }
 }

@@ -20,21 +20,22 @@ public class playerHealth : MonoBehaviour
       // Initialize character health
       if(GameObject.Find("globalController") != null)
       {
-         currentHealth = globalController.Instance.playerHealth;
+         //currentHealth = globalController.Instance.playerHealth;
+         
+         //For testing
+         currentHealth = fullHealth;
          updateHealthSlider();
       }
       else
       {
          currentHealth = fullHealth;
       }
-      
-      
    }
 
    // Update is called once per frame
    void Update ()
    {
-
+      
    }
    
    // Character receives damage, loses health

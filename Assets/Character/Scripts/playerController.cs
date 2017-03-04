@@ -22,6 +22,8 @@ public class playerController : MonoBehaviour
    public LayerMask groundLayer;
    public Transform groundCheck;
    public float jumpHeight;
+   
+   private Vector3 spawnPosition;
 
    // Use this for initialization
    void Start()
@@ -29,6 +31,9 @@ public class playerController : MonoBehaviour
       myRB = GetComponent<Rigidbody>();
       myAnim = GetComponent<Animator>();
       facingRight = true;
+      
+      // Save starting position for respawn
+      spawnPosition = myRB.position;
    }
 
    // Update is called once per frame
@@ -83,5 +88,11 @@ public class playerController : MonoBehaviour
       Vector3 zedScale = transform.localScale;
       zedScale.z *= -1;
       transform.localScale = zedScale;
+   }
+   
+   // Respawn player to starting position in scene
+   public void RespawnPlayer()
+   {
+      myRB.position = spawnPosition;
    }
 }

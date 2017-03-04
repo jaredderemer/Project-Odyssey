@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class enemyDamage : MonoBehaviour {
 
-   public int   damage; // Amount of damage enemy can do
+   public float   damage; // Amount of damage enemy can do
    public float damageRate; // How often damage can be applied to character
    public float pushBackForce; // Force applied to character when entering damage zone
 
@@ -20,15 +20,18 @@ public class enemyDamage : MonoBehaviour {
 	void Start ()
    {
       nextDamage = Time.time; // Damaged immediately by object
+      
       thePlayer = GameObject.FindGameObjectWithTag("Player"); // Player is the player
-      thePlayerHealth = thePlayer.GetComponent<playerHealth>(); // Get the player's health
+		//thePlayerHealth = thePlayer.GetComponent<playerHealth>(); // Get the player's health
 	}
-	
+
 	// Update is called once per frame
 	void Update ()
    {
       if (playerInRange)
+      {
          Attack();
+      }
 	}
 
    // Player enters damaging area
@@ -52,9 +55,11 @@ public class enemyDamage : MonoBehaviour {
    // Damage the character
    void Attack()
    {
+      thePlayerHealth = thePlayer.GetComponent<playerHealth>(); // Get the player's health
+      
       if (nextDamage <= Time.time)
       {
-         thePlayerHealth.addDamage(damage);
+         //thePlayerHealth.addDamage(damage);
          nextDamage = Time.time + damageRate;
 
          pushBack(thePlayer.transform);

@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour 
 {
-   public const int numItemSlots = 4; // Number of inventory items possible
-   public int[][] items = new int[numItemSlots][];
+   /*public const int numItemSlots = 4; // Number of inventory items possible
+   public int[][] itemArray = new int[numItemSlots][];
    
    // Testing new arrays
-   public gameObject[] itemArray = new itemPickup[numItemSlots];
+   //public GameObject[] itemArray = new itemPickup[numItemSlots];
    
-   public gameObject inventorySlot1;
-   public gameObject inventorySlot2;
+   public GameObject inventorySlot1;
+   public GameObject inventorySlot2;
    
    public GameObject itemImage;
    public GameObject inventoryBar;
@@ -25,31 +25,24 @@ public class Inventory : MonoBehaviour
    void Start () 
    {
       
-      itemArray[0] = inventorySlot1;
-      itemArray[1] = inventorySlot2;
       
       // Initialize inventory item arrays
       /*items[0] = new int[2];
       items[1] = new int[2];
       items[2] = new int[2];
       items[3] = new int[2];*/
-   }
+   //}
    
-   // Update is called once per frame
-   void Update () 
-   {
-      
-   }
    
    // testing new array type
-   public void addItem(int itemId, int itemQuantity)
+   /*public void addItem(int itemId, int itemQuantity)
    {
       // Mabe ????
-      //int slotId = itemArray[0].GetComponent<itemPickup.itemId>()
-      
+      //int slotId = itemArray[0].GetComponent<itemPickup>()ite;
+  /*    
       if(itemArray[0] != null)
       {
-         Debug.Log("Index 0 itemId: " + slotId);
+         Debug.Log("Index 0 itemId: " + itemId);
       }
       
       for (int i = 0; i < itemArray.Length; i++)
@@ -79,7 +72,7 @@ public class Inventory : MonoBehaviour
       
       
    }
-   
+   */
    // Add item to the player inventory
    /*public void addItem(int itemId, int itemQuantity)
    {
@@ -124,6 +117,7 @@ public class Inventory : MonoBehaviour
    }*/
    
    // Remove Item from player inventory
+/*
    public void removeItem (int itemToRemove)
    {
       for (int i = 0; i < items.Length; i++)

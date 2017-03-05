@@ -41,12 +41,28 @@ public class chestController : MonoBehaviour {
          chestAnim.SetTrigger ("activateChest");
          chestOpenAS.Play ();
          yield return new WaitForSeconds (1.0f);
-         Instantiate (collectible, 
+         
+         // This was instantiated multiple collectibles
+         /*Instantiate (collectible, 
                       new Vector3 (transform.position.x, 
-                                   transform.position.y + 1.2f, 
+                                   transform.position.y + 2.0f, 
+                                   transform.position.z + 0.1f), 
+                      transform.rotation);*/
+         
+         if(!isUsed)
+         {
+            Instantiate (collectible, 
+                      new Vector3 (transform.position.x, 
+                                   transform.position.y + 2.0f, 
                                    transform.position.z + 0.1f), 
                       transform.rotation);
+                      
+                      Debug.Log("running");
+         }
+         
          isUsed = true;
+         
+         
 
          // Loop for each item in the array, and make it appear after a certain 
          // seconds

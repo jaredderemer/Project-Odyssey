@@ -60,8 +60,6 @@ public class Inventory2 : MonoBehaviour
              return 1;  // Returns 0 if the item has been placed.
          }
 
-       
-
       }
 
       return 0;  // Returns 0 if the item has NOT been placed.

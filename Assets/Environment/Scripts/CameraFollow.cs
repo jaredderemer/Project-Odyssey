@@ -36,25 +36,28 @@ public class CameraFollow : MonoBehaviour
     
    void FixedUpdate()
    {
-      if (target.position.x >= maxPosX) 
+      if (target != null) 
       {
-         targetCamPos = new Vector3 (maxPosX, 
-                                     transform.position.y, 
-                                     transform.position.z);
-      } 
-      else if (target.position.x <= minPosX) 
-      {
-         targetCamPos = new Vector3 (minPosX, 
-                                     transform.position.y, 
-                                     transform.position.z);
-      }
-      else 
-      {
-         targetCamPos = target.position + offset;
-      }
+         if (target.position.x >= maxPosX) 
+         {
+            targetCamPos = new Vector3 (maxPosX, 
+                                        transform.position.y, 
+                                        transform.position.z);
+         } 
+         else if (target.position.x <= minPosX) 
+         {
+            targetCamPos = new Vector3 (minPosX, 
+                                        transform.position.y, 
+                                        transform.position.z);
+         } 
+         else 
+         {
+            targetCamPos = target.position + offset;
+         }
 
-      transform.position = Vector3.Lerp(transform.position, 
-                                        targetCamPos, 
-                                        smoothing * Time.deltaTime);
+         transform.position = Vector3.Lerp (transform.position, 
+                                            targetCamPos, 
+                                            smoothing * Time.deltaTime);
+      }
   }
 }

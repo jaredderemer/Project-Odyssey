@@ -25,7 +25,7 @@ public class DestroyItem : MonoBehaviour {
       if (Input.GetKey (KeyCode.E)) 
       {
          if (col.tag == "Player") 
-         {
+         {  
             Destroy (gameObject, delay);
             index = (int)Random.Range (0, objList.Length);
             Instantiate (objList [index], 

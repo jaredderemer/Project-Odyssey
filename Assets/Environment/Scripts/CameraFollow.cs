@@ -41,14 +41,14 @@ public class CameraFollow : MonoBehaviour
          if (target.position.x >= maxPosX) 
          {
             targetCamPos = new Vector3 (maxPosX, 
-                                        transform.position.y, 
-                                        transform.position.z);
+                                        target.position.y + offset.y, 
+                                        target.position.z + offset.z);
          } 
          else if (target.position.x <= minPosX) 
          {
             targetCamPos = new Vector3 (minPosX, 
-                                        transform.position.y, 
-                                        transform.position.z);
+                                        target.position.y + offset.y, 
+                                        target.position.z + offset.z);
          } 
          else 
          {

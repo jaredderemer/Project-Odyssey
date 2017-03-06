@@ -104,7 +104,7 @@ public class Inventory2 : MonoBehaviour
 Item ID  ------- Item Name 
 000  ------------ empty
 001  ------------ coconut
-002  ------------
+002  ------------ KeyItem
 003  ------------
 004  ------------
 005  ------------

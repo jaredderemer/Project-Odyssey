@@ -1,7 +1,25 @@
 fileFormatVersion: 2
-guid: b2666ef62141546a7af45020b16f42c4
+<<<<<<< HEAD
+guid: 55d5480a1edd648c09e97e035ad328fd
 folderAsset: yes
-timeCreated: 1488477319
+timeCreated: 1488678983
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+guid: c024577d16904aa4685b56d1c82363e4
+folderAsset: yes
+timeCreated: 1488328193
+=======
+guid: bd70de5ec3fe94d43b6a4a8adea69dc1
+folderAsset: yes
+timeCreated: 1488340878
+>>>>>>> 90acd4567dc4199f73dbfd1c3286c8a8cb0fbce8
+=======
+guid: eed8957d8cdc44f90babefbc56e6d3e4
+folderAsset: yes
+timeCreated: 1488582537
+>>>>>>> e97db676147e1d94b174870c809cb2d2abf914cd
+>>>>>>> 8981e14ce5a1092d2fc6c09d2ee14b364a09769c
 licenseType: Free
 DefaultImporter:
   userData: 

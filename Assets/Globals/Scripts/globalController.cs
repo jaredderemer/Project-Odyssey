@@ -5,7 +5,7 @@ using UnityEngine;
 public class globalController : MonoBehaviour
 {
 	public float  playerHealth;
-   public string nextSceneToLoad;
+   public int currentSceneIndex;
 	
 	public static globalController Instance;
    

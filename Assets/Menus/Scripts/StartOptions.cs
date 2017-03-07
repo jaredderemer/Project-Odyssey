@@ -64,21 +64,14 @@ public class StartOptions : MonoBehaviour
 		{
 			//Hide the main menu UI element
 			showPanels.HideMenu ();
+         
+         //Pause button now works if escape is pressed since we are no longer in Main menu.
+         inMainMenu = false;
 		}
-		else
-		{
-
-			//thePlayer = GameObject.FindGameObjectWithTag("Player"); // Player is the player
-			//thePlayerHealth = thePlayer.GetComponent<playerHealth>(); // Get the player's health
-	  
-			// Save the player's current health
-			//Debug.Log("It worked!!! currentHealth: " + playerHealth.Instance.currentHealth);
-		}
-		
-		//Pause button now works if escape is pressed since we are no longer in Main menu.
-		inMainMenu = false;
-
+      
 		//Load the loadingScreen scene
 		SceneManager.LoadScene (sceneToStart);
+      
+      Debug.Log("Starting Load Screen");
 	}
 }

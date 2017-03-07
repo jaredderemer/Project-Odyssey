@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class enterHut : MonoBehaviour
 {
 	bool byHut;
+   bool loadingScene = false;
 	private GameObject UI;
 	
 	GameObject thePlayer; // The player itself
@@ -44,12 +45,16 @@ public class enterHut : MonoBehaviour
 		{
 			if(Input.GetKey("w"))
 			{
-				// Save data before switching scenes 
-				thePlayerHealth.savePlayerHealth();
-            globalController.Instance.nextSceneToLoad = "scene2";
+            if(loadingScene == false)
+            {
+               // Save data before switching scenes 
+               thePlayerHealth.savePlayerHealth();
 				
-				// Change scenes to loading
-				UI.GetComponent<StartOptions>().StartLoadingScreen();
+               // Change scenes to loading
+               UI.GetComponent<StartOptions>().StartLoadingScreen();
+               
+               loadingScene = true;
+            }
 			}
 		}
 	}

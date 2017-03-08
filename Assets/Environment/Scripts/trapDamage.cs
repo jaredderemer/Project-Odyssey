@@ -7,11 +7,11 @@ public class trapDamage : MonoBehaviour {
     public float damageAmount;
 
     // Hurts player on contact
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.GetComponent<playerHealth>().addDamage(damageAmount);
+         other.GetComponent<playerHealth>().addDamage(damageAmount * Time.deltaTime);
         }
     }
 }

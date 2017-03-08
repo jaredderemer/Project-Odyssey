@@ -15,46 +15,58 @@ public class CameraFollow : MonoBehaviour
 
    public float edgeLeft;
    public float edgeRight;
-   public float smoothing;       // 
+   public float smoothing;       //
 
    private float halfWidth;
    private float maxPosX;
    private float minPosX;
 
-   private Vector3 offset;       // Distance from target camera maintains
-   private Vector3 targetCamPos; // 
+   private float offsetX;       // Distance from target camera maintains
+   private Vector3 targetCamPos; //
 
    // Use this for initialization
    void Start ()
    {
-      offset    = transform.position - target.position;
+      //offsetX   = 10.0f;
       halfWidth = Camera.main.orthographicSize * Screen.width / Screen.height;
       maxPosX   = edgeRight - halfWidth;
       minPosX   = edgeLeft - halfWidth;
 
    }
-    
+
    void FixedUpdate()
    {
-      if (target.position.x >= maxPosX) 
+      if (target.position.x >= maxPosX)
       {
-         targetCamPos = new Vector3 (maxPosX, 
-                                     transform.position.y, 
-                                     transform.position.z);
-      } 
-      else if (target.position.x <= minPosX) 
+          targetCamPos = new Vector3 (maxPosX,
+                                      target.position.y,
+                                      transform.position.z);
+         targetCamPos.x = maxPosX + offsetX;
+      }
+      else if (target.position.x <= minPosX)
       {
-         targetCamPos = new Vector3 (minPosX, 
-                                     transform.position.y, 
+         targetCamPos.x = minPosX;
+         targetCamPos = new Vector3 (minPosX,
+                                     target.position.y,
                                      transform.position.z);
       }
-      else 
+      else
       {
-         targetCamPos = target.position + offset;
+         //targetCamPos = target.position + offset;
+          targetCamPos = new Vector3(target.position.x,
+                                     //target.position.y + 7.0f,
+            transform.position.y,
+                                     transform.position.z);
+
+         //if (target.position.y >= maxPosY)
+         {
+
+         }
+
       }
 
-      transform.position = Vector3.Lerp(transform.position, 
-                                        targetCamPos, 
+      transform.position = Vector3.Lerp(transform.position,
+                                        targetCamPos,
                                         smoothing * Time.deltaTime);
   }
 }

@@ -1513,8 +1513,8 @@ ModelImporter:
     - serializedVersion: 16
       name: playerThrow
       takeName: Take 001
-      firstFrame: 46
-      lastFrame: 56
+      firstFrame: 56
+      lastFrame: 67
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

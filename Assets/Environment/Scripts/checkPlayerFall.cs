@@ -6,6 +6,7 @@ public class checkPlayerFall : MonoBehaviour
 {
    GameObject mainCamera;
    GameObject mineCart;
+   cartController mineCartController;
 
    Vector3 cameraStartPosition;
 	Vector3 spawnPoint;
@@ -17,6 +18,7 @@ public class checkPlayerFall : MonoBehaviour
 		spawnPoint = GameObject.FindGameObjectWithTag("Player").transform.position;  // Player is the player
       mainCamera = GameObject.FindGameObjectWithTag("MainCamera");  // Main Camera object
       mineCart = GameObject.FindGameObjectWithTag("MineCart"); // Mine Cart object
+      mineCartController = mineCart.GetComponent<cartController>();
       
       cameraStartPosition = mainCamera.transform.position;
       cartStartPosition   = mineCart.transform.position;
@@ -31,6 +33,7 @@ public class checkPlayerFall : MonoBehaviour
             
             // Reset mine cart position
             mineCart.transform.position = cartStartPosition;
+            mineCartController.isRight = false;
         }
 	}
 	

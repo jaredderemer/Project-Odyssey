@@ -29,6 +29,23 @@ public class enterHut : MonoBehaviour
 			byHut = true;
         }
 	}
+   
+   void OnTriggerStay(Collider other)
+   {
+      if(other.tag == "Player" && Input.GetKey("w"))
+      {
+         if(true)//loadingScene == false)
+         {
+            // Save data before switching scenes 
+            thePlayerHealth.savePlayerHealth();
+         
+            // Change scenes to loading
+            UI.GetComponent<StartOptions>().StartLoadingScreen();
+            
+            //loadingScene = true;
+         }
+      }
+   }
 	
 	void OnTriggerExit(Collider other)
 	{
@@ -45,7 +62,7 @@ public class enterHut : MonoBehaviour
 		{
 			if(Input.GetKey("w"))
 			{
-            if(loadingScene == false)
+            /*if(loadingScene == false)
             {
                // Save data before switching scenes 
                thePlayerHealth.savePlayerHealth();
@@ -54,7 +71,7 @@ public class enterHut : MonoBehaviour
                UI.GetComponent<StartOptions>().StartLoadingScreen();
                
                loadingScene = true;
-            }
+            }*/
 			}
 		}
 	}

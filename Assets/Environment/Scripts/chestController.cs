@@ -18,6 +18,8 @@ public class chestController : MonoBehaviour {
    private AudioSource chestOpenAS;
    private bool isUsed;
    private Renderer[] hiddenList;
+   
+   string message = "";
 
 	// Use this for initialization
 	void Start () 
@@ -29,6 +31,20 @@ public class chestController : MonoBehaviour {
       // Get every child's renderer and add it to the array
       hiddenList = hidden.GetComponentsInChildren<Renderer>();
 	}
+   
+   void OnTriggerEnter(Collider other)
+   {
+      if (other.gameObject.CompareTag("Player"))
+      {
+         message = "testing";
+         Debug.Log("Is the Gui working?");
+      }
+   }
+   
+   void OnGUI()
+   {
+      GUI.Label(new Rect(150.0f, -1.35f, 200, 20), message);
+   }
 	
    IEnumerator OnTriggerStay(Collider target)
    {
@@ -42,13 +58,14 @@ public class chestController : MonoBehaviour {
          chestOpenAS.Play ();
          yield return new WaitForSeconds (1.0f);
          
-         // This was instantiated multiple collectibles
+         // This was instantiating multiple collectibles
          /*Instantiate (collectible, 
                       new Vector3 (transform.position.x, 
                                    transform.position.y + 2.0f, 
                                    transform.position.z + 0.1f), 
                       transform.rotation);*/
          
+         // Added if statement to fix the the problem above
          if(!isUsed)
          {
             Instantiate (collectible, 
@@ -61,8 +78,6 @@ public class chestController : MonoBehaviour {
          }
          
          isUsed = true;
-         
-         
 
          // Loop for each item in the array, and make it appear after a certain 
          // seconds

@@ -29,14 +29,13 @@ public class cartController : MonoBehaviour {
 //      }
 //   }
 
-
    public float length;      // Length required to move
    public float speed;       // Speed required to move
 
    private AudioSource movingAS;
 
    private bool isTriggered; // Check if the object is triggered
-   private bool isRight;     // Check the position of the object
+   public bool isRight;     // Check the position of the object
    private float min;        // Minimum position to move
    private float max;        // Maximum position to move
 

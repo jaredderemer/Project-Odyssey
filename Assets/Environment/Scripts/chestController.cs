@@ -14,6 +14,7 @@ public class chestController : MonoBehaviour {
 
    public GameObject collectible;
    public GameObject hidden;
+
    private Animator chestAnim;
    private AudioSource chestOpenAS;
    private bool isUsed;

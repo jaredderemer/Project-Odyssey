@@ -30,13 +30,16 @@ public class CameraFollow2 : MonoBehaviour
 
    private void FixedUpdate()
    {
-      if (player.position.x >= maxPosX || player.position.x <= minPosX) 
+      if (player != null) 
       {
-         StopCamera ();
-      }
-      else 
-      {
-         Move ();
+         if (player.position.x >= maxPosX || player.position.x <= minPosX) 
+         {
+            StopCamera ();
+         } 
+         else 
+         {
+            Move ();
+         }
       }
    }
 
@@ -104,25 +107,25 @@ public class CameraFollow2 : MonoBehaviour
 
       if (player.position.x >= 202.0f && 
           player.position.x <= 214.5f &&
-          player.position.y < 7.0f) 
+          player.position.y < 8.0f) 
       {
-         posY = 1.8f;
+         posY = 4.7f;
       }
-      else if (player.position.y >= 14.0f) 
+      else if (player.position.y >= 15.0f) 
       {
-         posY = 14.0f;
+         posY = 17.0f;
       } 
       else if (player.position.y >= 7.2f) 
       {
-         posY = 10.0f;
+         posY = 13.0f;
       } 
       else if (player.position.y >= 1.2f) 
       {
-         posY = 4.0f;  
+         posY = 7.0f;  
       }  
-      else if (player.position.y >= -3.5f) 
+      else if (player.position.y >= -5.0f) 
       {
-         posY = 0.55f;
+         posY = 3.0f;
       }
       else 
       {

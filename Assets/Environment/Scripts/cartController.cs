@@ -12,30 +12,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class cartController : MonoBehaviour {
-
-//   Animator cartAnim;
-//
-//	// Use this for initialization
-//	void Start () 
-//   {
-//      cartAnim = GetComponent<Animator> ();
-//	}
-//
-//   void OnTriggerEnter (Collider target)
-//   {
-//      if (target.tag == "Player") 
-//      {
-//         cartAnim.SetTrigger ("activateCart");
-//      }
-//   }
-
+   [HideInInspector]
+   public bool isRight;     // Check the position of the object
    public float length;      // Length required to move
    public float speed;       // Speed required to move
-
+  
    private AudioSource movingAS;
 
    private bool isTriggered; // Check if the object is triggered
-   public bool isRight;     // Check the position of the object
+   private bool musicOn;
    private float min;        // Minimum position to move
    private float max;        // Maximum position to move
 
@@ -53,12 +38,9 @@ public class cartController : MonoBehaviour {
       isTriggered = false;
       isRight     = false;
       target      = null;
+      musicOn     = false;
    }
-
-   void OnTriggerEnter(Collider collider)
-   {
-      movingAS.Play ();
-   }
+    
    void OnTriggerStay (Collider collider)
    {
       if (collider.tag == "Player")
@@ -66,7 +48,11 @@ public class cartController : MonoBehaviour {
          isTriggered = true;
          target      = collider.transform;
          offset      = target.position - transform.position;
-         //movingAS.Play ();
+         if (!musicOn) 
+         {
+            musicOn = true;
+            movingAS.Play ();
+         }
       }
    }
 
@@ -76,6 +62,7 @@ public class cartController : MonoBehaviour {
       target      = null;
       isRight     = !isRight;
       movingAS.Stop ();
+      musicOn = false;
    }
 
    void Update ()

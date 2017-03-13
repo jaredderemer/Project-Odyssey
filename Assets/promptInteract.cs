@@ -8,6 +8,7 @@ public class promptInteract : MonoBehaviour
    public Transform interactable;     // The interactable object
    private bool interacted = false;   // State of object interaction
    private Vector3 newPosition;       // The new position of the prompt
+   public float yPosition; 			  // The height above the object for the prompt
 
 	// Use this for initialization
 	void Start ()
@@ -23,7 +24,7 @@ public class promptInteract : MonoBehaviour
       {
          // Reposition the prompt above this object
          newPosition = interactable.position;
-         newPosition.y += 3.3f;
+         newPosition.y += yPosition;
          Debug.Log(newPosition);
          interactPrompt.transform.position = newPosition;
          

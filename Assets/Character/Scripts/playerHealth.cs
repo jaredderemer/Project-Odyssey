@@ -13,6 +13,8 @@ public class playerHealth : MonoBehaviour
    public GameObject playerDeathFX;
    
    public static playerHealth Instance; // For access to playerHealth functions
+   
+   [HideInInspector]public int lives;
 
    // Use this for initialization
    void Start ()
@@ -49,6 +51,7 @@ public class playerHealth : MonoBehaviour
       if (currentHealth <= 0)
       {
          makeDead();
+         lives--;
          print("JOHN SUN DIED!!!");
       }
    }

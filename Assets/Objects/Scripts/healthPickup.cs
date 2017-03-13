@@ -26,7 +26,7 @@ public class healthPickup : MonoBehaviour {
 			// Add health to Player and destroy the banana object
             other.GetComponent<playerHealth>().addHealth(healthAmount);
             Destroy(gameObject);
-            Debug.Log(PrefabUtility.GetPrefabType(this as Object));
+            //Debug.Log(PrefabUtility.GetPrefabType(this as Object));
         }
 	}
 }

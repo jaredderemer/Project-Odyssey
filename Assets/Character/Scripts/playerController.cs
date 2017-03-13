@@ -75,7 +75,27 @@ public class playerController : MonoBehaviour
          Flip();
       else if (move < 0 && facingRight)
          Flip();
+
+      // Player uses a coconut!!!
+      if (Input.inputString == "c")
+      {
+
+          this.GetComponent<playerAttacks>().rangeAttack();
+          //gameObject<playerAttacks>().rangeAttack();
+
+      }
+
+      // Player drops an item!!!  << DEBUGGING STUFF
+      if (Input.inputString == "l")
+      {
+          this.GetComponent<Inventory2>().dropItem();
+      }
+
    }
+
+
+
+    
 
    void Flip()
    {

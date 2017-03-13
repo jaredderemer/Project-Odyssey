@@ -32,7 +32,7 @@ public class playerHealth : MonoBehaviour
       currentHealth -= damage;
         
       // Update health slider
-      updateHealthSlider();
+      //updateHealthSlider();
 
       if (currentHealth <= 0)
       {

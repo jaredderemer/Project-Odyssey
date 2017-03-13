@@ -66,6 +66,9 @@ public class CameraFollow2 : MonoBehaviour
          case 2:
             pos.y = followPathTwo ();
             break;
+         case 3:
+            pos.y = followPathThree ();
+            break;
       }
 
       pos.z = transform.position.z;
@@ -129,6 +132,20 @@ public class CameraFollow2 : MonoBehaviour
          posY = player.position.y;
       }
 
+      return posY;
+   }
+
+   private float followPathThree()
+   {
+      float posY;
+//      if (player.position.x >= 25.0f && player.position.x < 46.0f) {
+//         posY = 6.0f;
+//      } else 
+      if (player.position.x >= 25.0f && player.position.x < 116.0f) {
+         posY = 8.0f;
+      } else {
+         posY = 4.0f;
+      }
       return posY;
    }
 }

@@ -20,17 +20,9 @@ public class itemPickup : MonoBehaviour
       if (other.gameObject.CompareTag("Player"))
       {
           //Debug.Log(other.GetComponent<Inventory2>().addItem(itemID, itemQuantity));
-          if (other.GetComponent<Inventory2>().addItem(itemID, itemQuantity, itemObject) == 1)
-          {
-              //Destroy(gameObject);
-              //gameObject.transform.position = Vector3.zero;
-              //gameObject.transform.parent =  other.GetComponent<Inventory2>().slot[0];
-              //gameObject.transform.position = Vector3.zero;
-          }
-          else
-          {
-              print("Pickup failed..inventory full");
-          }
+          if (other.GetComponent<Inventory2>().addItem(itemID, itemQuantity, itemObject) == 0)
+             print("Pickup failed..inventory full");
+         
       }
    }
 }

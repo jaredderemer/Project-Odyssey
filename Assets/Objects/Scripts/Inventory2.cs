@@ -38,7 +38,7 @@ using UnityEngine.UI;
 
 
 // Defines the Inventory structure
-struct Inv
+public struct Inv
 {
    public        int itemID,     // Identifies the item
                      quantity;   // Amount of the item on hand
@@ -56,11 +56,11 @@ public class Inventory2 : MonoBehaviour
 {  
   public const int numItemSlots = 4;    // Number of inventory items possible
 
-  static Inv[] inventory  = new Inv[numItemSlots];  // Creates the Array
+  public Inv[] inventory  = new Inv[numItemSlots];  // Creates the Array
   public Transform[] slot = new Transform[numItemSlots];
 
   
-
+     
    // Adds an item to the list, returns a message if successful
    public int addItem(int itemID, int itemQuantity, GameObject itemObject)
    { 
@@ -70,7 +70,6 @@ public class Inventory2 : MonoBehaviour
          // Look for empty cell
          if (inventory[i].itemID == 0)
          {
-            //Debug.Log(inventory[i].itemID);
             inventory[i].itemID     = itemID;
             inventory[i].quantity  += itemQuantity;
             inventory[i].itemObject = itemObject;
@@ -102,18 +101,16 @@ public class Inventory2 : MonoBehaviour
          if (inventory[i].itemID == itemID)
          {
             if (inventory[i].quantity == 1)
-            {
-               inventory[i].itemID   = 0;
-               inventory[i].quantity = 0;
-               Destroy(inventory[i].itemObject);
+            { 
                sortList(i);
+               return 1;
             }
             inventory[i].quantity -= 1;
          }
-         else
+         if (i == (numItemSlots - 1))
          {
-                 print("Item not found");
-                 return 0; 
+             print("Item not found"); 
+             return 0;     
          }
       }
       return 1;  // Returns 1 if the item has been placed.
@@ -122,13 +119,22 @@ public class Inventory2 : MonoBehaviour
    // Sorts the inventory after consuming an item.
    public void sortList(int i)
    {
-       print("SORTING!!!!");
-       for (; i < numItemSlots; i++)
+       Inv temp;
+
+       for (; (i < (numItemSlots - 1)) && (inventory[i + 1].itemID != 0); i++)
        {
+           temp = inventory[i];
            inventory[i] = inventory[i + 1];
-           inventory[i].itemObject.transform.parent   = slot[i];
-           inventory[i].itemObject.transform.position = slot[i].position;
+           inventory[i + 1] = temp;
+           inventory[i].itemObject.transform.parent       = slot[i];
+           inventory[i].itemObject.transform.position     = slot[i].position;
+           inventory[i + 1].itemObject.transform.parent   = slot[i + 1];
+           inventory[i + 1].itemObject.transform.position = slot[i + 1].position;
+ 
        }
+       inventory[i].itemID = 0;
+       inventory[i].quantity = 0;
+       Destroy(inventory[i].itemObject);
    }
 
 
@@ -139,7 +145,7 @@ public class Inventory2 : MonoBehaviour
 
            if (inventory[0].itemID != 0)
            {
-               //Rigidbody itemInstance = Instantiate(inventory[0].itemObject.GetComponent<Rigidbody>(), gameObject.transform.position, Quaternion.identity) as Rigidbody;
+               //Rigidbody itemInstance = Instantiate(inventory[0].itemObject.GetComponent<Rigidbody>(), gameObject.transform.position, Quaternion.identity) as Rigidbody; 
                removeItem (inventory[0].itemID);
            }
            else

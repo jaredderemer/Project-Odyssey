@@ -76,6 +76,7 @@ CGINCLUDE
 	v2f vert(appdata_full v)
 	{
 		v2f o;
+		UNITY_INITIALIZE_OUTPUT(v2f, o);
 		
 		half3 worldSpaceVertex = mul(unity_ObjectToWorld,(v.vertex)).xyz;
 		half3 vtxForAni = (worldSpaceVertex).xzz;

@@ -17,7 +17,7 @@ public class CameraFollowTest : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (target != NULL)
+		if (target != null)
 		{
 			transform.position = new Vector3(camTransform.position.x, camTransform.position.y, transform.position.z);
 		}

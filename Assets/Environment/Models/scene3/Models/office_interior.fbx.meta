@@ -6,9 +6,17 @@ ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Building Sky_small_color01
+    100004: Camera
+    100006: Sun
     400000: //RootNode
+    400002: Building Sky_small_color01
+    400004: Camera
+    400006: Sun
     2300000: //RootNode
+    2300002: Building Sky_small_color01
     3300000: //RootNode
+    3300002: Building Sky_small_color01
     4300000: Building Sky_small_color01
   materials:
     importMaterials: 1

@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class enemyDamage : MonoBehaviour {
 
-   public int   damage; // Amount of damage enemy can do
-   public float damageRate; // How often damage can be applied to character
-   public float pushBackForce; // Force applied to character when entering damage zone
+   public  int   damage; // Amount of damage enemy can do
+   public  float damageRate; // How often damage can be applied to character
+   public  float pushBackForce; // Force applied to character when entering damage zone
 
-   float nextDamage; // Actual time when next damage can occur
+   private float nextDamage; // Actual time when next damage can occur
 
-   bool playerInRange = false; // Is player still within damage collider?
+   private bool  playerInRange = false; // Is player still within damage collider?
 
-   GameObject thePlayer; // The player itself
-   playerHealth thePlayerHealth; // Reference playerHealth Script
+   GameObject    thePlayer; // The player itself
+   playerHealth  thePlayerHealth; // Reference playerHealth Script
 
 	// Use this for initialization
 	void Start ()
    {
-      nextDamage = Time.time; // Damaged immediately by object
-      thePlayer = GameObject.FindGameObjectWithTag("Player"); // Player is the player
+      nextDamage      = Time.time; // Damaged immediately by object
+      thePlayer       = GameObject.FindGameObjectWithTag("Player"); // Player is the player
       thePlayerHealth = thePlayer.GetComponent<playerHealth>(); // Get the player's health
 	}
 	

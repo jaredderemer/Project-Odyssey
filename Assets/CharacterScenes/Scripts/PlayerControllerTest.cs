@@ -13,7 +13,7 @@ public class PlayerControllerTest : MonoBehaviour
    }
 
    // Update is called once per frame
-   void Update()
+   void FixedUpdate()
    {
       moving.x = moving.y = moving.z = 0;
 

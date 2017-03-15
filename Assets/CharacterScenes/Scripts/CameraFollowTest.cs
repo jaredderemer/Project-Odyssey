@@ -4,24 +4,29 @@ using UnityEngine;
 
 public class CameraFollowTest : MonoBehaviour
 {
-	public GameObject target;
+   public Transform target;
+   public float smoothing;
 
-	private Transform camTransform;
+   private Vector3 offset;
 
-	// Use this for initialization
-	void Start ()
-	{
-		camTransform = target.transform;
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-		if (target != null)
-		{
-			transform.position = new Vector3(camTransform.position.x,
-                                          camTransform.position.y,
-                                             transform.position.z);
-		}
-	}
+   // Use this for initialization
+   void Start()
+   {
+      offset = transform.position - target.position;
+   }
+
+   // Update is called once per frame
+   void Update()
+   {
+
+   }
+
+   void FixedUpdate()
+   {
+      if (target != null)
+      {
+         Vector3 targetCamPos = target.position + offset;
+         transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);
+      }
+   }
 }

@@ -16,18 +16,19 @@ public class playerController : MonoBehaviour
 
    // for jumping
    // Character is starting slightly off the ground, otherwise change to TRUE
-   bool grounded = false;
-   Collider[] groundCollisions;
-   float groundCheckRadius = 0.2f;
-   public LayerMask groundLayer;
-   public Transform groundCheck;
-   public float jumpHeight;
+   public  LayerMask  groundLayer;
+   public  Transform  groundCheck;
+   public  float      jumpHeight;
+
+   private bool       grounded = false;
+   private Collider[] groundCollisions;
+   private float      groundCheckRadius = 0.2f;
 
    // Use this for initialization
    void Start()
    {
-      myRB = GetComponent<Rigidbody>();
-      myAnim = GetComponent<Animator>();
+      myRB        = GetComponent<Rigidbody>();
+      myAnim      = GetComponent<Animator> ();
       facingRight = true;
    }
 

@@ -19,7 +19,9 @@ public class CameraFollowTest : MonoBehaviour
 	{
 		if (target != null)
 		{
-			transform.position = new Vector3(camTransform.position.x, camTransform.position.y, transform.position.z);
+			transform.position = new Vector3(camTransform.position.x,
+                                          camTransform.position.y,
+                                             transform.position.z);
 		}
 	}
 }

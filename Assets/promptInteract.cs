@@ -15,7 +15,7 @@ public class promptInteract : MonoBehaviour
 	void Start ()
    {
       promptText = GameObject.Find("promptText");
-      Debug.Log(promptText.GetComponent<Text>());
+      //Debug.Log(promptText.GetComponent<Text>());
       interactPrompt = GameObject.Find("InteractPrompt");
       interactPrompt.SetActive(true);
 	}

@@ -54,8 +54,8 @@ public class CameraFollow : MonoBehaviour
       {
          //targetCamPos = target.position + offset;
           targetCamPos = new Vector3(target.position.x,
-                                     //target.position.y + 7.0f,
-            transform.position.y,
+                                     target.position.y + 5.0f,
+            //target.position.y,
                                      transform.position.z);
 
          //if (target.position.y >= maxPosY)

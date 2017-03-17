@@ -21,7 +21,7 @@ public class CameraFollow : MonoBehaviour
    private float maxPosX;
    private float minPosX;
 
-   private float offsetX;       // Distance from target camera maintains
+   //private float offsetX;       // Distance from target camera maintains
    private Vector3 targetCamPos; //
 
    // Use this for initialization
@@ -41,7 +41,7 @@ public class CameraFollow : MonoBehaviour
           targetCamPos = new Vector3 (maxPosX,
                                       target.position.y,
                                       transform.position.z);
-         targetCamPos.x = maxPosX + offsetX;
+         //targetCamPos.x = maxPosX + offsetX;
       }
       else if (target.position.x <= minPosX)
       {
@@ -54,7 +54,7 @@ public class CameraFollow : MonoBehaviour
       {
          //targetCamPos = target.position + offset;
           targetCamPos = new Vector3(target.position.x,
-                                     target.position.y + 5.0f,
+                                     target.position.y + 7.0f,
             //target.position.y,
                                      transform.position.z);
 

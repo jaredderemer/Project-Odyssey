@@ -10,6 +10,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.ImageEffects;
 
 public class CameraFollow2 : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class CameraFollow2 : MonoBehaviour
    public int path;
    public Transform player;
 
+   [SerializeField]
+   private GameObject light;
+   [SerializeField]
+   private GameObject mask;
    private Vector3 moveVelocity;
    private Vector3 desiredPosition;
    private float originalY;
@@ -107,9 +112,9 @@ public class CameraFollow2 : MonoBehaviour
 
       if (player.position.x >= 202.0f && 
           player.position.x <= 214.5f &&
-          player.position.y < 8.0f) 
+          player.position.y < 7.2f) 
       {
-         posY = 4.0f;
+         posY = 5.0f;
       }
       else if (player.position.y >= 16f) 
       {
@@ -132,6 +137,14 @@ public class CameraFollow2 : MonoBehaviour
          posY = player.position.y;
       }
 
+      if (player.position.x >= -8.0f)
+      {
+         light.GetComponent<lightColorController> ().changeColor (255.0f/255.0f,
+                                                                  192.0f/255.0f,
+                                                                  19.0f/255.0f);
+         gameObject.GetComponent<VignetteAndChromaticAberration> ().enabled = true;
+         mask.SetActive (false);
+      }
       return posY;
    }
 }

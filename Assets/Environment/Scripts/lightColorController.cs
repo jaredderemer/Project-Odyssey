@@ -27,16 +27,23 @@ public class lightColorController : MonoBehaviour {
 
    void Update()
    {
-      if (player.position.x >= -8.0f && notSet)
+      if (player.position.x >= -8.0f && notSet) 
       {
-         changeColor ();
+         changeColor (255.0f/255.0f, 192.0f/255.0f, 19.0f/255.0f);
          Camera.main.GetComponent<VignetteAndChromaticAberration> ().enabled = true;
          mask.SetActive (false);
          notSet = false;
+      } 
+      else if (player.position.x < -8.0f && !notSet)
+      {
+         changeColor (255.0f/255.0f, 244.0f/255.0f, 216.0f/255.0f);
+         Camera.main.GetComponent<VignetteAndChromaticAberration> ().enabled = false;
+         mask.SetActive (true);
+         notSet = true;
       }
    }
 	// Update is called once per frame
-   public void changeColor () {
-      caveLight.color = new Color (255.0f/255.0f, 192.0f/255.0f, 19.0f/255.0f, 255.0f);
+   public void changeColor (float r, float g, float b) {
+      caveLight.color = new Color (r, g, b, 255.0f);
 	}
 }

@@ -119,9 +119,9 @@ public class CameraFollow2 : MonoBehaviour
       {
          posY = 14.0f;
       } 
-      else if (player.position.y >= 1.2f) 
+      else if (player.position.y >= 1.2f)
       {
-         posY = 8.0f;  
+            posY = 8.0f;  
       }  
       else if (player.position.y >= -5.0f) 
       {

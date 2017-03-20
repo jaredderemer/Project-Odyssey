@@ -16,7 +16,7 @@ public class playerController : MonoBehaviour
 
    // for jumping
    // Character is starting slightly off the ground, otherwise change to TRUE
-   bool grounded = false;
+   [HideInInspector] public bool grounded = false;
    Collider[] groundCollisions;
    float groundCheckRadius = 0.2f;
    public LayerMask groundLayer;
@@ -24,6 +24,8 @@ public class playerController : MonoBehaviour
    public float jumpHeight;
    
    private Vector3 spawnPosition;
+   
+   [HideInInspector] public bool onWall = false;
 
    // Use this for initialization
    void Start()
@@ -44,37 +46,71 @@ public class playerController : MonoBehaviour
 
    private void FixedUpdate()
    {
+      // Check if the player jumps
       if (grounded && Input.GetAxis("Jump") > 0)
       {
          grounded = false;
          myAnim.SetBool("grounded", grounded);
          myRB.AddForce(new Vector3(0, jumpHeight, 0));
       }
+      
       groundCollisions = Physics.OverlapSphere(groundCheck.position, groundCheckRadius, groundLayer);
 
+      // Check for grounded player
       if (groundCollisions.Length > 0)
          grounded = true;
       else
-         grounded = false;
+         grounded = false; 
 
       myAnim.SetBool("grounded", grounded);
 
       float move = Input.GetAxis("Horizontal");
       myAnim.SetFloat("speed", Mathf.Abs(move));
 
-      myRB.velocity = new Vector3(move * runSpeed, myRB.velocity.y, 0);
+      // Do we need this???
+      //myRB.velocity = new Vector3(move * runSpeed, myRB.velocity.y, 0);
 
       float sprinting = Input.GetAxisRaw("Fire3");
       myAnim.SetFloat("sprinting", sprinting);
+      
+      
+      
+      
+      
+      //Debug.Log("onWall == " + onWall);
+      
+     // Check if player is on wall
+      if(!onWall || grounded)
+      {
+         
+         if (sprinting > 0 && grounded)
+         {
+            myRB.velocity = new Vector3(move * sprintSpeed, myRB.velocity.y, 0);
+         }
+         else
+         {
+            myRB.velocity = new Vector3(move * runSpeed, myRB.velocity.y, 0);
+         }
+      }
+      else if(!grounded &&  onWall)
+      {
+         // Stop movement
+         //myRB.velocity = new Vector3(0, .04f, 0);
+         myRB.AddForce(new Vector3(0, -1.0f, 0));
+         Debug.Log("Adding force down");
+      }
+      
+      
 
-      if (sprinting > 0 && grounded)
+
+      /*if (sprinting > 0 && grounded)
       {
          myRB.velocity = new Vector3(move * sprintSpeed, myRB.velocity.y, 0);
       }
       else
       {
          myRB.velocity = new Vector3(move * runSpeed, myRB.velocity.y, 0);
-      }
+      }*/
 
       if (move > 0 && !facingRight)
          Flip();

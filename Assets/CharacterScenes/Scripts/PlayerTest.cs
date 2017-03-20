@@ -38,7 +38,6 @@ public class PlayerTest : MonoBehaviour
       else
       {
          standing = false;
-         myAnimator.SetInteger("AnimState", 3);
       }
 
       var forceX = 0f;

@@ -60,7 +60,7 @@ public class playerHealth : MonoBehaviour
        float currHealthPercent = (currentHealth / fullHealth);
        
        // Update health bar slider value
-       healthSlider.value = currentHealth;
+       /*healthSlider.value = currentHealth;
        
        // Change health bar color
        if(currHealthPercent > .65)
@@ -71,6 +71,7 @@ public class playerHealth : MonoBehaviour
            healthBarFill.color = new Color(1.0f, .34f, .13f); // Orange
        else
            healthBarFill.color = new Color(.96f, .26f, .21f); // Red
+        */
    }
 
    public void makeDead ()

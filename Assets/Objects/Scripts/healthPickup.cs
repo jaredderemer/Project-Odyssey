@@ -13,7 +13,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public class healthPickup : MonoBehaviour {
+public class healthPickup : MonoBehaviour 
+{
+    GameObject HUD;
+
+    void Start()
+    {
+        HUD = GameObject.Find("HUD");
+    }
 
 	public int healthAmount;
 
@@ -25,8 +32,12 @@ public class healthPickup : MonoBehaviour {
         {
 			// Add health to Player and destroy the banana object
             other.GetComponent<playerHealth>().addHealth(healthAmount);
+
             Destroy(gameObject);
             //Debug.Log(PrefabUtility.GetPrefabType(this as Object));
+            HUD.GetComponent<HUDTest>().updateScore(50);
+
         }
+
 	}
 }

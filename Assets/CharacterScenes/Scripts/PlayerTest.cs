@@ -26,12 +26,12 @@ public class PlayerTest : MonoBehaviour
    }
 
    // Update is called once per frame
-   void Update()
+   void FixedUpdate()
    {
       var absVelX = Mathf.Abs(myBody.velocity.x);
-      var absVelY = Mathf.Abs(myBody.velocity.y);
+      var VelY = Mathf.Abs(myBody.velocity.y);
 
-      if(absVelY <= standingThreshold)
+      if(VelY <= standingThreshold)
       {
          standing = true;
       }
@@ -83,19 +83,25 @@ public class PlayerTest : MonoBehaviour
       //   Flip();
       //}
 
-      if (controller.moving.y > 0)
-      {
-         if (absVelY < maxVelocity.y)
-         {
-            forceY = jumpSpeed * controller.moving.y;
-         }
-         myAnimator.SetInteger("AnimState", 2);
-      }
-      else if(absVelY > 0 && !standing)
+      if ((Input.GetAxis("Jump") > 0) && standing)
       {
          myAnimator.SetInteger("AnimState", 3);
+         if (VelY > 0)
+         {
+            forceY = jumpSpeed * controller.moving.y;
+            myAnimator.SetInteger("AnimState", 4);
+         }
+      }
+      else if(VelY < 0 && !standing)
+      {
+         myAnimator.SetInteger("AnimState", 5);
+      }
+      else
+      {
+         myAnimator.SetInteger("AnimState", 6);
       }
       myBody.AddForce(new Vector3(forceX, forceY, 0));
+
    }
 
    void Flip()

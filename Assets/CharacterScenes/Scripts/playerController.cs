@@ -23,9 +23,11 @@ public class playerController : MonoBehaviour
    private bool       facingRight;
 
    // for jumping
-   private bool       grounded = false; // Character is starting off the ground, otherwise change to TRUE
+   // Character is starting off the ground, otherwise change to TRUE
+   private bool       grounded = false;
    private Collider[] groundCollisions;
-   private float      groundCheckRadius = 0.2f; // Based off experience, this code should just work...
+   // Based off experience, this code should just work...
+   private float      groundCheckRadius = 0.2f; 
 
 // Class functions
    // Use this for initialization
@@ -33,7 +35,8 @@ public class playerController : MonoBehaviour
    {
       myRig         = GetComponent<Rigidbody>();
       myAnim        = GetComponent<Animator> ();
-      facingRight   = true; // Character starts facing right
+      // Character starts facing right
+      facingRight = true;
       myAnim.SetInteger("AnimState", 0);
    }
 
@@ -45,10 +48,10 @@ public class playerController : MonoBehaviour
 
       if (grounded && Input.GetAxis("Jump") > 0)
       {
+         myRig.AddForce(new Vector3(0, jumpHeight, 0));
          grounded = false;
          myAnim.SetBool("grounded", grounded);
          myAnim.SetInteger("AnimState", 3);
-         myRig.AddForce(new Vector3(0, jumpHeight, 0));
       }
 
       // Character on ground?

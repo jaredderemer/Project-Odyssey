@@ -294,7 +294,7 @@ ModelImporter:
     400284: Character1_Ctrl_Spine
     400286: Character1_Ctrl_Spine1
     4300000: polySurface17
-    7400000: playerSprint
+    7400000: playerWalk
     7400002: playerRun
     7400004: jumpStart
     7400006: jumpUp
@@ -643,7 +643,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: playerSprint
+      name: playerWalk
       takeName: Take 001
       firstFrame: 1
       lastFrame: 25

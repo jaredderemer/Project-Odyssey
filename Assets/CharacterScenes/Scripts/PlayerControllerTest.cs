@@ -9,14 +9,12 @@ public class PlayerControllerTest : MonoBehaviour
    // Use this for initialization
    void Start()
    {
-
+      moving.x = moving.y = moving.z = 0;
    }
 
    // Update is called once per frame
    void FixedUpdate()
    {
-      moving.x = moving.y = moving.z = 0;
-
       if (Input.GetKey("right"))
       {
          moving.x = 1;

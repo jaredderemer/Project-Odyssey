@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerTest : MonoBehaviour
 {
-   public float   speed               = 150f;
+/*   public float   speed               = 150f;
    public Vector3 maxVelocity         = new Vector3(60, 100, 0);
    public float   jumpSpeed;
    public bool    standing;
@@ -15,6 +15,18 @@ public class PlayerTest : MonoBehaviour
    private Animator             myAnimator;
    private bool                 facingRight;
    private PlayerControllerTest controller;
+*/
+   public float       runSpeed;
+   public float       walkSpeed;
+   public LayerMask   groundLayer;
+   public Transform   groundCheck;
+   public float       jumpHeight;
+
+   private Animator   myAnim;
+   private bool       grounded = false;
+   private Collider[] groundCollisions;
+   private float      groundCheckRadius = 0.2f;
+   private Rigidbody  myRig;
 
    // Use this for initialization
    void Start()
@@ -28,9 +40,10 @@ public class PlayerTest : MonoBehaviour
    // Update is called once per frame
    void FixedUpdate()
    {
+      
       var absVelX = Mathf.Abs(myBody.velocity.x);
       var VelY = Mathf.Abs(myBody.velocity.y);
-
+      /*
       if(VelY <= standingThreshold)
       {
          standing = true;
@@ -39,7 +52,7 @@ public class PlayerTest : MonoBehaviour
       {
          standing = false;
       }
-
+      */
       var forceX = 0f;
       var forceY = 0f;
 

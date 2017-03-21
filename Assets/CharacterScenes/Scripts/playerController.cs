@@ -4,77 +4,82 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
+// Public variables
+   // movingment variables
+   public float      runSpeed;
+   public float      walkSpeed;
 
-   // Movement variables
-   public float runSpeed;
-   public float sprintSpeed;
+   // Jumping variables
+   public LayerMask  groundLayer;
+   public Transform  groundCheck;
+   public float      jumpHeight;
 
-   Rigidbody myRB;
-   Animator myAnim;
+// Private Variables
+   // Character Control
+   private Rigidbody myRig;
+   private Animator  myAnim;
 
-   bool facingRight;
+   // Character Direction
+   private bool      facingRight;
 
    // for jumping
-   // Character is starting slightly off the ground, otherwise change to TRUE
-   public  LayerMask  groundLayer;
-   public  Transform  groundCheck;
-   public  float      jumpHeight;
-
-   private bool       grounded = false;
+   private bool       grounded = false; // Character is starting off the ground, otherwise change to TRUE
    private Collider[] groundCollisions;
    private float      groundCheckRadius = 0.2f;
 
    // Use this for initialization
    void Start()
    {
-      myRB        = GetComponent<Rigidbody>();
+      myRig       = GetComponent<Rigidbody>();
       myAnim      = GetComponent<Animator> ();
       facingRight = true;
    }
 
-   // Update is called once per frame
-   void Update()
-   {
-
-   }
-
+   // Using FixedUpdate() for physics' sake
    void FixedUpdate()
    {
+      groundCollisions = Physics.OverlapSphere(groundCheck.position, groundCheckRadius, groundLayer);
+
       if (grounded && Input.GetAxis("Jump") > 0)
       {
          grounded = false;
          myAnim.SetBool("grounded", grounded);
-         myRB.AddForce(new Vector3(0, jumpHeight, 0));
+         myRig.AddForce(new Vector3(0, jumpHeight, 0));
       }
-      groundCollisions = Physics.OverlapSphere(groundCheck.position, groundCheckRadius, groundLayer);
 
+      // Character on ground?
       if (groundCollisions.Length > 0)
          grounded = true;
       else
          grounded = false;
 
+      // Character is animated properly
       myAnim.SetBool("grounded", grounded);
 
-      float move = Input.GetAxis("Horizontal");
-      myAnim.SetFloat("speed", Mathf.Abs(move));
+      float moving = Input.GetAxis("Horizontal"); // Get movingment input
+      myAnim.SetInteger("AnimState", 1); // Animate movingment
 
-      myRB.velocity = new Vector3(move * runSpeed, myRB.velocity.y, 0);
+      myRig.velocity = new Vector3(moving * runSpeed, myRig.velocity.y, 0); // moving Character
 
-      float sprinting = Input.GetAxisRaw("Fire3");
-      myAnim.SetFloat("sprinting", sprinting);
+      float walking = Input.GetAxisRaw("Fire3"); // Get walk Input
+      myAnim.SetInteger("AnimState", 2); // Animate walk
 
-      if (sprinting > 0/* && grounded*/)
+      if (walking > 0)
       {
-         myRB.velocity = new Vector3(move * sprintSpeed, myRB.velocity.y, 0);
+         myRig.velocity = new Vector3(moving * walkSpeed, myRig.velocity.y, 0);
+      }
+      else if (walking == 0)
+      {
+         myRig.velocity = new Vector3(moving * runSpeed, myRig.velocity.y, 0);
       }
       else
       {
-         myRB.velocity = new Vector3(move * runSpeed, myRB.velocity.y, 0);
+         myAnim.SetInteger("AnimState", 0);
       }
 
-      if (move > 0 && !facingRight)
+      if (moving > 0 && !facingRight)
          Flip();
-      else if (move < 0 && facingRight)
+      else if (moving < 0 && facingRight)
          Flip();
    }
 

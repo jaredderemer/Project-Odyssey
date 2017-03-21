@@ -5,7 +5,7 @@ public class Pause : MonoBehaviour {
 
 
 	private ShowPanels showPanels;						//Reference to the ShowPanels script used to hide and show UI panels
-	private bool isPaused;								//Boolean to check if the game is paused or not
+	[HideInInspector] public bool isPaused;			//Boolean to check if the game is paused or not
 	private StartOptions startScript;					//Reference to the StartButton script
 	
 	//Awake is called before Start()
@@ -32,9 +32,7 @@ public class Pause : MonoBehaviour {
 			//Call the UnPause function to unpause the game
 			UnPause ();
 		}
-	
 	}
-
 
 	public void DoPause()
 	{
@@ -46,7 +44,6 @@ public class Pause : MonoBehaviour {
 		showPanels.ShowPausePanel ();
 	}
 
-
 	public void UnPause()
 	{
 		//Set isPaused to false
@@ -55,5 +52,6 @@ public class Pause : MonoBehaviour {
 		Time.timeScale = 1;
 		//call the HidePausePanel function of the ShowPanels script
 		showPanels.HidePausePanel ();
+      showPanels.HideControlsPanel ();
 	}
 }

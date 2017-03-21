@@ -11,7 +11,15 @@ public class ShowPanels : MonoBehaviour
 	public GameObject menuPanel;							//Store a reference to the Game Object MenuPanel 
 	public GameObject pausePanel;							//Store a reference to the Game Object PausePanel
 	public GameObject panelTint;							//Store a reference to the Game Object OptionsTint 
+   
+   private Pause pauseScript;						//Reference to the PauseScript script
 
+   void Awake()
+	{
+		//Get a reference to Pause attached to UI object
+		pauseScript = GetComponent<Pause> ();
+	}
+   
 	//Call this function to activate and display the Control panel during the main menu
 	public void ShowControlsPanel()
 	{
@@ -25,11 +33,11 @@ public class ShowPanels : MonoBehaviour
 		controlsPanel.SetActive(false);
 		panelTint.SetActive(false);
 
-		// Check if you are in game
-		if(SceneManager.GetActiveScene().buildIndex != 0)
-		{
-			ShowPausePanel ();
-		}
+		// Check if game is still paused
+      if(pauseScript.isPaused)
+      {
+         ShowPausePanel();
+      }
 	}
 
 	//Call this function to activate and display the Options panel during the main menu
@@ -84,6 +92,5 @@ public class ShowPanels : MonoBehaviour
 	{
 		pausePanel.SetActive (false);
 		panelTint.SetActive(false);
-
 	}
 }

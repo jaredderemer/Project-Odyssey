@@ -20,10 +20,10 @@ public class CameraFollow2 : MonoBehaviour
    public int path;
    public Transform player;
 
-   [SerializeField]
-   private GameObject light;
-   [SerializeField]
-   private GameObject mask;
+//   [SerializeField]
+//   private GameObject light;
+//   [SerializeField]
+//   private GameObject mask;
    private Vector3 moveVelocity;
    private Vector3 desiredPosition;
    private float originalY;
@@ -140,14 +140,14 @@ public class CameraFollow2 : MonoBehaviour
          posY = player.position.y;
       }
 
-      if (player.position.x >= -8.0f) 
-      {
-         light.GetComponent<lightColorController> ().changeColor (193.0f/255.0f, 
-                                                                  160.0f/255.0f, 
-                                                                  70.0f/255.0f);
-         gameObject.GetComponent<VignetteAndChromaticAberration> ().enabled = true;
-         mask.SetActive (false);
-      }
+//      if (player.position.x >= -8.0f) 
+//      {
+//         light.GetComponent<lightColorController> ().changeColor (193.0f/255.0f, 
+//                                                                  160.0f/255.0f, 
+//                                                                  70.0f/255.0f);
+//         gameObject.GetComponent<VignetteAndChromaticAberration> ().enabled = true;
+//         mask.SetActive (false);
+//      }
       return posY;
    }
 

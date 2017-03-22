@@ -57,10 +57,9 @@ public class objectController : MonoBehaviour {
    IEnumerator instantiateObj()
    {
       yield return new WaitForSeconds (1.0f);
-      Instantiate (collectible, 
-         new Vector3 (transform.position.x + xOffset, 
-            transform.position.y + yOffset, 
-            transform.position.z + zOffset), 
-         transform.rotation);
+      Instantiate (collectible, new Vector3 (transform.position.x + xOffset, 
+                                             transform.position.y + yOffset, 
+                                             transform.position.z + zOffset), 
+                                             transform.rotation);
    }
 }

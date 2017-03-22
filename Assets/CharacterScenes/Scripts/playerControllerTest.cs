@@ -13,6 +13,14 @@ public class playerControllerTest : MonoBehaviour
 
    bool facingRight;
 
+   // For Jumping
+   bool grounded = false; // Character is starting off the ground, otherwise change to true
+   Collider[] groundCollisions; // Holds anything that our sphere collides with
+   float groundCheckRadius = 0.2f;
+   public LayerMask groundLayer;
+   public Transform groundCheck;
+   public float jumpHeight;
+
    // Use this for initialization
    void Start()
    {
@@ -29,6 +37,25 @@ public class playerControllerTest : MonoBehaviour
     // When working with physics objects
    void FixedUpdate()
    {
+      if (grounded && Input.GetAxisRaw("Jump") > 0)
+      {
+         grounded = false;
+         myAnim.SetBool("grounded", grounded);
+         myRig.AddForce(new Vector3(0, jumpHeight, 0));
+      }
+
+      groundCollisions = Physics.OverlapSphere(groundCheck.position, groundCheckRadius, groundLayer);
+      if (groundCollisions.Length > 0)
+      {
+         grounded = true;
+      }
+      else
+      {
+         grounded = false;
+      }
+
+      myAnim.SetBool("grounded", grounded);
+
       float move = Input.GetAxis("Horizontal");
       myAnim.SetFloat("speed", Mathf.Abs(move));
 

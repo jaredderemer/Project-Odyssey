@@ -11,6 +11,7 @@ public class doorController : MonoBehaviour {
    private Animator objAnim;
    //private AudioSource objOpenAS;
    private bool isUsed;
+   private Camera cam;
 
 	// Use this for initialization
 	void Start () 
@@ -18,6 +19,7 @@ public class doorController : MonoBehaviour {
       objAnim   = GetComponent<Animator> ();
       //objOpenAS = GetComponent<AudioSource> ();
       isUsed = false;
+      cam = Camera.main;
 	}
 	
    void OnTriggerStay(Collider target)
@@ -31,7 +33,19 @@ public class doorController : MonoBehaviour {
             // code here to check if the player has key
             objAnim.SetTrigger ("activateObject");
             //objOpenAS.Play ();
-            isUsed = true;
+         isUsed = true;
+         if (gameObject.tag == "toBalcony") 
+         {
+            StartCoroutine (toBalcony(target.transform));
+         }
       }
+   }
+
+   IEnumerator toBalcony(Transform target)
+   {
+      yield return new WaitForSeconds (1.0f);
+      target.position = new Vector3 (-43.0f, 1.9f, 1.47f);
+      cam.GetComponent<CameraFollow2> ().enabled = false;
+      cam.transform.position = new Vector3 (-39.0f, 5.85f, -10.0f);
    }
 }

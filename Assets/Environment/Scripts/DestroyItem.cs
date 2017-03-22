@@ -35,7 +35,7 @@ public class DestroyItem : MonoBehaviour {
                Quaternion.identity);
          } 
          //*********************************************************************
-         // Can only destroy when player has master key
+         // Can only destroy when player has key
          else if (col.tag == "Key") // NEED TO TEST WHEN PLAYER CAN CARRY KEYS
          {
             Destroy (gameObject, delay);

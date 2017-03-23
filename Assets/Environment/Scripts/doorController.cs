@@ -8,35 +8,48 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class doorController : MonoBehaviour {
+
+   [SerializeField]
+   private int itemIDNeeded; // Item ID necessary to unlock an object
    private Animator objAnim;
-   //private AudioSource objOpenAS;
+   private AudioSource objOpenAS;
    private bool isUsed;
+   private bool displayed;
    private Camera cam;
 
 	// Use this for initialization
 	void Start () 
    {
       objAnim   = GetComponent<Animator> ();
-      //objOpenAS = GetComponent<AudioSource> ();
+      objOpenAS = GetComponent<AudioSource> ();
       isUsed = false;
+      displayed = false;
       cam = Camera.main;
 	}
 	
    void OnTriggerStay(Collider target)
    {
+      // When the player hits action key, open the door 
       if (Input.GetKey (KeyCode.E) && target.tag == "Player") 
       {
-         // When the player hits action key for the first time, open the door
-         //*********************************************************************
-         // Need to check if the player has a key if not show that he needs key 
-         //to open chest  
-         if (!isUsed) 
+         if (gameObject.tag == "Locked" && !isUsed) 
          {
-               // code here to check if the player has key
+            // Check if the player has key to unlock door
+            if (target.GetComponent<Inventory2> ().removeItem (itemIDNeeded) == 1) 
+            {
                objAnim.SetTrigger ("activateObject");
-               //objOpenAS.Play ();
+               objOpenAS.Play ();
                isUsed = true;
-         }      
+            } 
+            else 
+            {
+               if (!displayed) 
+               {
+                  Debug.Log ("You need a key to unlock");
+                  displayed = true;
+               }
+            }
+         }
 
          // if the door opens to balcony, move player to the balcony
          // this action can be done more than once, no key is needed

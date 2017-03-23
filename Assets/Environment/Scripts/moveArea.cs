@@ -15,12 +15,14 @@ public class moveArea : MonoBehaviour {
    private const int pool   = 3;
    private const int main   = 4;
 
-   public int area;
+   public int area;             // index for a particular area
    [HideInInspector]
    public Vector3 orgPlayerPos; // player position in front of building
    [HideInInspector]
    public Vector3 orgCamPos;    // camera position in front of building
 
+   [SerializeField]
+   private int itemIDNeeded;    // Item ID necessary to unlock an object
    private Camera cam;
    private float max;
    private float min;
@@ -48,15 +50,48 @@ public class moveArea : MonoBehaviour {
       setPosition ();
    }
 
-   IEnumerator OnTriggerStay (Collider col)
+   void OnTriggerStay (Collider col)
    {  
       if (col.tag == "Player" && Input.GetKey (KeyCode.E)) 
-      {   
-         yield return new WaitForSeconds (1.0f);
-         col.transform.position = playerPos;
-         cam.transform.position = camPos;
-         cam.GetComponent<CameraFollow2> ().minPosX = min;
-         cam.GetComponent<CameraFollow2> ().maxPosX = max;
+      { 
+         if (gameObject.tag == "Locked") 
+         {
+            unlockPool (col);
+         } 
+         else 
+         {
+            StartCoroutine(movePosition (col));
+         }
+      }
+   }
+
+   /***************************************************************************
+   * movePosition                                                             *
+   * Move the positions of player and camera to an approriate area            *
+   ***************************************************************************/
+   IEnumerator movePosition (Collider player)
+   {
+      yield return new WaitForSeconds (1.0f);
+      player.transform.position = playerPos;
+      cam.transform.position = camPos;
+      cam.GetComponent<CameraFollow2> ().minPosX = min;
+      cam.GetComponent<CameraFollow2> ().maxPosX = max;
+   }
+
+   /***************************************************************************
+   * unlockPool                                                               *
+   * Unlock Poolhouse door if player has the key                              *
+   ***************************************************************************/
+   void unlockPool (Collider player)
+   {
+      if (player.GetComponent<Inventory2> ().removeItem (itemIDNeeded) == 1) 
+      {
+         gameObject.tag = "Untagged";
+         StartCoroutine(movePosition (player));
+      } 
+      else 
+      {
+         Debug.Log ("You need key to unlock.");
       }
    }
 

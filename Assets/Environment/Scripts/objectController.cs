@@ -13,6 +13,8 @@ public class objectController : MonoBehaviour {
    public GameObject collectible;
 
    [SerializeField]
+   private int itemIDNeeded; // Item ID necessary to unlock an object
+   [SerializeField]
    private float xOffset;
    [SerializeField]
    private float yOffset;
@@ -21,7 +23,7 @@ public class objectController : MonoBehaviour {
    private Animator objAnim;
    private AudioSource objOpenAS;
    private bool isUsed;
-
+   private bool displayed;
 
 	// Use this for initialization
 	void Start () 
@@ -29,6 +31,7 @@ public class objectController : MonoBehaviour {
       objAnim   = GetComponent<Animator> ();
       objOpenAS = GetComponent<AudioSource> ();
       isUsed      = false;
+      displayed = false;
 	}
 	
    void OnTriggerStay(Collider target)
@@ -39,19 +42,37 @@ public class objectController : MonoBehaviour {
       // open chest
       if (Input.GetKey (KeyCode.E) && !isUsed && target.tag == "Player") 
       {
-         //if (target.GetComponent<Inventory2> ().removeItem (itemID)) 
+         if (gameObject.tag == "Locked") 
          {
-            objAnim.SetTrigger ("activateObject");
-            objOpenAS.Play ();
-
-            isUsed = true;
-            StartCoroutine(instantiateObj ());
-            if (gameObject.tag == "Chest") 
-            {
-               GetComponent<rockVisible> ().makeVisible ();
-            }
+            unlockObject (target);
+         }
+         else if (gameObject.tag == "Chest") 
+         {
+            unlockObject (target);
+            GetComponent<rockVisible> ().makeVisible ();
+         }
+         else
+         {
+            openObject ();
          }
       }
+   }
+
+   void unlockObject (Collider target)
+   {
+      if (target.GetComponent<Inventory2> ().removeItem (itemIDNeeded) == 1) 
+      {
+         gameObject.tag = "Untagged";
+         openObject ();
+      }
+   }
+
+   void openObject ()
+   {
+         objAnim.SetTrigger ("activateObject");
+         objOpenAS.Play ();
+         isUsed = true;
+         StartCoroutine(instantiateObj ());
    }
 
    IEnumerator instantiateObj()

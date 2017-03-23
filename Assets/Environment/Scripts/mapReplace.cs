@@ -9,11 +9,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class mapReplace : MonoBehaviour {
-
+   
+   [SerializeField]
+   private int itemIDNeeded; // Item ID necessary to unlock an object
    public GameObject map;
    public GameObject collectible;
 
    private bool isReplaced;
+   private bool displayed;
+
    [SerializeField]
    private float xOffset;
    [SerializeField]
@@ -25,6 +29,7 @@ public class mapReplace : MonoBehaviour {
 	void Start () 
    {
       isReplaced = false;	
+      displayed  = false;
 	}
 	
    void OnTriggerStay (Collider col)
@@ -32,8 +37,19 @@ public class mapReplace : MonoBehaviour {
       if (col.tag == "Player" && Input.GetKey (KeyCode.E) && !isReplaced) 
       {
          // add code to check if the player has the other piece of map
-         isReplaced = true;
-         StartCoroutine(instantiateObj ());
+         if (col.GetComponent<Inventory2> ().removeItem (itemIDNeeded) == 1) 
+         {
+            isReplaced = true;
+            StartCoroutine (instantiateObj ());
+         }
+         else 
+         {
+            if (!displayed) 
+            {
+               Debug.Log ("You need a key to open");
+               displayed = true;
+            }
+         }
       }
    }
 
@@ -48,6 +64,5 @@ public class mapReplace : MonoBehaviour {
                                              transform.position.y + yOffset, 
                                              transform.position.z + zOffset), 
                                              transform.rotation);
-      //Destroy(gameObject);
    }
 }

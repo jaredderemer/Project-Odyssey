@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 * Author          MM/DD/YY  HH24:MM    Description                             *
-* Juju Moong      02/24/17  15:32      Open the door when action key is hit    *
+* Juju Moong      03/22/17  15:32      Open the door when action key is hit    *
 *                                                                              *
 *******************************************************************************/
 using System.Collections;
@@ -24,26 +24,26 @@ public class doorController : MonoBehaviour {
 	
    void OnTriggerStay(Collider target)
    {
-      // When the player hits action key for the first time, open the door
-      //************************************************************************
-      // Need to check if the player has a key if not show that he needs key to 
-      // open chest
       if (Input.GetKey (KeyCode.E) && target.tag == "Player") 
       {
-            
-            
-         if (gameObject.tag == "toBalcony") 
-         {
-            objAnim.SetTrigger ("activateObject");
-            StartCoroutine (toBalcony(target.transform));
-         }
-         else if (!isUsed) 
+         // When the player hits action key for the first time, open the door
+         //*********************************************************************
+         // Need to check if the player has a key if not show that he needs key 
+         //to open chest  
+         if (!isUsed) 
          {
                // code here to check if the player has key
                objAnim.SetTrigger ("activateObject");
                //objOpenAS.Play ();
+               isUsed = true;
          }      
-         isUsed = true;
+
+         // if the door opens to balcony, move player to the balcony
+         // this action can be done more than once, no key is needed
+         if (gameObject.tag == "toBalcony") 
+         {
+            StartCoroutine (toBalcony(target.transform));
+         }
       }
    }
 

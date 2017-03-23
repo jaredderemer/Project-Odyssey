@@ -13,23 +13,6 @@ using UnityEngine;
 
 public class cartController : MonoBehaviour {
 
-//   Animator cartAnim;
-//
-//	// Use this for initialization
-//	void Start () 
-//   {
-//      cartAnim = GetComponent<Animator> ();
-//	}
-//
-//   void OnTriggerEnter (Collider target)
-//   {
-//      if (target.tag == "Player") 
-//      {
-//         cartAnim.SetTrigger ("activateCart");
-//      }
-//   }
-
-
    public float length;      // Length required to move
    public float speed;       // Speed required to move
 
@@ -110,7 +93,7 @@ public class cartController : MonoBehaviour {
       
    /***************************************************************************
    * updateNewPosition                                                        *
-   * Get a new position                                                     *
+   * Get a new position                                                       *
    ***************************************************************************/
    Vector3 updateXPosition(float newX)
    {

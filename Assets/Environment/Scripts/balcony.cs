@@ -18,7 +18,7 @@ public class balcony : MonoBehaviour {
 
    IEnumerator OnTriggerStay (Collider col)
    {
-      if (Input.GetKey (KeyCode.Q) && col.tag == "Player") 
+      if (Input.GetKey (KeyCode.E) && col.tag == "Player") 
       {
          yield return new WaitForSeconds (1.0f);
          col.transform.position = new Vector3 (-110.8f, 5.9f, 15.6f);

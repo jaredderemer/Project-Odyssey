@@ -21,8 +21,8 @@ public class balcony : MonoBehaviour {
       if (Input.GetKey (KeyCode.Q) && col.tag == "Player") 
       {
          yield return new WaitForSeconds (1.0f);
-         col.transform.position = new Vector3 (15.0f, 6.75f, 0.14f);
-         cam.transform.position = new Vector3 (15.0f, 12.0f, -10.0f);
+         col.transform.position = new Vector3 (-110.8f, 5.9f, 15.6f);
+         cam.transform.position = new Vector3 (-110.8445f, 14.0f, 0f);
          cam.GetComponent<CameraFollow2> ().enabled = true;
       }
    }

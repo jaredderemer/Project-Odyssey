@@ -4,7 +4,8 @@
 *                                      Set X endpoints so that the camera      *
 *                                      won't go pass them                      *
 * Will Reaves                          ????
-* Juju Moong      03/06/17  23:00      ????
+* Juju Moong      03/06/17  23:00      Change the way the camera follows player*
+* Juju Moong      03/22/17  22:15      Modify followPathThree()                *
 *                                                                              *
 *******************************************************************************/
 using System.Collections;
@@ -20,10 +21,6 @@ public class CameraFollow2 : MonoBehaviour
    public int path;
    public Transform player;
 
-//   [SerializeField]
-//   private GameObject light;
-//   [SerializeField]
-//   private GameObject mask;
    private Vector3 moveVelocity;
    private Vector3 desiredPosition;
    private float originalY;
@@ -73,9 +70,6 @@ public class CameraFollow2 : MonoBehaviour
             break;
          case 3:
             pos.y = followPathThree ();
-            break;
-         case 4:
-            pos.y = followPathFour ();
             break;
       }
 
@@ -140,45 +134,24 @@ public class CameraFollow2 : MonoBehaviour
          posY = player.position.y;
       }
 
-//      if (player.position.x >= -8.0f) 
-//      {
-//         light.GetComponent<lightColorController> ().changeColor (193.0f/255.0f, 
-//                                                                  160.0f/255.0f, 
-//                                                                  70.0f/255.0f);
-//         gameObject.GetComponent<VignetteAndChromaticAberration> ().enabled = true;
-//         mask.SetActive (false);
-//      }
       return posY;
    }
 
    private float followPathThree ()
    {
       float posY;
-//      if (player.position.x >= 25.0f && player.position.x < 46.0f) {
-//         posY = 6.0f;
-//      } else 
+
       if (player.position.x >= 25.0f && player.position.x < 116.0f) 
       {
          posY = 8.0f;
       } 
-      else 
+      else if (player.position.y >= 3.5f)
       {
-         posY = 4.0f;
-      }
-      return posY;
-   }
-
-   private float followPathFour()
-   {
-      float posY;
-
-      if (player.position.y >= 6.2f)
-      {
-         posY = 12f;
+         posY = 14.0f;
       } 
       else 
       {
-         posY = 3.13f;
+         posY = 4.5f;
       }
       return posY;
    }

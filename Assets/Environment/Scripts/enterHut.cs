@@ -34,7 +34,7 @@ public class enterHut : MonoBehaviour
    {
       if(other.tag == "Player" && Input.GetKey("w"))
       {
-         if(true)//loadingScene == false)
+         if(loadingScene == false)
          {
             // Save data before switching scenes 
             thePlayerHealth.savePlayerHealth();
@@ -42,7 +42,7 @@ public class enterHut : MonoBehaviour
             // Change scenes to loading
             UI.GetComponent<StartOptions>().StartLoadingScreen();
             
-            //loadingScene = true;
+            loadingScene = true;
          }
       }
    }
@@ -53,26 +53,5 @@ public class enterHut : MonoBehaviour
         {
 			byHut = false;
         }
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-		if(byHut == true)
-		{
-			if(Input.GetKey("w"))
-			{
-            /*if(loadingScene == false)
-            {
-               // Save data before switching scenes 
-               thePlayerHealth.savePlayerHealth();
-				
-               // Change scenes to loading
-               UI.GetComponent<StartOptions>().StartLoadingScreen();
-               
-               loadingScene = true;
-            }*/
-			}
-		}
 	}
 }

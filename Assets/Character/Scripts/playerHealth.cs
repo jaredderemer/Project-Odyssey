@@ -51,7 +51,7 @@ public class playerHealth : MonoBehaviour
       if (currentHealth <= 0)
       {
          makeDead();
-         lives--;
+         loseLife();
          print("JOHN SUN DIED!!!");
       }
    }
@@ -97,5 +97,15 @@ public class playerHealth : MonoBehaviour
    public void savePlayerHealth ()
    {
       globalController.Instance.playerHealth = currentHealth;
+   }
+   
+   public void loseLife ()
+   {
+      lives--;
+      
+		if (lives < 0)
+      {
+         
+      }
    }
 }

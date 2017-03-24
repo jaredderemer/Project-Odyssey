@@ -23,7 +23,7 @@ public class playerController : MonoBehaviour
    public Transform groundCheck;
    public float jumpHeight;
    
-   private Vector3 spawnPosition;
+	private Vector3 spawnPosition;
    
    [HideInInspector] public bool onWall = false;
 
@@ -35,7 +35,8 @@ public class playerController : MonoBehaviour
       facingRight = true;
       
       // Save starting position for respawn
-      spawnPosition = myRB.position;
+      //spawnPosition = myRB.position;
+		spawnPosition = globalController.spawnpoints[globalController.currentSceneIndex.ToString()];
    }
 
    // Update is called once per frame

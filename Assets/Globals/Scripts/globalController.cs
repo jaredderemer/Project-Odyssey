@@ -7,7 +7,7 @@ public class globalController : MonoBehaviour
 	public float  playerHealth;
     public int currentSceneIndex;
 
-	private Dictionary<string, GameObject> spawnpoints = new Dictionary<string, GameObject> ();
+	[HideInInspector]public Dictionary<string, GameObject> spawnpoints = new Dictionary<string, GameObject> ();
 	public GameObject scene1Spawnpoint;
 	public GameObject scene2Spawnpoint;
 	public GameObject scene3Spawnpoint;
@@ -32,9 +32,14 @@ public class globalController : MonoBehaviour
             Destroy (gameObject);
         }
 
-		spawnpoints ["scene1"] = scene1Spawnpoint;
-		spawnpoints ["scene2"] = scene2Spawnpoint;
-		spawnpoints ["scene3"] = scene2Spawnpoint;
-		spawnpoints ["scene4"] = scene2Spawnpoint;
+		spawnpoints ["3"] = scene1Spawnpoint;
+		spawnpoints ["4"] = scene2Spawnpoint;
+		spawnpoints ["5"] = scene3Spawnpoint;
+		spawnpoints ["6"] = scene4Spawnpoint;
     }
+
+	public void restartGame ()
+	{
+
+	}
 }

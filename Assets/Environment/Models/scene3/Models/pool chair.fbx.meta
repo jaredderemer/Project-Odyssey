@@ -1,15 +1,23 @@
 fileFormatVersion: 2
-guid: 7d4d38b0d28e7074e9db56e6a58ddf79
-timeCreated: 1440363337
-licenseType: Store
+guid: 0d3f8487ada3674419ddfff558e3b76d
+timeCreated: 1490472351
+licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Camera
+    100004: Chair
+    100006: Lamp
     400000: //RootNode
+    400002: Camera
+    400004: Chair
+    400006: Lamp
     2300000: //RootNode
+    2300002: Chair
     3300000: //RootNode
-    4300000: Cylinder
+    3300002: Chair
+    4300000: Chair
   materials:
     importMaterials: 1
     materialName: 0
@@ -52,7 +60,7 @@ ModelImporter:
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
-    tangentImportMode: 4
+    tangentImportMode: 3
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
@@ -70,7 +78,7 @@ ModelImporter:
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
-    skeletonHasParents: 0
+    skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 0
   humanoidOversampling: 1

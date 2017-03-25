@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class playerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
    public int fullHealth;    // Player's max health
 
@@ -23,17 +23,17 @@ public class playerHealth : MonoBehaviour
    }
    
    // Character receives damage, loses health
-   public void addDamage (int damage)
+   public void AddDamage (int damage)
    {
       currentHealth -= damage;
 
       if (currentHealth <= 0)
       {
-         makeDead();
+         MakeDead();
       }
    }
 
-   public void addHealth (int healthAmount)
+   public void AddHealth (int healthAmount)
    {
       if ((fullHealth - currentHealth) > healthAmount)
          currentHealth += healthAmount;
@@ -41,7 +41,7 @@ public class playerHealth : MonoBehaviour
          currentHealth = fullHealth;
    }
 
-   public void makeDead ()
+   public void MakeDead ()
    {
       Instantiate(playerDeathFX, transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
       Destroy(gameObject);

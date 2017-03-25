@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerControllerTest : MonoBehaviour
+public class PlayerControllerTest : MonoBehaviour
 {
    // Movement
    public float runSpeed;
@@ -15,7 +15,7 @@ public class playerControllerTest : MonoBehaviour
 
    // For Jumping
    bool grounded = false; // Character is starting off the ground, otherwise change to true
-   Collider[] groundCollisions; // Holds anything that our sphere collides with
+   Collider[] groundCollisions; // Holds anything that our ground check sphere collides with
    float groundCheckRadius = 0.2f;
    public LayerMask groundLayer;
    public Transform groundCheck;
@@ -71,7 +71,7 @@ public class playerControllerTest : MonoBehaviour
          myRig.velocity = new Vector3(move * runSpeed, myRig.velocity.y, 0);
       }
 
-      if(move > 0 && !facingRight)
+      if (move > 0 && !facingRight)
       {
          Flip();
       }

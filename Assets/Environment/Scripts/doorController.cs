@@ -16,15 +16,17 @@ public class doorController : MonoBehaviour {
    private bool isUsed;
    private bool displayed;
    private Camera cam;
+   private GameObject messageTemp;
 
 	// Use this for initialization
 	void Start () 
    {
-      objAnim   = GetComponent<Animator> ();
-      objOpenAS = GetComponent<AudioSource> ();
-      isUsed = false;
-      displayed = false;
-      cam = Camera.main;
+      objAnim     = GetComponent<Animator> ();
+      objOpenAS   = GetComponent<AudioSource> ();
+      messageTemp = GameObject.FindGameObjectWithTag ("MessageTemp");
+      isUsed      = false;
+      displayed   = false;
+      cam         = Camera.main;
 	}
 	
    void OnTriggerStay(Collider target)
@@ -45,7 +47,7 @@ public class doorController : MonoBehaviour {
             {
                if (!displayed) 
                {
-                  Debug.Log ("You need a key to unlock");
+                  messageTemp.GetComponent<noteDisplay>().displayMessage("Door is locked");
                   displayed = true;
                }
             }
@@ -58,6 +60,12 @@ public class doorController : MonoBehaviour {
             StartCoroutine (toBalcony(target.transform));
          }
       }
+   }
+
+   void OnTriggerExit (Collider target)
+   {
+      messageTemp.GetComponent<noteDisplay>().displayMessage("");
+      displayed = false;
    }
 
    IEnumerator toBalcony(Transform target)

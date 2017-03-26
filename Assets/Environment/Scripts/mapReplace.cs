@@ -24,12 +24,16 @@ public class mapReplace : MonoBehaviour {
    private float yOffset;
    [SerializeField]
    private float zOffset;
+   private GameObject message;
+   private GameObject messageTemp;
 
 	// Use this for initialization
 	void Start () 
    {
-      isReplaced = false;	
-      displayed  = false;
+      isReplaced  = false;	
+      displayed   = false;
+      message     = GameObject.FindGameObjectWithTag ("Message");
+      messageTemp = GameObject.FindGameObjectWithTag ("MessageTemp");
 	}
 	
    void OnTriggerStay (Collider col)
@@ -41,16 +45,23 @@ public class mapReplace : MonoBehaviour {
          {
             isReplaced = true;
             StartCoroutine (instantiateObj ());
+            message.GetComponent<noteDisplay> ().displayMessage ("");
          }
          else 
          {
             if (!displayed) 
-            {
-               Debug.Log ("You need a key to open");
+            {           
+               messageTemp.GetComponent<noteDisplay>().displayMessage("Find the other half of the map.");
                displayed = true;
             }
          }
       }
+   }
+
+   void OnTriggerExit (Collider col)
+   {
+      messageTemp.GetComponent<noteDisplay> ().displayMessage ("");
+      displayed = false;
    }
 
    IEnumerator instantiateObj ()

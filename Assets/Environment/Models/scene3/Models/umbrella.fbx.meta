@@ -1,15 +1,21 @@
 fileFormatVersion: 2
-guid: 7d4d38b0d28e7074e9db56e6a58ddf79
-timeCreated: 1440363337
-licenseType: Store
+guid: d932a8da21af30148801dbfad603649e
+timeCreated: 1490477159
+licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Cylinder
+    100000: Camera
+    100002: Lamp
+    100004: Umbrella
+    100006: //RootNode
+    400000: Camera
+    400002: Lamp
+    400004: Umbrella
+    400006: //RootNode
+    2300000: Umbrella
+    3300000: Umbrella
+    4300000: Umbrella
   materials:
     importMaterials: 1
     materialName: 0
@@ -39,7 +45,7 @@ ModelImporter:
     addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
@@ -52,7 +58,7 @@ ModelImporter:
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
-    tangentImportMode: 4
+    tangentImportMode: 3
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
@@ -70,7 +76,7 @@ ModelImporter:
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
-    skeletonHasParents: 0
+    skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 0
   humanoidOversampling: 1

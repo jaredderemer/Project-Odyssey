@@ -52,6 +52,7 @@ public class moveArea : MonoBehaviour {
             break;
       }
       setPosition ();
+      messageTemp.GetComponent<noteDisplay> ().displayMessage ("Press E to enter/exit");
    }
 
    void OnTriggerStay (Collider col)

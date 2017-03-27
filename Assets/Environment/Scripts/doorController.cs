@@ -29,7 +29,12 @@ public class doorController : MonoBehaviour {
       cam         = Camera.main;
 	}
 	
-   void OnTriggerStay(Collider target)
+   void OnTriggerEnter (Collider col)
+   {
+      messageTemp.GetComponent<noteDisplay> ().displayMessage ("Press E to enter");
+   }
+
+   void OnTriggerStay (Collider target)
    {
       // When the player hits action key, open the door 
       if (Input.GetKey (KeyCode.E) && target.tag == "Player") 

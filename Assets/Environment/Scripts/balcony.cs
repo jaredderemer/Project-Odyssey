@@ -10,10 +10,17 @@ using UnityEngine;
 public class balcony : MonoBehaviour {
 
    private Camera cam;
+   private GameObject messageTemp;
 
    void Start ()
    {
       cam = Camera.main;
+      messageTemp = GameObject.FindGameObjectWithTag ("MessageTemp");
+   }
+
+   void OnTriggerEnter (Collider col)
+   {
+      messageTemp.GetComponent<noteDisplay> ().displayMessage ("Press E to exit");
    }
 
    IEnumerator OnTriggerStay (Collider col)
@@ -25,5 +32,10 @@ public class balcony : MonoBehaviour {
          cam.transform.position = new Vector3 (-110.8445f, 14.0f, 0f);
          cam.GetComponent<CameraFollow2> ().enabled = true;
       }
+   }
+
+   void OnTriggerExit (Collider col)
+   {
+      messageTemp.GetComponent<noteDisplay> ().displayMessage ("");
    }
 }

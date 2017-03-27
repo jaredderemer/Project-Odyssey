@@ -36,7 +36,7 @@ public class playerController : MonoBehaviour
       
       // Save starting position for respawn
       //spawnPosition = myRB.position;
-		spawnPosition = globalController.spawnpoints[globalController.currentSceneIndex.ToString()];
+		spawnPosition = GetComponent<globalController>().spawnpoints[GetComponent<globalController>().currentSceneIndex.ToString()].transform.position;
    }
 
    // Update is called once per frame

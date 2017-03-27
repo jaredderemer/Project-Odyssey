@@ -15,7 +15,8 @@ public class checkPlayerFall : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		spawnPoint = GameObject.FindGameObjectWithTag("Player").transform.position;  // Player is the player
+		//spawnPoint = GameObject.FindGameObjectWithTag("Player").transform.position;  // Player is the player
+		spawnPoint = GetComponent<globalController>().spawnpoints[GetComponent<globalController>().currentSceneIndex.ToString()].transform.position;
       mainCamera = GameObject.FindGameObjectWithTag("MainCamera");  // Main Camera object
       mineCart = GameObject.FindGameObjectWithTag("MineCart"); // Mine Cart object
       mineCartController = mineCart.GetComponent<cartController>();

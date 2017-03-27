@@ -62,7 +62,7 @@ public class Inventory2 : MonoBehaviour
   
      
    // Adds an item to the list, returns a message if successful
-   public int addItem(int itemID, int itemQuantity, GameObject itemObject)
+   public int addItem(int itemID, int itemQuantity, GameObject itemObject, Transform itemTran)
    { 
       
       for (int i = 0; i < numItemSlots; i++)
@@ -75,7 +75,10 @@ public class Inventory2 : MonoBehaviour
             inventory[i].itemObject = itemObject;
             inventory[i].itemObject.transform.parent   = slot[i];
             inventory[i].itemObject.transform.position = slot[i].position;
+            inventory[i].itemObject.transform.localScale = itemTran.localScale;
 
+            //inventory[i].itemObject.transform.position = slot[i].GetChild<itemSlotTransformer>.transform;
+            
             return 1;  // Returns 1 if the item has been placed.
          }
          // Look for same item to increase quantity

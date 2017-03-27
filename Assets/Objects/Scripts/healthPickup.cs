@@ -19,7 +19,7 @@ public class healthPickup : MonoBehaviour
 
     void Start()
     {
-        HUD = GameObject.Find("HUD");
+        HUD = GameObject.Find("Score");
     }
 
 	public int healthAmount;

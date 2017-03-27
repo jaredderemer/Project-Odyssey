@@ -7,21 +7,31 @@ public class itemPickup : MonoBehaviour
 {
    public int itemID;
    public int itemQuantity;
-   GameObject itemObject;
+   public GameObject itemObject;
+   GameObject prefab;
+   public Transform itemTran;
     	
     void Start()
     {
-        itemObject = gameObject;
+        //itemObject = gameObject;
+
+        prefab = (GameObject)Resources.Load(itemObject.name);
+        itemTran = itemObject.transform;
     }
 
    // Add item to player inventory
    void OnTriggerEnter(Collider other)
    {
+       print("ITEM SCALE: INVENTORY!! -> " + itemTran.transform.localScale.x);
+      
       if (other.gameObject.CompareTag("Player"))
       {
+          GameObject screenObject = Instantiate(itemObject);
           //Debug.Log(other.GetComponent<Inventory2>().addItem(itemID, itemQuantity));
-          if (other.GetComponent<Inventory2>().addItem(itemID, itemQuantity, itemObject) == 0)
-             print("Pickup failed..inventory full");
+          if (other.GetComponent<Inventory2>().addItem(itemID, itemQuantity, screenObject, itemTran) == 0)
+              print("Pickup failed..inventory full");
+          else
+              Destroy(gameObject);
          
       }
    }

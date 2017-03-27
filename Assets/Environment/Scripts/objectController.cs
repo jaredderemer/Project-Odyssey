@@ -20,6 +20,10 @@ public class objectController : MonoBehaviour {
    private float yOffset;
    [SerializeField]
    private float zOffset;
+   [SerializeField]
+   private string note;
+   private GameObject message;
+   private GameObject messageTemp;
    private Animator objAnim;
    private AudioSource objOpenAS;
    private bool isUsed;
@@ -28,10 +32,12 @@ public class objectController : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
    {
-      objAnim   = GetComponent<Animator> ();
-      objOpenAS = GetComponent<AudioSource> ();
+      objAnim     = GetComponent<Animator> ();
+      objOpenAS   = GetComponent<AudioSource> ();
       isUsed      = false;
-      displayed = false;
+      displayed   = false;
+      message     = GameObject.FindGameObjectWithTag ("Message");
+      messageTemp = GameObject.FindGameObjectWithTag ("MessageTemp");
 	}
 	
    void OnTriggerStay(Collider target)
@@ -58,12 +64,26 @@ public class objectController : MonoBehaviour {
       }
    }
 
+   void OnTriggerExit (Collider col)
+   {
+      messageTemp.GetComponent<noteDisplay> ().displayMessage ("");
+      displayed = false;
+   }
+
    void unlockObject (Collider target)
    {
       if (target.GetComponent<Inventory2> ().removeItem (itemIDNeeded) == 1) 
       {
          gameObject.tag = "Untagged";
          openObject ();
+      }
+      else 
+      {
+         if (!displayed) 
+         {           
+            messageTemp.GetComponent<noteDisplay>().displayMessage(note);
+            displayed = true;
+         }
       }
    }
 
@@ -73,6 +93,7 @@ public class objectController : MonoBehaviour {
          objOpenAS.Play ();
          isUsed = true;
          StartCoroutine(instantiateObj ());
+         message.GetComponent<noteDisplay>().displayMessage("");
    }
 
    IEnumerator instantiateObj()

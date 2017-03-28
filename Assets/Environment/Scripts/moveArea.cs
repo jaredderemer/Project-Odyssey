@@ -16,6 +16,7 @@ public class moveArea : MonoBehaviour {
    private const int main   = 4;
 
    public int area;             // index for a particular area
+
    [HideInInspector]
    public Vector3 orgPlayerPos; // player position in front of building
    [HideInInspector]
@@ -23,11 +24,16 @@ public class moveArea : MonoBehaviour {
 
    [SerializeField]
    private int itemIDNeeded;    // Item ID necessary to unlock an object
+
    private GameObject messageTemp;
+
    private bool displayed;
+
    private Camera cam;
+
    private float max;
    private float min;
+
    private Vector3 playerPos;
    private Vector3 camPos;
 
@@ -48,7 +54,7 @@ public class moveArea : MonoBehaviour {
          case office:
          case pool:
             orgPlayerPos = col.transform.position;
-            orgCamPos = cam.transform.position;
+            orgCamPos    = cam.transform.position;
             break;
       }
       setPosition ();
@@ -76,23 +82,33 @@ public class moveArea : MonoBehaviour {
       displayed = false;
    }
 
-   /***************************************************************************
-   * movePosition                                                             *
-   * Move the positions of player and camera to an approriate area            *
-   ***************************************************************************/
+   /****************************************************************************
+   * movePosition                                                              *
+   * Move the positions of player and camera to an approriate area             *
+   ****************************************************************************/
    IEnumerator movePosition (Collider player)
    {
       yield return new WaitForSeconds (1.0f);
       player.transform.position = playerPos;
       cam.transform.position = camPos;
-      cam.GetComponent<CameraFollow2> ().minPosX = min;
-      cam.GetComponent<CameraFollow2> ().maxPosX = max;
+
+      if (area == 3) 
+      {
+         cam.transform.eulerAngles = new Vector3 (30.0f, 0.0f, 0.0f);
+      } 
+      else 
+      {
+         cam.transform.eulerAngles = new Vector3 (16.894f, 0.0f, 0.0f);
+      }
+
+      cam.GetComponent<CameraFollow> ().minPosX = min;
+      cam.GetComponent<CameraFollow> ().maxPosX = max;
    }
 
-   /***************************************************************************
-   * unlockPool                                                               *
-   * Unlock Poolhouse door if player has the key                              *
-   ***************************************************************************/
+   /****************************************************************************
+   * unlockPool                                                                *
+   * Unlock Poolhouse door if player has the key                               *
+   ****************************************************************************/
    void unlockPool (Collider player)
    {
       if (player.GetComponent<Inventory2> ().removeItem (itemIDNeeded) == 1) 
@@ -110,25 +126,25 @@ public class moveArea : MonoBehaviour {
       }
    }
 
-   /***************************************************************************
-   * setPosition                                                              *
-   * Set the positions of player and camera to an approriate area             *
-   ***************************************************************************/
+   /****************************************************************************
+   * setPosition                                                               *
+   * Set the positions of player and camera to an approriate area              *
+   ****************************************************************************/
    void setPosition ()
    {
       switch (area) 
       {
          case house:
-            playerPos = new Vector3 (-116.65f, -3.2f, 15.6f);
-            camPos    = new Vector3 (-116.1f, 4.5f, 0f);
+            playerPos = new Vector3 (-121.1972f, -3.2f, 15.6f);
+            camPos    = new Vector3 (-118.022f, 4.5f, 0f);
             break;
          case office:
-            playerPos = new Vector3 (-71.85f, -3.9f, 15.6f);
-            camPos    = new Vector3 (-66.5f, 4.5f, 0f);
+            playerPos = new Vector3 (-74.54841f, -3.9f, 15.6f);
+            camPos    = new Vector3 (-71.45634f, 4.5f, 0f);
             break;
-         case pool:
-            playerPos = new Vector3 (0f,0f,0f);
-            camPos    = new Vector3 (0f,0f,0f);
+      case pool:
+            playerPos = new Vector3 (-178.0f, -4.0f, 15.6f);
+            camPos    = new Vector3 (-185.46f, 7.75f, 0f);
             break;
          case main:
             goToMain();
@@ -136,11 +152,11 @@ public class moveArea : MonoBehaviour {
       }
    }
 
-   /***************************************************************************
-   * setBorder                                                                *
-   * Set the minimum and maximum x position to limit camera movement for each *
-   * area                                                                     *
-   ***************************************************************************/
+   /****************************************************************************
+   * setBorder                                                                 *
+   * Set the minimum and maximum x position to limit camera movement for each  *
+   * area                                                                      *
+   ****************************************************************************/
    void setBorder ()
    {
       switch (area) 
@@ -154,8 +170,8 @@ public class moveArea : MonoBehaviour {
             max = -70.3f;
             break;
          case pool:
-            min = 0.0f;
-            max = 0.0f;
+            min = -203.5f;
+            max = -190f;
             break;
          case main:
             min = -24.0f;
@@ -164,10 +180,10 @@ public class moveArea : MonoBehaviour {
       }      
    }
 
-   /***************************************************************************
-   * goToMain                                                                 *
-   * Move player and camera to the front of the building he enters            *
-   ***************************************************************************/
+   /****************************************************************************
+   * goToMain                                                                  *
+   * Move player and camera to the front of the building he enters             *
+   ****************************************************************************/
    void goToMain ()
    {
       GameObject obj;

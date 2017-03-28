@@ -11,11 +11,15 @@ public class doorController : MonoBehaviour {
 
    [SerializeField]
    private int itemIDNeeded; // Item ID necessary to unlock an object
+
    private Animator objAnim;
    private AudioSource objOpenAS;
+
    private bool isUsed;
    private bool displayed;
+
    private Camera cam;
+
    private GameObject messageTemp;
 
 	// Use this for initialization
@@ -47,6 +51,7 @@ public class doorController : MonoBehaviour {
                objAnim.SetTrigger ("activateObject");
                objOpenAS.Play ();
                isUsed = true;
+               gameObject.GetComponent<BoxCollider> ().enabled = false;
             } 
             else 
             {
@@ -73,11 +78,16 @@ public class doorController : MonoBehaviour {
       displayed = false;
    }
 
+   /****************************************************************************
+   * toBalcony                                                                 *
+   * Move the positions of player and camera to balcony                        *
+   * Disable CameraFollow script                                               *
+   ****************************************************************************/
    IEnumerator toBalcony(Transform target)
    {
       yield return new WaitForSeconds (1.0f);
       target.position = new Vector3 (-162.82f, 6.2f, 15.6f);
-      cam.GetComponent<CameraFollow2> ().enabled = false;
+      cam.GetComponent<CameraFollow> ().enabled = false;
       cam.transform.position = new Vector3 (-157.92f, 12.0f, 0f);
    }
 }

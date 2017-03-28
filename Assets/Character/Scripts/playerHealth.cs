@@ -43,7 +43,7 @@ public class playerHealth : MonoBehaviour
 
    public void makeDead ()
    {
-      Instantiate(playerDeathFX, transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
+      Instantiate(playerDeathFX, transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
       Destroy(gameObject);
    }
 }

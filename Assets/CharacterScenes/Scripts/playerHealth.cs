@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerHealth : MonoBehaviour
+public class playerHealth : MonoBehaviour
 {
    public int fullHealth;    // Player's max health
 
-          int currentHealth; // The current level of health for the character
+   public int currentHealth; // The current level of health for the character
 
    public GameObject playerDeathFX;
 
@@ -19,7 +19,7 @@ public class PlayerHealth : MonoBehaviour
    // Update is called once per frame
    void Update ()
    {
-
+		 
    }
    
    // Character receives damage, loses health

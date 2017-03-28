@@ -20,11 +20,11 @@ public class playerController : MonoBehaviour
    private Animator   myAnim;
 
    // Character Direction
-   private bool       facingRight;
+   [HideInInspector]public bool       facingRight;
 
    // for jumping
    // Character is starting off the ground, otherwise change to TRUE
-   private bool       grounded = false;
+   [HideInInspector]public bool       grounded = false;
    private Collider[] groundCollisions;
    // Based off experience, this code should just work...
    private float      groundCheckRadius = 0.2f; 

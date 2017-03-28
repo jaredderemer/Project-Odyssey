@@ -27,7 +27,9 @@ public class EnemyDamage : MonoBehaviour {
 	void Update ()
    {
       if (playerInRange)
+      {
          Attack();
+      }
 	}
 
    // Player enters damaging area
@@ -64,7 +66,7 @@ public class EnemyDamage : MonoBehaviour {
    void PushBack(Transform pushedObject)
    {
       // Pushes the character straight up away from the object
-      Vector3 pushDirection = new Vector3(0, (pushedObject.position.y - transform.position.y), 0).normalized;
+      Vector3 pushDirection = new Vector3(0, (pushedObject.position.y - transform.position.y), 1).normalized;
 
       // Set the direction of the push back
       pushDirection *= pushBackForce;

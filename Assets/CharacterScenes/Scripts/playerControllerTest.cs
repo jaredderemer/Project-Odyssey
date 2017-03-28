@@ -83,17 +83,9 @@ public class PlayerControllerTest : MonoBehaviour
 
    void Flip()
    {
-      Quaternion rotation = transform.localRotation;
-      if (facingRight)
-      {
-         rotation.y = 260.0f;
-      }
-      else
-      {
-         rotation.y = 100.0f;
-      }
-      transform.localRotation = rotation;
-
-      facingRight = !facingRight;
+              facingRight          = !facingRight;
+      Vector3 zedScale             = transform.localScale;
+              zedScale.z          *= -1;
+              transform.localScale = zedScale;
    }
 }

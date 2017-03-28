@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*******************************************************************************
+* Author          MM/DD/YY  HH24:MM    Description                             *
+* Juju Moong      03/27/17  10:05      Display a message when an object is     *
+*                                      picked up to prompt what to do next     *
+*                                                                              *
+*******************************************************************************/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,7 +39,7 @@ public class unlockNote : MonoBehaviour {
       {
          note = "You found the gate key.";
       }
-      else if (gameObject.name == "bedroom_key(Clone)") 
+      else if (gameObject.name == "bedroom_key") 
       {
          note = "You found the Fabrice's bedroom key.";
       }

@@ -85,6 +85,16 @@ public class moveArea : MonoBehaviour {
       yield return new WaitForSeconds (1.0f);
       player.transform.position = playerPos;
       cam.transform.position = camPos;
+
+      if (area == 3) 
+      {
+         cam.transform.eulerAngles = new Vector3 (30.0f, 0.0f, 0.0f);
+      } 
+      else 
+      {
+         cam.transform.eulerAngles = new Vector3 (16.894f, 0.0f, 0.0f);
+      }
+
       cam.GetComponent<CameraFollow2> ().minPosX = min;
       cam.GetComponent<CameraFollow2> ().maxPosX = max;
    }
@@ -126,9 +136,9 @@ public class moveArea : MonoBehaviour {
             playerPos = new Vector3 (-71.85f, -3.9f, 15.6f);
             camPos    = new Vector3 (-66.5f, 4.5f, 0f);
             break;
-         case pool:
-            playerPos = new Vector3 (0f,0f,0f);
-            camPos    = new Vector3 (0f,0f,0f);
+      case pool:
+            playerPos = new Vector3 (-178.0f, -4.0f, 15.6f);
+            camPos    = new Vector3 (-185.46f, 7.75f, 0f);
             break;
          case main:
             goToMain();
@@ -154,8 +164,8 @@ public class moveArea : MonoBehaviour {
             max = -70.3f;
             break;
          case pool:
-            min = 0.0f;
-            max = 0.0f;
+            min = -203.5f;
+            max = -190f;
             break;
          case main:
             min = -24.0f;

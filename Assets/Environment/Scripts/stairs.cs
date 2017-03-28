@@ -34,5 +34,10 @@ public class stairs : MonoBehaviour {
          }
          isDown = !isDown;
       }
+ 
+      if (col.transform.position.y < (newPos.y - 2.0f)) 
+      {
+         isDown = true;
+      }
    }
 }

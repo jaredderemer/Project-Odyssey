@@ -23,6 +23,8 @@ public class moveArea : MonoBehaviour {
 
    [SerializeField]
    private int itemIDNeeded;    // Item ID necessary to unlock an object
+   private GameObject messageTemp;
+   private bool displayed;
    private Camera cam;
    private float max;
    private float min;
@@ -32,7 +34,9 @@ public class moveArea : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
    {
-      cam = Camera.main;
+      cam         = Camera.main;
+      displayed   = false;
+      messageTemp = GameObject.FindGameObjectWithTag ("MessageTemp");
       setBorder ();
 	}
 	
@@ -48,6 +52,7 @@ public class moveArea : MonoBehaviour {
             break;
       }
       setPosition ();
+      messageTemp.GetComponent<noteDisplay> ().displayMessage ("Press E to enter/exit");
    }
 
    void OnTriggerStay (Collider col)
@@ -63,6 +68,12 @@ public class moveArea : MonoBehaviour {
             StartCoroutine(movePosition (col));
          }
       }
+   }
+
+   void OnTriggerExit (Collider target)
+   {
+      messageTemp.GetComponent<noteDisplay>().displayMessage("");
+      displayed = false;
    }
 
    /***************************************************************************
@@ -91,7 +102,11 @@ public class moveArea : MonoBehaviour {
       } 
       else 
       {
-         Debug.Log ("You need key to unlock.");
+         if (!displayed) 
+         {
+            messageTemp.GetComponent<noteDisplay>().displayMessage("Door is locked");
+            displayed = true;
+         }
       }
    }
 

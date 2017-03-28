@@ -30,7 +30,7 @@ public class balcony : MonoBehaviour {
          yield return new WaitForSeconds (1.0f);
          col.transform.position = new Vector3 (-110.8f, 5.9f, 15.6f);
          cam.transform.position = new Vector3 (-110.8445f, 14.0f, 0f);
-         cam.GetComponent<CameraFollow2> ().enabled = true;
+         cam.GetComponent<CameraFollow> ().enabled = true;
       }
    }
 

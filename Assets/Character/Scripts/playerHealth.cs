@@ -14,11 +14,15 @@ public class playerHealth : MonoBehaviour
    
    public static playerHealth Instance; // For access to playerHealth functions
    
+   private GameOver gameOverScript;
+   
    [HideInInspector]public int lives;
 
    // Use this for initialization
    void Start ()
    {
+      gameOverScript = GameObject.Find("UI").GetComponent<GameOver> ();
+      
       // Initialize character health
       if(GameObject.Find("globalController") != null)
       {
@@ -92,6 +96,9 @@ public class playerHealth : MonoBehaviour
    {
       Instantiate(playerDeathFX, transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
       Destroy(gameObject);
+      
+      // End Gameplay
+      gameOverScript.endGame();
    }
    
    public void savePlayerHealth ()

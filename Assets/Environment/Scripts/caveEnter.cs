@@ -42,7 +42,7 @@ public class caveEnter : MonoBehaviour {
                                                ref moveVelocity, dampTime);
       }
 
-      if (player.position.x >= desiredPosition.x) 
+      if (player.position.x >= (desiredPosition.x - 0.5f)) 
       {
          isTriggered = false;
       }

@@ -36,6 +36,7 @@ public class triggeredMovement : MonoBehaviour {
       if (collider.tag == "Player") // NOTE: CHANGE TO WEAPON? WHEN COCONUTS ARE READY
       {
          isTriggered = true;
+         gameObject.transform.eulerAngles = new Vector3 (0f, 0f, 120.0f);
       }
    }
 

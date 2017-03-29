@@ -21,8 +21,6 @@ public class caveEnter : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
       player          = GameObject.FindGameObjectWithTag ("Player").transform;
-      desiredPosition = new Vector3 (player.position.x + length, 
-                                     1.3f, player.position.z);
       isTriggered     = false;
 	}
 	
@@ -31,6 +29,8 @@ public class caveEnter : MonoBehaviour {
       if (col.tag == "Player") 
       {
          isTriggered = true;
+         desiredPosition = new Vector3 (player.position.x + length, 
+                                        1.3f, player.position.z);
       }
    }
 	

@@ -20,6 +20,8 @@ public class PlayerControllerTest : MonoBehaviour
    public LayerMask groundLayer;
    public Transform groundCheck;
    public float jumpHeight;
+	[HideInInspector] public bool pushed = false;
+	private bool attacked = false;
 
    // Use this for initialization
    void Start()
@@ -32,7 +34,7 @@ public class PlayerControllerTest : MonoBehaviour
    // Update is called once per frame
    void Update()
    {
-
+		attacked = pushed;
    }
     // When working with physics objects
    void FixedUpdate()
@@ -62,23 +64,32 @@ public class PlayerControllerTest : MonoBehaviour
       float walking = Input.GetAxisRaw("Fire3"); // Associated with Shift button
       myAnim.SetFloat("walking", walking);
 
-      if (walking > 0)
-      {
-         myRig.velocity = new Vector3(move * walkSpeed, myRig.velocity.y, 0);
-      }
-      else
-      {
-         myRig.velocity = new Vector3(move * runSpeed, myRig.velocity.y, 0);
-      }
+		if (!attacked)
+		{
+			if (walking > 0)
+			{
+				myRig.velocity = new Vector3 (move * walkSpeed, myRig.velocity.y, 0);
+			}
+			else
+			{
+				myRig.velocity = new Vector3 (move * runSpeed, myRig.velocity.y, 0);
+			}
 
-      if (move > 0 && !facingRight)
-      {
-         Flip();
-      }
-      else if (move < 0 && facingRight)
-      {
-         Flip();
-      }
+			if (move > 0 && !facingRight)
+			{
+				Flip ();
+			}
+			else if (move < 0 && facingRight)
+			{
+				Flip ();
+			}
+		}
+		else
+		{
+			myRig.velocity = Vector3.zero;
+
+			Debug.Log ("currentVelocity: " + myRig.velocity);
+		}
    }
 
    void Flip()

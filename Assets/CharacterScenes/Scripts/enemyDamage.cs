@@ -13,7 +13,7 @@ public class EnemyDamage : MonoBehaviour {
    private bool  playerInRange = false; // Is player still within damage collider?
 
    public GameObject    thePlayer; // The player itself
-   public PlayerHealth  thePlayerHealth; // Reference playerHealth Script
+   public PlayerHealth  thePlayerHealth; // Reference PlayerHealth Script
 	public PlayerControllerTest controller;
 
 	// Use this for initialization
@@ -28,10 +28,15 @@ public class EnemyDamage : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
    {
-      if (playerInRange)
-      {
-         Attack();
-      }
+		if (playerInRange)
+		{
+			Attack ();
+			controller.pushed = true;
+		}
+		else if (controller.pushed && controller.grounded)
+		{
+			controller.pushed = false;
+		}
 	}
 
    // Player enters damaging area
@@ -92,21 +97,18 @@ public class EnemyDamage : MonoBehaviour {
 
 		Vector3 hitPosition = pushedObject.transform.position;
 
-		hitPosition.y += 1.0f;
+		hitPosition.y += 0.5f;
 
 		Vector3 upDirection = new Vector3(pushedObject.transform.position.x, hitPosition.y, pushedObject.transform.position.z);
 		Vector3 backDirection = new Vector3 (x, hitPosition.y, pushedObject.transform.position.z);
 
-		controller.enabled = false;
+		pushedObject.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 
 		pushedObject.transform.position = Vector3.Lerp(upDirection, hitPosition, 0.0f);
 		pushedObject.transform.position = Vector3.MoveTowards(backDirection, upDirection, 0.05f);
 
-		while (!controller.grounded)
-		{
-			controller.enabled = false;
-		}
-
-		controller.enabled = true;
+		pushedObject.GetComponent<Rigidbody> ().velocity = backDirection;
+		Debug.Log ("backDirection: " + backDirection);
+		Debug.Log ("backVelocity: " + pushedObject.GetComponent<Rigidbody> ().velocity);
    }
 }

@@ -18,8 +18,7 @@ public class LoadNextScene : MonoBehaviour
       sceneIndex = globalController.Instance.currentSceneIndex + 1;
       globalController.Instance.currentSceneIndex = sceneIndex;
 
-      Debug.Log("Loading Next Scene");
-      
+		Debug.Log("Loading Next Scene " + sceneIndex.ToString() + " with spawnpoint " + globalController.Instance.spawnpoints[globalController.Instance.currentSceneIndex].x + ", " + globalController.Instance.spawnpoints[globalController.Instance.currentSceneIndex].y + ", " + globalController.Instance.spawnpoints[globalController.Instance.currentSceneIndex].z);      
       StartCoroutine ("load");
       
       

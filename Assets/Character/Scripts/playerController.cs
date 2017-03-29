@@ -23,7 +23,7 @@ public class playerController : MonoBehaviour
    public Transform groundCheck;
    public float jumpHeight;
    
-	private Vector3 spawnPosition;
+	private Vector3 spawnPosition = Vector3.zero;
    
    [HideInInspector] public bool onWall = false;
 
@@ -35,14 +35,19 @@ public class playerController : MonoBehaviour
       facingRight = true;
       
       // Save starting position for respawn
-      //spawnPosition = myRB.position;
-		spawnPosition = GetComponent<globalController>().spawnpoints[GetComponent<globalController>().currentSceneIndex.ToString()].transform.position;
+		//spawnPosition = myRB.position;
    }
 
    // Update is called once per frame
    void Update()
    {
-
+		if (globalController.Instance.currentSceneIndex > 2 && globalController.Instance.currentSceneIndex <= 5)
+		{
+			if (spawnPosition != globalController.Instance.spawnpoints [globalController.Instance.currentSceneIndex])
+			{
+				spawnPosition = globalController.Instance.spawnpoints [globalController.Instance.currentSceneIndex];
+			}
+		}
    }
 
    private void FixedUpdate()
@@ -130,6 +135,7 @@ public class playerController : MonoBehaviour
    // Respawn player to starting position in scene
    public void RespawnPlayer()
    {
+		Debug.Log ("Respawn");
       myRB.position = spawnPosition;
    }
 }

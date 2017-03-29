@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class rockVisible : MonoBehaviour {
+   
    public GameObject hidden;
    private Renderer[] hiddenList;
 	// Use this for initialization

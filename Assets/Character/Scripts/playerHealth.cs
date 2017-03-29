@@ -95,7 +95,8 @@ public class playerHealth : MonoBehaviour
    public void makeDead ()
    {
       Instantiate(playerDeathFX, transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
-      Destroy(gameObject);
+      //Destroy(gameObject);
+      gameObject.SetActive(false);
       
       // End Gameplay
       gameOverScript.endGame();

@@ -17,14 +17,15 @@ public class CameraFollow2 : MonoBehaviour
    public float maxPosX;
    public float minPosX;
    public int path;
-   public Transform player;
 
-   private Vector3 moveVelocity;
-   private Vector3 desiredPosition;
    private float originalY;
+   private Transform player;
+   private Vector3 desiredPosition;
+   private Vector3 moveVelocity;
 
    private void Start ()
    {
+      player    = GameObject.FindGameObjectWithTag ("Player").transform;
       originalY = transform.position.y;
    }
 
@@ -107,31 +108,30 @@ public class CameraFollow2 : MonoBehaviour
 
       if (player.position.x >= 202.0f && 
           player.position.x <= 214.5f &&
-          player.position.y < 8.0f) 
+          player.position.y < 7.2f) 
       {
-         posY = 4.0f;
+         posY = 5.0f;
       }
       else if (player.position.y >= 16f) 
       {
-         posY = 17.0f;
+         posY = 18.0f;
       } 
       else if (player.position.y >= 7.2f) 
       {
-         posY = 13.0f;
+         posY = 14.0f;
       } 
-      else if (player.position.y >= 1.2f) 
+      else if (player.position.y >= 1.2f)
       {
-         posY = 7.0f;  
+            posY = 8.0f;  
       }  
       else if (player.position.y >= -5.0f) 
       {
-         posY = 3.0f;
+         posY = 4.0f;
       }
       else 
       {
          posY = player.position.y;
       }
-
       return posY;
    }
 }

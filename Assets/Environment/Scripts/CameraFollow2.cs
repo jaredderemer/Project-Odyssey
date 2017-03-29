@@ -17,14 +17,15 @@ public class CameraFollow2 : MonoBehaviour
    public float maxPosX;
    public float minPosX;
    public int path;
-   public Transform player;
 
-   private Vector3 moveVelocity;
-   private Vector3 desiredPosition;
    private float originalY;
+   private Transform player;
+   private Vector3 desiredPosition;
+   private Vector3 moveVelocity;
 
    private void Start ()
    {
+      player    = GameObject.FindGameObjectWithTag ("Player").transform;
       originalY = transform.position.y;
    }
 

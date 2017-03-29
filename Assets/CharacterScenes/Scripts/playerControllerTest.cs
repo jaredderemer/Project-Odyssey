@@ -11,10 +11,10 @@ public class PlayerControllerTest : MonoBehaviour
    Rigidbody myRig;
    Animator myAnim;
 
-   bool facingRight;
+   [HideInInspector] public bool facingRight;
 
    // For Jumping
-   bool grounded = false; // Character is starting off the ground, otherwise change to true
+   [HideInInspector] public bool grounded = false; // Character is starting off the ground, otherwise change to true
    Collider[] groundCollisions; // Holds anything that our ground check sphere collides with
    float groundCheckRadius = 0.2f;
    public LayerMask groundLayer;

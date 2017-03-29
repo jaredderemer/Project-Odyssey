@@ -13,16 +13,16 @@ public class EnemyDamage : MonoBehaviour {
    private bool  playerInRange = false; // Is player still within damage collider?
 
    public GameObject    thePlayer; // The player itself
-   public playerHealth  thePlayerHealth; // Reference playerHealth Script
-	public playerController controller;
+   public PlayerHealth  thePlayerHealth; // Reference playerHealth Script
+	public PlayerControllerTest controller;
 
 	// Use this for initialization
 	void Start ()
    {
       nextDamage      = Time.time; // Damaged immediately by object
       thePlayer       = GameObject.FindGameObjectWithTag("Player"); // Player is the player
-      thePlayerHealth = thePlayer.GetComponent<playerHealth>(); // Get the player's health
-		controller = thePlayer.GetComponent<playerController>();
+      thePlayerHealth = thePlayer.GetComponent<PlayerHealth>(); // Get the player's health
+		controller = thePlayer.GetComponent<PlayerControllerTest>();
 	}
 	
 	// Update is called once per frame

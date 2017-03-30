@@ -7,8 +7,7 @@ public class checkPlayerFall : MonoBehaviour
    GameObject mainCamera;
    GameObject mineCart;
    cartController mineCartController;
-
-   Vector3 cameraStartPosition;
+   
    Vector3 cartStartPosition;
 
 	// Use this for initialization
@@ -18,7 +17,6 @@ public class checkPlayerFall : MonoBehaviour
       mineCart = GameObject.FindGameObjectWithTag("MineCart"); // Mine Cart object
       mineCartController = mineCart.GetComponent<cartController>();
       
-      cameraStartPosition = mainCamera.transform.position;
       cartStartPosition   = mineCart.transform.position;
 	}
 	
@@ -26,14 +24,13 @@ public class checkPlayerFall : MonoBehaviour
 	{
 		if (other.gameObject.CompareTag("Player"))
         {
-            mainCamera.transform.position = cameraStartPosition;
             other.GetComponent<playerHealth> ().loseLife ();
-            Debug.Log ("player fell out of the world");
+			Debug.Log ("player fell out of the world");
+			mainCamera.transform.position = new Vector3 (other.transform.position.x, other.transform.position.y + 5.0f, mainCamera.transform.position.z);
             
             // Reset mine cart position
             mineCart.transform.position = cartStartPosition;
             mineCartController.isRight = false;
         }
 	}
-	
 }

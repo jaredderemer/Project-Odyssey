@@ -135,7 +135,7 @@ public class playerController : MonoBehaviour
    // Respawn player to starting position in scene
    public void RespawnPlayer()
    {
-		Debug.Log ("Respawn");
+		Debug.Log ("Respawn" + spawnPosition);
       myRB.position = spawnPosition;
 
 		if (!facingRight)

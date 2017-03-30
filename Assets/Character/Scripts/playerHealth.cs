@@ -17,7 +17,7 @@ public class playerHealth : MonoBehaviour
    
    private GameOver gameOverScript;
    
-   [HideInInspector]public int lives;
+   public int lives;
 
 	void Awake()
 	{

@@ -28,7 +28,8 @@ public class checkPlayerFall : MonoBehaviour
 		if (other.gameObject.CompareTag("Player"))
         {
             mainCamera.transform.position = cameraStartPosition;
-			GetComponent<playerHealth> ().loseLife ();
+			other.GetComponent<playerHealth> ().loseLife ();
+			Debug.Log ("player fell out of the world");
             
             // Reset mine cart position
             mineCart.transform.position = cartStartPosition;

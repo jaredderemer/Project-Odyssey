@@ -106,7 +106,7 @@ public class playerHealth : MonoBehaviour
 			lives = 4; // Same as five lives since the "fifth" life is currently being used and will not be displayed
 
 			// End Gameplay
-			gameOverScript.endGame ();
+			gameOverScript.endGame();
 		}
 		else
 		{

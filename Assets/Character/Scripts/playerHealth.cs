@@ -11,12 +11,18 @@ public class playerHealth : MonoBehaviour
 
    public Slider healthSlider;
    public GameObject playerDeathFX;
+	//public GameObject player;            DO WE NEED THIS?
    
    public static playerHealth Instance; // For access to playerHealth functions
    
    private GameOver gameOverScript;
    
    [HideInInspector]public int lives;
+
+	void Awake()
+	{
+		lives = 4;
+	}
 
    // Use this for initialization
    void Start ()
@@ -54,8 +60,7 @@ public class playerHealth : MonoBehaviour
 
       if (currentHealth <= 0)
       {
-         makeDead();
-         lives--;
+         loseLife();
          print("JOHN SUN DIED!!!");
       }
    }
@@ -92,18 +97,28 @@ public class playerHealth : MonoBehaviour
            healthBarFill.color = new Color(.96f, .26f, .21f); // Red
    }
 
-   public void makeDead ()
-   {
-      Instantiate(playerDeathFX, transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
-      //Destroy(gameObject);
-      gameObject.SetActive(false);
-      
-      // End Gameplay
-      gameOverScript.endGame();
-   }
-   
    public void savePlayerHealth ()
    {
       globalController.Instance.playerHealth = currentHealth;
+   }
+   
+   public void loseLife ()
+   {
+      lives--;
+      
+		if (lives < 0)
+		{
+			lives = 4; // Same as five lives since the "fifth" life is currently being used and will not be displayed
+
+			// End Gameplay
+			gameOverScript.endGame();
+		}
+		else
+		{
+			GetComponent<playerController> ().RespawnPlayer();
+			currentHealth = fullHealth;
+			globalController.Instance.playerHealth = fullHealth;
+			updateHealthSlider ();
+		}
    }
 }

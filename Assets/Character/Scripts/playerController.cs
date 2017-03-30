@@ -137,5 +137,10 @@ public class playerController : MonoBehaviour
    {
 		Debug.Log ("Respawn");
       myRB.position = spawnPosition;
+
+		if (!facingRight)
+		{
+			Flip ();
+		}
    }
 }

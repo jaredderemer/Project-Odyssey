@@ -34,11 +34,14 @@ public class PlayerControllerTest : MonoBehaviour
    // Update is called once per frame
    void Update()
    {
-		attacked = pushed;
+		//attacked = pushed; // Works with the tree but not with the monkey
    }
     // When working with physics objects
    void FixedUpdate()
    {
+		attacked = pushed; // Works with the monkey but not with the tree
+		// But if both are done then neither work....???
+
       if (grounded && Input.GetAxisRaw("Jump") > 0)
       {
          grounded = false;
@@ -83,12 +86,16 @@ public class PlayerControllerTest : MonoBehaviour
 			{
 				Flip ();
 			}
+			Debug.Log ("attacked: " + attacked);
+			Debug.Log ("pushed: " + pushed);
 		}
 		else
 		{
-			myRig.velocity = Vector3.zero;
+			myRig.velocity = new Vector3 (0, myRig.velocity.y, 0);
 
 			Debug.Log ("currentVelocity: " + myRig.velocity);
+			Debug.Log ("attacked: " + attacked);
+			Debug.Log ("pushed: " + pushed);
 		}
    }
 

@@ -4,26 +4,11 @@ using UnityEngine;
 
 public class MonkeyDetection : MonoBehaviour
 {
-	private bool playerInView = false;
-
-	void Start ()
-	{
-
-	}
-
-	void Update ()
-	{
-		if (playerInView)
-		{
-			followPlayer ();
-		}
-	}
-
 	void onTriggerEnter(Collider other)
 	{
 		if (other.tag == "Player")
 		{
-			playerInView = true;
+			GetComponent<MonkeyControllerTest>().playerInView = true;
 		}
 	}
 
@@ -31,12 +16,7 @@ public class MonkeyDetection : MonoBehaviour
 	{
 		if (other.tag == "Player")
 		{
-			playerInView = false;
+			GetComponent<MonkeyControllerTest>().playerInView = false;
 		}
-	}
-
-	void followPlayer()
-	{
-
 	}
 }

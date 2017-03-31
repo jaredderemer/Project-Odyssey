@@ -26,7 +26,7 @@ public class enterHut : MonoBehaviour
 	{
 		if (other.gameObject.CompareTag("Player"))
         {
-			byHut = true;
+            byHut = true;
         }
 	}
    
@@ -34,7 +34,8 @@ public class enterHut : MonoBehaviour
    {
       if(other.tag == "Player" && Input.GetKey("w"))
       {
-         if(true)//loadingScene == false)
+         // Check if loading has already been started
+         if(loadingScene == false)
          {
             // Save data before switching scenes 
             thePlayerHealth.savePlayerHealth();
@@ -42,7 +43,7 @@ public class enterHut : MonoBehaviour
             // Change scenes to loading
             UI.GetComponent<StartOptions>().StartLoadingScreen();
             
-            //loadingScene = true;
+            loadingScene = true;
          }
       }
    }

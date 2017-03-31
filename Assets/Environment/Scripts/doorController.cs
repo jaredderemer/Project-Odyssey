@@ -81,13 +81,13 @@ public class doorController : MonoBehaviour {
    /****************************************************************************
    * toBalcony                                                                 *
    * Move the positions of player and camera to balcony                        *
-   * Disable CameraFollow script                                               *
+   * Disable CameraFollow2 script                                               *
    ****************************************************************************/
    IEnumerator toBalcony(Transform target)
    {
       yield return new WaitForSeconds (1.0f);
       target.position = new Vector3 (-162.82f, 6.2f, 15.6f);
-      cam.GetComponent<CameraFollow> ().enabled = false;
+      cam.GetComponent<CameraFollow2> ().enabled = false;
       cam.transform.position = new Vector3 (-157.92f, 12.0f, 0f);
    }
 }

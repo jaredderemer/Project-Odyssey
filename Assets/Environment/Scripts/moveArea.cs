@@ -101,8 +101,8 @@ public class moveArea : MonoBehaviour {
          cam.transform.eulerAngles = new Vector3 (16.894f, 0.0f, 0.0f);
       }
 
-      cam.GetComponent<CameraFollow> ().minPosX = min;
-      cam.GetComponent<CameraFollow> ().maxPosX = max;
+      cam.GetComponent<CameraFollow2> ().minPosX = min;
+      cam.GetComponent<CameraFollow2> ().maxPosX = max;
    }
 
    /****************************************************************************

@@ -11,7 +11,7 @@ public class HUDTest : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        points = 45;
+        points = 10;
         updateScore(0);
     }
 

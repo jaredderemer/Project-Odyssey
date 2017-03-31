@@ -20,26 +20,26 @@ public class objectController : MonoBehaviour {
    private float yOffset;
    [SerializeField]
    private float zOffset;
-   //[SerializeField]
-   //private string note;
-   //private GameObject message;
-   //private GameObject messageTemp;
+   [SerializeField]
+   private string note;
+   private GameObject message;
+   private GameObject messageTemp;
    private Animator objAnim;
    private AudioSource objOpenAS;
    private bool isUsed;
    private bool displayed;
 
-   // Use this for initialization
-   void Start () 
+	// Use this for initialization
+	void Start () 
    {
       objAnim     = GetComponent<Animator> ();
       objOpenAS   = GetComponent<AudioSource> ();
       isUsed      = false;
       displayed   = false;
       //message     = GameObject.FindGameObjectWithTag ("Message");
-      //messageTemp = GameObject.FindGameObjectWithTag ("MessageTemp");
-   }
-
+      messageTemp = GameObject.FindGameObjectWithTag ("MessageTemp");
+	}
+	
    void OnTriggerStay(Collider target)
    {
       // When the player hits action key for the first time, open the chest
@@ -51,12 +51,11 @@ public class objectController : MonoBehaviour {
          if (gameObject.tag == "Locked") 
          {
             unlockObject (target);
-
          }
          else if (gameObject.tag == "Chest") 
          {
             unlockObject (target);
-            StartCoroutine(gameObject.GetComponent<rockVisible> ().makeVisible ());
+            GetComponent<rockVisible> ().makeVisible ();
          }
          else
          {
@@ -73,7 +72,7 @@ public class objectController : MonoBehaviour {
 
    void unlockObject (Collider target)
    {
-      if (target.GetComponent<Inventory2> ().removeItem (itemIDNeeded) == 1) 
+      if (target.GetComponent<Inventory2>().removeItem(itemIDNeeded)== 1) 
       {
          gameObject.tag = "Untagged";
          openObject ();
@@ -90,19 +89,19 @@ public class objectController : MonoBehaviour {
 
    void openObject ()
    {
-      objAnim.SetTrigger ("activateObject");
-      objOpenAS.Play ();
-      isUsed = true;
-      StartCoroutine(instantiateObj ());
-      //message.GetComponent<noteDisplay>().displayMessage("");
+         objAnim.SetTrigger ("activateObject");
+         objOpenAS.Play ();
+         isUsed = true;
+         StartCoroutine(instantiateObj ());
+         //message.GetComponent<noteDisplay>().displayMessage("");
    }
 
    IEnumerator instantiateObj()
    {
       yield return new WaitForSeconds (1.0f);
       Instantiate (collectible, new Vector3 (transform.position.x + xOffset, 
-         transform.position.y + yOffset, 
-         transform.position.z + zOffset), 
-         transform.rotation);
+                                             transform.position.y + yOffset, 
+                                             transform.position.z + zOffset), 
+                                             transform.rotation);
    }
 }

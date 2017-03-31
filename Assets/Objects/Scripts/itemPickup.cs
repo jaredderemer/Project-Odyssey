@@ -16,14 +16,12 @@ public class itemPickup : MonoBehaviour
         //itemObject = gameObject;
 
         prefab = (GameObject)Resources.Load(itemObject.name);
-        itemTran = itemObject.transform;
+        //itemTran = itemObject.transform;
     }
 
    // Add item to player inventory
    void OnTriggerEnter(Collider other)
    {
-       print("ITEM SCALE: INVENTORY!! -> " + itemTran.transform.localScale.x);
-      
       if (other.gameObject.CompareTag("Player"))
       {
           GameObject screenObject = Instantiate(itemObject);

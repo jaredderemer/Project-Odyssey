@@ -74,7 +74,7 @@ public class Inventory2 : MonoBehaviour
             inventory[i].quantity  += itemQuantity;
             inventory[i].itemObject = itemObject;
             inventory[i].itemObject.transform.parent   = slot[i];
-            inventory[i].itemObject.transform.position = slot[i].position;
+            inventory[i].itemObject.transform.position = itemTran.position;
             inventory[i].itemObject.transform.localScale = itemTran.localScale;
 
             //inventory[i].itemObject.transform.position = slot[i].GetChild<itemSlotTransformer>.transform;

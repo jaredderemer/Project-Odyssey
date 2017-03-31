@@ -67,6 +67,15 @@ public class playerController : MonoBehaviour
       float sprinting = Input.GetAxisRaw("Fire3");
       myAnim.SetFloat("sprinting", sprinting);
 
+   
+      // Player uses a coconut!!!
+      if (Input.inputString == "c")
+      {
+
+         this.GetComponent<playerAttacks>().rangeAttack();
+         //gameObject<playerAttacks>().rangeAttack();
+      }
+
       if (sprinting > 0 && grounded)
       {
          myRB.velocity = new Vector3(move * sprintSpeed, myRB.velocity.y, 0);

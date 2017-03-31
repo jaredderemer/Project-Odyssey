@@ -70,15 +70,15 @@ public class Inventory2 : MonoBehaviour
          // Look for empty cell
          if (inventory[i].itemID == 0)
          {
+            itemObject.transform.localPosition = new Vector3(0, 0, 0);
+            itemObject.transform.position      = new Vector3(0, 0, 0);
             inventory[i].itemID     = itemID;
             inventory[i].quantity  += itemQuantity;
             inventory[i].itemObject = itemObject;
             inventory[i].itemObject.transform.parent   = slot[i];
-            inventory[i].itemObject.transform.position = itemTran.position;
+            inventory[i].itemObject.transform.localPosition = itemTran.position;
             inventory[i].itemObject.transform.localScale = itemTran.localScale;
 
-            //inventory[i].itemObject.transform.position = slot[i].GetChild<itemSlotTransformer>.transform;
-            
             return 1;  // Returns 1 if the item has been placed.
          }
          // Look for same item to increase quantity
@@ -148,7 +148,6 @@ public class Inventory2 : MonoBehaviour
 
            if (inventory[0].itemID != 0)
            {
-               //Rigidbody itemInstance = Instantiate(inventory[0].itemObject.GetComponent<Rigidbody>(), gameObject.transform.position, Quaternion.identity) as Rigidbody; 
                removeItem (inventory[0].itemID);
            }
            else

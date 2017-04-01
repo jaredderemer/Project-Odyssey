@@ -12,6 +12,7 @@ public class PlayerControllerTest : MonoBehaviour
    Animator myAnim;
 
    [HideInInspector] public bool facingRight;
+   private float attacking;
 
    // For Jumping
    [HideInInspector] public bool grounded = false; // Character is starting off the ground, otherwise change to true
@@ -40,7 +41,14 @@ public class PlayerControllerTest : MonoBehaviour
    void FixedUpdate()
    {
 		attacked = pushed; // Works with the monkey but not with the tree
-		// But if both are done then neither work....???
+                         // But if both are done then neither work....???
+
+      attacking = Input.GetAxisRaw("Fire1");
+      myAnim.SetFloat("attacking", attacking);
+      if ((attacking > 0) && (Input.GetAxisRaw("Fire1") > 0))
+      {
+         myAnim.SetFloat("attacking", attacking);
+      }
 
       if (grounded && Input.GetAxisRaw("Jump") > 0)
       {

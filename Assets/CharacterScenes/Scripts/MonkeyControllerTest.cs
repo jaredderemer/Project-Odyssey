@@ -23,7 +23,16 @@ public class MonkeyControllerTest : MonoBehaviour {
 		}
 	}
 
-	void move()
+   void FixedUpdate()
+   {
+      bool attacking = Input.GetKey("F");
+      if (attacking)
+      {
+         
+      }
+   }
+
+   void move()
 	{
 		// This is where the animation states will change depending on where the character is in relation to the monkey
 	}

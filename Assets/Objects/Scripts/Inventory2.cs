@@ -62,7 +62,7 @@ public class Inventory2 : MonoBehaviour
   
      
    // Adds an item to the list, returns a message if successful
-   public int addItem(int itemID, int itemQuantity, GameObject itemObject)
+   public int addItem(int itemID, int itemQuantity, GameObject itemObject, Transform itemTran)
    { 
       
       for (int i = 0; i < numItemSlots; i++)
@@ -70,11 +70,14 @@ public class Inventory2 : MonoBehaviour
          // Look for empty cell
          if (inventory[i].itemID == 0)
          {
+            itemObject.transform.localPosition = new Vector3(0, 0, 0);
+            itemObject.transform.position      = new Vector3(0, 0, 0);
             inventory[i].itemID     = itemID;
             inventory[i].quantity  += itemQuantity;
             inventory[i].itemObject = itemObject;
             inventory[i].itemObject.transform.parent   = slot[i];
-            //inventory[i].itemObject.transform.position = slot[i].position;
+            inventory[i].itemObject.transform.localPosition = itemTran.position;
+            inventory[i].itemObject.transform.localScale = itemTran.localScale;
 
             return 1;  // Returns 1 if the item has been placed.
          }
@@ -109,7 +112,7 @@ public class Inventory2 : MonoBehaviour
          }
          if (i == (numItemSlots - 1))
          {
-             //print("Item not found"); 
+             print("Item not found"); 
              return 0;     
          }
       }
@@ -145,7 +148,6 @@ public class Inventory2 : MonoBehaviour
 
            if (inventory[0].itemID != 0)
            {
-               //Rigidbody itemInstance = Instantiate(inventory[0].itemObject.GetComponent<Rigidbody>(), gameObject.transform.position, Quaternion.identity) as Rigidbody; 
                removeItem (inventory[0].itemID);
            }
            else
@@ -161,12 +163,12 @@ public class Inventory2 : MonoBehaviour
 /************************************
 Item ID  ------- Item Name 
 000  ------------ empty
-001  ------------ Chest Key
-002  ------------ Pick Axe
-003  ------------ Map
-004  ------------ Gate Key
-005  ------------ Bedroom Key
-006  ------------ Secretary Key
-007  ------------ Poolhouse Key
+001  ------------ coconut
+002  ------------ KeyItem
+003  ------------
+004  ------------
+005  ------------
+006  ------------
+007  ------------
 
 *************************************/

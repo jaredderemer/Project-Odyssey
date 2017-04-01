@@ -5,29 +5,35 @@ using UnityEngine.UI;
 
 public class itemPickup : MonoBehaviour 
 {
-   public int itemId;
-   public int itemQuantity = 0;
-    
+   public int itemID;
+   public int itemQuantity;
+   public GameObject itemObject;
+   GameObject prefab;
+   public Transform itemTran;
+    	
+    void Start()
+    {
+        //itemObject = gameObject;
 
-	// Use this for initialization
-	void Start () 
-	{
-       
-	}
-	
-	// Update is called once per frame
-    void Update() 
-	{   
-       
-	}
-	
-	// Add item to player inventory
-	void OnTriggerEnter(Collider other)
-	{
-        if (other.gameObject.CompareTag("Player"))
-        {
-            //other.GetComponent<Inventory>().addItem(itemId, itemQuantity);
-            Destroy(gameObject);
-        }
-	}
+        prefab = (GameObject)Resources.Load(itemObject.name);
+        itemTran = itemObject.transform;
+        
+    }
+
+   // Add item to player inventory
+   void OnTriggerEnter(Collider other)
+   {
+       print("ITEM SCALE: INVENTORY!! -> " + itemTran.transform.localScale.x);
+      
+      if (other.gameObject.CompareTag("Player"))
+      {
+          GameObject screenObject = Instantiate(itemObject);
+          //Debug.Log(other.GetComponent<Inventory2>().addItem(itemID, itemQuantity));
+          if (other.GetComponent<Inventory2>().addItem(itemID, itemQuantity, screenObject, itemTran) == 0)
+              print("Pickup failed..inventory full");
+          else
+              Destroy(gameObject);
+         
+      }
+   }
 }

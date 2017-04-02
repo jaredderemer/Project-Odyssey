@@ -7,7 +7,7 @@ public class MonkeyControllerTest : MonoBehaviour
 	public float moveSpeed;
 	public bool facingRight;
 
-	private bool playerInView;
+	private bool detected;
 	private GameObject player;
 	private Animator myAnim;
 	private Rigidbody myRB;
@@ -15,7 +15,7 @@ public class MonkeyControllerTest : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		playerInView = false;
+		detected = false;
 		player = GameObject.FindGameObjectWithTag ("Player");
 		myRB = gameObject.GetComponent<Rigidbody> ();
 		myAnim = gameObject.GetComponent<Animator> ();
@@ -28,17 +28,17 @@ public class MonkeyControllerTest : MonoBehaviour
 
 	void onTriggerEnter(Collider other)
 	{
-		if (other.tag == "Player")
+		if (other.tag == "Player" && !detected)
 		{
 			// The monkey will continue to follow the player until it either dies or falls off the map
-			playerInView = true;
+			detected = true;
 			Debug.Log ("Player found");
 		}
 	}
 
    void FixedUpdate()
    {
-		if (playerInView)
+		if (detected)
 		{
 			move ();
 		}

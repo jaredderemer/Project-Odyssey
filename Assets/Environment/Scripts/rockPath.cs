@@ -30,6 +30,7 @@ public class rockPath : MonoBehaviour {
       if (col.tag == "Player" && Input.GetKey (KeyCode.E)) 
       {
          //isTriggered = true;
+         StartCoroutine (moveToggle ());
          StartCoroutine (makePath ());
       }
    }
@@ -38,7 +39,7 @@ public class rockPath : MonoBehaviour {
    {
       if (isTriggered) 
       {
-         StartCoroutine (moveToggle ());
+         //StartCoroutine (moveToggle ());
       }
    }
 

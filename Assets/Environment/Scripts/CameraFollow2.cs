@@ -112,36 +112,35 @@ public class CameraFollow2 : MonoBehaviour
 
    private float followPathTwo ()
    {
-      float posY;
-     
-      if (player.position.x >= 202.0f && 
-          player.position.x <= 214.5f &&
-          player.position.y < 7.0f) 
-      {
-         posY = 1.8f;
-      }
-      else if (player.position.y >= 13.5f) 
-      {
-         posY = 14.0f;
-      } 
-      else if (player.position.y >= 6.5f) 
-      {
-         posY = 10.0f;
-      } 
-      else if (player.position.y >= 1.2f) 
-      {
-         posY = 4.0f;  
-      }  
-      else if (player.position.y >= -3.5f) 
-      {
-         posY = 0.55f;
-      }
-      else 
-      {
-         posY = player.position.y;
-      }
+        float posY;
 
-      return posY;
+            if (player.position.x >= 202.0f && 
+                player.position.x <= 214.5f &&
+                player.position.y < 7.2f) 
+            {
+                posY = 5.0f;
+            }
+            else if (player.position.y >= 16f) 
+            {
+                posY = 18.0f;
+            } 
+            else if (player.position.y >= 7.2f) 
+            {
+                posY = 14.0f;
+            } 
+            else if (player.position.y >= 1.2f)
+            {
+                    posY = 8.0f;  
+            }  
+            else if (player.position.y >= -5.0f) 
+            {
+                posY = 4.0f;
+            }
+            else 
+            {
+                posY = player.position.y;
+            }
+            return posY;
    }
 
    private float followPathThree ()

@@ -41,7 +41,13 @@ public class playerAttacks : MonoBehaviour
    public void rangeAttack()
    {
        Rigidbody coconutInstance = Instantiate(coconut, FireTransform.position + gameObject.transform.position, FireTransform.rotation) as Rigidbody;
-       coconutInstance.velocity = new Vector3(x, y, 0);
+       
+       // Check which way to throw
+      if(this.GetComponent<playerController>().facingRight)
+         coconutInstance.velocity = new Vector3(x, y, 0);
+      else
+         coconutInstance.velocity = new Vector3(-x, y, 0);
+      
        Debug.Log(FireTransform.position + gameObject.transform.position);
    }
 }

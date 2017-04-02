@@ -57,10 +57,14 @@ public class CameraFollow2 : MonoBehaviour
       Vector3 pos = new Vector3();
 
       pos.x   = player.position.x;
-      if (player.GetComponent<playerController> ().facingRight) 
-      {
-         pos.x += 5.0f; // Keeps camera slightly in front of player
-      } 
+		if (player.GetComponent<playerController> ().facingRight)
+		{
+			pos.x += 5.0f; // Keeps camera slightly in front of player
+		}
+		else
+		{
+			pos.x -= 5.0f;
+		}
 
       switch (path) 
       {

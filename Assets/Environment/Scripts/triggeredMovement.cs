@@ -1,8 +1,7 @@
 ﻿/*******************************************************************************
 * Author          MM/DD/YY  HH24:MM    Description                             *
-* Juju Moong      02/24/17  15:32      When the button is hit, move the tile   *
+* Juju Moong      02/24/17  15:32      When the toggle is hit, move the tile   *
 *                                                                              *
-* TYRING TO COMBINE WITH CART CONTROLLER BECAUSE MOST OF THE CODE ARE THE SAME *
 *******************************************************************************/
 
 using System.Collections;
@@ -36,7 +35,7 @@ public class triggeredMovement : MonoBehaviour {
       if (collider.tag == "Weapon") // NOTE: CHANGE TO WEAPON? WHEN COCONUTS ARE READY
       {
          isTriggered = true;
-         gameObject.transform.eulerAngles = new Vector3 (0f, 0f, 120.0f);
+         StartCoroutine(rotateToggle ());
       }
    }
 
@@ -46,6 +45,13 @@ public class triggeredMovement : MonoBehaviour {
       {
          StartCoroutine(animateTile());
       }
+   }
+
+   IEnumerator rotateToggle ()
+   {
+      gameObject.transform.eulerAngles = new Vector3 (0f, 0f, 120.0f);
+      yield return new WaitForSeconds (2.0f);
+      gameObject.transform.eulerAngles = new Vector3 (0f, 0f, 60.0f);
    }
 
    /***************************************************************************

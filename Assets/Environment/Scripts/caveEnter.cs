@@ -17,11 +17,10 @@ public class caveEnter : MonoBehaviour {
    private Transform player;
    private Vector3 desiredPosition;
    private Vector3 moveVelocity;
-   
-   public GameObject vignette;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+   {
       player          = GameObject.FindGameObjectWithTag ("Player").transform;
       isTriggered     = false;
 	}
@@ -47,9 +46,6 @@ public class caveEnter : MonoBehaviour {
       if (player.position.x >= (desiredPosition.x - 0.5f)) 
       {
          isTriggered = false;
-         
-         vignette.SetActive(true);
-         GameObject.Find("temp").SetActive(false);
       }
    }
 }

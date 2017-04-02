@@ -1,7 +1,6 @@
 ﻿/*******************************************************************************
 * Author          MM/DD/YY  HH24:MM    Description                             *
-* Juju Moong      03/18/17  13:42      Change the light color and enable       *
-*                                      camera vignette effect                  *
+* Juju Moong      03/18/17  13:42      Change the light color                  *
 *                                                                              *
 *******************************************************************************/
 using System.Collections;
@@ -11,6 +10,8 @@ using UnityStandardAssets.ImageEffects;
 
 public class lightColorController : MonoBehaviour {
  
+   public GameObject vignette;
+
    private GameObject mask;
    private Light caveLight;
    private Transform player;
@@ -30,15 +31,15 @@ public class lightColorController : MonoBehaviour {
       if (player.position.x >= -8.0f && notSet) 
       {
          changeColor (245.0f/255.0f, 195.0f/255.0f, 70.0f/255.0f);
-         Camera.main.GetComponent<VignetteAndChromaticAberration> ().enabled = true;
          mask.SetActive (false);
+         vignette.SetActive(true);
          notSet = false;
       } 
       else if (player.position.x < -8.0f && !notSet)
       {
          changeColor (255.0f/255.0f, 244.0f/255.0f, 216.0f/255.0f);
-         Camera.main.GetComponent<VignetteAndChromaticAberration> ().enabled = false;
          mask.SetActive (true);
+         vignette.SetActive(false);
          notSet = true;
       }
    }

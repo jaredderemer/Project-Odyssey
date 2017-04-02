@@ -13,7 +13,7 @@ public class trapDamage : MonoBehaviour {
       {
          if (other.gameObject.CompareTag ("Player")) 
          {
-            other.GetComponent<playerHealth> ().addDamage (damageAmount * Time.deltaTime);
+            other.GetComponent<playerHealth> ().addDamage (damageAmount * Time.deltaTime * 10.0f);
          }
       }
    }

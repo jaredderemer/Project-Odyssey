@@ -73,7 +73,7 @@ public class objectController : MonoBehaviour {
 
    void unlockObject (Collider target)
    {
-      if (true)//target.GetComponent<Inventory2> ().removeItem (itemIDNeeded) == 1) 
+      if (target.GetComponent<Inventory2> ().removeItem (itemIDNeeded) == 1) 
       {
          gameObject.tag = "Untagged";
          openObject ();

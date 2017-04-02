@@ -5,7 +5,7 @@ using UnityEngine;
 public class globalController : MonoBehaviour
 {
 	public float  playerHealth;
-    public int currentSceneIndex;
+   public int currentSceneIndex;
 
 	[HideInInspector]public Dictionary<int, Vector3> spawnpoints = new Dictionary<int, Vector3> ();
 	public GameObject scene1Spawnpoint;

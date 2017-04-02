@@ -98,12 +98,20 @@ public class playerController : MonoBehaviour
             myRB.velocity = new Vector3(move * runSpeed, myRB.velocity.y, 0);
          }
       }
-      else if(!grounded &&  onWall)
+      else if(grounded &&  onWall)
       {
          // Stop movement
          //myRB.velocity = new Vector3(0, .04f, 0);
          myRB.AddForce(new Vector3(0, -1.0f, 0));
          Debug.Log("Adding force down");
+      }
+      
+      // Player uses a coconut!!!
+      if (Input.inputString == "c")
+      {
+
+         this.GetComponent<playerAttacks>().rangeAttack();
+         //gameObject<playerAttacks>().rangeAttack();
       }
       
       

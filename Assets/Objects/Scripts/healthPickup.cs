@@ -30,7 +30,7 @@ public class healthPickup : MonoBehaviour
 		// Check if event was triggered by the Player object
         if (other.gameObject.CompareTag("Player"))
         {
-			// Add health to Player and destroy the banana object
+            // Add health to Player and destroy the banana object
             other.GetComponent<playerHealth>().addHealth(healthAmount);
 
             Destroy(gameObject);

@@ -32,15 +32,18 @@ public class playerHealth : MonoBehaviour
       // Initialize character health
       if(GameObject.Find("globalController") != null)
       {
-         //currentHealth = globalController.Instance.playerHealth;
+         currentHealth = globalController.Instance.playerHealth;
          
          //For testing
-         currentHealth = fullHealth;
+         //currentHealth = fullHealth;
          updateHealthSlider();
+         
+         Debug.Log("Health Initialized: " + currentHealth);
       }
       else
       {
          currentHealth = fullHealth;
+         Debug.Log("Health Initialized: " + currentHealth);
       }
    }
 
@@ -81,6 +84,9 @@ public class playerHealth : MonoBehaviour
    // Update the health bar color based on health percentage
    public void updateHealthSlider ()
    {
+      
+      Debug.Log("Current Health: " + currentHealth);
+      
        float currHealthPercent = (currentHealth / fullHealth);
        
        // Update health bar slider value

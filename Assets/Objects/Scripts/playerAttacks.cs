@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using System;   // DELETE
-using System.IO;// DELETE
-
 public class playerAttacks : MonoBehaviour 
 {
 
@@ -12,24 +9,22 @@ public class playerAttacks : MonoBehaviour
     public Rigidbody coconut;
     public Transform FireTransform;
     private string Fire_Button;
-
-    
+    public int x;
+    public int y;
 
 	// Use this for initialization
 	void Start () 
     {
-        var fileName = "Nicks Debugger.txt";
-
-        if (File.Exists(fileName))
-        {
-            Debug.Log(fileName + " already exists.");
-            return;
-        }
-
-        var sr = File.CreateText(fileName);
-        sr.WriteLine("This Is to test the Values of the Inventory. \n");
-        sr.Close();
+		
 	}
+	
+	// Update is called once per frame
+	void Update () 
+    {
+
+	}
+
+    
 
     
    void meleeAttack()
@@ -45,8 +40,14 @@ public class playerAttacks : MonoBehaviour
    // Creates a coconut infront of player
    public void rangeAttack()
    {
-       Rigidbody coconutInstance = Instantiate(coconut, FireTransform.position + gameObject.transform.position, FireTransform.rotation) as Rigidbody;
-       Debug.Log(FireTransform.position + gameObject.transform.position);
-       //Instantiate(coconutInstance);
+      Rigidbody coconutInstance = Instantiate(coconut, FireTransform.position + gameObject.transform.position, FireTransform.rotation) as Rigidbody;
+       
+      // Check which way to throw
+      if(this.GetComponent<playerController>().facingRight)
+         coconutInstance.velocity = new Vector3(x, y, 0);
+      else
+         coconutInstance.velocity = new Vector3(-x, y, 0);
+      
+      Debug.Log(FireTransform.position + gameObject.transform.position);
    }
 }

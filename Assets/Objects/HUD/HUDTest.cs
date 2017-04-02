@@ -18,7 +18,6 @@ public class HUDTest : MonoBehaviour
     // Updates the score of that the player earned
     public void updateScore(int pointsEarned)
     {
-        print("Point: ");
         points += pointsEarned;
         string text = string.Format("Score: " + points.ToString());
         Score.text = text;

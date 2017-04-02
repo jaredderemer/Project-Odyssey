@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class playerAmmo : MonoBehaviour 
 {
@@ -22,8 +23,11 @@ public class playerAmmo : MonoBehaviour
     public void ammoPickup(int ammoCount)
     {
         if (coconuts < 99)
+        {
             coconuts += ammoCount;
-        // keeping ammo cap to 99
-
+            
+            // Update HUD
+            GameObject.Find("coconutAmount").GetComponent<Text>().text = coconuts.ToString();
+        }
     }
 }

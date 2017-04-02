@@ -40,14 +40,19 @@ public class playerAttacks : MonoBehaviour
    // Creates a coconut infront of player
    public void rangeAttack()
    {
-      Rigidbody coconutInstance = Instantiate(coconut, FireTransform.position + gameObject.transform.position, FireTransform.rotation) as Rigidbody;
+      // Check if coconuts are available
+      if(GetComponent<playerAmmo>().coconuts > 0)
+      {
+         Rigidbody coconutInstance = Instantiate(coconut, FireTransform.position + gameObject.transform.position, FireTransform.rotation) as Rigidbody;
        
-      // Check which way to throw
-      if(this.GetComponent<playerController>().facingRight)
-         coconutInstance.velocity = new Vector3(x, y, 0);
-      else
-         coconutInstance.velocity = new Vector3(-x, y, 0);
-      
-      Debug.Log(FireTransform.position + gameObject.transform.position);
+         // Check which way to throw
+         if(this.GetComponent<playerController>().facingRight)
+            coconutInstance.velocity = new Vector3(x, y, 0);
+         else
+            coconutInstance.velocity = new Vector3(-x, y, 0);
+         
+         // Subtract coconut from ammo
+         GetComponent<playerAmmo>().ammoUse();
+      }
    }
 }

@@ -20,14 +20,23 @@ public class playerAmmo : MonoBehaviour
 		
 	}
 
-    public void ammoPickup(int ammoCount)
-    {
-        if (coconuts < 99)
-        {
-            coconuts += ammoCount;
-            
-            // Update HUD
-            GameObject.Find("coconutAmount").GetComponent<Text>().text = coconuts.ToString();
-        }
-    }
+   public void ammoPickup(int ammoCount)
+   {
+      if (coconuts < 99)
+      {
+         coconuts += ammoCount;
+         
+         // Update HUD
+         GameObject.Find("coconutAmount").GetComponent<Text>().text = coconuts.ToString();
+      }
+   }
+    
+   public void ammoUse()
+   {
+      // Subtract one from the coconuts
+      coconuts--;
+      
+      // Update HUD
+      GameObject.Find("coconutAmount").GetComponent<Text>().text = coconuts.ToString();
+   }
 }

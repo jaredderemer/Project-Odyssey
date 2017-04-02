@@ -4,12 +4,14 @@
 *                                      Set X endpoints so that the camera      *
 *                                      won't go pass them                      *
 * Will Reaves                          ????
-* Juju Moong      03/06/17  23:00      ????
+* Juju Moong      03/06/17  23:00      Change the way the camera follows player*
+* Juju Moong      03/22/17  22:15      Modify followPathThree()                *
 *                                                                              *
 *******************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.ImageEffects;
 
 public class CameraFollow2 : MonoBehaviour
 {
@@ -18,20 +20,20 @@ public class CameraFollow2 : MonoBehaviour
    public float minPosX;
    public int path;
 
-   private float originalY;
    private Transform player;
-   private Vector3 desiredPosition;
    private Vector3 moveVelocity;
+   private Vector3 desiredPosition;
+   private float originalY;
 
    private void Start ()
    {
-      player    = GameObject.FindGameObjectWithTag ("Player").transform;
+      player = GameObject.FindGameObjectWithTag ("Player").transform;
       originalY = transform.position.y;
    }
 
    private void FixedUpdate()
    {
-      if (player != null) 
+      if (player != null)
       {
          if (player.position.x >= maxPosX || player.position.x <= minPosX) 
          {
@@ -70,6 +72,12 @@ public class CameraFollow2 : MonoBehaviour
          case 2:
             pos.y = followPathTwo ();
             break;
+         case 3:
+            pos.y = followPathThree ();
+            break;
+         case 4:
+            pos.y = followPathFour ();
+            break;
       }
 
       pos.z = transform.position.z;
@@ -102,35 +110,81 @@ public class CameraFollow2 : MonoBehaviour
       return posY;
    }
 
-   private float followPathTwo()
+   private float followPathTwo ()
+   {
+        float posY;
+
+            if (player.position.x >= 202.0f && 
+                player.position.x <= 214.5f &&
+                player.position.y < 7.2f) 
+            {
+                posY = 5.0f;
+            }
+            else if (player.position.y >= 16f) 
+            {
+                posY = 18.0f;
+            } 
+            else if (player.position.y >= 7.2f) 
+            {
+                posY = 14.0f;
+            } 
+            else if (player.position.y >= 1.2f)
+            {
+                    posY = 8.0f;  
+            }  
+            else if (player.position.y >= -5.0f) 
+            {
+                posY = 4.0f;
+            }
+            else 
+            {
+                posY = player.position.y;
+            }
+            return posY;
+   }
+
+   private float followPathThree ()
    {
       float posY;
 
-      if (player.position.x >= 202.0f && 
-          player.position.x <= 214.5f &&
-          player.position.y < 7.2f) 
+      if (player.position.x >= 25.0f && player.position.x < 116.0f) 
       {
-         posY = 5.0f;
-      }
-      else if (player.position.y >= 16f) 
-      {
-         posY = 18.0f;
+         posY = 8.0f;
       } 
-      else if (player.position.y >= 7.2f) 
+      else if (player.position.x <= -175.0f) 
+      {
+         posY = 7.75f;
+      }
+      else if (player.position.y >= 3.5f) 
       {
          posY = 14.0f;
-      } 
-      else if (player.position.y >= 1.2f)
-      {
-            posY = 8.0f;  
-      }  
-      else if (player.position.y >= -5.0f) 
-      {
-         posY = 4.0f;
       }
       else 
       {
-         posY = player.position.y;
+         posY = 4.5f;
+      }
+      return posY;
+   }
+
+   private float followPathFour ()
+   {
+      float posY;
+
+      if (player.position.y >= 17f) 
+      {
+         posY = 22.0f;
+      } 
+      else if (player.position.y >= 12.0f) 
+      {
+         posY = 16.0f;
+      }
+      else if (player.position.x >= 25.5f && player.position.x <= 106.5f) 
+      {
+         posY = 11.0f;
+      }
+      else
+      {
+         posY = 5.65f;
       }
       return posY;
    }

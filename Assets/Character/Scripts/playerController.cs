@@ -73,7 +73,6 @@ public class playerController : MonoBehaviour
       {
 
          this.GetComponent<playerAttacks>().rangeAttack();
-         //gameObject<playerAttacks>().rangeAttack();
       }
 
       if (sprinting > 0 && grounded)

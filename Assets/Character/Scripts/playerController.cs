@@ -53,6 +53,10 @@ public class playerController : MonoBehaviour
 				{
 					spawnPosition = new Vector3 (0.0f, 0.5f, gameObject.transform.position.z);
 				}
+				if (globalController.Instance.currentSceneIndex == 3 && myRB.transform.position.x < spawnPosition.x)
+				{
+					spawnPosition = new Vector3 (-23.0f, -2.5f, gameObject.transform.position.z);
+				}
 			}
 		}
    }

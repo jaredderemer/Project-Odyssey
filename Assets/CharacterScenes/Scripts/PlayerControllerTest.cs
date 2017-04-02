@@ -94,24 +94,23 @@ public class PlayerControllerTest : MonoBehaviour
 			{
 				Flip ();
 			}
-			Debug.Log ("attacked: " + attacked);
-			Debug.Log ("pushed: " + pushed);
+			//Debug.Log ("attacked: " + attacked);
+			//Debug.Log ("pushed: " + pushed);
 		}
 		else
 		{
 			myRig.velocity = new Vector3 (0, myRig.velocity.y, 0);
 
-			Debug.Log ("currentVelocity: " + myRig.velocity);
-			Debug.Log ("attacked: " + attacked);
-			Debug.Log ("pushed: " + pushed);
+			//Debug.Log ("currentVelocity: " + myRig.velocity);
+			//Debug.Log ("attacked: " + attacked);
+			//Debug.Log ("pushed: " + pushed);
 		}
    }
 
    void Flip()
    {
-              facingRight          = !facingRight;
-      Vector3 zedScale             = transform.localScale;
-              zedScale.z          *= -1;
-              transform.localScale = zedScale;
+		gameObject.transform.rotation = Quaternion.Euler (new Vector3 (0.0f, facingRight ? -100.0f : 100.0f, 0.0f));
+
+		facingRight = !facingRight;
    }
 }

@@ -26,7 +26,6 @@ public class checkPlayerFall : MonoBehaviour
         {
             other.GetComponent<playerHealth> ().loseLife ();
 			Debug.Log ("player fell out of the world");
-			mainCamera.transform.position = new Vector3 (other.transform.position.x, other.transform.position.y + 5.0f, mainCamera.transform.position.z);
             
             // Reset mine cart position
             mineCart.transform.position = cartStartPosition;

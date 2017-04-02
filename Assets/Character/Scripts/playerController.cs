@@ -46,6 +46,13 @@ public class playerController : MonoBehaviour
 			if (spawnPosition != globalController.Instance.spawnpoints [globalController.Instance.currentSceneIndex])
 			{
 				spawnPosition = globalController.Instance.spawnpoints [globalController.Instance.currentSceneIndex];
+
+				// keeps the player from respawning into the cave if he dies before reaching the cave
+				// he will simply respawn in front of the hut
+				if (globalController.Instance.currentSceneIndex == 3 && myRB.transform.position.x < spawnPosition.x)
+				{
+					spawnPosition = new Vector3 (0.0f, 0.5f, gameObject.transform.position.z);
+				}
 			}
 		}
    }
@@ -134,10 +141,9 @@ public class playerController : MonoBehaviour
 
    public void Flip()
    {
-      facingRight = !facingRight;
-      Vector3 zedScale = transform.localScale;
-      zedScale.z *= -1;
-      transform.localScale = zedScale;
+		gameObject.transform.rotation = Quaternion.Euler (new Vector3 (0.0f, facingRight ? -100.0f : 100.0f, 0.0f));
+
+		facingRight = !facingRight;
    }
    
    // Respawn player to starting position in scene

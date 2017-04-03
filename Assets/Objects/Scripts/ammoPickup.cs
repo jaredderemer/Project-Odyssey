@@ -24,7 +24,7 @@ public class ammoPickup : MonoBehaviour
 	{
         if (other.gameObject.CompareTag("Player"))
         {
-            other.GetComponent<playerAmmo>().ammoPickup(ammoAmount);
+            other.GetComponent<playerAttacks>().ammoPickup(ammoAmount);
             Destroy(gameObject);
         }
 	}

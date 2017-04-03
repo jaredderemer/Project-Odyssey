@@ -5,7 +5,7 @@ using UnityEngine;
 public class objectDestroy : MonoBehaviour {
 
    public float lifetime; // Time before object is destroyed
-   public GameObject disappearEffect;
+   //public GameObject disappearEffect;
    
    
    
@@ -18,6 +18,7 @@ public class objectDestroy : MonoBehaviour {
    
    void OnDestroy ()
    {
-      Instantiate(disappearEffect, this.gameObject.transform.position, this.gameObject.transform.rotation);
+      // Make object poof when it disappears??? Mabe later
+      //Instantiate(disappearEffect, this.gameObject.transform.position, this.gameObject.transform.rotation);
    }
 }

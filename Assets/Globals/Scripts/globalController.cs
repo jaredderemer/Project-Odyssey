@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class globalController : MonoBehaviour
 {
-	public float  playerHealth;
+	public float playerHealth;
+   public int playerAmmo;
+   public int playerScore;
    public int currentSceneIndex;
 
 	[HideInInspector]public Dictionary<int, Vector3> spawnpoints = new Dictionary<int, Vector3> ();
@@ -17,7 +19,8 @@ public class globalController : MonoBehaviour
    
 	void Start ()
 	{
-		playerHealth = 100;
+		playerHealth = 100.0f;
+      playerAmmo   = 0;
 
 		spawnpoints [2] = scene1Spawnpoint.transform.position;
 		spawnpoints [3] = scene2Spawnpoint.transform.position;

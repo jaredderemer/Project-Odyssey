@@ -39,4 +39,10 @@ public class playerAmmo : MonoBehaviour
       // Update HUD
       GameObject.Find("coconutAmount").GetComponent<Text>().text = coconuts.ToString();
    }
+   
+   public void savePlayerAmmo ()
+   {
+      // Save current ammo into global
+      globalController.Instance.playerAmmo = coconuts;
+   }
 }

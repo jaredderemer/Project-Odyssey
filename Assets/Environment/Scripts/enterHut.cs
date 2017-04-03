@@ -31,7 +31,7 @@ public class enterHut : MonoBehaviour
    
    void OnTriggerStay(Collider other)
    {
-      if(other.tag == "Player" && Input.GetKey("e"))
+      if(other.tag == "Player" && Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
       {
          // Check if loading has already been started
          if(loadingScene == false)

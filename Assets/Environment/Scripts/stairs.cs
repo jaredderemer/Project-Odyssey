@@ -22,7 +22,7 @@ public class stairs : MonoBehaviour {
 	
    void OnTriggerStay (Collider col)
    {
-      if (col.tag == "Player" && Input.GetKey(KeyCode.W))
+      if (col.tag == "Player" && Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
       {
          if (isDown) 
          {

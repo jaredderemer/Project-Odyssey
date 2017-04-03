@@ -35,13 +35,14 @@ public class doorController : MonoBehaviour {
 	
    void OnTriggerEnter (Collider col)
    {
-      messageTemp.GetComponent<noteDisplay> ().displayMessage ("Press E to enter");
+      messageTemp.GetComponent<noteDisplay> ().displayMessage ("Press W to enter");
    }
 
    void OnTriggerStay (Collider target)
    {
       // When the player hits action key, open the door 
-      if (Input.GetKey (KeyCode.E) && target.tag == "Player") 
+      if (target.tag == "Player" && 
+         Input.GetKey (KeyCode.W) || Input.GetKey (KeyCode.UpArrow)) 
       {
          if (gameObject.tag == "Locked" && !isUsed) 
          {

@@ -18,15 +18,15 @@ public class enterHut : MonoBehaviour
 		UI = GameObject.Find("UI");
 		
 		thePlayer = GameObject.FindGameObjectWithTag("Player"); // Player is the player
+		thePlayerHealth = thePlayer.GetComponent<playerHealth>(); // Get the player's health
 	}
-	
 	
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.CompareTag("Player"))
-      {
-         byHut = true;
-      }
+        {
+            byHut = true;
+        }
 	}
    
    void OnTriggerStay(Collider other)
@@ -36,14 +36,12 @@ public class enterHut : MonoBehaviour
          // Check if loading has already been started
          if(loadingScene == false)
          {
-            // Save data before switching scenes
-            thePlayer.GetComponent<playerHealth>().savePlayerHealth();
-            thePlayer.GetComponent<playerAmmo>().savePlayerAmmo();
-            GameObject.Find("Score").GetComponent<HUDTest>().savePlayerScore();
-            
-            // Change scene, THIS MIGHT NEED CHANGED BASED ON BUILD SETTINGS
+            // Save data before switching scenes 
+            thePlayerHealth.savePlayerHealth();
+         
+            // Temporary Fix
             globalController.Instance.currentSceneIndex = 4;
-            
+         
             // Change scenes to loading
             UI.GetComponent<StartOptions>().StartLoadingScreen();
             
@@ -55,8 +53,8 @@ public class enterHut : MonoBehaviour
 	void OnTriggerExit(Collider other)
 	{
 		if (other.gameObject.CompareTag("Player"))
-      {
-         byHut = false;
-      }
+        {
+			byHut = false;
+        }
 	}
 }

@@ -17,7 +17,7 @@ public class ClimbLadder : MonoBehaviour
    void Update ()
    {
       // Climb if the player is positioned in front of the ladder and pressing W
-      if (transform.position.x > leftLimit && transform.position.x < rightLimit && Input.GetKey("w"))
+      if (transform.position.x > leftLimit && transform.position.x < rightLimit && Input.GetKey("e"))
       {
          if (transform.rotation.y != 0.0f)
          {

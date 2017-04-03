@@ -4,14 +4,14 @@ using UnityEngine.UI;
 
 public class HUDTest : MonoBehaviour
 {
-    int points;
+    [HideInInspector] public int points;
 
     public Text Score;
 
     // Use this for initialization
     void Start()
     {
-        points = 10;
+        points = globalController.Instance.playerScore;
         updateScore(0);
     }
 
@@ -23,9 +23,9 @@ public class HUDTest : MonoBehaviour
         Score.text = text;
     }
 
-    void Update()
+    public void savePlayerScore()
     {
-
+       globalController.Instance.playerScore = points;
     }
 
 }

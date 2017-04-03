@@ -36,9 +36,13 @@ public class enterHut : MonoBehaviour
          // Check if loading has already been started
          if(loadingScene == false)
          {
-            // Save data before switching scenes 
+            // Save data before switching scenes
             thePlayer.GetComponent<playerHealth>().savePlayerHealth();
             thePlayer.GetComponent<playerAmmo>().savePlayerAmmo();
+            GameObject.Find("Score").GetComponent<HUDTest>().savePlayerScore();
+            
+            // Change scene, THIS MIGHT NEED CHANGED BASED ON BUILD SETTINGS
+            globalController.Instance.currentSceneIndex = 3;
             
             // Change scenes to loading
             UI.GetComponent<StartOptions>().StartLoadingScreen();

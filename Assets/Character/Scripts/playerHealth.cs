@@ -29,22 +29,9 @@ public class playerHealth : MonoBehaviour
    {
       gameOverScript = GameObject.Find("UI").GetComponent<GameOver> ();
       
-      // Initialize character health
-      if(GameObject.Find("globalController") != null)
-      {
-         currentHealth = globalController.Instance.playerHealth;
-         
-         //For testing
-         //currentHealth = fullHealth;
-         updateHealthSlider();
-         
-         Debug.Log("Health Initialized: " + currentHealth);
-      }
-      else
-      {
-         currentHealth = fullHealth;
-         Debug.Log("Health Initialized: " + currentHealth);
-      }
+      // Get global health
+      currentHealth = globalController.Instance.playerHealth;
+      updateHealthSlider();
    }
 
    // Update is called once per frame

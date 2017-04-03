@@ -10,8 +10,9 @@ public class playerAmmo : MonoBehaviour
 
 	// Use this for initialization
 	void Start () 
-    {
-		
+   {
+      coconuts = globalController.Instance.playerAmmo;
+      ammoPickup(0);
 	}
 	
 	// Update is called once per frame

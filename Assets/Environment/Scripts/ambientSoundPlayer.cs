@@ -21,8 +21,9 @@ public class ambientSoundPlayer : MonoBehaviour {
 
    void Start()
    {
-      musicOn = false;
+      musicOn   = false;
       ambientAS = GetComponent<AudioSource> (); // Get the audio source
+      target    = GameObject.FindGameObjectWithTag("Player").transform;
    }
    void Update ()
    {

@@ -55,6 +55,7 @@ public class StartOptions : MonoBehaviour
 			animColorFade.SetTrigger ("fade");
 		}
 
+		globalController.Instance.gameOver = false;
 	}
 
 	public void LoadDelayed()

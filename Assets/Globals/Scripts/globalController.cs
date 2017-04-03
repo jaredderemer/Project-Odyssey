@@ -8,6 +8,7 @@ public class globalController : MonoBehaviour
    public int playerAmmo;
    public int playerScore;
    public int currentSceneIndex;
+	[HideInInspector]public bool gameOver;
 
 	[HideInInspector]public Dictionary<int, Vector3> spawnpoints = new Dictionary<int, Vector3> ();
 	public GameObject scene1Spawnpoint;
@@ -26,6 +27,8 @@ public class globalController : MonoBehaviour
 		spawnpoints [3] = scene2Spawnpoint.transform.position;
 		spawnpoints [4] = scene3Spawnpoint.transform.position;
 		spawnpoints [5] = Vector3.zero;//scene4Spawnpoint.transform.position;
+
+		gameOver = false;
 	}
 
     void Awake ()   

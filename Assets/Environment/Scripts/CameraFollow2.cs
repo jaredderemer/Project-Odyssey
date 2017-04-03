@@ -35,14 +35,17 @@ public class CameraFollow2 : MonoBehaviour
    {
       if (player != null)
       {
-         if (player.position.x >= maxPosX || player.position.x <= minPosX) 
-         {
-            StopCamera ();
-         } 
-         else 
-         {
-            Move ();
-         }
+			if (!globalController.Instance.gameOver)
+			{
+				if (player.position.x >= maxPosX || player.position.x <= minPosX)
+				{
+					StopCamera ();
+				}
+				else
+				{
+					Move ();
+				}
+			}
       }
    }
 
@@ -65,7 +68,7 @@ public class CameraFollow2 : MonoBehaviour
 		}
 		else
 		{
-			pos.x -= 5.0f;
+			pos.x -= 5.0f; // Keeps camera slightly in front of player
 		}
 
       switch (path) 
@@ -94,6 +97,12 @@ public class CameraFollow2 : MonoBehaviour
       FindPosition();
 
       desiredPosition.x = transform.position.x;
+
+		if (player.position.x <= minPosX)
+		{
+			desiredPosition.x = minPosX + 5.0f;
+			// Repositions the camera on a respawn and still keeping the camera slightly in front of the player
+		}
 
       transform.position = Vector3.SmoothDamp(transform.position, desiredPosition, 
                                               ref moveVelocity, dampTime);

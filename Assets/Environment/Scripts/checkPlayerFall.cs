@@ -23,7 +23,8 @@ public class checkPlayerFall : MonoBehaviour
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.CompareTag("Player"))
-        {
+		{
+			mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y + 5.0f, mainCamera.transform.position.z); // Keeps the camera from seeing below the map
             other.GetComponent<playerHealth> ().loseLife ();
 			Debug.Log ("player fell out of the world");
             

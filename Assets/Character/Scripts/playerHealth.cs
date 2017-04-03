@@ -97,6 +97,13 @@ public class playerHealth : MonoBehaviour
    
    public void loseLife ()
    {
+      
+      // Remove life from HUD
+      if(lives > 0)
+      {
+         GameObject.Find("life"+ lives.ToString()).SetActive(false);
+      }
+      
       lives--;
       
 		if (lives < 0)

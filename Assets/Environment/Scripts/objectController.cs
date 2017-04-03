@@ -105,4 +105,6 @@ public class objectController : MonoBehaviour {
          transform.position.z + zOffset), 
          transform.rotation);
    }
+   
+   
 }

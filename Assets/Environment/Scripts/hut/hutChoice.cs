@@ -26,7 +26,7 @@ public class hutChoice : MonoBehaviour
    
    void OnTriggerStay(Collider other)
    {
-      if(other.tag == "Player" && Input.GetKey("w"))
+      if(other.tag == "Player" && Input.GetKey("e"))
       {
          // Check if loading has already been started
          if(loadingScene == false)

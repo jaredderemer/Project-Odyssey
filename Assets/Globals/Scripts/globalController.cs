@@ -21,7 +21,7 @@ public class globalController : MonoBehaviour
 	void Start ()
 	{
 		playerHealth = 100.0f;
-      playerAmmo   = 0;
+      playerAmmo   = 20;
 
 		spawnpoints [2] = scene1Spawnpoint.transform.position;
 		spawnpoints [3] = scene2Spawnpoint.transform.position;

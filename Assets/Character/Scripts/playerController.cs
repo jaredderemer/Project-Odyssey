@@ -26,6 +26,9 @@ public class playerController : MonoBehaviour
 	private Vector3 spawnPosition = Vector3.zero;
    
    [HideInInspector] public bool onWall = false;
+   
+   private float throwTimer;
+   private float throwCooldown = .2f;
 
    // Use this for initialization
    void Start()
@@ -117,17 +120,17 @@ public class playerController : MonoBehaviour
          Debug.Log("Adding force down");
       }
       
+      // Keep track of time since last coconut throw
+      throwTimer += Time.deltaTime;
+      
       // Player uses a coconut!!!
-      if (Input.inputString == "c")
+      if (Input.GetKeyDown(KeyCode.C) && throwTimer >= throwCooldown)
       {
-
          this.GetComponent<playerAttacks>().rangeAttack();
-         //gameObject<playerAttacks>().rangeAttack();
+         throwTimer = 0.0f;
       }
-      
-      
 
-
+      
       /*if (sprinting > 0 && grounded)
       {
          myRB.velocity = new Vector3(move * sprintSpeed, myRB.velocity.y, 0);

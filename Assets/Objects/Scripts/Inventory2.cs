@@ -118,6 +118,29 @@ public class Inventory2 : MonoBehaviour
       }
       return 1;  // Returns 1 if the item has been placed.
    }
+   
+   // Check if item is present in inventory
+   public bool checkInventory(int itemID)
+   {
+      for (int i = 0; i < numItemSlots; i++)
+      {
+         // Looks for item in the inventory
+         if (inventory[i].itemID == itemID)
+         {
+            if (inventory[i].quantity >= 1)
+            {
+               return true;
+            }
+         }
+         
+         // If last cell, then item not found
+         if (i == (numItemSlots - 1))
+         {
+             return false;     
+         }
+      }
+      return true;
+   }
       
    // Sorts the inventory after consuming an item.
    public void sortList(int i)

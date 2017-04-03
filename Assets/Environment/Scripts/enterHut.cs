@@ -31,7 +31,7 @@ public class enterHut : MonoBehaviour
    
    void OnTriggerStay(Collider other)
    {
-      if(other.tag == "Player" && Input.GetKey("w"))
+      if(other.tag == "Player" && Input.GetKey("e"))
       {
          // Check if loading has already been started
          if(loadingScene == false)
@@ -42,7 +42,7 @@ public class enterHut : MonoBehaviour
             GameObject.Find("Score").GetComponent<HUDTest>().savePlayerScore();
             
             // Change scene, THIS MIGHT NEED CHANGED BASED ON BUILD SETTINGS
-            globalController.Instance.currentSceneIndex = 3;
+            globalController.Instance.currentSceneIndex = 4;
             
             // Change scenes to loading
             UI.GetComponent<StartOptions>().StartLoadingScreen();

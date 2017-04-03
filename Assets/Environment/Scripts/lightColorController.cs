@@ -43,6 +43,7 @@ public class lightColorController : MonoBehaviour {
          notSet = true;
       }
    }
+   
 	// Update is called once per frame
    public void changeColor (float r, float g, float b) {
       caveLight.color = new Color (r, g, b, 255.0f);

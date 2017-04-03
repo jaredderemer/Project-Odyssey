@@ -162,7 +162,7 @@ public class moveArea : MonoBehaviour {
       switch (area) 
       {
          case house:
-            min = -115.6f;
+            min = -118.5f;
             max = -115.3f;
             break;
          case office:
@@ -170,7 +170,7 @@ public class moveArea : MonoBehaviour {
             max = -70.3f;
             break;
          case pool:
-            min = -198.5f;
+            min = -203.5f;
             max = -190f;
             break;
          case main:

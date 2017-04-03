@@ -27,7 +27,7 @@ public class wall : MonoBehaviour {
       if (col.tag == "Player" && !isEnabled) 
       {
          wall_col.enabled = true;
-         Camera.main.GetComponent<CameraFollow2> ().minPosX = 4.5f;
+         //Camera.main.GetComponent<CameraFollow2> ().minPosX = 4.5f;
          isEnabled = true;
       }
    }
@@ -39,7 +39,7 @@ public class wall : MonoBehaviour {
       if (player.position.x <= -6.1f) 
       {
          wall_col.enabled = false;
-         Camera.main.GetComponent<CameraFollow2> ().minPosX = -81.5f;
+         //Camera.main.GetComponent<CameraFollow2> ().minPosX = -81.5f;
          isEnabled = false;
       }
    }

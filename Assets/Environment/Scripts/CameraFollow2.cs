@@ -66,10 +66,10 @@ public class CameraFollow2 : MonoBehaviour
 		{
 			pos.x += 5.0f; // Keeps camera slightly in front of player
 		}
-		else
-		{
-			pos.x -= 5.0f; // Keeps camera slightly in front of player
-		}
+		//else
+		//{
+			//pos.x -= 5.0f; // Keeps camera slightly in front of player
+		//}
 
       switch (path) 
       {
@@ -98,11 +98,11 @@ public class CameraFollow2 : MonoBehaviour
 
       desiredPosition.x = transform.position.x;
 
-		if (player.position.x <= minPosX)
+		/*if (player.position.x <= minPosX)
 		{
 			desiredPosition.x = minPosX + 5.0f;
 			// Repositions the camera on a respawn and still keeping the camera slightly in front of the player
-		}
+		}*/
 
       transform.position = Vector3.SmoothDamp(transform.position, desiredPosition, 
                                               ref moveVelocity, dampTime);

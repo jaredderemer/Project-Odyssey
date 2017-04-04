@@ -10,4 +10,9 @@ public class gravityController : MonoBehaviour {
    {
       Physics.gravity = gravity;
 	}
+
+   public void changeGravity(float y)
+   {
+      Physics.gravity = new Vector3 (gravity.x, y, gravity.z);
+   }
 }

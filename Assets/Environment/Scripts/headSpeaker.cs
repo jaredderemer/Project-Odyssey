@@ -18,8 +18,9 @@ public class headSpeaker : MonoBehaviour {
 
    void OnTriggerStay (Collider col)
    {
-      if (col.tag == "Player" && Input.GetKey (KeyCode.E)) {
-         Debug.Log ("Enter message here");
+      if (col.tag == "Player" && Input.GetKey (KeyCode.E)) 
+      {
+         Debug.Log ("You found an Easter Egg");
       }
    }
 }

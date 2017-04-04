@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 * Author          MM/DD/YY  HH24:MM    Description                             *
-* Juju Moong      03/17/17  15:20      Change the gravity when triggered       *
+* Juju Moong      04/03/17  15:20      Change the gravity when triggered       *
 *                                                                              *
 *******************************************************************************/
 using System.Collections;
@@ -16,11 +16,15 @@ public class gravityChange : MonoBehaviour {
 
    void Start ()
    {
-      gravityGO = GameObject.Find ("gravity");
+      gravityGO  = GameObject.Find ("gravity");
       orgGravity = gravityGO.GetComponent<gravityController> ().gravity.y;
       gravityGO.GetComponent<gravityController> ().changeGravity(orgGravity);
    }
 
+   /****************************************************************************
+   * OnTriggerStay                                                             *
+   * Change the gravity when triggered                                         *
+   ****************************************************************************/
    void OnTriggerStay (Collider col)
    {
       if (col.tag == "Player")
@@ -29,6 +33,10 @@ public class gravityChange : MonoBehaviour {
       }
    }
 
+   /****************************************************************************
+   * OnTriggerExi                                                              *
+   * Reset the gravity to its orginal value set                                *
+   ****************************************************************************/
    void OnTriggerExit (Collider col)
    {
       if (col.tag == "Player")

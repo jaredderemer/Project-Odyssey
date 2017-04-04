@@ -12,7 +12,8 @@ public class PlayerControllerTest : MonoBehaviour
    Animator myAnim;
 
    [HideInInspector] public bool facingRight;
-   private float attacking;
+   private bool swingAttacking;
+   private bool throwAttacking;
 
    // For Jumping
    [HideInInspector] public bool grounded = false; // Character is starting off the ground, otherwise change to true
@@ -43,11 +44,20 @@ public class PlayerControllerTest : MonoBehaviour
 		attacked = pushed; // Works with the monkey but not with the tree
                          // But if both are done then neither work....???
 
-      attacking = Input.GetAxisRaw("Fire1");
-      myAnim.SetFloat("attacking", attacking);
-      if ((attacking > 0) && (Input.GetAxisRaw("Fire1") > 0))
+      swingAttacking = Input.GetAxisRaw("Fire1").Equals(true);
+      myAnim.SetBool("swingAttacking", swingAttacking);
+      if ((swingAttacking) && (Input.GetAxisRaw("Fire1") > 0))
       {
-         myAnim.SetFloat("attacking", attacking);
+         myAnim.SetBool("swingAttacking", swingAttacking);
+         // Call or write swing code here?
+      }
+
+      throwAttacking = Input.GetAxisRaw("Fire2").Equals(true);
+      myAnim.SetBool("throwAttacking", throwAttacking);
+      if ((throwAttacking) && (Input.GetAxisRaw("Fire2") > 0))
+      {
+         myAnim.SetBool("throwAttacking", throwAttacking);
+         // Call or write throw code here?
       }
 
       if (grounded && Input.GetAxisRaw("Jump") > 0)

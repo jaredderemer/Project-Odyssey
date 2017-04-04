@@ -20,11 +20,11 @@ public class PlayerController : MonoBehaviour
    private Animator   myAnim;
 
    // Character Direction
-   [HideInInspector]public bool       facingRight;
+   [HideInInspector]public bool facingRight;
 
    // for jumping
    // Character is starting off the ground, otherwise change to TRUE
-   [HideInInspector]public bool       grounded = false;
+   [HideInInspector]public bool grounded = false;
    private Collider[] groundCollisions;
    // Based off experience, this code should just work...
    private float      groundCheckRadius = 0.2f; 
@@ -33,8 +33,8 @@ public class PlayerController : MonoBehaviour
    // Use this for initialization
    void Start()
    {
-      myRig         = GetComponent<Rigidbody>();
-      myAnim        = GetComponent<Animator> ();
+      myRig  = GetComponent<Rigidbody>();
+      myAnim = GetComponent<Animator> ();
       // Character starts facing right
       facingRight = true;
       myAnim.SetInteger("AnimState", 0);

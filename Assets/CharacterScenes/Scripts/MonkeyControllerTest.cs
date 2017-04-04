@@ -5,7 +5,7 @@ using UnityEngine;
 public class MonkeyControllerTest : MonoBehaviour
 {
 	public float moveSpeed;
-	public bool facingRight;
+	[HideInInspector]public bool facingRight;
 
 	private bool detected;
 	private GameObject player;
@@ -16,17 +16,17 @@ public class MonkeyControllerTest : MonoBehaviour
 	void Start ()
 	{
 		detected = false;
-		player = GameObject.FindGameObjectWithTag ("Player");
-		myRB = gameObject.GetComponent<Rigidbody> ();
-		myAnim = gameObject.GetComponent<Animator> ();
+		player   = GameObject.FindGameObjectWithTag  ("Player");
+		myRB     = gameObject.GetComponent<Rigidbody>();
+		myAnim   = gameObject.GetComponent<Animator> ();
 
 		if (Random.Range (0, 10) > 5)
 		{
-			flip ();
+			Flip ();
 		}
 	}
 
-	void onTriggerEnter(Collider other)
+	void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Player" && !detected)
 		{
@@ -36,38 +36,45 @@ public class MonkeyControllerTest : MonoBehaviour
 		}
 	}
 
+   // Monkey Cease-to-Follow code should we decide to use it later
+   //void OnTriggerExit(Collider other)
+   //{
+   //   if (other.tag == "Player" && detected)
+   //   {
+   //      detected = false;
+   //      Debug.Log ("Player Lost");
+   //   }
+   //}
+
    void FixedUpdate()
    {
 		if (detected)
 		{
-			move ();
+         myAnim.SetFloat("speed", 1.0f);
+			Move ();
 		}
 		else
 		{
 			myRB.velocity = Vector3.zero;
-			// set animation to idle
+         // set animation to idle
+         myAnim.SetFloat("speed", 0.0f);
 		}
-
-      /*bool attacking = Input.GetKey("F");
-      if (attacking)
-      {
-         
-      }*/
    }
 
-   void move()
+   void Move()
 	{
 		if ((player.transform.position.x < gameObject.transform.position.x && facingRight) || (player.transform.position.x > gameObject.transform.position.x && !facingRight))
 		{
-			flip ();
+			Flip ();
 		}
 		else if (player.transform.position.x == gameObject.transform.position.x) // Only happens if the player is above or below the monkey
 		{
 			// The monkey will be looking in the same direction as the player
 			facingRight = player.GetComponent<PlayerControllerTest> ().facingRight;
 
-			// set animation to idle
-		}
+         // set animation to idle
+         myAnim.SetFloat("speed", 0.0f);
+      }
 
 		if (facingRight)
 		{
@@ -79,7 +86,7 @@ public class MonkeyControllerTest : MonoBehaviour
 		}
 	}
 
-	void flip()
+	void Flip()
 	{
 		gameObject.transform.rotation = Quaternion.Euler (new Vector3 (0.0f, facingRight ? -100.0f : 100.0f, 0.0f));
 

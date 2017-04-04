@@ -44,21 +44,22 @@ public class PlayerControllerTest : MonoBehaviour
 		attacked = pushed; // Works with the monkey but not with the tree
                          // But if both are done then neither work....???
 
-      swingAttacking = Input.GetAxisRaw("Fire1").Equals(true);
-      myAnim.SetBool("swingAttacking", swingAttacking);
-      if ((swingAttacking) && (Input.GetAxisRaw("Fire1") > 0))
-      {
-         myAnim.SetBool("swingAttacking", swingAttacking);
-         // Call or write swing code here?
-      }
+      // THIS SECTION WAS MY OWN, GETTING FURTHER REFERENCE AS OF 00:36, 4 APRIL 2017
+      //swingAttacking = Input.GetAxisRaw("Fire1").Equals(true);
+      //myAnim.SetBool("swingAttacking", swingAttacking);
+      //if ((swingAttacking) && (Input.GetAxisRaw("Fire1") > 0))
+      //{
+      //   myAnim.SetBool("swingAttacking", swingAttacking);
+      //   // Call or write swing code here?
+      //}
 
-      throwAttacking = Input.GetAxisRaw("Fire2").Equals(true);
-      myAnim.SetBool("throwAttacking", throwAttacking);
-      if ((throwAttacking) && (Input.GetAxisRaw("Fire2") > 0))
-      {
-         myAnim.SetBool("throwAttacking", throwAttacking);
-         // Call or write throw code here?
-      }
+      //throwAttacking = Input.GetAxisRaw("Fire2").Equals(true);
+      //myAnim.SetBool("throwAttacking", throwAttacking);
+      //if ((throwAttacking) && (Input.GetAxisRaw("Fire2") > 0))
+      //{
+      //   myAnim.SetBool("throwAttacking", throwAttacking);
+      //   // Call or write throw code here?
+      //}
 
       if (grounded && Input.GetAxisRaw("Jump") > 0)
       {

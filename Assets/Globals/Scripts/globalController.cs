@@ -5,7 +5,8 @@ using UnityEngine;
 public class globalController : MonoBehaviour
 {
 	public float  playerHealth;
-   public int currentSceneIndex;
+   	public int currentSceneIndex;
+	public Rigidbody[] player;
 	
 	public static globalController Instance;
    

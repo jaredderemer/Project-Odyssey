@@ -130,7 +130,14 @@ ModelImporter:
     400120: spine1
     400122: spine2
     4300000: miner1
-    7400000: Take 001
+    7400000: PlayerRun
+    7400002: PlayerWalk
+    7400004: PlayerJumpStart
+    7400006: PlayerJumpUp
+    7400008: PlayerJumpLand
+    7400010: PlayerIdle
+    7400012: PlayerSwing
+    7400014: PlayerThrow
     9500000: //RootNode
     13700000: miner1
   materials:
@@ -153,7 +160,1223 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: PlayerRun
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: group1
+        weight: 1
+      - path: group1/pelvis
+        weight: 1
+      - path: group1/pelvis/l_hip
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin/l_ankle
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin/l_ankle/l_heel
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin/l_ankle/l_heel/l_foot
+        weight: 1
+      - path: group1/pelvis/r_hip
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin/r_ankle
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin/r_ankle/r_heel
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin/r_ankle/r_heel/r_foot
+        weight: 1
+      - path: group1/pelvis/spine1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_index1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_index1/l_index2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_index1/l_index2/l_index3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_middle1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_middle1/l_middle2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_middle1/l_middle2/l_middle3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_pinky1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_pinky1/l_pinky2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_pinky1/l_pinky2/l_pinky3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_thumb1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_thumb1/l_thumb2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_thumb1/l_thumb2/l_thumb3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/neck
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/neck/pasted__transform12
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/neck/pasted__transform12/head
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_index1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_index1/r_index2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_index1/r_index2/r_index3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_middle1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_middle1/r_middle2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_middle1/r_middle2/r_middle3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_pinky1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_pinky1/r_pinky2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_pinky1/r_pinky2/r_pinky3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_thumb1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_thumb1/r_thumb2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_thumb1/r_thumb2/r_thumb3
+        weight: 1
+      - path: group2
+        weight: 1
+      - path: group2/miner1
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: PlayerWalk
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: group1
+        weight: 1
+      - path: group1/pelvis
+        weight: 1
+      - path: group1/pelvis/l_hip
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin/l_ankle
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin/l_ankle/l_heel
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin/l_ankle/l_heel/l_foot
+        weight: 1
+      - path: group1/pelvis/r_hip
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin/r_ankle
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin/r_ankle/r_heel
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin/r_ankle/r_heel/r_foot
+        weight: 1
+      - path: group1/pelvis/spine1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_index1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_index1/l_index2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_index1/l_index2/l_index3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_middle1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_middle1/l_middle2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_middle1/l_middle2/l_middle3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_pinky1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_pinky1/l_pinky2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_pinky1/l_pinky2/l_pinky3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_thumb1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_thumb1/l_thumb2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_thumb1/l_thumb2/l_thumb3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/neck
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/neck/pasted__transform12
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/neck/pasted__transform12/head
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_index1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_index1/r_index2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_index1/r_index2/r_index3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_middle1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_middle1/r_middle2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_middle1/r_middle2/r_middle3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_pinky1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_pinky1/r_pinky2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_pinky1/r_pinky2/r_pinky3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_thumb1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_thumb1/r_thumb2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_thumb1/r_thumb2/r_thumb3
+        weight: 1
+      - path: group2
+        weight: 1
+      - path: group2/miner1
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: PlayerJumpStart
+      takeName: Take 001
+      firstFrame: 26
+      lastFrame: 31
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: group1
+        weight: 1
+      - path: group1/pelvis
+        weight: 1
+      - path: group1/pelvis/l_hip
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin/l_ankle
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin/l_ankle/l_heel
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin/l_ankle/l_heel/l_foot
+        weight: 1
+      - path: group1/pelvis/r_hip
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin/r_ankle
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin/r_ankle/r_heel
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin/r_ankle/r_heel/r_foot
+        weight: 1
+      - path: group1/pelvis/spine1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_index1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_index1/l_index2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_index1/l_index2/l_index3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_middle1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_middle1/l_middle2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_middle1/l_middle2/l_middle3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_pinky1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_pinky1/l_pinky2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_pinky1/l_pinky2/l_pinky3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_thumb1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_thumb1/l_thumb2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_thumb1/l_thumb2/l_thumb3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/neck
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/neck/pasted__transform12
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/neck/pasted__transform12/head
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_index1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_index1/r_index2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_index1/r_index2/r_index3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_middle1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_middle1/r_middle2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_middle1/r_middle2/r_middle3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_pinky1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_pinky1/r_pinky2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_pinky1/r_pinky2/r_pinky3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_thumb1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_thumb1/r_thumb2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_thumb1/r_thumb2/r_thumb3
+        weight: 1
+      - path: group2
+        weight: 1
+      - path: group2/miner1
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: PlayerJumpUp
+      takeName: Take 001
+      firstFrame: 32
+      lastFrame: 33
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: group1
+        weight: 1
+      - path: group1/pelvis
+        weight: 1
+      - path: group1/pelvis/l_hip
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin/l_ankle
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin/l_ankle/l_heel
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin/l_ankle/l_heel/l_foot
+        weight: 1
+      - path: group1/pelvis/r_hip
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin/r_ankle
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin/r_ankle/r_heel
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin/r_ankle/r_heel/r_foot
+        weight: 1
+      - path: group1/pelvis/spine1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_index1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_index1/l_index2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_index1/l_index2/l_index3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_middle1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_middle1/l_middle2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_middle1/l_middle2/l_middle3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_pinky1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_pinky1/l_pinky2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_pinky1/l_pinky2/l_pinky3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_thumb1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_thumb1/l_thumb2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_thumb1/l_thumb2/l_thumb3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/neck
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/neck/pasted__transform12
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/neck/pasted__transform12/head
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_index1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_index1/r_index2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_index1/r_index2/r_index3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_middle1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_middle1/r_middle2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_middle1/r_middle2/r_middle3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_pinky1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_pinky1/r_pinky2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_pinky1/r_pinky2/r_pinky3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_thumb1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_thumb1/r_thumb2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_thumb1/r_thumb2/r_thumb3
+        weight: 1
+      - path: group2
+        weight: 1
+      - path: group2/miner1
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: PlayerJumpLand
+      takeName: Take 001
+      firstFrame: 34
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: group1
+        weight: 1
+      - path: group1/pelvis
+        weight: 1
+      - path: group1/pelvis/l_hip
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin/l_ankle
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin/l_ankle/l_heel
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin/l_ankle/l_heel/l_foot
+        weight: 1
+      - path: group1/pelvis/r_hip
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin/r_ankle
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin/r_ankle/r_heel
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin/r_ankle/r_heel/r_foot
+        weight: 1
+      - path: group1/pelvis/spine1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_index1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_index1/l_index2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_index1/l_index2/l_index3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_middle1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_middle1/l_middle2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_middle1/l_middle2/l_middle3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_pinky1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_pinky1/l_pinky2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_pinky1/l_pinky2/l_pinky3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_thumb1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_thumb1/l_thumb2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_thumb1/l_thumb2/l_thumb3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/neck
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/neck/pasted__transform12
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/neck/pasted__transform12/head
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_index1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_index1/r_index2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_index1/r_index2/r_index3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_middle1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_middle1/r_middle2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_middle1/r_middle2/r_middle3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_pinky1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_pinky1/r_pinky2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_pinky1/r_pinky2/r_pinky3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_thumb1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_thumb1/r_thumb2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_thumb1/r_thumb2/r_thumb3
+        weight: 1
+      - path: group2
+        weight: 1
+      - path: group2/miner1
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: PlayerIdle
+      takeName: Take 001
+      firstFrame: 41
+      lastFrame: 45
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: group1
+        weight: 1
+      - path: group1/pelvis
+        weight: 1
+      - path: group1/pelvis/l_hip
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin/l_ankle
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin/l_ankle/l_heel
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin/l_ankle/l_heel/l_foot
+        weight: 1
+      - path: group1/pelvis/r_hip
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin/r_ankle
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin/r_ankle/r_heel
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin/r_ankle/r_heel/r_foot
+        weight: 1
+      - path: group1/pelvis/spine1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_index1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_index1/l_index2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_index1/l_index2/l_index3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_middle1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_middle1/l_middle2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_middle1/l_middle2/l_middle3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_pinky1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_pinky1/l_pinky2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_pinky1/l_pinky2/l_pinky3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_thumb1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_thumb1/l_thumb2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_thumb1/l_thumb2/l_thumb3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/neck
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/neck/pasted__transform12
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/neck/pasted__transform12/head
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_index1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_index1/r_index2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_index1/r_index2/r_index3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_middle1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_middle1/r_middle2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_middle1/r_middle2/r_middle3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_pinky1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_pinky1/r_pinky2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_pinky1/r_pinky2/r_pinky3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_thumb1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_thumb1/r_thumb2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_thumb1/r_thumb2/r_thumb3
+        weight: 1
+      - path: group2
+        weight: 1
+      - path: group2/miner1
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: PlayerSwing
+      takeName: Take 001
+      firstFrame: 46
+      lastFrame: 56
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: group1
+        weight: 1
+      - path: group1/pelvis
+        weight: 1
+      - path: group1/pelvis/l_hip
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin/l_ankle
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin/l_ankle/l_heel
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin/l_ankle/l_heel/l_foot
+        weight: 1
+      - path: group1/pelvis/r_hip
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin/r_ankle
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin/r_ankle/r_heel
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin/r_ankle/r_heel/r_foot
+        weight: 1
+      - path: group1/pelvis/spine1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_index1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_index1/l_index2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_index1/l_index2/l_index3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_middle1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_middle1/l_middle2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_middle1/l_middle2/l_middle3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_pinky1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_pinky1/l_pinky2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_pinky1/l_pinky2/l_pinky3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_thumb1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_thumb1/l_thumb2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_thumb1/l_thumb2/l_thumb3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/neck
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/neck/pasted__transform12
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/neck/pasted__transform12/head
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_index1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_index1/r_index2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_index1/r_index2/r_index3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_middle1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_middle1/r_middle2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_middle1/r_middle2/r_middle3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_pinky1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_pinky1/r_pinky2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_pinky1/r_pinky2/r_pinky3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_thumb1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_thumb1/r_thumb2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_thumb1/r_thumb2/r_thumb3
+        weight: 1
+      - path: group2
+        weight: 1
+      - path: group2/miner1
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: PlayerThrow
+      takeName: Take 001
+      firstFrame: 56
+      lastFrame: 57
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: group1
+        weight: 1
+      - path: group1/pelvis
+        weight: 1
+      - path: group1/pelvis/l_hip
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin/l_ankle
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin/l_ankle/l_heel
+        weight: 1
+      - path: group1/pelvis/l_hip/l_thigh/l_knee/l_shin/l_ankle/l_heel/l_foot
+        weight: 1
+      - path: group1/pelvis/r_hip
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin/r_ankle
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin/r_ankle/r_heel
+        weight: 1
+      - path: group1/pelvis/r_hip/r_thigh/r_knee/r_shin/r_ankle/r_heel/r_foot
+        weight: 1
+      - path: group1/pelvis/spine1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_index1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_index1/l_index2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_index1/l_index2/l_index3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_middle1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_middle1/l_middle2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_middle1/l_middle2/l_middle3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_pinky1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_pinky1/l_pinky2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_palm/l_pinky1/l_pinky2/l_pinky3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_thumb1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_thumb1/l_thumb2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/l_clavicle/l_shoulder/l_bicep/l_elbow/l_forearm/l_wrist/l_thumb1/l_thumb2/l_thumb3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/neck
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/neck/pasted__transform12
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/neck/pasted__transform12/head
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_index1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_index1/r_index2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_index1/r_index2/r_index3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_middle1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_middle1/r_middle2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_middle1/r_middle2/r_middle3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_pinky1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_pinky1/r_pinky2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_palm/r_pinky1/r_pinky2/r_pinky3
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_thumb1
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_thumb1/r_thumb2
+        weight: 1
+      - path: group1/pelvis/spine1/spine2/r_clavicle/r_shoulder/r_bicep/r_elbow/r_forearm/r_wrist/r_thumb1/r_thumb2/r_thumb3
+        weight: 1
+      - path: group2
+        weight: 1
+      - path: group2/miner1
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

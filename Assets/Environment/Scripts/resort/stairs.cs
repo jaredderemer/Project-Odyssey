@@ -22,17 +22,18 @@ public class stairs : MonoBehaviour {
 	
    void OnTriggerStay (Collider col)
    {
-      if (col.tag == "Player" && Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+      if (col.tag == "Player")
       {
-         if (isDown) 
+         if (isDown && Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) 
          {
             col.transform.position = newPos;
+            isDown = false;
          } 
-         else 
+         else if (!isDown && Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
          {
             col.transform.position = originalPos;
+            isDown = true;
          }
-         isDown = !isDown;
       }
  
       if (col.transform.position.y < (newPos.y - 1.0f)) 

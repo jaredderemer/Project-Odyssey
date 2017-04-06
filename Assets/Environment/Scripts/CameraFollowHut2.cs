@@ -16,14 +16,13 @@ public class CameraFollowHut2 : MonoBehaviour
    public float cameraUpperLimit;
    public float smoothing;
 
-   public Transform target;
-
    private float cameraOffset;
-
+   private Transform target;
    private Vector3 targetCamPos;
 
    void Start ()
    {
+      target = GameObject.FindGameObjectWithTag ("Player").transform;
       cameraOffset = transform.position.y - target.position.y;
    }
 

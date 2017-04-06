@@ -11,11 +11,11 @@ public class wall : MonoBehaviour {
 
    private BoxCollider wall_col;
    private bool isEnabled;
-   [SerializeField]
    private Transform player;
 
    void Start ()
    {
+      player = GameObject.FindGameObjectWithTag ("Player").transform;
       wall_col = gameObject.GetComponent<BoxCollider> ();
       isEnabled   = false;
    }

@@ -15,7 +15,7 @@ using UnityStandardAssets.ImageEffects;
 
 public class CameraFollow2 : MonoBehaviour
 {
-   public float dampTime = 0.2f;
+   public float dampTime = 0.35f;
    public float maxPosX;
    public float minPosX;
    public int path;
@@ -125,35 +125,55 @@ public class CameraFollow2 : MonoBehaviour
 
    private float followPathTwo ()
    {
-        float posY;
+      float posY;
 
-            if (player.position.x >= 202.0f && 
-                player.position.x <= 214.5f &&
-                player.position.y < 7.2f) 
-            {
-                posY = 5.0f;
-            }
-            else if (player.position.y >= 16f) 
-            {
-                posY = 18.0f;
-            } 
-            else if (player.position.y >= 7.2f) 
-            {
-                posY = 14.0f;
-            } 
-            else if (player.position.y >= 1.2f)
-            {
-                    posY = 8.0f;  
-            }  
-            else if (player.position.y >= -5.0f) 
-            {
-                posY = 4.0f;
-            }
-            else 
-            {
-                posY = player.position.y;
-            }
-            return posY;
+      if (player.position.x >= 203.0f &&
+          player.position.x <= 214.5f &&
+          player.position.y < 7.2f) 
+      {
+         posY = 5.0f;
+      } 
+      else if (player.position.x >= 184.0f &&
+               player.position.x <= 202.5f &&
+               player.position.y < 8.0f) 
+      {
+         posY = 4.0f;
+      } 
+      else if (player.position.x >= 135.0f &&
+               player.position.x <= 166.0f &&
+               player.position.y < 8.0f) 
+      {
+         posY = 5.0f;
+      } 
+      else if (player.position.x > 50.0f) 
+      {
+         posY = 14.0f;
+      } 
+      //else if (player.position.y >= 16f) 
+      //{
+      //   posY = 18.0f;
+      //} 
+      //else if (player.position.y >= 7.2f) 
+      //{
+        // posY = 14.0f;
+      //} 14 and 5
+      //else if (player.position.y >= 1.2f)
+      //{
+      //   posY = 8.0f;  
+      //}  
+      //else if (player.position.y >= -5.0f) 
+      //{
+      //   posY = 4.0f;
+      //}
+      else if (player.position.y < -5.0f) 
+      {
+         posY = player.position.y;
+      }
+      else 
+      {
+         posY = 8.0f;
+      }
+      return posY;
    }
 
    private float followPathThree ()

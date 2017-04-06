@@ -22,6 +22,7 @@ public class globalController : MonoBehaviour
 	{
 		playerHealth = 100.0f;
       playerAmmo   = 20;
+      PlayerPrefs.SetInt ("CharacterSelected", 0); // Set default character skin
 
 		spawnpoints [2] = scene1Spawnpoint.transform.position;
 		spawnpoints [3] = scene2Spawnpoint.transform.position;

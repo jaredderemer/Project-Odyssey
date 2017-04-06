@@ -25,13 +25,16 @@ public class DestroyItem : MonoBehaviour
    {      
       // When the player hits an action key, destroy the item the player 
       // collides with, and randomly generate an item from the item list.
-      if (Input.GetKey (KeyCode.E) && col.tag == "Player") 
+      if (gameObject.tag == "Locked") 
       {
-         if (gameObject.tag == "Locked") 
+         if (Input.GetKey (KeyCode.E) && col.tag == "Player") 
          {
             unlockObject (col);
          } 
-         else 
+      }
+      else 
+      {
+         if (col.tag == "Weapon") 
          {
             destroyObject ();
          }

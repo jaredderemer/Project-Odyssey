@@ -8,12 +8,14 @@ public class hutChoice : MonoBehaviour
 	bool byChoice;
    bool loadingScene = false;
 	private GameObject UI;
+   [HideInInspector]
    public int sceneToLoad;
 
 	// Use this for initialization
 	void Start ()
 	{
 		UI = GameObject.Find("UI");
+      sceneToLoad = 2; // Default scene is Cave
 	}
 	
 	void OnTriggerEnter(Collider other)
@@ -26,7 +28,7 @@ public class hutChoice : MonoBehaviour
    
    void OnTriggerStay(Collider other)
    {
-      if(other.tag == "Player" && Input.GetKey("e"))
+      if(other.tag == "Player" && Input.GetKey(KeyCode.W))
       {
          // Check if loading has already been started
          if(loadingScene == false)

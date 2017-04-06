@@ -66,14 +66,16 @@ public class mapReplace : MonoBehaviour {
 
    IEnumerator instantiateObj ()
    {
-      Instantiate (map, new Vector3 (transform.position.x + 1.4f, 
-                                     transform.position.y + 0.03f, 
-                                     transform.position.z), 
-                                     transform.rotation);
+      Instantiate (map, 
+                   new Vector3 (transform.position.x + 1.4f, 
+                                transform.position.y + 0.03f, 
+                                transform.position.z), 
+                   transform.rotation);
       yield return new WaitForSeconds (1.0f);
-      Instantiate (collectible, new Vector3 (transform.position.x + xOffset, 
-                                             transform.position.y + yOffset, 
-                                             transform.position.z + zOffset), 
-                                             transform.rotation);
+      Instantiate (collectible, 
+                   new Vector3 (transform.position.x + xOffset, 
+                                transform.position.y + yOffset, 
+                                transform.position.z + zOffset), 
+                   transform.rotation);
    }
 }

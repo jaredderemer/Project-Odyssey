@@ -9,7 +9,7 @@ public class checkOnWall : MonoBehaviour
 	// Use this for initialization
 	void Start ()
    {
-		myPlayer = GameObject.Find("Fisherman");
+		myPlayer = GameObject.FindGameObjectWithTag("Player");
 	}
 	
 	// Update is called once per frame

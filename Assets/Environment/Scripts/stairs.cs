@@ -16,19 +16,20 @@ public class stairs : MonoBehaviour {
    private Vector3 originalPos;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+   {
       isDown = true;
 	}
 	
    void OnTriggerStay (Collider col)
    {
-      if (col.tag == "Player" && Input.GetKey(KeyCode.W))
+      if (col.tag == "Player")
       {
-         if (isDown) 
+         if (isDown && Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) 
          {
             col.transform.position = newPos;
          } 
-         else 
+         else if (!isDown && Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
          {
             col.transform.position = originalPos;
          }

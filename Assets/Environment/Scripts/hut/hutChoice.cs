@@ -21,34 +21,47 @@ public class hutChoice : MonoBehaviour
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.CompareTag("Player"))
-        {
-            byChoice = true;
-        }
+      {
+         byChoice = true;
+      }
 	}
-   
+      
    void OnTriggerStay(Collider other)
    {
-      if(other.tag == "Player" && Input.GetKey(KeyCode.W))
+      if(other.tag == "Player")
       {
-         // Check if loading has already been started
-         if(loadingScene == false)
+         if (Input.GetKey (KeyCode.W)) 
+         {   
+            loadScene ();
+         }
+         else if (gameObject.tag == "Finish") 
          {
-            // Set Global to load the correct sceneToLoad
-            globalController.Instance.currentSceneIndex = sceneToLoad;
-         
-            // Change scenes to loading
-            UI.GetComponent<StartOptions>().StartLoadingScreen();
-            
-            loadingScene = true;
+            sceneToLoad = 5; // final scene
+            loadScene (); 
          }
       }
    }
 	
+   void loadScene ()
+   {
+      // Check if loading has already been started
+      if(loadingScene == false)
+      {
+         // Set Global to load the correct sceneToLoad
+         globalController.Instance.currentSceneIndex = sceneToLoad;
+
+         // Change scenes to loading
+         UI.GetComponent<StartOptions>().StartLoadingScreen();
+
+         loadingScene = true;
+      }
+   }
+
 	void OnTriggerExit(Collider other)
 	{
 		if (other.gameObject.CompareTag("Player"))
-        {
+      {
 			byChoice = false;
-        }
+      }
 	}
 }

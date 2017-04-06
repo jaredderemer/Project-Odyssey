@@ -27,7 +27,7 @@ public class globalController : MonoBehaviour
 		spawnpoints [2] = scene1Spawnpoint.transform.position;
 		spawnpoints [3] = scene2Spawnpoint.transform.position;
 		spawnpoints [4] = scene3Spawnpoint.transform.position;
-		spawnpoints [5] = Vector3.zero;//scene4Spawnpoint.transform.position;
+		spawnpoints [5] = scene4Spawnpoint.transform.position;
 
 		gameOver = false;
 	}

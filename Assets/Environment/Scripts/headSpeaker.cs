@@ -6,7 +6,7 @@ public class headSpeaker : MonoBehaviour {
 
    private AudioSource dingAS;
    private bool isUsed;
-   private string[] messageList = new string[5]; // Array of easter puns 
+   private string[] messageList = new string[12]; // Array of easter puns 
 
 	// Use this for initialization
 	void Start () 

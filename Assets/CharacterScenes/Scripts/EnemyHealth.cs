@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -53,4 +53,4 @@ public class EnemyHealth : MonoBehaviour
       //   Instantiate(drop, transform.position, transform.rotation);
       //}
    }
-}
+} */

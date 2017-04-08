@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
    public float startDelay = 3.0f;
    public float endDelay = 3.0f;
    public Text message;
+   public int monkeySpawnDelay;
+   public int itemSpawnDelay;
 
 	private int roundNumber = 0;
    private WaitForSeconds startWait;
@@ -24,6 +26,8 @@ public class GameManager : MonoBehaviour
    private int monkeyCount;
    private int monkeyHealth;
    private int monkeyDamage;
+   private float monkeySpawnTime;
+   private float itemSpawnTime;
 
 	// Use this for initialization
 	void Start ()
@@ -108,11 +112,27 @@ public class GameManager : MonoBehaviour
    
    private void SpawnMonkey ()
    {
+      int spawn = Random.Range(0,4);
       
+      if (Time.DeltaTime >= monkeySpawnTime && monkeyCount > 0)
+      {
+         Instantiate(monkey, monkeySpawn[spawn].position, monkeySpawn[spawn].rotation);
+      }
+      
+      monkeyCount--;
+      monkeySpawnTime = monkeySpawnDelay + Time.DeltaTime;
    }
    
    private void SpawnItem ()
    {
+      int spawn = Random.Range(0,3);
+      int item = Random.Range(0,3);
       
+      if (Time.DeltaTime >= itemSpawnTime)
+      {
+         Istantiate(items[item], itemSpawn[spawn].position, itemSpawn[spawn].rotation);
+      }
+      
+      itemSpawnTime = itemSpawnDelay + Time.DeltaTime;
    }
 }

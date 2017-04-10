@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -84,7 +84,7 @@ public class EnemyDamage : MonoBehaviour {
    // Push the character away from the damaging object
 	void PushBack(GameObject pushedObject)
    {
-      /*// Pushes the character straight up away from the object
+      // Pushes the character straight up away from the object
 		Vector3 pushDirection = new Vector3(0.0f, pushedObject.transform.position.y - transform.position.y, 1.0f).normalized;
 
       // Set the direction of the push back
@@ -96,7 +96,7 @@ public class EnemyDamage : MonoBehaviour {
       // Zero out the player's movement
       pushedRB.velocity = Vector3.zero;
 
-      pushedRB.AddForce(pushDirection, ForceMode.Impulse);*/
+      pushedRB.AddForce(pushDirection, ForceMode.Impulse);
 		float x = 0;
 
 		if (controller.facingRight)
@@ -125,3 +125,4 @@ public class EnemyDamage : MonoBehaviour {
 		Debug.Log ("backVelocity: " + pushedObject.GetComponent<Rigidbody> ().velocity);
    }
 }
+*/

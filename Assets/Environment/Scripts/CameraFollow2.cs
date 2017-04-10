@@ -108,6 +108,7 @@ public class CameraFollow2 : MonoBehaviour
                                               ref moveVelocity, dampTime);
    }
 
+   // Beach and jungle first scene
    private float followPathOne ()
    {
       float posY;
@@ -123,18 +124,19 @@ public class CameraFollow2 : MonoBehaviour
       return posY;
    }
 
+   // Cave scene
    private float followPathTwo ()
    {
       float posY;
 
       if (player.position.x >= 203.0f &&
-          player.position.x <= 214.5f &&
+          player.position.x <= 215f &&
           player.position.y < 7.2f) 
       {
          posY = 5.0f;
       } 
       else if (player.position.x >= 184.0f &&
-               player.position.x <= 202.5f &&
+               player.position.x <= 203f &&
                player.position.y < 8.0f) 
       {
          posY = 4.0f;
@@ -149,22 +151,6 @@ public class CameraFollow2 : MonoBehaviour
       {
          posY = 14.0f;
       } 
-      //else if (player.position.y >= 16f) 
-      //{
-      //   posY = 18.0f;
-      //} 
-      //else if (player.position.y >= 7.2f) 
-      //{
-        // posY = 14.0f;
-      //} 14 and 5
-      //else if (player.position.y >= 1.2f)
-      //{
-      //   posY = 8.0f;  
-      //}  
-      //else if (player.position.y >= -5.0f) 
-      //{
-      //   posY = 4.0f;
-      //}
       else if (player.position.y < -5.0f) 
       {
          posY = player.position.y;
@@ -176,6 +162,7 @@ public class CameraFollow2 : MonoBehaviour
       return posY;
    }
 
+   // Resort scene
    private float followPathThree ()
    {
       float posY;
@@ -199,6 +186,7 @@ public class CameraFollow2 : MonoBehaviour
       return posY;
    }
 
+   // Final scene
    private float followPathFour ()
    {
       float posY;

@@ -66,6 +66,7 @@ public class StartOptions : MonoBehaviour
 			//Hide the main menu UI element
 			showPanels.HideMenu ();
          
+         
          //Pause button now works if escape is pressed since we are no longer in Main menu.
          inMainMenu = false;
 		}

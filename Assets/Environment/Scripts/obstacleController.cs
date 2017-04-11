@@ -11,6 +11,7 @@ using UnityEngine;
 
 public class obstacleController : MonoBehaviour {
 
+   public GameObject[] bgCave;
    public float startTime; // Starting time to call the function
    public float duration;  // Repeat the function after the duration
 
@@ -27,10 +28,18 @@ public class obstacleController : MonoBehaviour {
       if (gameObject.activeSelf) 
       {
          gameObject.SetActive (false);
+         foreach (GameObject go in bgCave) 
+         {
+            go.SetActive (false);
+         }
       } 
       else 
       {
          gameObject.SetActive (true);
+         foreach (GameObject go in bgCave) 
+         {
+            go.SetActive (true);
+         }
       }
    }
 }

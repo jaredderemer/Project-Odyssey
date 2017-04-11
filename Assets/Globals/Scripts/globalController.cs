@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class globalController : MonoBehaviour
 {
+   
+   public int currentSceneIndex;
+   public int gameMode; // Adventure == 1, Horde == 2
+   
+   // Player stats
 	public float playerHealth;
    public int playerAmmo;
    public int playerScore;
-   public int currentSceneIndex;
 	[HideInInspector]public bool gameOver;
 
 	[HideInInspector]public Dictionary<int, Vector3> spawnpoints = new Dictionary<int, Vector3> ();

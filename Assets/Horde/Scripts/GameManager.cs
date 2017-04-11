@@ -35,10 +35,12 @@ public class GameManager : MonoBehaviour
 		lives = player.GetComponent<playerHealth>().lives;
       startWait = new WaitForSeconds(startDelay);
       endWait = new WaitForSeconds(endDelay);
-      
-      SpawnPlayer();
-      
-      StartCoroutine(GameLoop());
+	}
+
+	public void StartHordeMode()
+	{
+		SpawnPlayer();
+		StartCoroutine(GameLoop());
 	}
 	
    private void SpawnPlayer ()
@@ -114,13 +116,13 @@ public class GameManager : MonoBehaviour
    {
       int spawn = Random.Range(0,4);
       
-      if (Time.DeltaTime >= monkeySpawnTime && monkeyCount > 0)
+      if (Time.deltaTime >= monkeySpawnTime && monkeyCount > 0)
       {
          Instantiate(monkey, monkeySpawn[spawn].position, monkeySpawn[spawn].rotation);
       }
       
       monkeyCount--;
-      monkeySpawnTime = monkeySpawnDelay + Time.DeltaTime;
+      monkeySpawnTime = monkeySpawnDelay + Time.deltaTime;
    }
    
    private void SpawnItem ()
@@ -128,11 +130,11 @@ public class GameManager : MonoBehaviour
       int spawn = Random.Range(0,3);
       int item = Random.Range(0,3);
       
-      if (Time.DeltaTime >= itemSpawnTime)
+      if (Time.deltaTime >= itemSpawnTime)
       {
-         Istantiate(items[item], itemSpawn[spawn].position, itemSpawn[spawn].rotation);
+			Instantiate(items[item], itemSpawn[spawn].position, itemSpawn[spawn].rotation);
       }
       
-      itemSpawnTime = itemSpawnDelay + Time.DeltaTime;
+      itemSpawnTime = itemSpawnDelay + Time.deltaTime;
    }
 }

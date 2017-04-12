@@ -8,7 +8,7 @@ using System.Text;
 
 public class profanityFilter
 {
-    private const int MAX_NAME_LENGTH = 30;
+    private const int MAX_NAME_LENGTH = 20;
 
     // Checks a name to see if it has any inappropriate words within it
     public bool passesFilter(string name)

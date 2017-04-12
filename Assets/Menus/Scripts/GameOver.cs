@@ -63,17 +63,27 @@ public class GameOver : MonoBehaviour {
    
    public void submitScore()
    {
-      // Testing file I/O
-      firstName = GameObject.Find("firstNameText").GetComponent<Text>().text;
-      lastName = GameObject.Find("lastNameText").GetComponent<Text>().text;
+      // IF tests to see if the input is valid and acceptible for submission
+      if(true) // NICHOLAS!! INSERT FUNCTION HERE
+      {
+         // Testing file I/O
+         firstName = GameObject.Find("firstNameText").GetComponent<Text>().text;
+         lastName = GameObject.Find("lastNameText").GetComponent<Text>().text;
       
-      System.IO.File.AppendAllText("\\\\csweb\\Classes\\SEI\\Castaway\\adventure.txt", firstName + " " + lastName + " 999 99 9 9999999\n");
+         System.IO.File.AppendAllText("\\\\csweb\\Classes\\SEI\\Castaway\\adventure.txt", firstName + " " + lastName + " 999 99 9 9999999\n");
       
-      // Hide submission fields and button
-      GameObject.Find("EnterName").SetActive(false);
-      GameObject.Find("SubmitScore").SetActive(false);
+         // Hide submission fields and button
+         GameObject.Find("EnterName").SetActive(false);
+         GameObject.Find("SubmitScore").SetActive(false);
       
-      // Show message notifying the player the score was submitted
-      afterSubmissionText.SetActive(true);
+         // Show message notifying the player the score was submitted
+         afterSubmissionText.SetActive(true);
+      }
+      else
+      {
+         // Do this action if the name was not appropriate.
+         
+      }   
+      
    }
 }

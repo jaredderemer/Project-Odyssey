@@ -99,7 +99,7 @@ public class playerHealth : MonoBehaviour
    {
       
       // Remove life from HUD
-      if(lives > 0)
+      if(lives < 0)
       {
          GameObject.Find("life"+ lives.ToString()).SetActive(false);
       }

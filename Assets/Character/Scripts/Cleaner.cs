@@ -18,8 +18,8 @@ public class Cleaner : MonoBehaviour {
    {
       if (other.tag == "Player")
       {
-         PlayerHealth PlayerDead = other.gameObject.GetComponent<PlayerHealth>();
-         PlayerDead.MakeDead();
+         //PlayerHealth PlayerDead = other.gameObject.GetComponent<PlayerHealth>();
+         //PlayerDead.MakeDead();
       }
       else
       {

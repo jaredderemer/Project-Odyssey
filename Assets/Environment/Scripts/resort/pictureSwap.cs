@@ -21,13 +21,14 @@ public class pictureSwap : MonoBehaviour {
 	
    void OnTriggerStay (Collider col)
    {
-      if (col.tag == "Player" && Input.GetKey(KeyCode.F)) 
+      if (col.tag == "Player" && Input.GetKey(KeyCode.F) && !isUsed) 
       {
          Instantiate (fabrice, 
                       new Vector3 (transform.position.x, 
                                    transform.position.y, 
                                    transform.position.z), 
                       transform.rotation);
+         isUsed = true;
       }
    }
 }

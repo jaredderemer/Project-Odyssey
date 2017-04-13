@@ -18,6 +18,9 @@ public class playerAttacks : MonoBehaviour
     private float nextThrow;
     public float throwRate;
     
+    private GameObject throwHand;
+    public Transform throwOffset;
+    
     Animator myAnim;
 
 	// Use this for initialization
@@ -29,9 +32,10 @@ public class playerAttacks : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	void FixedUpdate () 
    {
-
+      meleeAttack();
+      rangeAttack();
 	}
 
     
@@ -42,7 +46,7 @@ public class playerAttacks : MonoBehaviour
       if(hasStick == 1)
       {
          float charMelee = Input.GetAxis("Fire1"); // Fire1 is the Right Alt key and Left Mouse
-
+         
          if (charMelee > 0f && nextMelee < Time.time)
          {
             myAnim.SetTrigger("CharMelee");
@@ -55,6 +59,8 @@ public class playerAttacks : MonoBehaviour
    // Creates a coconut infront of player
    public void rangeAttack()
    {
+      throwHand = GameObject.FindWithTag("throwHand");
+      
       // Check if coconuts are available
       if(GetComponent<playerAmmo>().coconuts > 0)
       {
@@ -66,18 +72,19 @@ public class playerAttacks : MonoBehaviour
             nextThrow = Time.time + throwRate;
             
             Rigidbody coconutInstance = Instantiate(coconut, 
-                                                    FireTransform.position + gameObject.transform.position,
-                                                    FireTransform.rotation) 
+                                                    throwHand.transform.position + throwOffset.position,
+                                                    Quaternion.identity)
                                         as Rigidbody;
        
             // Check which way to throw
-            if(this.GetComponent<playerController>().facingRight)
+            if(this.GetComponent<PlayerControllerTest>().facingRight)
             {
                coconutInstance.velocity = new Vector3(x, y, 0);
             }
             else
             {
                coconutInstance.velocity = new Vector3(-x, y, 0);
+               print("THROW LEFT JOHN!!!!");
             }
          
             // Subtract coconut from ammo

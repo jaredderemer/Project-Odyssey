@@ -115,6 +115,7 @@ public class moveArea : MonoBehaviour {
       {
          gameObject.tag = "Untagged";
          StartCoroutine(movePosition (player));
+         gameObject.GetComponentInChildren<promptInteract> ().itemIDNeeded = 0;
       } 
       else 
       {
@@ -135,15 +136,15 @@ public class moveArea : MonoBehaviour {
       switch (area) 
       {
          case house:
-            playerPos = new Vector3 (-121.1972f, -3.2f, 15.6f);
+            playerPos = new Vector3 (-121.1972f, -2.208784f, 15.6f);
             camPos    = new Vector3 (-118.022f, 4.5f, 0f);
             break;
          case office:
-            playerPos = new Vector3 (-74.54841f, -3.9f, 15.6f);
+            playerPos = new Vector3 (-74.54841f, -2.832353f, 15.6f);
             camPos    = new Vector3 (-71.45634f, 4.5f, 0f);
             break;
       case pool:
-            playerPos = new Vector3 (-178.0f, -4.0f, 15.6f);
+            playerPos = new Vector3 (-178.0f, -2.896141f, 15.6f);
             camPos    = new Vector3 (-185.46f, 7.75f, 0f);
             break;
          case main:

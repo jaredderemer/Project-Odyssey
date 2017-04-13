@@ -6,16 +6,19 @@ using UnityEngine.UI;
 public class promptInteract : MonoBehaviour
 {
    private GameObject interactPrompt;     // The prompt gameObject
-   public GameObject promptTextObject;   // The prompt text gameObject
+   public GameObject promptTextObject;    // The prompt text gameObject
    private GameObject promptPanel;
    private GameObject promptBtn;
-   public string     text;               // Text to show on prompt
-   public string     altText;               // Text to show on prompt
+   private GameObject buttonText;
+   public string     text;                // Text to show on prompt
+   public string     altText;             // Text to show on prompt
+   public string     buttonTextString;    // Text to show on prompt button
    
-   public  Transform interactable;       // The interactable object
-   private bool      interacted = false; // State of object interaction
-   private Vector3   newPosition;        // The new position of the prompt
-   public  float     yPosition; 			  // The height above the object for the prompt
+   public  Transform interactable;        // The interactable object
+   private bool      interacted = false;  // State of object interaction
+   public  bool      disappearOnInteract = true; // Default to true
+   private Vector3   newPosition;         // The new position of the prompt
+   public  float     yPosition; 			   // The height above the object for the prompt
    
    public int itemIDNeeded;
 
@@ -25,6 +28,7 @@ public class promptInteract : MonoBehaviour
       promptPanel = GameObject.Find("PromptPanel");
       promptBtn = GameObject.Find("promptButton");
       interactPrompt = GameObject.Find("InteractPrompt");
+      buttonText = GameObject.Find("ButtonText");
 	}
    
    void OnTriggerEnter(Collider other)
@@ -44,6 +48,17 @@ public class promptInteract : MonoBehaviour
             // Display message that they need the required item
             promptTextObject.GetComponent<Text>().text = altText;
             promptBtn.SetActive(false);
+         }
+         
+         // Set Button Text
+         if(buttonTextString == "E" || buttonTextString == "W")
+         {
+            buttonText.GetComponent<Text>().text = buttonTextString;
+         }
+         else
+         {
+            // Default
+            buttonText.GetComponent<Text>().text = "E";
          }
          
          // Reposition the prompt above this object
@@ -66,10 +81,21 @@ public class promptInteract : MonoBehaviour
       if (Input.GetKey(KeyCode.E) && other.tag == "Player" && other.GetComponent<Inventory2>().checkInventory(itemIDNeeded) ||
           Input.GetKey(KeyCode.E) && other.tag == "Player" && itemIDNeeded == 0)
       {
-         // Hide the prompt after the player interacts
-         promptPanel.SetActive(false);
          
-         interacted = true;
+         
+         // Check if we want the interact to disappear
+         if(disappearOnInteract)
+         {
+            // Hide the prompt after the player interacts
+            promptPanel.SetActive(false);
+            
+            interacted = true;
+         }
+         else
+         {
+            // Set item needed to 0 so prompt shows up to open door
+            itemIDNeeded = 0;
+         }
       }
    }
    

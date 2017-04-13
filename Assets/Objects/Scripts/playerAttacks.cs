@@ -11,8 +11,14 @@ public class playerAttacks : MonoBehaviour
     private string Fire_Button;
     public int x;
     public int y;
+    
     private float nextMelee;
+    public float meleeRate; // Can change speed based off which weapon is used; useful for stick vs branch
+    
     private float nextThrow;
+    public float throwRate;
+    
+    Animator myAnim;
 
 	// Use this for initialization
 	void Start () 

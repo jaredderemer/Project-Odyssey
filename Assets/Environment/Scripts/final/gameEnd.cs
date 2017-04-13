@@ -13,4 +13,12 @@ public class gameEnd : MonoBehaviour {
 	void Update () {
 		
 	}
+
+   void OnTriggerStay (Collider col)
+   {
+      if (col.tag == "Player") 
+      {
+         Destroy (gameObject);
+      }
+   }
 }

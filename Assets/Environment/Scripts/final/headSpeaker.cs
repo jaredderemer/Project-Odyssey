@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class headSpeaker : MonoBehaviour {
 
+   public GameObject promptText;
    private AudioSource dingAS;
    private bool isUsed;
    private string[] messageList = new string[6]; // Array of easter puns 
@@ -22,12 +24,6 @@ public class headSpeaker : MonoBehaviour {
       messageList[4] = "It's hard to explain puns to kleptomaniacs because they always take things literally";
       messageList[5] = "Do you know why I make puns? Because it's my respunsibility.";
 	}
-	
-	// Update is called once per frame
-	void Update () 
-   {
-		
-	}
 
    void OnTriggerStay (Collider col)
    {
@@ -36,7 +32,7 @@ public class headSpeaker : MonoBehaviour {
          if (!isUsed) 
          {
             dingAS.Play ();
-            showMessage ();
+            StartCoroutine (showMessage ());
             isUsed = true;
          }
       }
@@ -47,12 +43,11 @@ public class headSpeaker : MonoBehaviour {
       isUsed = false;
    }
 
-   void showMessage ()
+   IEnumerator showMessage ()
    {
-      Debug.Log ("You found an Easter Egg: " + 
-                 messageList[(int)Random.Range (0, messageList.Length)]);
-
       int index = (int)Random.Range (0, messageList.Length);
-      gameObject.GetComponent<promptInteract>().text = messageList[index];
+      promptText.GetComponent<Text>().text = messageList[index];
+      yield return new WaitForSeconds (3.0f);
+      promptText.GetComponent<Text>().text = "";
    }
 }

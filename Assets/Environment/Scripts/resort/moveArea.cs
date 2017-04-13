@@ -25,10 +25,6 @@ public class moveArea : MonoBehaviour {
    [SerializeField]
    private int itemIDNeeded;    // Item ID necessary to unlock an object
 
-   private GameObject messageTemp;
-
-   private bool displayed;
-
    private Camera cam;
 
    private float max;
@@ -41,8 +37,6 @@ public class moveArea : MonoBehaviour {
 	void Start () 
    {
       cam         = Camera.main;
-      displayed   = false;
-      messageTemp = GameObject.FindGameObjectWithTag ("MessageTemp");
       setBorder ();
 	}
 	
@@ -58,7 +52,6 @@ public class moveArea : MonoBehaviour {
             break;
       }
       setPosition ();
-      messageTemp.GetComponent<noteDisplay> ().displayMessage ("Press W to enter/exit");
    }
 
    void OnTriggerStay (Collider col)
@@ -67,19 +60,16 @@ public class moveArea : MonoBehaviour {
       { 
          if (gameObject.tag == "Locked") 
          {
-            unlockPool (col);
+            if (col.GetComponent<Inventory2> ().removeItem (itemIDNeeded) == 1) 
+            {
+               unlockPool (col);
+            }
          } 
          else 
          {
             StartCoroutine(movePosition (col));
          }
       }
-   }
-
-   void OnTriggerExit (Collider target)
-   {
-      messageTemp.GetComponent<noteDisplay>().displayMessage("");
-      displayed = false;
    }
 
    /****************************************************************************
@@ -111,20 +101,9 @@ public class moveArea : MonoBehaviour {
    ****************************************************************************/
    void unlockPool (Collider player)
    {
-      if (player.GetComponent<Inventory2> ().removeItem (itemIDNeeded) == 1) 
-      {
-         gameObject.tag = "Untagged";
-         StartCoroutine(movePosition (player));
-         gameObject.GetComponentInChildren<promptInteract> ().itemIDNeeded = 0;
-      } 
-      else 
-      {
-         if (!displayed) 
-         {
-            messageTemp.GetComponent<noteDisplay>().displayMessage("Door is locked");
-            displayed = true;
-         }
-      }
+      gameObject.tag = "Untagged";
+      StartCoroutine(movePosition (player));
+      gameObject.GetComponentInChildren<promptInteract> ().itemIDNeeded = 0;
    }
 
    /****************************************************************************

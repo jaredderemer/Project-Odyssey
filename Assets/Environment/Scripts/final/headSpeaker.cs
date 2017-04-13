@@ -6,7 +6,7 @@ public class headSpeaker : MonoBehaviour {
 
    private AudioSource dingAS;
    private bool isUsed;
-   private string[] messageList = new string[12]; // Array of easter puns 
+   private string[] messageList = new string[6]; // Array of easter puns 
 
 	// Use this for initialization
 	void Start () 
@@ -21,12 +21,6 @@ public class headSpeaker : MonoBehaviour {
       messageList[3] = "I found a rock yesterday which measured 1,760 yards in length. Must be some kind of milestone.";
       messageList[4] = "It's hard to explain puns to kleptomaniacs because they always take things literally";
       messageList[5] = "Do you know why I make puns? Because it's my respunsibility.";
-      messageList[6] = "Message 7";
-      messageList[7] = "Message 8";
-      messageList[8] = "Message 9";
-      messageList[9] = "Message 10";
-      messageList[10] = "Message 11";
-      messageList[11] = "Message 12";
 	}
 	
 	// Update is called once per frame
@@ -57,5 +51,8 @@ public class headSpeaker : MonoBehaviour {
    {
       Debug.Log ("You found an Easter Egg: " + 
                  messageList[(int)Random.Range (0, messageList.Length)]);
+
+      int index = (int)Random.Range (0, messageList.Length);
+      gameObject.GetComponent<promptInteract>().text = messageList[index];
    }
 }

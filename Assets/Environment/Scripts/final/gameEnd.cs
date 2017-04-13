@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class gameEnd : MonoBehaviour {
 
+   private bool isUsed;
+
 	// Use this for initialization
-	void Start () {
-		
+	void Start () 
+   {
+      isUsed = false;	
 	}
 	
 	// Update is called once per frame
@@ -16,9 +19,13 @@ public class gameEnd : MonoBehaviour {
 
    void OnTriggerStay (Collider col)
    {
-      if (col.tag == "Player") 
+      if (col.tag == "Player" && !isUsed) 
       {
          Destroy (gameObject);
+
+         // load ending scene
+
+         isUsed = true;
       }
    }
 }

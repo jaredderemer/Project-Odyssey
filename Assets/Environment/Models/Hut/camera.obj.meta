@@ -7,11 +7,16 @@ ModelImporter:
   fileIDToRecycleName:
     100000: //RootNode
     100002: pasted__pasted__polySurface18_group
+    100004: default
     400000: //RootNode
     400002: pasted__pasted__polySurface18_group
+    400004: default
     2300000: pasted__pasted__polySurface18_group
+    2300002: default
     3300000: pasted__pasted__polySurface18_group
+    3300002: default
     4300000: pasted__pasted__polySurface18_group
+    4300002: default
   materials:
     importMaterials: 1
     materialName: 0

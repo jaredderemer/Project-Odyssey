@@ -7,8 +7,6 @@ public class playerAttacks : MonoBehaviour
 
     public int hasStick;
     public Rigidbody coconut;
-    //public Transform FireTransform;
-    private string Fire_Button;
     public int x;
     public int y;
     

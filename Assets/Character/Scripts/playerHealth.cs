@@ -56,7 +56,7 @@ public class playerHealth : MonoBehaviour
    }
 
    // Add health to character
-   public void addHealth (float healthAmount)
+   public void addHealth(float healthAmount)
    {
       if ((fullHealth - currentHealth) > healthAmount)
          currentHealth += healthAmount;
@@ -69,7 +69,7 @@ public class playerHealth : MonoBehaviour
    }
    
    // Update the health bar color based on health percentage
-   public void updateHealthSlider ()
+   public void updateHealthSlider()
    {
       
       Debug.Log("Current Health: " + currentHealth);
@@ -90,12 +90,12 @@ public class playerHealth : MonoBehaviour
            healthBarFill.color = new Color(.96f, .26f, .21f); // Red
    }
 
-   public void savePlayerHealth ()
+   public void savePlayerHealth()
    {
       globalController.Instance.playerHealth = currentHealth;
    }
    
-   public void loseLife ()
+   public void loseLife()
    {
       
       // Remove life from HUD
@@ -116,10 +116,10 @@ public class playerHealth : MonoBehaviour
 		}
 		else
 		{
-			GetComponent<playerController> ().RespawnPlayer();
+			GetComponent<playerController>().RespawnPlayer();
 			currentHealth = fullHealth;
 			globalController.Instance.playerHealth = fullHealth;
-			updateHealthSlider ();
+			updateHealthSlider();
 		}
    }
 }

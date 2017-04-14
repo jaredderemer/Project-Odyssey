@@ -6,7 +6,7 @@ public class EnemyTerritory : MonoBehaviour {
 
 	public BoxCollider territory;
     GameObject player;
-	bool playerInTerritory;
+	[HideInInspector]public bool playerInTerritory;
 
 	public GameObject enemy;
 	EnemyController basicenemy;
@@ -41,11 +41,11 @@ public class EnemyTerritory : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerExit (Collider other)
-	{
-		if (other.gameObject == player) 
-		{
-			playerInTerritory = false;
-		}
-	}
+//	void OnTriggerExit (Collider other)
+//	{
+//		if (other.gameObject == player) 
+//		{
+//			playerInTerritory = false;
+//		}
+//	}
 }

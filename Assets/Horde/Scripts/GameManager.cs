@@ -24,10 +24,12 @@ public class GameManager : MonoBehaviour
    private int lives;
    private int roundMonkeys = 5;
    private int monkeyCount;
+   private int monkeysInPlay;
    private int monkeyHealth;
    private int monkeyDamage;
    private float monkeySpawnTime;
    private float itemSpawnTime;
+   private Dictionary<Vector3, GameObject> itemInstance;
 
 	// Use this for initialization
 	void Start ()
@@ -36,14 +38,18 @@ public class GameManager : MonoBehaviour
       startWait = new WaitForSeconds(startDelay);
       endWait = new WaitForSeconds(endDelay);
 
-		SpawnPlayer();
-		StartCoroutine(GameLoop());
+		StartHordeMode ();
 	}
 
 	public void StartHordeMode()
 	{
 		SpawnPlayer();
 		StartCoroutine(GameLoop());
+
+		items [2].GetComponent<ammoPickup> ().ammoAmount = 4;
+
+		monkeySpawnTime = Time.fixedTime;
+		itemSpawnTime = Time.fixedTime + itemSpawnDelay;
 	}
 	
    private void SpawnPlayer ()
@@ -75,6 +81,7 @@ public class GameManager : MonoBehaviour
       message.text = "ROUND " + roundNumber;
       
       monkeyCount = roundMonkeys;
+      monkeysInPlay = 0;
       
       // Set monkey health and damage
       
@@ -117,31 +124,67 @@ public class GameManager : MonoBehaviour
    
    private void SpawnMonkey ()
    {
-      int spawn = Random.Range(0,4);
-		Debug.Log ("in monkey spawn");
-      
-      if (Time.deltaTime >= monkeySpawnTime && monkeyCount > 0)
-      {
-         Instantiate(monkey, monkeySpawn[spawn].position, monkeySpawn[spawn].rotation);
-			Debug.Log ("monkey spawned at " + monkeySpawn[spawn].position);
-      }
-      
-      monkeyCount--;
-      monkeySpawnTime = monkeySpawnDelay + Time.deltaTime;
+		GameObject spawnedMonkey;
+
+	   	if (monkeysInPlay < 5)
+		{
+		      int spawn = Random.Range(0,4);
+		      
+			if (Time.fixedTime > monkeySpawnTime && monkeyCount > 0)
+		      {
+		      	if (SafeToSpawn(monkeySpawn[spawn].position, "Enemy"))
+			{
+				spawnedMonkey = Instantiate(monkey, monkeySpawn[spawn].position, monkeySpawn[spawn].rotation) as GameObject;
+				Debug.Log ("monkey spawned at " + monkeySpawn[spawn].position);
+				spawnedMonkey.GetComponent<EnemyTerritory> ().playerInTerritory = true;
+			}
+
+				monkeyCount--;
+				monkeysInPlay++;
+				monkeySpawnTime = Time.fixedTime + monkeySpawnDelay;
+		      }
+	      }
+   }
+   
+	private bool SafeToSpawn(Vector3 position, string objectTag)
+   {
+	   	List<GameObject> instances = new List<GameObject>();
+		GameObject[] objects = FindObjectsOfType(typeof(GameObject)) as GameObject[];
+		bool nearby = false;
+	
+		foreach (GameObject obj in objects)
+		{
+			if (obj.tag == objectTag)
+			{
+				instances.Add(obj);
+			}
+		}
+
+		foreach (GameObject obj in instances)
+		{
+			if (obj.transform.position.x > position.x - 3.0f && obj.transform.position.x < position.x + 3.0f)
+			{
+				nearby = true;
+			}
+		}
+
+		return !nearby;
    }
    
    private void SpawnItem ()
    {
       int spawn = Random.Range(0,3);
       int item = Random.Range(0,3);
-		Debug.Log ("in item spawn");
       
-      if (Time.deltaTime >= itemSpawnTime)
+		if (Time.fixedTime> itemSpawnTime)
       {
-			Instantiate(items[item], itemSpawn[spawn].position, itemSpawn[spawn].rotation);
-			Debug.Log (items[item] + " spawned at " + itemSpawn[spawn].position);
+			if (SafeToSpawn(itemSpawn[spawn].position, "Pickups"))
+			{
+				itemInstance[itemSpawn[spawn].position] = Instantiate(items[item], itemSpawn[spawn].position, itemSpawn[spawn].rotation) as GameObject;
+				Debug.Log (items[item] + " spawned at " + itemSpawn[spawn].position);
+			}
+			
+			itemSpawnTime = Time.fixedTime + itemSpawnDelay;
       }
-      
-      itemSpawnTime = itemSpawnDelay + Time.deltaTime;
    }
 }

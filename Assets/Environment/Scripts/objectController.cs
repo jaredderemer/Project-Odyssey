@@ -51,7 +51,6 @@ public class objectController : MonoBehaviour {
          if (gameObject.tag == "Locked") 
          {
             unlockObject (target);
-
          }
          else if (gameObject.tag == "Chest") 
          {

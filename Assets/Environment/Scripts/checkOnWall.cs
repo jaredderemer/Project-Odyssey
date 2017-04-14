@@ -15,11 +15,11 @@ public class checkOnWall : MonoBehaviour
 	// Update is called once per frame
 	void OnTriggerEnter(Collider other)
    {
-      Debug.Log("grounded == " + myPlayer.GetComponent<playerController>().grounded);
+      Debug.Log("grounded == " + myPlayer.GetComponent<PlayerControllerTest>().grounded);
       
-      if (other.tag == "Player" && myPlayer.GetComponent<playerController>().grounded == false)
+      if (other.tag == "Player" && myPlayer.GetComponent<PlayerControllerTest>().grounded == false)
       {
-         myPlayer.GetComponent<playerController>().onWall = true;
+         myPlayer.GetComponent<PlayerControllerTest>().onWall = true;
       }
    }
    
@@ -27,7 +27,7 @@ public class checkOnWall : MonoBehaviour
    {
       if (other.tag == "Player")
       {
-         myPlayer.GetComponent<playerController>().onWall = false;
+         myPlayer.GetComponent<PlayerControllerTest>().onWall = false;
       }
    }
 }

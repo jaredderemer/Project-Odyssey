@@ -62,7 +62,7 @@ public class CameraFollow2 : MonoBehaviour
       Vector3 pos = new Vector3();
 
       pos.x   = player.position.x;
-		if (player.GetComponent<playerController> ().facingRight)
+		if (player.GetComponent<PlayerControllerTest> ().facingRight)
 		{
 			pos.x += 5.0f; // Keeps camera slightly in front of player
 		}
@@ -111,17 +111,7 @@ public class CameraFollow2 : MonoBehaviour
    // Beach and jungle first scene
    private float followPathOne ()
    {
-      float posY;
-
-      if (player.position.y >= 4.0f) 
-      {
-         posY = 5.0f;
-      } 
-      else 
-      {
-         posY = originalY;
-      }
-      return posY;
+      return 2.7f;
    }
 
    // Cave scene
@@ -167,7 +157,7 @@ public class CameraFollow2 : MonoBehaviour
    {
       float posY;
 
-      if (player.position.x >= 25.0f && player.position.x < 116.0f) 
+      if (player.position.x >= 17.0f && player.position.x < 116.0f) 
       {
          posY = 8.0f;
       } 

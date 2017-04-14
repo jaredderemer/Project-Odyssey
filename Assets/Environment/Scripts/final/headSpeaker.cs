@@ -8,13 +8,15 @@ public class headSpeaker : MonoBehaviour {
    public GameObject promptText;
    private AudioSource dingAS;
    private bool isUsed;
+   private bool isAdded;
    private string[] messageList = new string[6]; // Array of easter puns 
 
 	// Use this for initialization
 	void Start () 
    {
       dingAS  = GetComponent<AudioSource> ();
-      isUsed = false;
+      isUsed  = false;
+      isAdded = false;
 
       // Populating array of easter puns
       messageList[0] = "Don't spell part backwards. It's a trap.";
@@ -35,6 +37,14 @@ public class headSpeaker : MonoBehaviour {
             StartCoroutine (showMessage ());
             isUsed = true;
          }
+
+         if (!isAdded) 
+         {
+            // Increment easter egg counter
+            globalController.Instance.easterEggCounter += 1;
+
+            isAdded = true;
+         }
       }
    }
 
@@ -47,7 +57,7 @@ public class headSpeaker : MonoBehaviour {
    {
       int index = (int)Random.Range (0, messageList.Length);
       promptText.GetComponent<Text>().text = messageList[index];
-      yield return new WaitForSeconds (3.0f);
+      yield return new WaitForSeconds (5.0f);
       promptText.GetComponent<Text>().text = "";
    }
 }

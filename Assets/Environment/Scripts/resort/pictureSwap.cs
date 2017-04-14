@@ -13,6 +13,7 @@ public class pictureSwap : MonoBehaviour {
    private bool isUsed;
    [SerializeField]
    private GameObject fabrice;
+
 	// Use this for initialization
 	void Start () 
    {
@@ -23,11 +24,17 @@ public class pictureSwap : MonoBehaviour {
    {
       if (col.tag == "Player" && Input.GetKey(KeyCode.F) && !isUsed) 
       {
+         // Replace a picture with Fabrice picture
          Instantiate (fabrice, 
                       new Vector3 (transform.position.x, 
                                    transform.position.y, 
                                    transform.position.z), 
                       transform.rotation);
+         Destroy (gameObject);
+
+         // Increment easter egg counter
+         globalController.Instance.easterEggCounter += 1;
+
          isUsed = true;
       }
    }

@@ -130,17 +130,18 @@ public class GameManager : MonoBehaviour
 		{
 		      int spawn = Random.Range(0,4);
 		      
-			if (Random.Range(0, 4) == 0 && monkeyCount > 0)
+			if (Time.fixedTime > monkeySpawnTime && monkeyCount > 0)
 		      {
-		      	//if (SafeToSpawn(monkeySpawn[spawn].position, "Enemy"))
-				//{
+		      	if (SafeToSpawn(monkeySpawn[spawn].position, "Enemy"))
+			{
 				spawnedMonkey = Instantiate(monkey, monkeySpawn[spawn].position, monkeySpawn[spawn].rotation) as GameObject;
 				Debug.Log ("monkey spawned at " + monkeySpawn[spawn].position);
 				spawnedMonkey.GetComponent<EnemyTerritory> ().playerInTerritory = true;
-				//}
+			}
 
 				monkeyCount--;
 				monkeysInPlay++;
+				monkeySpawnTime = Time.fixedTime + monkeySpawnDelay;
 		      }
 	      }
    }
@@ -167,7 +168,7 @@ public class GameManager : MonoBehaviour
 			}
 		}
 
-		return nearby;
+		return !nearby;
    }
    
    private void SpawnItem ()
@@ -175,13 +176,15 @@ public class GameManager : MonoBehaviour
       int spawn = Random.Range(0,3);
       int item = Random.Range(0,3);
       
-		if (Random.Range(0, 10) == 0)
+		if (Time.fixedTime> itemSpawnTime)
       {
-			//if (SafeToSpawn(itemSpawn[spawn].position, "Pickups"))
-			//{
+			if (SafeToSpawn(itemSpawn[spawn].position, "Pickups"))
+			{
 				itemInstance[itemSpawn[spawn].position] = Instantiate(items[item], itemSpawn[spawn].position, itemSpawn[spawn].rotation) as GameObject;
 				Debug.Log (items[item] + " spawned at " + itemSpawn[spawn].position);
-			//}
+			}
+			
+			itemSpawnTime = Time.fixedTime + itemSpawnDelay;
       }
    }
 }

@@ -25,6 +25,13 @@ public class PlayerControllerTest : MonoBehaviour
 	[HideInInspector] public bool pushed = false;
 	private bool attacked = false;
 
+	private Vector3 spawnPosition = Vector3.zero;
+
+	[HideInInspector] public bool onWall = false;
+
+	private float throwTimer;
+	private float throwCooldown = .2f;
+
    // Use this for initialization
    void Start()
    {
@@ -36,13 +43,33 @@ public class PlayerControllerTest : MonoBehaviour
    // Update is called once per frame
    void Update()
    {
-		//attacked = pushed; // Works with the tree but not with the monkey
+//		if (globalController.Instance.currentSceneIndex > 2 && globalController.Instance.currentSceneIndex <= 5)
+//		{
+//			if (spawnPosition != globalController.Instance.spawnpoints [globalController.Instance.currentSceneIndex])
+//			{
+//				spawnPosition = globalController.Instance.spawnpoints [globalController.Instance.currentSceneIndex];
+//
+//				// keeps the player from respawning into the cave if he dies before reaching the cave
+//				// he will simply respawn in front of the hut
+//				if (globalController.Instance.currentSceneIndex == 3 && myRig.transform.position.x < spawnPosition.x)
+//				{
+//					spawnPosition = new Vector3 (0.0f, 0.5f, gameObject.transform.position.z);
+//				}
+//				if (globalController.Instance.currentSceneIndex == 4 && myRig.transform.position.x < spawnPosition.x && myRig.transform.position.x > -23.0f)
+//				{
+//					spawnPosition = new Vector3 (-23.0f, -2.5f, gameObject.transform.position.z);
+//				}
+//			}
+//		}
+//		else if (globalController.Instance.currentSceneIndex == 6) // Possible index of horde scene?
+//		{
+//			spawnPosition = globalController.Instance.hordeSpawnpoint.position;
+//		}
    }
     // When working with physics objects
    void FixedUpdate()
    {
-		attacked = pushed; // Works with the monkey but not with the tree
-                         // But if both are done then neither work....???
+		attacked = pushed;
 
       // THIS SECTION WAS MY OWN, GETTING FURTHER REFERENCE AS OF 00:36, 4 APRIL 2017
       //swingAttacking = Input.GetAxisRaw("Fire1").Equals(true);
@@ -107,6 +134,28 @@ public class PlayerControllerTest : MonoBehaviour
 			}
 			//Debug.Log ("attacked: " + attacked);
 			//Debug.Log ("pushed: " + pushed);
+
+			// Check if player is on wall
+			if(!onWall || grounded)
+			{
+
+				if (walking > 0 && grounded)
+				{
+					myRig.velocity = new Vector3(move * walkSpeed, myRig.velocity.y, 0);
+				}
+				else
+				{
+					myRig.velocity = new Vector3(move * runSpeed, myRig.velocity.y, 0);
+				}
+			}
+			else if(grounded &&  onWall)
+			{
+				// Stop movement
+				//myRB.velocity = new Vector3(0, .04f, 0);
+				myRig.AddForce(new Vector3(0, -1.0f, 0));
+				Debug.Log("Adding force down");
+			}
+
 		}
 		else
 		{
@@ -116,6 +165,17 @@ public class PlayerControllerTest : MonoBehaviour
 			//Debug.Log ("attacked: " + attacked);
 			//Debug.Log ("pushed: " + pushed);
 		}
+
+		// Keep track of time since last coconut throw
+		throwTimer += Time.deltaTime;
+
+		// Player uses a coconut!!!
+		if (Input.GetKeyDown(KeyCode.C) && throwTimer >= throwCooldown)
+		{
+			this.GetComponent<playerAttacks>().rangeAttack();
+			throwTimer = 0.0f;
+		}
+
    }
 
    void Flip()
@@ -123,5 +183,17 @@ public class PlayerControllerTest : MonoBehaviour
 		gameObject.transform.rotation = Quaternion.Euler (new Vector3 (0.0f, facingRight ? -100.0f : 100.0f, 0.0f));
 
 		facingRight = !facingRight;
-   }
+	}
+
+	// Respawn player to starting position in scene
+	public void RespawnPlayer()
+	{
+		Debug.Log ("Respawn" + spawnPosition);
+		myRig.position = spawnPosition;
+
+		if (!facingRight)
+		{
+			Flip ();
+		}
+	}
 }

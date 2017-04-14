@@ -20,6 +20,8 @@ public class globalController : MonoBehaviour
 	public GameObject scene2Spawnpoint;
 	public GameObject scene3Spawnpoint;
 	public GameObject scene4Spawnpoint;
+
+	public Transform hordeSpawnpoint;
 	
 	public static globalController Instance;
    

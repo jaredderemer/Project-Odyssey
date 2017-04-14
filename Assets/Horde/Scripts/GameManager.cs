@@ -38,14 +38,18 @@ public class GameManager : MonoBehaviour
       startWait = new WaitForSeconds(startDelay);
       endWait = new WaitForSeconds(endDelay);
 
-		SpawnPlayer();
-		StartCoroutine(GameLoop());
+		StartHordeMode ();
 	}
 
 	public void StartHordeMode()
 	{
 		SpawnPlayer();
 		StartCoroutine(GameLoop());
+
+		items [2].GetComponent<ammoPickup> ().ammoAmount = 4;
+
+		monkeySpawnTime = Time.fixedTime;
+		itemSpawnTime = Time.fixedTime + itemSpawnDelay;
 	}
 	
    private void SpawnPlayer ()
@@ -120,42 +124,39 @@ public class GameManager : MonoBehaviour
    
    private void SpawnMonkey ()
    {
-   	if (monkeysInPlay < 5)
-	{
-      int spawn = Random.Range(0,4);
-      int skin = Random.Range(0,2);
-		Debug.Log ("in monkey spawn");
-      
-      if (Time.deltaTime >= monkeySpawnTime && monkeyCount > 0)
-      {
-      	if (SafeToSpawn(monkeySpawn[spawn].position))
-	{
-         Instantiate(monkey, monkeySpawn[spawn].position, monkeySpawn[spawn].rotation);
-			Debug.Log ("monkey spawned at " + monkeySpawn[spawn].position);
-	}
-      }
-      
-      monkeyCount--;
-      monkeysInPlay++;
-      monkeySpawnTime = monkeySpawnDelay + Time.deltaTime;
-      }
+	   	if (monkeysInPlay < 5)
+		{
+		      int spawn = Random.Range(0,4);
+		      
+			if (Random.Range(0, 4) == 0 && monkeyCount > 0)
+		      {
+		      	//if (SafeToSpawn(monkeySpawn[spawn].position, "Enemy"))
+				//{
+			         Instantiate(monkey, monkeySpawn[spawn].position, monkeySpawn[spawn].rotation);
+						Debug.Log ("monkey spawned at " + monkeySpawn[spawn].position);
+				//}
+
+				monkeyCount--;
+				monkeysInPlay++;
+		      }
+	      }
    }
    
-   private bool SafeToSpawn(Vector3 position)
+	private bool SafeToSpawn(Vector3 position, string objectTag)
    {
-	   	List<GameObject> monkeyInstances = new List<GameObject>();
-		GameObject[] monkeys = FindObjectsOfType(typeof(GameObject)) as GameObject[];
+	   	List<GameObject> instances = new List<GameObject>();
+		GameObject[] objects = FindObjectsOfType(typeof(GameObject)) as GameObject[];
 		bool nearby = false;
 	
-		foreach (GameObject obj in monkeys)
+		foreach (GameObject obj in objects)
 		{
-			if (obj.tag == "Enemy")
+			if (obj.tag == objectTag)
 			{
-				monkeyInstances.Add(obj);
+				instances.Add(obj);
 			}
 		}
 
-		foreach (GameObject obj in monkeyInstances)
+		foreach (GameObject obj in instances)
 		{
 			if (obj.transform.position.x > position.x - 3.0f && obj.transform.position.x < position.x + 3.0f)
 			{
@@ -170,17 +171,14 @@ public class GameManager : MonoBehaviour
    {
       int spawn = Random.Range(0,3);
       int item = Random.Range(0,3);
-		Debug.Log ("in item spawn");
       
-      if (Time.deltaTime >= itemSpawnTime)
+		if (Random.Range(0, 10) == 0)
       {
-      	if (itemInstance[itemSpawn[spawn].position] == null)
-	{
-		itemInstance[itemSpawn[spawn].position] = Instantiate(items[item], itemSpawn[spawn].position, itemSpawn[spawn].rotation) as GameObject;
-		Debug.Log (items[item] + " spawned at " + itemSpawn[spawn].position);
-	}
+			//if (SafeToSpawn(itemSpawn[spawn].position, "Pickups"))
+			//{
+				itemInstance[itemSpawn[spawn].position] = Instantiate(items[item], itemSpawn[spawn].position, itemSpawn[spawn].rotation) as GameObject;
+				Debug.Log (items[item] + " spawned at " + itemSpawn[spawn].position);
+			//}
       }
-      
-      itemSpawnTime = itemSpawnDelay + Time.deltaTime;
    }
 }

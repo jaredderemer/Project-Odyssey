@@ -29,7 +29,10 @@ public class DestroyItem : MonoBehaviour
       {
          if (Input.GetKey (KeyCode.E) && col.tag == "Player") 
          {
-            unlockObject (col);
+            if (col.GetComponent<Inventory2> ().removeItem (itemIDNeeded) == 1) 
+            {
+               unlockObject (col);
+            }
          } 
       }
       else 
@@ -43,11 +46,10 @@ public class DestroyItem : MonoBehaviour
 
    void unlockObject (Collider target)
    {
-      if (target.GetComponent<Inventory2> ().removeItem (itemIDNeeded) == 1) 
-      {
-         gameObject.tag = "Untagged";
-         destroyObject ();
-      }
+      gameObject.tag = "Untagged";
+      gameObject.GetComponentInChildren<promptInteract> ().itemIDNeeded = 0;
+      destroyObject ();
+
    }
 
    void destroyObject ()

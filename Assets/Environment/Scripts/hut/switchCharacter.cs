@@ -11,14 +11,15 @@ using UnityEngine;
 
 public class switchCharacter : MonoBehaviour {
 
-   public GameObject list;
+   public GameObject player;
    public int charIndex;
    public int sceneToLoad;
 
    void OnTriggerStay (Collider col)
    {
-      if (col.tag == "Player" && Input.GetKey(KeyCode.E)) {
-         list.GetComponent<CharacterSelection> ().selectCharacter (charIndex);
+      if (col.tag == "Player" && Input.GetKey(KeyCode.E)) 
+      {
+         player.GetComponent<meshSelector> ().selectMesh (charIndex);
          GameObject.FindGameObjectWithTag ("Door").GetComponent<hutChoice> ().sceneToLoad = sceneToLoad;
       }
    }

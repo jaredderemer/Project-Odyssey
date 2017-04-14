@@ -124,6 +124,8 @@ public class GameManager : MonoBehaviour
    
    private void SpawnMonkey ()
    {
+		GameObject spawnedMonkey;
+
 	   	if (monkeysInPlay < 5)
 		{
 		      int spawn = Random.Range(0,4);
@@ -132,8 +134,9 @@ public class GameManager : MonoBehaviour
 		      {
 		      	//if (SafeToSpawn(monkeySpawn[spawn].position, "Enemy"))
 				//{
-			         Instantiate(monkey, monkeySpawn[spawn].position, monkeySpawn[spawn].rotation);
-						Debug.Log ("monkey spawned at " + monkeySpawn[spawn].position);
+				spawnedMonkey = Instantiate(monkey, monkeySpawn[spawn].position, monkeySpawn[spawn].rotation) as GameObject;
+				Debug.Log ("monkey spawned at " + monkeySpawn[spawn].position);
+				spawnedMonkey.GetComponent<EnemyTerritory> ().playerInTerritory = true;
 				//}
 
 				monkeyCount--;

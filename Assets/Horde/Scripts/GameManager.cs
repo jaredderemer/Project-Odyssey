@@ -143,18 +143,27 @@ public class GameManager : MonoBehaviour
    
    private bool SafeToSpawn(Vector3 position)
    {
-   	List<GameObject> monkeyInstances = new List<GameObject>();
-	GameObject[] monkeys = FindObjectsOfType(typeof(GameObject)) as GameObject[];
+	   	List<GameObject> monkeyInstances = new List<GameObject>();
+		GameObject[] monkeys = FindObjectsOfType(typeof(GameObject)) as GameObject[];
+		bool nearby = false;
 	
-	foreach (GameObject obj in monkeys)
-	{
-		if (obj.tag == "Enemy")
+		foreach (GameObject obj in monkeys)
 		{
-			monkeyInstances.Add(obj);
+			if (obj.tag == "Enemy")
+			{
+				monkeyInstances.Add(obj);
+			}
 		}
-	}
-	
-	//Check list for nearby positions
+
+		foreach (GameObject obj in monkeyInstances)
+		{
+			if (obj.transform.position.x > position.x - 3.0f && obj.transform.position.x < position.x + 3.0f)
+			{
+				nearby = true;
+			}
+		}
+
+		return nearby;
    }
    
    private void SpawnItem ()

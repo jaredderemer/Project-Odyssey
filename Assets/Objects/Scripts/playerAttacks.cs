@@ -7,7 +7,7 @@ public class playerAttacks : MonoBehaviour
 
     public int hasStick;
     public Rigidbody coconut;
-    public Transform FireTransform;
+    //public Transform FireTransform;
     private string Fire_Button;
     public int x;
     public int y;
@@ -19,7 +19,9 @@ public class playerAttacks : MonoBehaviour
     public float throwRate;
     
     private GameObject throwHand;
-    public Transform throwOffset;
+    private Vector3 throwOffset;
+    private float counterBalance;
+    
     
     Animator myAnim;
 
@@ -29,6 +31,8 @@ public class playerAttacks : MonoBehaviour
       myAnim = transform.root.GetComponent<Animator>(); // Animator on the character itself	
       nextMelee = 0f;
       nextThrow = 0f;
+      throwOffset.Set(0.0f, 0.0f, 0.13f);
+      counterBalance = -1.79f;
 	}
 	
 	// Update is called once per frame
@@ -71,20 +75,25 @@ public class playerAttacks : MonoBehaviour
             myAnim.SetTrigger("CharRange");
             nextThrow = Time.time + throwRate;
             
-            Rigidbody coconutInstance = Instantiate(coconut, 
-                                                    throwHand.transform.position + throwOffset.position,
-                                                    Quaternion.identity)
-                                        as Rigidbody;
-       
-            // Check which way to throw
+                  
+            // Check which way to throw and throw
             if(this.GetComponent<PlayerControllerTest>().facingRight)
             {
-               coconutInstance.velocity = new Vector3(x, y, 0);
+               Rigidbody coconutInstance = Instantiate(coconut, 
+                                                    throwHand.transform.position + throwOffset,
+                                                    Quaternion.identity)
+                                        as Rigidbody;
+                                        
+               coconutInstance.velocity = new Vector3(x, y, counterBalance);
             }
             else
             {
-               coconutInstance.velocity = new Vector3(-x, y, 0);
-               print("THROW LEFT JOHN!!!!");
+               Rigidbody coconutInstance = Instantiate(coconut, 
+                                                    throwHand.transform.position + (throwOffset * -1.0f),
+                                                    Quaternion.identity)
+                                        as Rigidbody;
+                                        
+               coconutInstance.velocity = new Vector3(-x, y, counterBalance * -1.0f);
             }
          
             // Subtract coconut from ammo

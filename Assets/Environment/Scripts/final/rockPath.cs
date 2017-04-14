@@ -24,8 +24,7 @@ public class rockPath : MonoBehaviour {
 
    void OnTriggerStay (Collider col)
    {
-      //if (col.tag == "Weapon") 
-      if (col.tag == "Player" && Input.GetKey(KeyCode.E))
+      if (col.tag == "Weapon") 
       {
          StartCoroutine (moveToggle ());
          StartCoroutine (makePath ());

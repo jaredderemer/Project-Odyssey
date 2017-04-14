@@ -116,15 +116,15 @@ public class moveArea : MonoBehaviour {
       {
          case house:
             playerPos = new Vector3 (-121.1972f, -2.208784f, 15.6f);
-            camPos    = new Vector3 (-118.022f, 4.5f, 0f);
+            camPos    = new Vector3 (-114.95f, 4.5f, 0f);
             break;
          case office:
             playerPos = new Vector3 (-74.54841f, -2.832353f, 15.6f);
-            camPos    = new Vector3 (-71.45634f, 4.5f, 0f);
+            camPos    = new Vector3 (-67.85f, 4.5f, 0f);
             break;
       case pool:
             playerPos = new Vector3 (-178.0f, -2.896141f, 15.6f);
-            camPos    = new Vector3 (-185.46f, 7.75f, 0f);
+            camPos    = new Vector3 (-187.5f, 7.75f, 0f);
             break;
          case main:
             goToMain();
@@ -142,16 +142,16 @@ public class moveArea : MonoBehaviour {
       switch (area) 
       {
          case house:
-            min = -118.5f;
-            max = -115.3f;
+            min = -121.5f;
+            max = -121.5f;
             break;
          case office:
-            min = -72.0f;
-            max = -70.3f;
+            min = -75.0f;
+            max = -75.0f;
             break;
          case pool:
-            min = -203.5f;
-            max = -190f;
+            min = -204.5f;
+            max = -192f;
             break;
          case main:
             min = -24.0f;

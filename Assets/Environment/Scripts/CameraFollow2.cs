@@ -111,17 +111,7 @@ public class CameraFollow2 : MonoBehaviour
    // Beach and jungle first scene
    private float followPathOne ()
    {
-      float posY;
-
-      if (player.position.y >= 4.0f) 
-      {
-         posY = 5.0f;
-      } 
-      else 
-      {
-         posY = originalY;
-      }
-      return posY;
+      return 2.7f;
    }
 
    // Cave scene

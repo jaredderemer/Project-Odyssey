@@ -13,6 +13,7 @@ public class pictureSwap : MonoBehaviour {
    private bool isUsed;
    [SerializeField]
    private GameObject fabrice;
+
 	// Use this for initialization
 	void Start () 
    {
@@ -30,8 +31,10 @@ public class pictureSwap : MonoBehaviour {
                                    transform.position.z), 
                       transform.rotation);
          Destroy (gameObject);
+
          // Increment easter egg counter
          globalController.Instance.easterEggCounter += 1;
+
          isUsed = true;
       }
    }

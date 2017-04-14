@@ -37,8 +37,7 @@ public class DestroyItem : MonoBehaviour
       }
       else 
       {
-         //if (col.tag == "Weapon") 
-         if (Input.GetKey (KeyCode.E) && col.tag == "Player") 
+         if (col.tag == "Weapon")
          {
             destroyObject ();
          }

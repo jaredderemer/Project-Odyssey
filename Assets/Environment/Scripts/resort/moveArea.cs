@@ -36,7 +36,7 @@ public class moveArea : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
    {
-      cam         = Camera.main;
+      cam = Camera.main;
       setBorder ();
 	}
 	
@@ -150,7 +150,7 @@ public class moveArea : MonoBehaviour {
             max = -75.0f;
             break;
          case pool:
-            min = -204.5f;
+            min = -202f;
             max = -192f;
             break;
          case main:

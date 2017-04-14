@@ -16,28 +16,19 @@ public class doorController : MonoBehaviour {
    private AudioSource objOpenAS;
 
    private bool isUsed;
-   private bool displayed;
-
+   private bool isAdded;
    private Camera cam;
-
-   private GameObject messageTemp;
 
 	// Use this for initialization
 	void Start () 
    {
       objAnim     = GetComponent<Animator> ();
       objOpenAS   = GetComponent<AudioSource> ();
-      messageTemp = GameObject.FindGameObjectWithTag ("MessageTemp");
       isUsed      = false;
-      displayed   = false;
+      isAdded     = false;
       cam         = Camera.main;
 	}
-	
-   void OnTriggerEnter (Collider col)
-   {
-      messageTemp.GetComponent<noteDisplay> ().displayMessage ("Press W to enter");
-   }
-
+      
    void OnTriggerStay (Collider target)
    {
       // When the player hits action key, open the door 
@@ -53,15 +44,8 @@ public class doorController : MonoBehaviour {
                objOpenAS.Play ();
                isUsed = true;
                gameObject.GetComponent<BoxCollider> ().enabled = false;
+               gameObject.GetComponentInChildren<promptInteract> ().itemIDNeeded = 0;
             } 
-            else 
-            {
-               if (!displayed) 
-               {
-                  messageTemp.GetComponent<noteDisplay>().displayMessage("Door is locked");
-                  displayed = true;
-               }
-            }
          }
 
          // if the door opens to balcony, move player to the balcony
@@ -72,13 +56,7 @@ public class doorController : MonoBehaviour {
          }
       }
    }
-
-   void OnTriggerExit (Collider target)
-   {
-      messageTemp.GetComponent<noteDisplay>().displayMessage("");
-      displayed = false;
-   }
-
+      
    /****************************************************************************
    * toBalcony                                                                 *
    * Move the positions of player and camera to balcony                        *
@@ -89,6 +67,13 @@ public class doorController : MonoBehaviour {
       yield return new WaitForSeconds (1.0f);
       target.position = new Vector3 (-162.82f, 6.2f, 15.6f);
       cam.GetComponent<CameraFollow2> ().enabled = false;
-      cam.transform.position = new Vector3 (-157.92f, 12.0f, 0f);
+      cam.transform.position = new Vector3 (-157.0f, 12.0f, 0f);
+
+      // Increment easter egg counter
+      if (!isAdded) 
+      {
+         globalController.Instance.easterEggCounter += 1;
+         isAdded = true;
+      }
    }
 }

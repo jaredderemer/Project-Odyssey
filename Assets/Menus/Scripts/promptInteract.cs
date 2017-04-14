@@ -51,15 +51,19 @@ public class promptInteract : MonoBehaviour
          }
          
          // Set Button Text
-         if(buttonTextString == "E" || buttonTextString == "W")
+         if(promptBtn.activeSelf)
          {
-            buttonText.GetComponent<Text>().text = buttonTextString;
+            if(buttonTextString == "E" || buttonTextString == "W")
+            {
+               buttonText.GetComponent<Text>().text = buttonTextString;
+            }
+            else
+            {
+               // Default
+               buttonText.GetComponent<Text>().text = "E";
+            }
          }
-         else
-         {
-            // Default
-            buttonText.GetComponent<Text>().text = "E";
-         }
+
          
          // Reposition the prompt above this object
          newPosition = interactable.position;

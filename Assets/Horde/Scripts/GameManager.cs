@@ -24,10 +24,12 @@ public class GameManager : MonoBehaviour
    private int lives;
    private int roundMonkeys = 5;
    private int monkeyCount;
+   private int monkeysInPlay;
    private int monkeyHealth;
    private int monkeyDamage;
    private float monkeySpawnTime;
    private float itemSpawnTime;
+   private Dictionary<Vector3, GameObject> itemInstance;
 
 	// Use this for initialization
 	void Start ()
@@ -75,6 +77,7 @@ public class GameManager : MonoBehaviour
       message.text = "ROUND " + roundNumber;
       
       monkeyCount = roundMonkeys;
+      monkeysInPlay = 0;
       
       // Set monkey health and damage
       
@@ -117,17 +120,41 @@ public class GameManager : MonoBehaviour
    
    private void SpawnMonkey ()
    {
+   	if (monkeysInPlay < 5)
+	{
       int spawn = Random.Range(0,4);
+      int skin = Random.Range(0,2);
 		Debug.Log ("in monkey spawn");
       
       if (Time.deltaTime >= monkeySpawnTime && monkeyCount > 0)
       {
+      	if (SafeToSpawn(monkeySpawn[spawn].position))
+	{
          Instantiate(monkey, monkeySpawn[spawn].position, monkeySpawn[spawn].rotation);
 			Debug.Log ("monkey spawned at " + monkeySpawn[spawn].position);
+	}
       }
       
       monkeyCount--;
+      monkeysInPlay++;
       monkeySpawnTime = monkeySpawnDelay + Time.deltaTime;
+      }
+   }
+   
+   private bool SafeToSpawn(Vector3 position)
+   {
+   	List<GameObject> monkeyInstances = new List<GameObject>();
+	GameObject[] monkeys = FindObjectsOfType(typeof(GameObject)) as GameObject[];
+	
+	foreach (GameObject obj in monkeys)
+	{
+		if (obj.tag == "Enemy")
+		{
+			monkeyInstances.Add(obj);
+		}
+	}
+	
+	//Check list for nearby positions
    }
    
    private void SpawnItem ()
@@ -138,8 +165,11 @@ public class GameManager : MonoBehaviour
       
       if (Time.deltaTime >= itemSpawnTime)
       {
-			Instantiate(items[item], itemSpawn[spawn].position, itemSpawn[spawn].rotation);
-			Debug.Log (items[item] + " spawned at " + itemSpawn[spawn].position);
+      	if (itemInstance[itemSpawn[spawn].position] == null)
+	{
+		itemInstance[itemSpawn[spawn].position] = Instantiate(items[item], itemSpawn[spawn].position, itemSpawn[spawn].rotation) as GameObject;
+		Debug.Log (items[item] + " spawned at " + itemSpawn[spawn].position);
+	}
       }
       
       itemSpawnTime = itemSpawnDelay + Time.deltaTime;

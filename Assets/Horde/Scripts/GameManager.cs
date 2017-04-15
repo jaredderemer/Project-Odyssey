@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
 
 	public void StartHordeMode()
 	{
-		SpawnPlayer();
+		//SpawnPlayer();
 		StartCoroutine(GameLoop());
 
 		items [2].GetComponent<ammoPickup> ().ammoAmount = 4;

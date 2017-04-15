@@ -21,6 +21,7 @@ public class HUDTest : MonoBehaviour
         points += pointsEarned;
         string text = string.Format("Score: " + points.ToString());
         Score.text = text;
+        savePlayerScore ();
     }
 
     public void savePlayerScore()

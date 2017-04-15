@@ -27,7 +27,7 @@ public class MonkeyControllerTest : MonoBehaviour
 		}
 	}
 
-	/*void detectionArea.OnTriggerEnter(Collider other)
+	void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Player" && !detected)
 		{
@@ -38,14 +38,14 @@ public class MonkeyControllerTest : MonoBehaviour
 	}
 
    // Monkey Cease-to-Follow code should we decide to use it later
-   void detectionArea.OnTriggerExit(Collider other)
+   void OnTriggerExit(Collider other)
    {
       if (other.tag == "Player" && detected)
       {
          detected = false;
          Debug.Log ("Player Lost");
       }
-   }*/
+   }
 
    void FixedUpdate()
    {

@@ -43,28 +43,28 @@ public class PlayerControllerTest : MonoBehaviour
    // Update is called once per frame
    void Update()
    {
-//		if (globalController.Instance.currentSceneIndex > 2 && globalController.Instance.currentSceneIndex <= 5)
-//		{
-//			if (spawnPosition != globalController.Instance.spawnpoints [globalController.Instance.currentSceneIndex])
-//			{
-//				spawnPosition = globalController.Instance.spawnpoints [globalController.Instance.currentSceneIndex];
-//
-//				// keeps the player from respawning into the cave if he dies before reaching the cave
-//				// he will simply respawn in front of the hut
-//				if (globalController.Instance.currentSceneIndex == 3 && myRig.transform.position.x < spawnPosition.x)
-//				{
-//					spawnPosition = new Vector3 (0.0f, 0.5f, gameObject.transform.position.z);
-//				}
-//				if (globalController.Instance.currentSceneIndex == 4 && myRig.transform.position.x < spawnPosition.x && myRig.transform.position.x > -23.0f)
-//				{
-//					spawnPosition = new Vector3 (-23.0f, -2.5f, gameObject.transform.position.z);
-//				}
-//			}
-//		}
-//		else if (globalController.Instance.currentSceneIndex == 6) // Possible index of horde scene?
-//		{
-//			spawnPosition = globalController.Instance.hordeSpawnpoint.position;
-//		}
+		if (globalController.Instance.currentSceneIndex > 2 && globalController.Instance.currentSceneIndex <= 5)
+		{
+			if (spawnPosition != globalController.Instance.spawnpoints [globalController.Instance.currentSceneIndex])
+			{
+				spawnPosition = globalController.Instance.spawnpoints [globalController.Instance.currentSceneIndex];
+
+				// keeps the player from respawning into the cave if he dies before reaching the cave
+				// he will simply respawn in front of the hut
+				if (globalController.Instance.currentSceneIndex == 3 && myRig.transform.position.x < spawnPosition.x)
+				{
+					spawnPosition = new Vector3 (0.0f, 0.5f, gameObject.transform.position.z);
+				}
+				if (globalController.Instance.currentSceneIndex == 4 && myRig.transform.position.x < spawnPosition.x && myRig.transform.position.x > -23.0f)
+				{
+					spawnPosition = new Vector3 (-23.0f, -2.5f, gameObject.transform.position.z);
+				}
+			}
+		}
+		else if (globalController.Instance.currentSceneIndex == 6) // Possible index of horde scene?
+		{
+			spawnPosition = globalController.Instance.hordeSpawnpoint.position;
+		}
    }
     // When working with physics objects
    void FixedUpdate()

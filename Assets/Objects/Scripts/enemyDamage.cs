@@ -1,10 +1,9 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyDamage : MonoBehaviour {
-
+public class enemyDamage : MonoBehaviour
+{
    public float damage; // Amount of damage enemy can do
    public float damageRate; // How often damage can be applied to character
    public float pushBackForce; // Force applied to character when entering damage zone
@@ -16,6 +15,7 @@ public class enemyDamage : MonoBehaviour {
    GameObject thePlayer; // The player itself
    playerHealth thePlayerHealth; // Reference playerHealth Script
    Animator myAnim;
+   //public Collider detectionArea;
 
 	// Use this for initialization
 	void Start ()
@@ -24,7 +24,7 @@ public class enemyDamage : MonoBehaviour {
       
       thePlayer = GameObject.FindGameObjectWithTag("Player"); // Player is the player
 		//thePlayerHealth = thePlayer.GetComponent<playerHealth>(); // Get the player's health
-      myAnim   = gameObject.GetComponent<Animator> ();
+	  myAnim = thePlayer.GetComponent<Animator> ();
 	}
 
 	// Update is called once per frame
@@ -66,6 +66,7 @@ public class enemyDamage : MonoBehaviour {
          nextDamage = Time.time + damageRate;
 
          pushBack(thePlayer.transform);
+			Debug.Log ("Attack");
       }
    }
 

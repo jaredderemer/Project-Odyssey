@@ -39,8 +39,8 @@ public class enterHut : MonoBehaviour
             // Save data before switching scenes 
             thePlayerHealth.savePlayerHealth();
          
-            // Temporary Fix
-            globalController.Instance.currentSceneIndex = 4;
+            // HARD CODE: put index to go to decision hut
+            globalController.Instance.currentSceneIndex = 5;
          
             // Change scenes to loading
             UI.GetComponent<StartOptions>().StartLoadingScreen();

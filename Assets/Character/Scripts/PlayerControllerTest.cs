@@ -115,15 +115,6 @@ public class PlayerControllerTest : MonoBehaviour
 
 		if (!attacked)
 		{
-			if (walking > 0)
-			{
-				myRig.velocity = new Vector3 (move * walkSpeed, myRig.velocity.y, 0);
-			}
-			else
-			{
-				myRig.velocity = new Vector3 (move * runSpeed, myRig.velocity.y, 0);
-			}
-
 			if (move > 0 && !facingRight)
 			{
 				Flip ();
@@ -136,19 +127,18 @@ public class PlayerControllerTest : MonoBehaviour
 			//Debug.Log ("pushed: " + pushed);
 
 			// Check if player is on wall
-			if(!onWall || grounded)
+			if(!onWall || grounded && onWall)
 			{
-
-				if (walking > 0 && grounded)
-				{
-					myRig.velocity = new Vector3(move * walkSpeed, myRig.velocity.y, 0);
-				}
-				else
-				{
-					myRig.velocity = new Vector3(move * runSpeed, myRig.velocity.y, 0);
-				}
+				if (walking > 0)
+            {
+               myRig.velocity = new Vector3 (move * walkSpeed, myRig.velocity.y, 0);
+            }
+            else
+            {
+               myRig.velocity = new Vector3 (move * runSpeed, myRig.velocity.y, 0);
+            }
 			}
-			else if(grounded &&  onWall)
+			else if(onWall)
 			{
 				// Stop movement
 				//myRB.velocity = new Vector3(0, .04f, 0);

@@ -27,7 +27,7 @@ public class MonkeyControllerTest : MonoBehaviour
 		}
 	}
 
-	void detectionArea.OnTriggerEnter(Collider other)
+	/*void detectionArea.OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Player" && !detected)
 		{
@@ -45,7 +45,7 @@ public class MonkeyControllerTest : MonoBehaviour
          detected = false;
          Debug.Log ("Player Lost");
       }
-   }
+   }*/
 
    void FixedUpdate()
    {

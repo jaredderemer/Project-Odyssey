@@ -131,13 +131,18 @@ public class GameManager : MonoBehaviour
 		      int spawn = Random.Range(0,4);
 		      
 			if (Time.fixedTime > monkeySpawnTime && monkeyCount > 0)
-		      {
+	      	{
 		      	if (SafeToSpawn(monkeySpawn[spawn].position, "Enemy"))
-			{
-				spawnedMonkey = Instantiate(monkey, monkeySpawn[spawn].position, monkeySpawn[spawn].rotation) as GameObject;
-				Debug.Log ("monkey spawned at " + monkeySpawn[spawn].position);
-				spawnedMonkey.GetComponent<EnemyTerritory> ().playerInTerritory = true;
-			}
+				{
+					spawnedMonkey = Instantiate(monkey, monkeySpawn[spawn].position, monkeySpawn[spawn].rotation) as GameObject;
+					Debug.Log ("monkey spawned at " + monkeySpawn[spawn].position);
+					spawnedMonkey.GetComponent<MonkeyControllerTest> ().detected = true;
+
+					if (spawn == 1 || spawn == 2)
+					{
+						spawnedMonkey.GetComponent<MonkeyControllerTest> ().Flip ();
+					}
+				}
 
 				monkeyCount--;
 				monkeysInPlay++;

@@ -5,9 +5,10 @@ using UnityEngine;
 public class MonkeyControllerTest : MonoBehaviour
 {
 	public float moveSpeed;
+	public Collider detectionArea;
 	[HideInInspector]public bool facingRight;
+	[HideInInspector]public bool detected;
 
-	private bool detected;
 	private GameObject player;
 	private Animator myAnim;
 	private Rigidbody myRB;
@@ -86,9 +87,10 @@ public class MonkeyControllerTest : MonoBehaviour
 		}
 	}
 
-	void Flip()
+	public void Flip()
 	{
 		gameObject.transform.rotation = Quaternion.Euler (new Vector3 (0.0f, facingRight ? -100.0f : 100.0f, 0.0f));
+		detectionArea.transform.rotation = Quaternion.Euler (new Vector3 (0.0f, facingRight ? -10.0f : 10.0f, 0.0f));
 
 		facingRight = !facingRight;
 	}

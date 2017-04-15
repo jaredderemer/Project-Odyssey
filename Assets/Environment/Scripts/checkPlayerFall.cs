@@ -28,9 +28,12 @@ public class checkPlayerFall : MonoBehaviour
             other.GetComponent<playerHealth> ().loseLife ();
 			Debug.Log ("player fell out of the world");
             
-            // Reset mine cart position
-            mineCart.transform.position = cartStartPosition;
-            mineCartController.isRight = false;
+			if (globalController.Instance.currentSceneIndex == 3) // if in the cave scene
+			{
+				// Reset mine cart position
+				mineCart.transform.position = cartStartPosition;
+				mineCartController.isRight = false;
+			}
         }
 	}
 }

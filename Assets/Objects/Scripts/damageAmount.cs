@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,10 +21,7 @@ public class damageAmount : MonoBehaviour
 
     // Applies damage to the enemy once contact is made
     void OnTriggerEnter(Collider other)
-    {
-        //&& thePlayer.GetComponent<Animator>().charMelee is set
-        // Need to check if the melee trigger is set
-       
+    {               
        if (other.gameObject.CompareTag("Enemy"))
        {
            other.GetComponent<EnemyHealth>().AddDamage(damage);

@@ -116,7 +116,7 @@ public class playerHealth : MonoBehaviour
 		}
 		else
 		{
-			GetComponent<playerController>().RespawnPlayer();
+			GetComponent<PlayerControllerTest>().RespawnPlayer();
 			currentHealth = fullHealth;
 			globalController.Instance.playerHealth = fullHealth;
 			updateHealthSlider();

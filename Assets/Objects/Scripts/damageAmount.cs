@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class damageAmount : MonoBehaviour {
-
+public class damageAmount : MonoBehaviour
+{
     public float damage;
     GameObject thePlayer;
 

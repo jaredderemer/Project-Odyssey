@@ -45,6 +45,7 @@ public class doorController : MonoBehaviour {
                isUsed = true;
                gameObject.GetComponent<BoxCollider> ().enabled = false;
                gameObject.GetComponentInChildren<promptInteract> ().itemIDNeeded = 0;
+               //GameObject.Find("doorPrompt").SetActive(false);
             } 
          }
 

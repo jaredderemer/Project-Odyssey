@@ -92,7 +92,6 @@ public class promptInteract : MonoBehaviour
          {
             // Hide the prompt after the player interacts
             promptPanel.SetActive(false);
-            
             interacted = true;
          }
          else

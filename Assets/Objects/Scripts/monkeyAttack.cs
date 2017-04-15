@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyDamage : MonoBehaviour
+public class monkeyAttack : MonoBehaviour
 {
    public float damage; // Amount of damage enemy can do
    public float damageRate; // How often damage can be applied to character
@@ -14,7 +14,8 @@ public class enemyDamage : MonoBehaviour
 
    GameObject thePlayer; // The player itself
    playerHealth thePlayerHealth; // Reference playerHealth Script
-   //public Collider detectionArea;
+   Animator myAnim;
+   private float monkeySpeed;
 
 	// Use this for initialization
 	void Start ()
@@ -22,6 +23,8 @@ public class enemyDamage : MonoBehaviour
       nextDamage = Time.time; // Damaged immediately by object
       
       thePlayer = GameObject.FindGameObjectWithTag("Player"); // Player is the player
+	   myAnim = transform.parent.gameObject.GetComponent<Animator> ();
+      monkeySpeed = transform.parent.gameObject.GetComponent<MonkeyControllerTest> ().moveSpeed;
 	}
 
 	// Update is called once per frame
@@ -39,6 +42,7 @@ public class enemyDamage : MonoBehaviour
       if(other.tag == "Player")
       {
          playerInRange = true;
+         transform.parent.gameObject.GetComponent<MonkeyControllerTest> ().moveSpeed = monkeySpeed * 0.25f;
       }
    }
 
@@ -48,6 +52,7 @@ public class enemyDamage : MonoBehaviour
       if(other.tag == "Player")
       {
          playerInRange = false;
+         transform.parent.gameObject.GetComponent<MonkeyControllerTest> ().moveSpeed = monkeySpeed;
       }
    }
 
@@ -58,6 +63,8 @@ public class enemyDamage : MonoBehaviour
       
       if (nextDamage <= Time.time)
       {
+         Debug.Log(nextDamage);
+         myAnim.SetTrigger("Slam");
          thePlayerHealth.addDamage(damage);
          nextDamage = Time.time + damageRate;
 
@@ -68,6 +75,7 @@ public class enemyDamage : MonoBehaviour
    // Push the character away from the damaging object
    void pushBack(Transform pushedObject)
 	{
+      Debug.Log ("pushback");
       // Pushes the character straight up away from the object
       Vector3 pushDirection = new Vector3(thePlayer.GetComponent<PlayerControllerTest>().facingRight? -100.0f:100.0f, (pushedObject.position.y - transform.position.y), 0).normalized;
 

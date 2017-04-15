@@ -195,7 +195,7 @@ public class CameraFollow2 : MonoBehaviour
       }
       else
       {
-         posY = 6.45f;
+         posY = 5.5f;
       }
       return posY;
    }

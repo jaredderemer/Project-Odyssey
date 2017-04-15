@@ -8,18 +8,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class switchCharacter : MonoBehaviour {
 
    public GameObject player;
-   public int charIndex;
+   public int charIndex; // 0 == default; 1 == miner; 2 == tourist
    public int sceneToLoad;
 
    void OnTriggerStay (Collider col)
    {
       if (col.tag == "Player" && Input.GetKey(KeyCode.E)) 
       {
-         player.GetComponent<meshSelector> ().selectMesh (charIndex);
+         PlayerPrefs.SetInt ("CharacterSelected", charIndex);
+         player.GetComponent<meshSelector> ().selectMesh ();
          GameObject.FindGameObjectWithTag ("Door").GetComponent<hutChoice> ().sceneToLoad = sceneToLoad;
       }
    }

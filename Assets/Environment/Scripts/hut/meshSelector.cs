@@ -14,12 +14,21 @@ public class meshSelector : MonoBehaviour {
    [HideInInspector]
    public Mesh mesh;
 
-   public void selectMesh (int index)
+   private int index;
+
+   void Start ()
+   {
+      index = PlayerPrefs.GetInt ("CharacterSelected");
+      selectMesh ();
+   }
+
+   public void selectMesh ()
    {
       string mat;
       string meshType;
 
       // Assign chosen material and mesh
+      index = PlayerPrefs.GetInt ("CharacterSelected");
       switch (index) 
       {
          case 1:

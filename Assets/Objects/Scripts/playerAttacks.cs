@@ -12,6 +12,7 @@ public class playerAttacks : MonoBehaviour
     
     private float nextMelee;
     public float meleeRate; // Can change speed based off which weapon is used; useful for stick vs branch
+    private float meleeDamage;
     
     private float nextThrow;
     public float throwRate;
@@ -20,13 +21,16 @@ public class playerAttacks : MonoBehaviour
     private Vector3 throwOffset;
     private float counterBalance;
     
-    
+    private GameObject stick;
     Animator myAnim;
 
 	// Use this for initialization
 	void Start () 
    {
       myAnim = transform.root.GetComponent<Animator>(); // Animator on the character itself	
+  		stick = GameObject.Find("ATK_Stick_1");
+  		meleeDamage = stick.GetComponent<damageAmount>().damage;
+  		stick.GetComponent<damageAmount>().damage = 0.0f;
       nextMelee = 0f;
       nextThrow = 0f;
       throwOffset.Set(0.0f, 0.0f, 0.13f);
@@ -43,7 +47,7 @@ public class playerAttacks : MonoBehaviour
     
 
     
-   void meleeAttack()
+   public void meleeAttack()
    {
       if(hasStick == 1)
       {
@@ -51,6 +55,7 @@ public class playerAttacks : MonoBehaviour
          
          if (charMelee > 0f && nextMelee < Time.time)
          {
+            stick.GetComponent<damageAmount>().damage = meleeDamage;
             myAnim.SetTrigger("CharMelee");
             nextMelee = Time.time + meleeRate;
          }

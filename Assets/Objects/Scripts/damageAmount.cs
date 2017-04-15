@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class damageAmount : MonoBehaviour {
 
-    public int damage;
+    public float damage;
+    GameObject thePlayer;
 
 	// Use this for initialization
 	void Start () 
-    {
-		
+   {
+		thePlayer = GameObject.FindGameObjectWithTag("Player");
 	}
 	
 	// Update is called once per frame
@@ -21,10 +22,12 @@ public class damageAmount : MonoBehaviour {
     // Applies damage to the enemy once contact is made
     void OnTriggerEnter(Collider other)
     {
+        //&& thePlayer.GetComponent<Animator>().charMelee is set
+        // Need to check if the melee trigger is set
        
        if (other.gameObject.CompareTag("Enemy"))
        {
-           other.GetComponent<enemyHealth>().addDamage(damage);
+           other.GetComponent<EnemyHealth>().AddDamage(damage);
            //this.GetComponent<Collider>().isTrigger = false;
        }
 

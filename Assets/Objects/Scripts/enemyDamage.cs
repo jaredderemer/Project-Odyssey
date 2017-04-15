@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class enemyDamage : MonoBehaviour {
 
-   public float   damage; // Amount of damage enemy can do
+   public float damage; // Amount of damage enemy can do
    public float damageRate; // How often damage can be applied to character
    public float pushBackForce; // Force applied to character when entering damage zone
 
@@ -15,6 +15,7 @@ public class enemyDamage : MonoBehaviour {
 
    GameObject thePlayer; // The player itself
    playerHealth thePlayerHealth; // Reference playerHealth Script
+   Animator myAnim;
 
 	// Use this for initialization
 	void Start ()
@@ -23,6 +24,7 @@ public class enemyDamage : MonoBehaviour {
       
       thePlayer = GameObject.FindGameObjectWithTag("Player"); // Player is the player
 		//thePlayerHealth = thePlayer.GetComponent<playerHealth>(); // Get the player's health
+      myAnim   = gameObject.GetComponent<Animator> ();
 	}
 
 	// Update is called once per frame
@@ -40,6 +42,7 @@ public class enemyDamage : MonoBehaviour {
       if(other.tag == "Player")
       {
          playerInRange = true;
+         myAnim.SetBool("attacking", true);
       }
    }
 
@@ -70,7 +73,7 @@ public class enemyDamage : MonoBehaviour {
    void pushBack(Transform pushedObject)
    {
       // Pushes the character straight up away from the object
-      Vector3 pushDirection = new Vector3(thePlayer.GetComponent<playerController>().facingRight? -100.0f:100.0f, (pushedObject.position.y - transform.position.y), 0).normalized;
+      Vector3 pushDirection = new Vector3(thePlayer.GetComponent<PlayerControllerTest>().facingRight? -100.0f:100.0f, (pushedObject.position.y - transform.position.y), 0).normalized;
 
       // Set the direction of the push back
       pushDirection *= pushBackForce;

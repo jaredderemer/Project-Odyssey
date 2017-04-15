@@ -13,11 +13,16 @@ public class checkPlayerFall : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-      mainCamera = GameObject.FindGameObjectWithTag("MainCamera");  // Main Camera object
-      mineCart = GameObject.FindGameObjectWithTag("MineCart"); // Mine Cart object
-      mineCartController = mineCart.GetComponent<cartController>();
+		mainCamera = GameObject.FindGameObjectWithTag("MainCamera");  // Main Camera object
+	  
+		if (globalController.Instance.currentSceneIndex == 3) // if in the cave scene
+		{
+         mineCart = GameObject.FindGameObjectWithTag("MineCart"); // Mine Cart object
+			mineCartController = mineCart.GetComponent<cartController>();
+         cartStartPosition   = mineCart.transform.position;
+      }
       
-      cartStartPosition   = mineCart.transform.position;
+		
 	}
 	
 	void OnTriggerEnter(Collider other)

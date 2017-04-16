@@ -42,7 +42,7 @@ public class hutChoice : MonoBehaviour
       }
    }
 	
-   void loadScene ()
+   public void loadScene ()
    {
       // Check if loading has already been started
       if(loadingScene == false)

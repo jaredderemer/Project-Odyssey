@@ -15,7 +15,7 @@ public class hutChoice : MonoBehaviour
 	void Start ()
 	{
 		UI = GameObject.Find("UI");
-      sceneToLoad = 2; // Default scene is Cave
+      sceneToLoad = 4; // Default scene is Cave
 	}
 	
 	void OnTriggerEnter(Collider other)
@@ -36,7 +36,7 @@ public class hutChoice : MonoBehaviour
          }
          else if (gameObject.tag == "Finish") 
          {
-            sceneToLoad = 5; // final scene
+            sceneToLoad = 6; // final scene
             loadScene (); 
          }
       }

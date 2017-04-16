@@ -17,7 +17,7 @@ public class movieController : MonoBehaviour {
    {
       UI             = GameObject.Find("UI");
       gameOverScript = GameObject.Find("UI").GetComponent<GameOver> ();
-      index          = 2;
+      index          = 1;
       playClip ();
    }
 	
@@ -56,7 +56,7 @@ public class movieController : MonoBehaviour {
       if(loadingScene == false)
       {
          // Set Global to load the correct sceneToLoad
-         globalController.Instance.currentSceneIndex = 1; // beach + jungle scene
+         globalController.Instance.currentSceneIndex = 2; // beach + jungle scene
          // Change scenes to loading
          UI.GetComponent<StartOptions>().StartLoadingScreen();
 

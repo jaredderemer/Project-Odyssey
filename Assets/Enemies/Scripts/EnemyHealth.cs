@@ -50,9 +50,10 @@ public class EnemyHealth : MonoBehaviour
    void MakeDead()
    {
       Destroy(gameObject.transform.root.gameObject);
-      
+
       // Increment monkeys killed global variable
-      
+      globalController.Instance.monkeysKilled += 1;
+
       //if (drops)
       //{
       //   Instantiate(drop, transform.position, transform.rotation);

@@ -11,7 +11,7 @@ public class GameOver : MonoBehaviour {
    private StartOptions startScript;
    
    [HideInInspector] public bool gameOver = false; // Boolean for game over status
-   
+
    //public Text statsText;
    private Text statsText;
    
@@ -45,7 +45,7 @@ public class GameOver : MonoBehaviour {
    {
       //Pause game
       gameOver = true;
-      
+
       //Set time.timescale to 0, this will cause animations and physics to stop updating
       Time.timeScale = 0;
       

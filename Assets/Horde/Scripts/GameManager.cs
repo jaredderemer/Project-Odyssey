@@ -22,14 +22,12 @@ public class GameManager : MonoBehaviour
    private WaitForSeconds endWait;
    private GameOver gameOverScript;
    private int lives;
-   private int roundMonkeys = 5;
+   private int roundMonkeys;
    private int monkeyCount;
-   private int monkeysInPlay;
-   private int monkeyHealth;
-   private int monkeyDamage;
+   private float monkeyHealth;
+   private float monkeyDamage;
    private float monkeySpawnTime;
    private float itemSpawnTime;
-   private Dictionary<Vector3, GameObject> itemInstance;
 
 	// Use this for initialization
 	void Start ()
@@ -37,7 +35,7 @@ public class GameManager : MonoBehaviour
 		lives = player.GetComponent<playerHealth>().lives;
       startWait = new WaitForSeconds(startDelay);
       endWait = new WaitForSeconds(endDelay);
-
+      
 		StartHordeMode ();
 	}
 
@@ -48,6 +46,7 @@ public class GameManager : MonoBehaviour
 
 		items [2].GetComponent<ammoPickup> ().ammoAmount = 4;
 
+      roundMonkeys = 5;
 		monkeySpawnTime = Time.fixedTime;
 		itemSpawnTime = Time.fixedTime + itemSpawnDelay;
 	}
@@ -81,9 +80,6 @@ public class GameManager : MonoBehaviour
       message.text = "ROUND " + roundNumber;
       
       monkeyCount = roundMonkeys;
-      monkeysInPlay = 0;
-      
-      // Set monkey health and damage
       
       yield return startWait;
    }
@@ -103,15 +99,15 @@ public class GameManager : MonoBehaviour
    
    private IEnumerator RoundEnding ()
    {
-      if (roundNumber % 3 == 0)
+      if (roundNumber % 2 == 0)
       {
          roundMonkeys++;
       }
       
-      if (roundNumber % 2 == 0)
+      if (roundNumber % 3 == 0)
       {
-         monkeyHealth += 5;
-         monkeyDamage += 5;
+         monkeyHealth += 25.0f;
+         monkeyDamage *= 1.5f;
       }
       
       yield return endWait;
@@ -126,17 +122,19 @@ public class GameManager : MonoBehaviour
    {
 		GameObject spawnedMonkey;
 
-	   	if (monkeysInPlay < 5)
+      if (getMonkeysInPlay() < 5)
 		{
-		      int spawn = Random.Range(0,4);
+         int spawn = Random.Range(0,4);
 		      
 			if (Time.fixedTime > monkeySpawnTime && monkeyCount > 0)
-	      	{
-		      	if (SafeToSpawn(monkeySpawn[spawn].position, "Enemy"))
+	      {
+		      if (SafeToSpawn(monkeySpawn[spawn].position, "Enemy"))
 				{
 					spawnedMonkey = Instantiate(monkey, monkeySpawn[spawn].position, monkeySpawn[spawn].rotation) as GameObject;
 					Debug.Log ("monkey spawned at " + monkeySpawn[spawn].position);
-					spawnedMonkey.GetComponent<MonkeyControllerTest> ().detected = true;
+					spawnedMonkey.GetComponent<MonkeyControllerTest>().detected = true;
+               spawnedMonkey.GetComponent<EnemyHealth>().enemyMaxHealth = monkeyHealth;
+               spawnedMonkey.GetComponent<EnemyHealth>().damageModifier = monkeyDamage;
 
 					if (spawn == 1 || spawn == 2)
 					{
@@ -145,15 +143,31 @@ public class GameManager : MonoBehaviour
 				}
 
 				monkeyCount--;
-				monkeysInPlay++;
 				monkeySpawnTime = Time.fixedTime + monkeySpawnDelay;
-		      }
-	      }
+		   }
+	   }
+   }
+   
+   private int getMonkeysInPlay ()
+   {
+      List<GameObject> instances = new List<GameObject>();
+      GameObject[] objects = FindObjectsOfType(typeof(GameObject)) as GameObject[];
+      int count = 0;
+      
+      foreach (GameObject obj in objects)
+		{
+			if (obj.tag == "Enemy")
+			{
+				count++;
+			}
+		}
+      
+      return count;
    }
    
 	private bool SafeToSpawn(Vector3 position, string objectTag)
    {
-	   	List<GameObject> instances = new List<GameObject>();
+      List<GameObject> instances = new List<GameObject>();
 		GameObject[] objects = FindObjectsOfType(typeof(GameObject)) as GameObject[];
 		bool nearby = false;
 	
@@ -185,7 +199,7 @@ public class GameManager : MonoBehaviour
       {
 			if (SafeToSpawn(itemSpawn[spawn].position, "Pickups"))
 			{
-				itemInstance[itemSpawn[spawn].position] = Instantiate(items[item], itemSpawn[spawn].position, itemSpawn[spawn].rotation) as GameObject;
+				Instantiate(items[item], itemSpawn[spawn].position, itemSpawn[spawn].rotation);
 				Debug.Log (items[item] + " spawned at " + itemSpawn[spawn].position);
 			}
 			

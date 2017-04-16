@@ -16,7 +16,7 @@ public class MonkeyControllerTest : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		detected = false;
+		//detected = false;
 		player   = GameObject.FindGameObjectWithTag  ("Player");
 		myRB     = gameObject.GetComponent<Rigidbody>();
 		myAnim   = gameObject.GetComponent<Animator> ();
@@ -40,7 +40,7 @@ public class MonkeyControllerTest : MonoBehaviour
    // Monkey Cease-to-Follow code should we decide to use it later
    void OnTriggerExit(Collider other)
    {
-      if (other.tag == "Player" && detected)
+      if (other.tag == "Player" && detected && globalController.Instance.currentSceneIndex != 6)
       {
          detected = false;
          Debug.Log ("Player Lost");

@@ -11,7 +11,7 @@ public class EnemyHealth : MonoBehaviour
    //public bool drops;
    //public GameObject drop;
 
-   float currentHealth;
+   public float currentHealth;
    public Slider enemyHealthIndicator;
 
 	// Use this for initialization

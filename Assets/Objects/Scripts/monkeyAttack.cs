@@ -59,7 +59,9 @@ public class monkeyAttack : MonoBehaviour
    // Damage the character
    void Attack()
    {
-      thePlayerHealth = thePlayer.GetComponent<playerHealth>(); // Get the player's health
+      myAnim.SetTrigger("Slam");
+      
+      /*thePlayerHealth = thePlayer.GetComponent<playerHealth>(); // Get the player's health
       
       if (nextDamage <= Time.time)
       {
@@ -69,11 +71,11 @@ public class monkeyAttack : MonoBehaviour
          nextDamage = Time.time + damageRate;
 
          pushBack(thePlayer.transform);
-      }
+      }*/
    }
 
    // Push the character away from the damaging object
-   void pushBack(Transform pushedObject)
+   /*void pushBack(Transform pushedObject)
 	{
       Debug.Log ("pushback");
       // Pushes the character straight up away from the object
@@ -89,5 +91,5 @@ public class monkeyAttack : MonoBehaviour
       pushedRB.velocity = Vector3.zero;
 
       pushedRB.AddForce(pushDirection, ForceMode.Impulse);
-   }
+   }*/
 }

@@ -124,7 +124,7 @@ public class moveArea : MonoBehaviour {
             break;
       case pool:
             playerPos = new Vector3 (-178.0f, -2.896141f, 15.6f);
-            camPos    = new Vector3 (-187.5f, 7.75f, 0f);
+            camPos    = new Vector3 (-187f, 7.75f, 0f);
             break;
          case main:
             goToMain();
@@ -150,8 +150,8 @@ public class moveArea : MonoBehaviour {
             max = -75.0f;
             break;
          case pool:
-            min = -202f;
-            max = -192f;
+            min = -202.8f;
+            max = -190.8f;
             break;
          case main:
             min = -24.0f;

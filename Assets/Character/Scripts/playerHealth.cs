@@ -22,6 +22,7 @@ public class playerHealth : MonoBehaviour
 	void Awake()
 	{
 		lives = 4;
+      savePlayerLife ();
 	}
 
    // Use this for initialization
@@ -47,6 +48,7 @@ public class playerHealth : MonoBehaviour
         
       // Update health slider
       updateHealthSlider();
+      savePlayerHealth ();
 
       if (currentHealth <= 0)
       {
@@ -65,6 +67,7 @@ public class playerHealth : MonoBehaviour
         
       // Update health slider
       updateHealthSlider();
+      savePlayerHealth ();
      
    }
    
@@ -94,11 +97,16 @@ public class playerHealth : MonoBehaviour
    {
       globalController.Instance.playerHealth = currentHealth;
    }
+
+   public void savePlayerLife()
+   {
+      globalController.Instance.playerLife = lives + 1;
+   }
    
    public void loseLife()
    {
       lives--;
-
+      savePlayerLife();
       // Remove life from HUD
       if(lives > 0)
       {
@@ -119,6 +127,7 @@ public class playerHealth : MonoBehaviour
 			currentHealth = fullHealth;
 			globalController.Instance.playerHealth = fullHealth;
 			updateHealthSlider();
+         savePlayerLife ();
 		}
    }
 }

@@ -10,9 +10,14 @@ public class globalController : MonoBehaviour
    
    // Player stats
 	public float playerHealth;
+   public int playerLife;
    public int playerAmmo;
    public int playerScore;
    public int easterEggCounter;
+   public int monkeysKilled;
+
+   [HideInInspector]public string startTime;
+   [HideInInspector]public string endTime;
 	[HideInInspector]public bool gameOver;
 
 	[HideInInspector]public Dictionary<int, Vector3> spawnpoints = new Dictionary<int, Vector3> ();
@@ -30,6 +35,7 @@ public class globalController : MonoBehaviour
 		playerHealth     = 100.0f;
       playerAmmo       = 20;
       easterEggCounter = 0;
+      monkeysKilled    = 0;
       PlayerPrefs.SetInt ("CharacterSelected", 0); // Set default character skin
 
 		spawnpoints [2] = scene1Spawnpoint.transform.position;

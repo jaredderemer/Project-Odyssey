@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class movieController : MonoBehaviour {
 
-   public int index;
+   public int index; // 1 == intro; 2 == end
 
    bool loadingScene = false;
    private GameObject UI;

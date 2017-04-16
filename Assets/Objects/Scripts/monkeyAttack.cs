@@ -12,19 +12,17 @@ public class monkeyAttack : MonoBehaviour
 
    bool playerInRange = false; // Is player still within damage collider?
 
-   GameObject thePlayer; // The player itself
    playerHealth thePlayerHealth; // Reference playerHealth Script
    Animator myAnim;
    private float monkeySpeed;
+   GameObject thePlayer;
 
 	// Use this for initialization
 	void Start ()
    {
-      nextDamage = Time.time; // Damaged immediately by object
-      
-      thePlayer = GameObject.FindGameObjectWithTag("Player"); // Player is the player
 	   myAnim = transform.parent.gameObject.GetComponent<Animator> ();
       monkeySpeed = transform.parent.gameObject.GetComponent<MonkeyControllerTest> ().moveSpeed;
+      thePlayer = GameObject.FindGameObjectWithTag ("Player");
 	}
 
 	// Update is called once per frame
@@ -75,10 +73,12 @@ public class monkeyAttack : MonoBehaviour
    }
 
    // Push the character away from the damaging object
-   /*void pushBack(Transform pushedObject)
+   void pushBack(Transform pushedObject)
 	{
       Debug.Log ("pushback");
       // Pushes the character straight up away from the object
+      // Check if monkey is farther on X than the player
+      // Increase Y value so the player actually moves
       Vector3 pushDirection = new Vector3(thePlayer.GetComponent<PlayerControllerTest>().facingRight? -100.0f:100.0f, (pushedObject.position.y - transform.position.y), 0).normalized;
 
       // Set the direction of the push back
@@ -91,5 +91,5 @@ public class monkeyAttack : MonoBehaviour
       pushedRB.velocity = Vector3.zero;
 
       pushedRB.AddForce(pushDirection, ForceMode.Impulse);
-   }*/
+   }
 }

@@ -40,7 +40,7 @@ public class enterHut : MonoBehaviour
             thePlayerHealth.savePlayerHealth();
          
             // HARD CODE: put index to go to decision hut
-            globalController.Instance.currentSceneIndex = 5;
+            globalController.Instance.currentSceneIndex = 6;
          
             // Change scenes to loading
             UI.GetComponent<StartOptions>().StartLoadingScreen();

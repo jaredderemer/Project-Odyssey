@@ -49,6 +49,8 @@ public class GameManager : MonoBehaviour
       roundMonkeys = 5;
 		monkeySpawnTime = Time.fixedTime;
 		itemSpawnTime = Time.fixedTime + itemSpawnDelay;
+      monkeyDamage = 0.5f;
+      monkeyHealth = 50;
 	}
 	
    private void SpawnPlayer ()
@@ -76,8 +78,12 @@ public class GameManager : MonoBehaviour
    {
       ResetPlayer();
       
+      if(roundNumber > 0)
+      {
+         message.text = "ROUND " + roundNumber;
+      }
+      
       roundNumber++;
-      message.text = "ROUND " + roundNumber;
       
       monkeyCount = roundMonkeys;
       
@@ -88,7 +94,7 @@ public class GameManager : MonoBehaviour
    {
       message.text = "";
       
-      while (lives > 0 && monkeyCount > 0)
+      while (lives > 0 && (monkeyCount > 0 || getMonkeysInPlay() > 0))
       {
          SpawnMonkey();
          SpawnItem();

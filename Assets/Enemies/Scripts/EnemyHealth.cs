@@ -36,8 +36,10 @@ public class EnemyHealth : MonoBehaviour
       {
          return;
       }
+      Debug.Log("AddDamage");
+      
       currentHealth -= damage;
-      enemyHealthIndicator.value = currentHealth;
+      enemyHealthIndicator.value = damage / enemyMaxHealth;
 
       if (currentHealth <= 0)
       {
@@ -48,6 +50,9 @@ public class EnemyHealth : MonoBehaviour
    void MakeDead()
    {
       Destroy(gameObject.transform.root.gameObject);
+      
+      // Increment monkeys killed global variable
+      
       //if (drops)
       //{
       //   Instantiate(drop, transform.position, transform.rotation);

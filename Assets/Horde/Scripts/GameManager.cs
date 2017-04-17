@@ -6,11 +6,13 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 	public GameObject player;
+	public GameObject playerSkin;
    public GameObject monkey;
    public GameObject[] items;
 	public Transform playerSpawn;
 	public Transform[] monkeySpawn;
 	public Transform[] itemSpawn;
+	public GameObject[] lifeSkins;
    public float startDelay = 3.0f;
    public float endDelay = 3.0f;
    public Text message;
@@ -49,13 +51,34 @@ public class GameManager : MonoBehaviour
       	monkeyDamage = 0.5f;
       	monkeyHealth = 50;
 
-		//SpawnPlayer();
+		SpawnPlayer();
 		StartCoroutine(GameLoop());
 	}
 	
    private void SpawnPlayer ()
    {
-      Instantiate(player, playerSpawn.position, playerSpawn.rotation);
+		SkinnedMeshRenderer skin = playerSkin.GetComponent<SkinnedMeshRenderer> ();
+		string mesh;
+		string material;
+
+		if (Random.Range (0, 2) == 0)
+		{
+			mesh = "defaultMesh";
+			material = "fisherman";
+		}
+		if (Random.Range (0, 2) == 0)
+		{
+			mesh = "minerMesh";
+			material = "miner";
+		}
+		else
+		{
+			mesh = "touristMesh";
+			material = "lambert1";
+		}
+
+		skin.material = Resources.Load(material, typeof(Material)) as Material;
+		skin.sharedMesh = ((GameObject)Resources.Load(mesh)).GetComponent<SkinnedMeshRenderer>().sharedMesh;
    }
    
    private IEnumerator GameLoop ()

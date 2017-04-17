@@ -8,18 +8,12 @@ public class gameEnd : MonoBehaviour {
    private bool loadingScene = false;
    
    private GameObject   UI;
-	private GameObject   thePlayer; // The player itself
-	private playerHealth thePlayerHealth; // Reference playerHealth Script
 
 	// Use this for initialization
 	void Start () 
    {
       isUsed = false;
-
-      UI = GameObject.Find("UI");
-		
-		thePlayer = GameObject.FindGameObjectWithTag("Player"); // Player is the player
-		thePlayerHealth = thePlayer.GetComponent<playerHealth>(); // Get the player's health      
+      UI     = GameObject.Find("UI");  
 	}
 
    void OnTriggerStay (Collider col)
@@ -27,26 +21,30 @@ public class gameEnd : MonoBehaviour {
       if (col.tag == "Player" && !isUsed) 
       {
          Destroy (gameObject);
-
-         // load ending scene
-         // Check if loading has already been started
-         if(loadingScene == false)
-         {
-            // Save data before switching scenes 
-            thePlayerHealth.savePlayerHealth();
-         
-            // HARD CODE: put index to go to final cinematic
-            globalController.Instance.currentSceneIndex = 5;
-         
-            // Change scenes to loading
-            UI.GetComponent<StartOptions>().StartLoadingScreen();
-            
-            loadingScene = true;
-         }
-         
-         
-
+         loadScene ();
          isUsed = true;
+      }
+   }
+
+   public void loadScene ()
+   {
+      // Check if loading has already been started
+      if(loadingScene == false)
+      {
+         // Set Global to load the correct sceneToLoad
+         globalController.Instance.currentSceneIndex = 1;
+
+         // Change scenes to loading
+         UI.GetComponent<StartOptions>().StartLoadingScreen();
+
+         loadingScene                        = true;
+
+         // Index for the end movie clip to play
+         globalController.Instance.clipIndex = 2;
+
+         // Assign end time
+         globalController.Instance.endTime = System.DateTime.Now.ToString ("HH:mm:ss");
+         Debug.Log (globalController.Instance.endTime);
       }
    }
 }

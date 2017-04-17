@@ -17,13 +17,15 @@ public class movieController : MonoBehaviour {
    {
       UI             = GameObject.Find("UI");
       gameOverScript = GameObject.Find("UI").GetComponent<GameOver> ();
-      index          = 1;
+      index          = globalController.Instance.clipIndex;
       playClip ();
    }
 	
 	// Update is called once per frame
 	void Update () 
    {
+      index = globalController.Instance.clipIndex;
+
       if (!(movie.isPlaying)) 
       {
          if (index == 1) 

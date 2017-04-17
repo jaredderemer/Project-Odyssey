@@ -53,7 +53,8 @@ public class promptInteract : MonoBehaviour
          // Set Button Text
          if(promptBtn.activeSelf)
          {
-            if(buttonTextString == "E" || buttonTextString == "W")
+            //if(buttonTextString == "E" || buttonTextString == "W")
+            if (buttonTextString != "")
             {
                buttonText.GetComponent<Text>().text = buttonTextString;
             }

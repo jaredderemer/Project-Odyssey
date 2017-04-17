@@ -16,6 +16,7 @@ public class globalController : MonoBehaviour
    public int easterEggCounter;
    public int monkeysKilled;
 
+   [HideInInspector]public int clipIndex;
    [HideInInspector]public string startTime;
    [HideInInspector]public string endTime;
 	[HideInInspector]public bool gameOver;
@@ -36,6 +37,7 @@ public class globalController : MonoBehaviour
       playerAmmo       = 20;
       easterEggCounter = 0;
       monkeysKilled    = 0;
+      clipIndex        = 1;
       PlayerPrefs.SetInt ("CharacterSelected", 0); // Set default character skin
 
 		spawnpoints [2] = scene1Spawnpoint.transform.position;

@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
 	public GameObject playerSkin;
    public GameObject monkey;
    public GameObject[] items;
-	public Transform playerSpawn;
 	public Transform[] monkeySpawn;
 	public Transform[] itemSpawn;
 	public GameObject[] lifeSkins;
@@ -43,7 +42,7 @@ public class GameManager : MonoBehaviour
 
 	public void StartHordeMode()
 	{
-		items [2].GetComponent<ammoPickup> ().ammoAmount = 4;
+		items [2].GetComponent<ammoPickup> ().ammoAmount = 3;
 
       	roundMonkeys = 5;
 		monkeySpawnTime = Time.fixedTime;
@@ -66,7 +65,7 @@ public class GameManager : MonoBehaviour
 			mesh = "defaultMesh";
 			material = "fisherman";
 		}
-		if (Random.Range (0, 2) == 0)
+		else if (Random.Range (0, 2) == 0)
 		{
 			mesh = "minerMesh";
 			material = "miner";
@@ -79,7 +78,21 @@ public class GameManager : MonoBehaviour
 
 		skin.material = Resources.Load(material, typeof(Material)) as Material;
 		skin.sharedMesh = ((GameObject)Resources.Load(mesh)).GetComponent<SkinnedMeshRenderer>().sharedMesh;
+
+		for (int i = 0; i < lifeSkins.Length; i++)
+		{
+			SetLifeSkins (i, mesh, material);
+		}
    }
+
+	private void SetLifeSkins (int i, string mesh, string material)
+	{
+		
+		SkinnedMeshRenderer skin = lifeSkins[i].GetComponent<SkinnedMeshRenderer> ();
+
+		skin.material = Resources.Load (material, typeof(Material)) as Material;
+		skin.sharedMesh = ((GameObject)Resources.Load(mesh)).GetComponent<SkinnedMeshRenderer>().sharedMesh;
+	}
    
    private IEnumerator GameLoop ()
    {
@@ -145,7 +158,7 @@ public class GameManager : MonoBehaviour
    
    private void ResetPlayer()
    {
-      player.GetComponent<Rigidbody>().transform.position = playerSpawn.transform.position;
+		player.GetComponent<Rigidbody> ().transform.position = globalController.Instance.hordeSpawnpoint.position;
    }
    
    private void SpawnMonkey ()
@@ -203,7 +216,7 @@ public class GameManager : MonoBehaviour
 	
 		foreach (GameObject obj in objects)
 		{
-			if (obj.tag == objectTag)
+			if (obj.tag == objectTag || obj.tag == "Player")
 			{
 				instances.Add(obj);
 			}

@@ -5,45 +5,43 @@ using System;
 using System.Text.RegularExpressions;
 using System.IO;
 using System.Text;
+using UnityEngine.UI;
 
-public class profanityFilter
+public class profanityFilter : MonoBehaviour
 {
     private const int MAX_NAME_LENGTH = 20;
+
 
     // Checks a name to see if it has any inappropriate words within it
     public bool passesFilter(string name)
     {
         bool     passesFilter = true;
         string   nextFilterWord;
-        string[] words = name.Split(' ');
 
-        for (int index = 0; index < words.Length; index++)
+        print("ITS CHECKING FOR CUSS WORDS!!!!");
+
+        StreamReader stream = new StreamReader("filter.txt", Encoding.Default);
+
+
+        using (stream)
         {
-            words[index] = words[index].ToLower();
-        }
-
-        TextAsset map = Resources.Load("filter") as TextAsset;
-        byte[] byteArray = Encoding.UTF8.GetBytes(map.text);
-        MemoryStream stream = new MemoryStream(byteArray);
-
-
-        using (StreamReader reader = new StreamReader(stream))
-        {
-            while (passesFilter && (nextFilterWord = reader.ReadLine()) != null)
+            while (passesFilter && (nextFilterWord = stream.ReadLine()) != null)
             {
-                for (int index = 0; index < words.Length; index++)
-                {
-                    if (String.Compare(words[index], nextFilterWord) == 0)
+                print("LOOPIES!!!");
+                    if (String.Compare(name, nextFilterWord.ToUpper()) == 0)
                     {
                         passesFilter = false;
-                        index = words.Length;
+                        print("CUSS !@#$");
+
                     }
                 }
             }
-            reader.Close();
-        }
+            stream.Close();
+
         return passesFilter;
-    }
+        }
+        
+
 
     // Modifies a name and then checks that modified name
     // to see if it is valid.

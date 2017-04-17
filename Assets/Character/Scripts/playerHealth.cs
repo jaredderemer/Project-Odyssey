@@ -21,8 +21,9 @@ public class playerHealth : MonoBehaviour
 
 	void Awake()
 	{
-		lives = 4;
-      savePlayerLife ();
+       //lives = 4; 
+        lives = 0;  // FOR TESTING!!!! PLZ REMOVE
+       savePlayerLife ();
 	}
 
    // Use this for initialization
@@ -35,11 +36,6 @@ public class playerHealth : MonoBehaviour
       updateHealthSlider();
    }
 
-   // Update is called once per frame
-   void Update ()
-   {
-      
-   }
    
    // Character receives damage, loses health
    public void addDamage (float damage)

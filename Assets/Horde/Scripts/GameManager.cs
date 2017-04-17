@@ -41,16 +41,16 @@ public class GameManager : MonoBehaviour
 
 	public void StartHordeMode()
 	{
-		//SpawnPlayer();
-		StartCoroutine(GameLoop());
-
 		items [2].GetComponent<ammoPickup> ().ammoAmount = 4;
 
-      roundMonkeys = 5;
+      	roundMonkeys = 5;
 		monkeySpawnTime = Time.fixedTime;
 		itemSpawnTime = Time.fixedTime + itemSpawnDelay;
-      monkeyDamage = 0.5f;
-      monkeyHealth = 50;
+      	monkeyDamage = 0.5f;
+      	monkeyHealth = 50;
+
+		//SpawnPlayer();
+		StartCoroutine(GameLoop());
 	}
 	
    private void SpawnPlayer ()
@@ -77,13 +77,14 @@ public class GameManager : MonoBehaviour
    private IEnumerator RoundStarting ()
    {
       ResetPlayer();
-      
+
+		roundNumber++;
+
       if(roundNumber > 0)
       {
          message.text = "ROUND " + roundNumber;
+			Debug.Log ("ROUND " + roundNumber);
       }
-      
-      roundNumber++;
       
       monkeyCount = roundMonkeys;
       
@@ -112,7 +113,7 @@ public class GameManager : MonoBehaviour
       
       if (roundNumber % 3 == 0)
       {
-         monkeyHealth += 25.0f;
+         monkeyHealth += 20.0f;
          monkeyDamage *= 1.5f;
       }
       

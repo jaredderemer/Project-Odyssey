@@ -39,12 +39,12 @@ public class playerHealth : MonoBehaviour
       // TEMPORARY TILL WE GET RESPAWN WORKING IN HORDE
       if(globalController.Instance.gameMode == 2)
       {
-         globalController.Instance.playerLife = 1;
-         lives = 1;
+         globalController.Instance.playerLife = 2;
+         lives = 2;
       }
       
       // Update HUD lives
-      for(int counter = 4; counter > lives; counter--)
+      for (int counter = 4; counter > lives; counter--)
       {
          GameObject.Find("life"+ (counter - 1).ToString()).SetActive(false);
       }
@@ -141,7 +141,7 @@ public class playerHealth : MonoBehaviour
 			currentHealth = fullHealth;
 			globalController.Instance.playerHealth = fullHealth;
 			updateHealthSlider();
-         savePlayerLife ();
+         	savePlayerLife ();
 		}
    }
 }

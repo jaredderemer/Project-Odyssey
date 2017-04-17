@@ -40,9 +40,8 @@ public class MonkeyControllerTest : MonoBehaviour
    // Monkey Cease-to-Follow code should we decide to use it later
    void OnTriggerExit(Collider other)
    {
-      if(globalController.Instance.currentSceneIndex != 6 && gameObject.name != "Boss")
+      if (globalController.Instance.currentSceneIndex != 8 && gameObject.name != "Boss")
       {
-         Debug.Log("in if");
          if (other.tag == "Player" && detected)
          {
             detected = false;

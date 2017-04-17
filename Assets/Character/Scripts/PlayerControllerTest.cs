@@ -25,8 +25,6 @@ public class PlayerControllerTest : MonoBehaviour
 	[HideInInspector] public bool pushed = false;
 	private bool attacked = false;
 
-	private Vector3 spawnPosition = Vector3.zero;
-
 	[HideInInspector] public bool onWall = false;
 
 	private float throwTimer;
@@ -43,45 +41,7 @@ public class PlayerControllerTest : MonoBehaviour
    // Update is called once per frame
    void Update()
    {
-		if (globalController.Instance.currentSceneIndex == 8)
-		{
-			spawnPosition = globalController.Instance.hordeSpawnpoint.position;
-		}
-		else
-		{
-			if (spawnPosition != globalController.Instance.spawnpoints [globalController.Instance.currentSceneIndex])
-			{
-				switch (globalController.Instance.currentSceneIndex)
-				{
-					case 3:
-					case 7:
-						spawnPosition = globalController.Instance.spawnpoints [globalController.Instance.currentSceneIndex];
-						break;
-
-					case 5:
-						if (myRig.transform.position.x < spawnPosition.x)
-						{
-							spawnPosition = new Vector3 (0.0f, 0.5f, gameObject.transform.position.z);
-						}
-						else 
-						{
-							spawnPosition = globalController.Instance.spawnpoints [globalController.Instance.currentSceneIndex];
-						}
-						break;
-
-					case 6:
-						if (myRig.transform.position.x < spawnPosition.x && myRig.transform.position.x > -23.0f)
-						{
-							spawnPosition = new Vector3 (0.0f, 0.5f, gameObject.transform.position.z);
-						}
-						else
-						{
-							spawnPosition = globalController.Instance.spawnpoints [globalController.Instance.currentSceneIndex];
-						}
-						break;
-				}
-			}
-		}
+		
    }
     // When working with physics objects
    void FixedUpdate()
@@ -195,12 +155,56 @@ public class PlayerControllerTest : MonoBehaviour
 	// Respawn player to starting position in scene
 	public void RespawnPlayer()
 	{
-		Debug.Log ("Respawn" + spawnPosition);
-		myRig.position = spawnPosition;
+      Debug.Log ("Respawn" + getSpawnPosition());
+      myRig.position = getSpawnPosition();
 
 		if (!facingRight)
 		{
 			Flip ();
 		}
 	}
+
+   private Vector3 getSpawnPosition()
+   {
+      Vector3 spawnPosition = Vector3.zero;
+
+      if (globalController.Instance.currentSceneIndex == 8)
+      {
+         spawnPosition = globalController.Instance.hordeSpawnpoint.position;
+      }
+      else
+      {
+         switch (globalController.Instance.currentSceneIndex)
+         {
+         case 3:
+         case 7:
+            spawnPosition = globalController.Instance.spawnpoints [globalController.Instance.currentSceneIndex];
+            break;
+
+         case 5:
+            if (myRig.transform.position.x < globalController.Instance.spawnpoints [globalController.Instance.currentSceneIndex].x)
+            {
+               spawnPosition = new Vector3 (-84.2f, 2.7f, gameObject.transform.position.z);
+            }
+            else 
+            {
+               spawnPosition = globalController.Instance.spawnpoints [globalController.Instance.currentSceneIndex];
+            }
+            break;
+
+         case 6:
+            if (myRig.transform.position.x < globalController.Instance.spawnpoints [globalController.Instance.currentSceneIndex].x && myRig.transform.position.x > -23.0f)
+            {
+               spawnPosition = new Vector3 (-23.0f, 3.2f, gameObject.transform.position.z);
+            }
+            else
+            {
+               spawnPosition = globalController.Instance.spawnpoints [globalController.Instance.currentSceneIndex];
+            }
+            break;
+         }
+      }
+
+      return spawnPosition;
+   }
 }

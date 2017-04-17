@@ -42,9 +42,9 @@ public class globalController : MonoBehaviour
       PlayerPrefs.SetInt ("CharacterSelected", 0); // Set default character skin
 
 		spawnpoints [2] = scene1Spawnpoint.transform.position;
-		spawnpoints [3] = scene2Spawnpoint.transform.position;
-		spawnpoints [4] = scene3Spawnpoint.transform.position;
-		spawnpoints [5] = scene4Spawnpoint.transform.position;
+		spawnpoints [4] = scene2Spawnpoint.transform.position;
+		spawnpoints [5] = scene3Spawnpoint.transform.position;
+		spawnpoints [6] = scene4Spawnpoint.transform.position;
 
 		gameOver = false;
 	}

@@ -5,7 +5,7 @@ using UnityEngine;
 public class movieController : MonoBehaviour {
 
    public int index; // 1 == intro; 2 == end
-
+   public GameObject text;
    bool loadingScene = false;
    private GameObject UI;
    private MovieTexture movie;
@@ -28,12 +28,17 @@ public class movieController : MonoBehaviour {
       index = globalController.Instance.clipIndex;
 
       // To skip video
-      if (index == 1 && movie.isPlaying) 
+      if (index == 1) 
       {
-         if (Input.GetKey (KeyCode.Space)) 
+         if (movie.isPlaying) 
          {
-            selectScene ();
-         }   
+            text.SetActive (true);
+            if (Input.GetKey (KeyCode.Space)) 
+            {
+               selectScene ();
+               text.SetActive (false);
+            }
+         }
       }
 
       if (!(movie.isPlaying)) 

@@ -18,6 +18,7 @@ public class movieController : MonoBehaviour {
       UI             = GameObject.Find("UI");
       gameOverScript = GameObject.Find("UI").GetComponent<GameOver> ();
       index          = globalController.Instance.clipIndex;
+      //index = 2; // for testing purpose
       playClip ();
    }
 	

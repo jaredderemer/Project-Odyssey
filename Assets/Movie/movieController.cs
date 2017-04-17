@@ -27,6 +27,15 @@ public class movieController : MonoBehaviour {
    {
       index = globalController.Instance.clipIndex;
 
+      // To skip video
+      if (index == 1 && movie.isPlaying) 
+      {
+         if (Input.GetKey (KeyCode.Space)) 
+         {
+            selectScene ();
+         }   
+      }
+
       if (!(movie.isPlaying)) 
       {
          if (index == 1) 

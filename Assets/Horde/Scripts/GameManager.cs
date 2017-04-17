@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-	public GameObject player;
 	public GameObject playerSkin;
    public GameObject monkey;
    public GameObject[] items;
@@ -18,6 +17,7 @@ public class GameManager : MonoBehaviour
    public int monkeySpawnDelay;
    public int itemSpawnDelay;
 
+	private GameObject player;
 	private int roundNumber = 0;
    private WaitForSeconds startWait;
    private WaitForSeconds endWait;
@@ -33,9 +33,13 @@ public class GameManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		player = GameObject.FindGameObjectWithTag ("Player");
+
 		lives = player.GetComponent<playerHealth>().lives;
       startWait = new WaitForSeconds(startDelay);
       endWait = new WaitForSeconds(endDelay);
+
+		globalController.Instance.startTime = Time.time;
       
 		StartHordeMode ();
 	}

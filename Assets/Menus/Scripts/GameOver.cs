@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameOver : MonoBehaviour {
+public class GameOver : MonoBehaviour 
+{
 
 
    private ShowPanels showPanels;
    private Pause pauseScript;
    private StartOptions startScript;
+   private profanityFilter profanityChecker;
    
    [HideInInspector] public bool gameOver = false; // Boolean for game over status
 
@@ -26,8 +28,9 @@ public class GameOver : MonoBehaviour {
    void Awake()
    {
       //Get a component reference to ShowPanels attached to this object, store in showPanels variable
-		showPanels  = GetComponent<ShowPanels> ();
+	  showPanels  = GetComponent<ShowPanels> ();
       pauseScript = GetComponent<Pause> ();
+      profanityChecker = GameObject.Find("UI").GetComponent<profanityFilter>();
    }
    
    void Update ()
@@ -69,9 +72,20 @@ public class GameOver : MonoBehaviour {
          // Testing file I/O
          firstName = GameObject.Find("firstNameText").GetComponent<Text>().text;
          lastName = GameObject.Find("lastNameText").GetComponent<Text>().text;
+
+         // DEBUG TEST
+         firstName = firstName.ToUpper();
+         lastName  = lastName.ToUpper();
+         print(firstName + lastName);
       
-         System.IO.File.AppendAllText("\\\\csweb\\Classes\\SEI\\Castaway\\adventure.txt", firstName + " " + lastName + " 999 99 9 9999999\n");
-      
+         //System.IO.File.AppendAllText("\\\\csweb\\Classes\\SEI\\Castaway\\adventure.txt", firstName + " " + lastName + " 999 99 9 9999999\n");
+         
+        //TEST for bad words
+         if (profanityChecker.passesFilter(firstName) && profanityChecker.passesFilter(lastName))
+          {
+                System.IO.File.AppendAllText("C:\\Users\\Kaoru\\Documents\\Unity\\Project-Odyssey\\Assetsadventure.txt", firstName + " " + lastName + " 999 88 7 6666666\n");
+          }
+
          // Hide submission fields and button
          GameObject.Find("EnterName").SetActive(false);
          GameObject.Find("SubmitScore").SetActive(false);

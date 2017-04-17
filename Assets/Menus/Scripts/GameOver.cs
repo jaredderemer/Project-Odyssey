@@ -16,6 +16,7 @@ public class GameOver : MonoBehaviour
 
    //public Text statsText;
    private Text statsText;
+   private Text statsLabels;
    
    private string firstName; // User's entered first name
    private string lastName;  // User's entered last name
@@ -36,12 +37,12 @@ public class GameOver : MonoBehaviour
    void Update ()
    {
       // Check if tab is pressed
-      if(Input.GetKeyDown (KeyCode.Tab) && firstNameInput.GetComponent<InputField>().isFocused)
+      /*if(Input.GetKeyDown (KeyCode.Tab) && firstNameInput.GetComponent<InputField>().isFocused)
       {
          // Place cursor in lastName input fields
          lastNameInput.Select();
          lastNameInput.ActivateInputField();
-      }
+      }*/
    }
    
    public void endGame()
@@ -60,6 +61,14 @@ public class GameOver : MonoBehaviour
       string minutes = Mathf.Floor(totalTime / 60).ToString("00");
       string seconds = (totalTime % 60).ToString("00");
       string formattedTime = minutes + ":" + seconds;
+      
+      // Set stats label
+      if(globalController.Instance.gameMode == 2)
+      {
+         statsLabels = GameObject.Find("statsText").GetComponent<Text> ();
+         statsLabels.text = "Total Score:\nTime:\nMonkeys Eliminated:\nRounds:";
+      }
+       
       
       // Set player statistics text
       statsText = GameObject.Find("valuesText").GetComponent<Text> ();

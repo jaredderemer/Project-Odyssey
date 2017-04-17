@@ -19,12 +19,10 @@ public class playerHealth : MonoBehaviour
    
    public int lives;
 
-	void Awake()
+	/*void Awake()
 	{
-       //lives = 4; 
-        lives = 0;  // FOR TESTING!!!! PLZ REMOVE
-       savePlayerLife ();
-	}
+       
+	}*/
 
    // Use this for initialization
    void Start ()
@@ -34,6 +32,24 @@ public class playerHealth : MonoBehaviour
       // Get global health
       currentHealth = globalController.Instance.playerHealth;
       updateHealthSlider();
+      
+      // Get global lives
+      lives = globalController.Instance.playerLife;
+      
+      // TEMPORARY TILL WE GET RESPAWN WORKING IN HORDE
+      if(globalController.Instance.gameMode == 2)
+      {
+         globalController.Instance.playerLife = 1;
+         lives = 1;
+      }
+      
+      // Update HUD lives
+      for(int counter = 4; counter > lives; counter--)
+      {
+         GameObject.Find("life"+ (counter - 1).ToString()).SetActive(false);
+      }
+      
+      //savePlayerLife (); WHAT IS THIS FOR?
    }
 
    
@@ -96,24 +112,26 @@ public class playerHealth : MonoBehaviour
 
    public void savePlayerLife()
    {
-      globalController.Instance.playerLife = lives + 1;
+      globalController.Instance.playerLife = lives; //+ 1; ???
    }
    
    public void loseLife()
    {
       lives--;
       savePlayerLife();
+      
       // Remove life from HUD
       if(lives > 0)
       {
          GameObject.Find("life"+ lives.ToString()).SetActive(false);
       }
 
-		if (lives < 0)
+		if (lives <= 0)
 		{
 			lives = 4; // Same as five lives since the "fifth" life is currently being used and will not be displayed
 
 			// End Gameplay
+			globalController.Instance.endTime = Time.time;
 			globalController.Instance.gameOver = true;
 			gameOverScript.endGame();
 		}

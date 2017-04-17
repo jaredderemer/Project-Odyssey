@@ -55,9 +55,22 @@ public class GameOver : MonoBehaviour
       // Call the ShowGameOverPanel of the ShowPanels script
       showPanels.ShowGameOverPanel ();
       
+      // Format time
+      float totalTime = (globalController.Instance.endTime - globalController.Instance.startTime);
+      string minutes = Mathf.Floor(totalTime / 60).ToString("00");
+      string seconds = (totalTime % 60).ToString("00");
+      string formattedTime = minutes + ":" + seconds;
+      
       // Set player statistics text
       statsText = GameObject.Find("valuesText").GetComponent<Text> ();
-      statsText.text = "30:88\n324\n5"; // playerTime.ToString() + "\n" + monkeys.ToString() + "\n" + easterEggs.ToString;
+      statsText.text = globalController.Instance.playerScore.ToString() + "\n" +
+                       formattedTime + "\n" +
+                       globalController.Instance.monkeysKilled.ToString() + "\n" +
+                       globalController.Instance.easterEggCounter.ToString(); 
+      
+      
+      
+      // playerTime.ToString() + "\n" + monkeys.ToString() + "\n" + easterEggs.ToString;
       
       // Place cursor in firstName input fields
       firstNameInput.Select();
@@ -80,10 +93,40 @@ public class GameOver : MonoBehaviour
       
          //System.IO.File.AppendAllText("\\\\csweb\\Classes\\SEI\\Castaway\\adventure.txt", firstName + " " + lastName + " 999 99 9 9999999\n");
          
+         int totalTime = (int)(globalController.Instance.endTime - globalController.Instance.startTime);
+         
         //TEST for bad words
          if (profanityChecker.passesFilter(firstName) && profanityChecker.passesFilter(lastName))
           {
-                System.IO.File.AppendAllText("C:\\Users\\Kaoru\\Documents\\Unity\\Project-Odyssey\\Assetsadventure.txt", firstName + " " + lastName + " 999 88 7 6666666\n");
+             // Adventure Mode
+             if(globalController.Instance.gameMode == 1)
+             {
+                System.IO.File.AppendAllText("C:\\Users\\Toshiba7\\Desktop\\Unity\\adventure.txt",
+              
+                firstName + " " + 
+                lastName + " " +
+                totalTime + " " +
+                globalController.Instance.monkeysKilled.ToString() + " " +
+                globalController.Instance.easterEggCounter.ToString() + " " +
+                globalController.Instance.playerScore.ToString() + "\n");
+             }
+             // Horde Mode
+             else if(globalController.Instance.gameMode == 2)
+             {
+                // Put file path here
+                System.IO.File.AppendAllText("C:\\Users\\Toshiba7\\Desktop\\Unity\\horde.txt",
+              
+                firstName + " " + 
+                lastName + " " +
+                totalTime + " " +
+                globalController.Instance.monkeysKilled.ToString() + " " +
+                globalController.Instance.playerScore.ToString() + "\n");
+             }
+                
+          }
+          else
+          {
+             Debug.Log("bad words found");
           }
 
          // Hide submission fields and button

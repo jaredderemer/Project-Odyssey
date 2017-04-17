@@ -17,8 +17,8 @@ public class globalController : MonoBehaviour
    public int monkeysKilled;
 
    [HideInInspector]public int clipIndex;
-   [HideInInspector]public string startTime;
-   [HideInInspector]public string endTime;
+   /*[HideInInspector]*/public float startTime;
+   /*[HideInInspector]*/public float endTime;
 	[HideInInspector]public bool gameOver;
 
 	[HideInInspector]public Dictionary<int, Vector3> spawnpoints = new Dictionary<int, Vector3> ();
@@ -34,6 +34,7 @@ public class globalController : MonoBehaviour
 	void Start ()
 	{
 		playerHealth     = 100.0f;
+      playerLife       = 4;
       playerAmmo       = 20;
       easterEggCounter = 0;
       monkeysKilled    = 0;

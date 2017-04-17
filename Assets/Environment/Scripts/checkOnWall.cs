@@ -17,9 +17,19 @@ public class checkOnWall : MonoBehaviour
    {
       Debug.Log("grounded == " + myPlayer.GetComponent<PlayerControllerTest>().grounded);
       
+      // Check for player
       if (other.tag == "Player" && myPlayer.GetComponent<PlayerControllerTest>().grounded == false)
       {
          myPlayer.GetComponent<PlayerControllerTest>().onWall = true;
+      }
+   }
+   
+   void OnTriggerStay(Collider other)
+   {
+      if (other.tag == "Enemy")
+      {
+         Debug.Log("pushing monkey down");
+         other.GetComponent<Rigidbody>().AddForce(new Vector3(0, -5.0f, 0));
       }
    }
    

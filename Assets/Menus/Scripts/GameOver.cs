@@ -101,7 +101,7 @@ public class GameOver : MonoBehaviour
              // Adventure Mode
              if(globalController.Instance.gameMode == 1)
              {
-                System.IO.File.AppendAllText("C:\\Users\\Toshiba7\\Desktop\\Unity\\adventure.txt",
+               System.IO.File.AppendAllText("\\\\csweb\\Classes\\SEI\\Castaway\\adventure.txt",
               
                 firstName + " " + 
                 lastName + " " +
@@ -114,7 +114,7 @@ public class GameOver : MonoBehaviour
              else if(globalController.Instance.gameMode == 2)
              {
                 // Put file path here
-                System.IO.File.AppendAllText("C:\\Users\\Toshiba7\\Desktop\\Unity\\horde.txt",
+               System.IO.File.AppendAllText("\\\\csweb\\Classes\\SEI\\Castaway\\horde.txt",
               
                 firstName + " " + 
                 lastName + " " +

@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
 	{
 		message.text = "Horde Mode";
 		
-		yeild return gameWait;
+		yield return gameWait;
 	}
 	
    	private IEnumerator GameLoop ()

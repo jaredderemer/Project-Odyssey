@@ -201,7 +201,7 @@ public class PlayerControllerTest : MonoBehaviour
          case 6:
             if (myRig.transform.position.x < globalController.Instance.spawnpoints [globalController.Instance.currentSceneIndex].x && myRig.transform.position.x > -23.0f)
             {
-               spawnPosition = new Vector3 (-23.0f, 3.2f, gameObject.transform.position.z);
+               spawnPosition = new Vector3 (-17.2f, 3.2f, gameObject.transform.position.z);
             }
             else
             {

@@ -37,12 +37,12 @@ public class GameOver : MonoBehaviour
    void Update ()
    {
       // Check if tab is pressed
-      /*if(Input.GetKeyDown (KeyCode.Tab) && firstNameInput.GetComponent<InputField>().isFocused)
+      if(Input.GetKeyDown (KeyCode.Tab) && firstNameInput.GetComponent<InputField>().isFocused)
       {
          // Place cursor in lastName input fields
          lastNameInput.Select();
          lastNameInput.ActivateInputField();
-      }*/
+      }
    }
    
    public void endGame()
@@ -105,7 +105,7 @@ public class GameOver : MonoBehaviour
          int totalTime = (int)(globalController.Instance.endTime - globalController.Instance.startTime);
          
         //TEST for bad words
-         if (profanityChecker.passesFilter(firstName) && profanityChecker.passesFilter(lastName))
+         if (true)//profanityChecker.passesFilter(firstName) && profanityChecker.passesFilter(lastName))
           {
              // Adventure Mode
              if(globalController.Instance.gameMode == 1)

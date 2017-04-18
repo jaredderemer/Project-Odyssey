@@ -85,11 +85,11 @@ public class GameManager : MonoBehaviour
 
 		for (int i = 0; i < lifeSkins.Length; i++)
 		{
-			SetLifeSkins (i, mesh, material);
+			SetLifeSkin (i, mesh, material);
 		}
    }
 
-	private void SetLifeSkins (int i, string mesh, string material)
+	private void SetLifeSkin (int i, string mesh, string material)
 	{
 		
 		SkinnedMeshRenderer skin = lifeSkins[i].GetComponent<SkinnedMeshRenderer> ();
@@ -154,8 +154,8 @@ public class GameManager : MonoBehaviour
       
       if (roundNumber % 3 == 0)
       {
-         monkeyHealth += 20.0f;
-         monkeyDamage *= 1.5f;
+         monkeyHealth *= 1.25f;
+         monkeyDamage *= 1.25f;
       }
       
       yield return endWait;
@@ -182,8 +182,20 @@ public class GameManager : MonoBehaviour
 					Debug.Log ("monkey spawned at " + monkeySpawn[spawn].position);
 
 					spawnedMonkey.GetComponent<MonkeyControllerTest>().detected = true;
-					spawnedMonkey.GetComponent<EnemyHealth> ().enemyMaxHealth = monkeyHealth;
-					spawnedMonkey.GetComponent<EnemyHealth> ().damageModifier = monkeyDamage;
+
+					if (true)//Random.Range (0, 4) == 0)
+					{
+						spawnedMonkey.GetComponent<EnemyHealth> ().enemyMaxHealth = monkeyHealth * 1.25f;
+						spawnedMonkey.GetComponent<EnemyHealth> ().damageModifier = monkeyDamage * 1.25f;
+						spawnedMonkey.GetComponent<EnemyHealth> ().currentHealth = monkeyHealth * 1.25f;
+						spawnedMonkey.GetComponent<EnemyHealth> ().scoreAmount = 125;
+						spawnedMonkey.GetComponentInChildren<SkinnedMeshRenderer>().material = Resources.Load("tourist", typeof(Material)) as Material;
+					}
+					else
+					{
+						spawnedMonkey.GetComponent<EnemyHealth> ().enemyMaxHealth = monkeyHealth;
+						spawnedMonkey.GetComponent<EnemyHealth> ().damageModifier = monkeyDamage;
+					}
 
 					if (spawn == 1 || spawn == 2) // to face the right direction on spawn
 					{

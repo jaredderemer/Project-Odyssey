@@ -30,12 +30,15 @@ public class PlayerControllerTest : MonoBehaviour
 	private float throwTimer;
 	private float throwCooldown = .2f;
 
+   private Camera cam;
+
    // Use this for initialization
    void Start()
    {
       myRig = GetComponent<Rigidbody>();
       myAnim = GetComponent<Animator>();
       facingRight = true;
+      cam = Camera.main;
    }
 
    // Update is called once per frame
@@ -157,6 +160,9 @@ public class PlayerControllerTest : MonoBehaviour
 	{
       Debug.Log ("Respawn" + getSpawnPosition());
       myRig.position = getSpawnPosition();
+      cam.transform.position = new Vector3(myRig.position.x, 
+                                            cam.transform.position.y, 
+                                            cam.transform.position.z);
 
 		if (!facingRight)
 		{

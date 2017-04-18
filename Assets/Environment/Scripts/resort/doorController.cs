@@ -33,7 +33,7 @@ public class doorController : MonoBehaviour {
    {
       // When the player hits action key, open the door 
       if (target.tag == "Player" && 
-         Input.GetKey (KeyCode.W) || Input.GetKey (KeyCode.UpArrow)) 
+         Input.GetKey (KeyCode.W)) 
       {
          if (gameObject.tag == "Locked" && !isUsed) 
          {

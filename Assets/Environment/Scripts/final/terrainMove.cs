@@ -30,8 +30,11 @@ public class terrainMove : MonoBehaviour {
 
    void OnTriggerStay(Collider collider)
    {
-      target = collider.transform;
-      offset = target.position - transform.position;
+      if(collider.tag == "Player")
+      {
+         target = collider.transform;
+         offset = target.position - transform.position;
+      }
    }
 
    void OnTriggerExit(Collider collider)

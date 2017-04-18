@@ -56,7 +56,7 @@ public class moveArea : MonoBehaviour {
 
    void OnTriggerStay (Collider col)
    {  
-      if (col.tag == "Player" && Input.GetKey (KeyCode.W) || Input.GetKey (KeyCode.UpArrow)) 
+      if (col.tag == "Player" && Input.GetKey (KeyCode.W)) 
       { 
          if (gameObject.tag == "Locked") 
          {

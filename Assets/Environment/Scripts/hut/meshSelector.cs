@@ -36,7 +36,7 @@ public class meshSelector : MonoBehaviour {
             meshType = "minerMesh";
             break;
          case 2:
-            mat = "lambert1";
+            mat = "touristPlayer";
             meshType = "touristMesh";
             break;
          default:

@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
 		else
 		{
 			mesh = "touristMesh";
-			material = "lambert1";
+         material = "touristPlayer";
 		}
 
 		skin.material = Resources.Load(material, typeof(Material)) as Material;

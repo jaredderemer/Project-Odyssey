@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 	public GameObject playerSkin;
-   public GameObject monkey;
-   public GameObject[] items;
+	public GameObject monkey;
 	public Transform[] monkeySpawn;
+   public GameObject[] items;
 	public Transform[] itemSpawn;
 	public GameObject[] lifeSkins;
    public float startDelay = 3.0f;
@@ -137,6 +137,7 @@ public class GameManager : MonoBehaviour
       
       while (lives > 0 && (monkeyCount > 0 || getMonkeysInPlay() > 0))
       {
+			Debug.Log (lives + " " + monkeyCount + " " + getMonkeysInPlay ());
          SpawnMonkey();
          SpawnItem();
          
@@ -169,21 +170,22 @@ public class GameManager : MonoBehaviour
    {
 		GameObject spawnedMonkey;
 
-      if (getMonkeysInPlay() < 5)
+      	if (getMonkeysInPlay() < 5)
 		{
-         int spawn = Random.Range(0,4);
-		      
+			int spawn = Random.Range(0, 4);
+		    
 			if (Time.fixedTime > monkeySpawnTime && monkeyCount > 0)
-	      {
-		      if (SafeToSpawn(monkeySpawn[spawn].position, "Enemy"))
+	    	{
+		    	if (SafeToSpawn(monkeySpawn[spawn].position, "Enemy"))
 				{
 					spawnedMonkey = Instantiate(monkey, monkeySpawn[spawn].position, monkeySpawn[spawn].rotation) as GameObject;
 					Debug.Log ("monkey spawned at " + monkeySpawn[spawn].position);
-					spawnedMonkey.GetComponent<MonkeyControllerTest>().detected = true;
-               spawnedMonkey.GetComponent<EnemyHealth>().enemyMaxHealth = monkeyHealth;
-               spawnedMonkey.GetComponent<EnemyHealth>().damageModifier = monkeyDamage;
 
-					if (spawn == 1 || spawn == 2)
+					spawnedMonkey.GetComponent<MonkeyControllerTest>().detected = true;
+					spawnedMonkey.GetComponent<EnemyHealth> ().enemyMaxHealth = monkeyHealth;
+					spawnedMonkey.GetComponent<EnemyHealth> ().damageModifier = monkeyDamage;
+
+					if (spawn == 1 || spawn == 2) // to face the right direction on spawn
 					{
 						spawnedMonkey.GetComponent<MonkeyControllerTest> ().Flip ();
 					}

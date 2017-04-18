@@ -94,7 +94,7 @@ public class MonkeyControllerTest : MonoBehaviour
 	public void Flip()
 	{
 		gameObject.transform.rotation = Quaternion.Euler (new Vector3 (0.0f, facingRight ? -100.0f : 100.0f, 0.0f));
-		detectionArea.transform.rotation = Quaternion.Euler (new Vector3 (0.0f, facingRight ? -10.0f : 10.0f, 0.0f));
+		detectionArea.transform.rotation = Quaternion.Euler (new Vector3 (0.0f, facingRight ? -100.0f : 100.0f, 0.0f));
 
 		facingRight = !facingRight;
 	}

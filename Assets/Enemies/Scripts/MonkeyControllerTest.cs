@@ -40,9 +40,8 @@ public class MonkeyControllerTest : MonoBehaviour
    // Monkey Cease-to-Follow code should we decide to use it later
    void OnTriggerExit(Collider other)
    {
-      if(globalController.Instance.currentSceneIndex != 6)
+      if (globalController.Instance.currentSceneIndex != 8 && gameObject.name != "Boss")
       {
-         Debug.Log("in if");
          if (other.tag == "Player" && detected)
          {
             detected = false;
@@ -73,14 +72,14 @@ public class MonkeyControllerTest : MonoBehaviour
 		{
 			Flip ();
 		}
-		else if (player.transform.position.x == gameObject.transform.position.x) // Only happens if the player is above or below the monkey
+		else if (player.transform.position.x + 1 > gameObject.transform.position.x && player.transform.position.x - 1 < gameObject.transform.position.x) // Only happens if the player is above or below the monkey
 		{
 			// The monkey will be looking in the same direction as the player
 			facingRight = player.GetComponent<PlayerControllerTest> ().facingRight;
 
-         // set animation to idle
-         myAnim.SetFloat("speed", 0.0f);
-      }
+			// set animation to idle
+			myAnim.SetFloat ("speed", 0.0f);
+		}
 
 		if (facingRight)
 		{
@@ -95,7 +94,7 @@ public class MonkeyControllerTest : MonoBehaviour
 	public void Flip()
 	{
 		gameObject.transform.rotation = Quaternion.Euler (new Vector3 (0.0f, facingRight ? -100.0f : 100.0f, 0.0f));
-		detectionArea.transform.rotation = Quaternion.Euler (new Vector3 (0.0f, facingRight ? -10.0f : 10.0f, 0.0f));
+		detectionArea.transform.rotation = Quaternion.Inverse (new Quaternion (0.0f, facingRight ? -100.0f : 100.0f, 0.0f, 0.0f));
 
 		facingRight = !facingRight;
 	}

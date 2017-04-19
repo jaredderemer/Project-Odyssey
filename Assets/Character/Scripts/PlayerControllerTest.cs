@@ -22,15 +22,16 @@ public class PlayerControllerTest : MonoBehaviour
    public LayerMask groundLayer;
    public Transform groundCheck;
    public float jumpHeight;
+	public float trappedTime; // time allowed before jumping is re-enabled
 	[HideInInspector] public bool pushed = false;
 	private bool attacked = false;
-
-	private Vector3 spawnPosition = Vector3.zero;
 
 	[HideInInspector] public bool onWall = false;
 
 	private float throwTimer;
 	private float throwCooldown = .2f;
+
+   private Camera cam;
 
    // Use this for initialization
    void Start()
@@ -38,33 +39,14 @@ public class PlayerControllerTest : MonoBehaviour
       myRig = GetComponent<Rigidbody>();
       myAnim = GetComponent<Animator>();
       facingRight = true;
+      cam = Camera.main;
+		trappedTime = Time.fixedTime;
    }
 
    // Update is called once per frame
    void Update()
    {
-		if (globalController.Instance.currentSceneIndex > 2 && globalController.Instance.currentSceneIndex <= 5)
-		{
-			if (spawnPosition != globalController.Instance.spawnpoints [globalController.Instance.currentSceneIndex])
-			{
-				spawnPosition = globalController.Instance.spawnpoints [globalController.Instance.currentSceneIndex];
-
-				// keeps the player from respawning into the cave if he dies before reaching the cave
-				// he will simply respawn in front of the hut
-				if (globalController.Instance.currentSceneIndex == 3 && myRig.transform.position.x < spawnPosition.x)
-				{
-					spawnPosition = new Vector3 (0.0f, 0.5f, gameObject.transform.position.z);
-				}
-				if (globalController.Instance.currentSceneIndex == 4 && myRig.transform.position.x < spawnPosition.x && myRig.transform.position.x > -23.0f)
-				{
-					spawnPosition = new Vector3 (-23.0f, -2.5f, gameObject.transform.position.z);
-				}
-			}
-		}
-		else if (globalController.Instance.currentSceneIndex == 6) // Possible index of horde scene?
-		{
-			spawnPosition = globalController.Instance.hordeSpawnpoint.position;
-		}
+		
    }
     // When working with physics objects
    void FixedUpdate()
@@ -88,12 +70,15 @@ public class PlayerControllerTest : MonoBehaviour
       //   // Call or write throw code here?
       //}
 
-      if (grounded && Input.GetAxisRaw("Jump") > 0)
-      {
-         grounded = false;
-         myAnim.SetBool("grounded", grounded);
-         myRig.AddForce(new Vector3(0, jumpHeight, 0));
-      }
+		if (trappedTime < Time.fixedTime)
+		{
+			if (grounded && Input.GetAxisRaw ("Jump") > 0)
+			{
+				grounded = false;
+				myAnim.SetBool ("grounded", grounded);
+				myRig.AddForce (new Vector3 (0, jumpHeight, 0));
+			}
+		}
 
       groundCollisions = Physics.OverlapSphere(groundCheck.position, groundCheckRadius, groundLayer);
       if (groundCollisions.Length > 0)
@@ -178,12 +163,59 @@ public class PlayerControllerTest : MonoBehaviour
 	// Respawn player to starting position in scene
 	public void RespawnPlayer()
 	{
-		Debug.Log ("Respawn" + spawnPosition);
-		myRig.position = spawnPosition;
+      Debug.Log ("Respawn" + getSpawnPosition());
+      myRig.position = getSpawnPosition();
+      cam.transform.position = new Vector3(myRig.position.x, 
+                                            cam.transform.position.y, 
+                                            cam.transform.position.z);
 
 		if (!facingRight)
 		{
 			Flip ();
 		}
 	}
+
+   private Vector3 getSpawnPosition()
+   {
+      Vector3 spawnPosition = Vector3.zero;
+
+      if (globalController.Instance.currentSceneIndex == 8)
+      {
+         spawnPosition = globalController.Instance.hordeSpawnpoint.position;
+      }
+      else
+      {
+         switch (globalController.Instance.currentSceneIndex)
+         {
+         case 3:
+         case 7:
+            spawnPosition = globalController.Instance.spawnpoints [globalController.Instance.currentSceneIndex];
+            break;
+
+         case 5:
+            if (myRig.transform.position.x < globalController.Instance.spawnpoints [globalController.Instance.currentSceneIndex].x)
+            {
+               spawnPosition = new Vector3 (-84.2f, 2.7f, gameObject.transform.position.z);
+            }
+            else 
+            {
+               spawnPosition = globalController.Instance.spawnpoints [globalController.Instance.currentSceneIndex];
+            }
+            break;
+
+         case 6:
+            if (myRig.transform.position.x < globalController.Instance.spawnpoints [globalController.Instance.currentSceneIndex].x && myRig.transform.position.x > -23.0f)
+            {
+               spawnPosition = new Vector3 (-17.2f, 3.2f, gameObject.transform.position.z);
+            }
+            else
+            {
+               spawnPosition = globalController.Instance.spawnpoints [globalController.Instance.currentSceneIndex];
+            }
+            break;
+         }
+      }
+
+      return spawnPosition;
+   }
 }

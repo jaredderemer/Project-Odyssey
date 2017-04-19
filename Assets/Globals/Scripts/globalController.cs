@@ -15,10 +15,11 @@ public class globalController : MonoBehaviour
    public int playerScore;
    public int easterEggCounter;
    public int monkeysKilled;
+   public int rounds;
 
    [HideInInspector]public int clipIndex;
-   [HideInInspector]public string startTime;
-   [HideInInspector]public string endTime;
+   /*[HideInInspector]*/public float startTime;
+   /*[HideInInspector]*/public float endTime;
 	[HideInInspector]public bool gameOver;
 
 	[HideInInspector]public Dictionary<int, Vector3> spawnpoints = new Dictionary<int, Vector3> ();
@@ -34,16 +35,17 @@ public class globalController : MonoBehaviour
 	void Start ()
 	{
 		playerHealth     = 100.0f;
+      playerLife       = 4;
       playerAmmo       = 20;
       easterEggCounter = 0;
       monkeysKilled    = 0;
       clipIndex        = 1;
       PlayerPrefs.SetInt ("CharacterSelected", 0); // Set default character skin
 
-		spawnpoints [2] = scene1Spawnpoint.transform.position;
-		spawnpoints [3] = scene2Spawnpoint.transform.position;
-		spawnpoints [4] = scene3Spawnpoint.transform.position;
-		spawnpoints [5] = scene4Spawnpoint.transform.position;
+		spawnpoints [3] = scene1Spawnpoint.transform.position;
+		spawnpoints [5] = scene2Spawnpoint.transform.position;
+		spawnpoints [6] = scene3Spawnpoint.transform.position;
+		spawnpoints [7] = scene4Spawnpoint.transform.position;
 
 		gameOver = false;
 	}

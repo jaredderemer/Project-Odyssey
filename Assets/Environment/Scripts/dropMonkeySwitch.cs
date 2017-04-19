@@ -5,15 +5,28 @@ using UnityEngine;
 public class dropMonkeySwitch : MonoBehaviour {
 
 	public GameObject monkeyTrap; // Game object for hidden rocks
-   public float waitTime;        // Time to wait before reactivating the monkey trap
+   public float waitTime;        // Time to wait before resetting switch
+   public float dropTime;        // Time to drop monkey
+	private Rigidbody monkeyRB;   // Monkey's Rigidbody
+   private bool triggered = false;
+   private bool monkeyDropped = false;
 
    private AudioSource dingAS;
    private bool musicOn;
 
    void Start ()
    {
+      monkeyRB = GameObject.Find("Monkey").GetComponent<Rigidbody>();
       dingAS  = GetComponent<AudioSource> ();
       musicOn = false;
+   }
+   
+   void Update ()
+   {
+      if(triggered)
+      {
+         monkeyRB.AddForce(Physics.gravity * 50.0f);
+      }
    }
 
    void OnTriggerStay (Collider col)
@@ -21,7 +34,13 @@ public class dropMonkeySwitch : MonoBehaviour {
       if (col.tag == "Weapon") 
       {
          StartCoroutine (moveToggle ());
-         StartCoroutine (dropMonkeys());
+         
+         if(!monkeyDropped)
+         {
+            Debug.Log("Dropping");
+            monkeyDropped = true;
+            StartCoroutine (dropMonkeys());
+         }
 
          // Play sound effect
          if (!musicOn) 
@@ -48,7 +67,9 @@ public class dropMonkeySwitch : MonoBehaviour {
    IEnumerator dropMonkeys()
    {
       monkeyTrap.SetActive (false);
-      yield return new WaitForSeconds (waitTime);
+      triggered = true;
+      yield return new WaitForSeconds (dropTime);
+      triggered = false;
       monkeyTrap.SetActive (true);
    }
 }

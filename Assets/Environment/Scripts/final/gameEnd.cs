@@ -43,7 +43,7 @@ public class gameEnd : MonoBehaviour {
          globalController.Instance.clipIndex = 2;
 
          // Assign end time
-         globalController.Instance.endTime = System.DateTime.Now.ToString ("HH:mm:ss");
+         globalController.Instance.endTime = Time.time;
          Debug.Log (globalController.Instance.endTime);
       }
    }

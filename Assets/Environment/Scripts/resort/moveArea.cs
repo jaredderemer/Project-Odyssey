@@ -42,21 +42,24 @@ public class moveArea : MonoBehaviour {
 	
    void OnTriggerEnter (Collider col)
    {
-      switch (area)
+      if (col.tag == "Player")
       {
-         case house:
-         case office:
-         case pool:
-            orgPlayerPos = col.transform.position;
-            orgCamPos    = cam.transform.position;
-            break;
+         switch (area) 
+         {
+            case house:
+            case office:
+            case pool:
+               orgPlayerPos = col.transform.position;
+               orgCamPos = cam.transform.position;
+               break;
+         }
+         setPosition ();
       }
-      setPosition ();
    }
 
    void OnTriggerStay (Collider col)
    {  
-      if (col.tag == "Player" && Input.GetKey (KeyCode.W) || Input.GetKey (KeyCode.UpArrow)) 
+      if (col.tag == "Player" && Input.GetKey (KeyCode.W)) 
       { 
          if (gameObject.tag == "Locked") 
          {
@@ -80,7 +83,7 @@ public class moveArea : MonoBehaviour {
    {
       yield return new WaitForSeconds (1.0f);
       player.transform.position = playerPos;
-      cam.transform.position = camPos;
+      cam.transform.position    = camPos;
 
       if (area == 3) 
       {

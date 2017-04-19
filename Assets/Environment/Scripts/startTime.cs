@@ -8,7 +8,7 @@ public class startTime : MonoBehaviour {
 	void Start () 
    {
       // Assign end time
-      globalController.Instance.startTime = System.DateTime.Now.ToString ("HH:mm:ss");
+      globalController.Instance.startTime = Time.time;
       Debug.Log (globalController.Instance.startTime);
 	}
 }

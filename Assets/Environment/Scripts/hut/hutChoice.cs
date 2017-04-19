@@ -5,8 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class hutChoice : MonoBehaviour
 {
-	bool byChoice;
-   bool loadingScene = false;
+	bool loadingScene = false;
 	private GameObject UI;
    [HideInInspector]
    public int sceneToLoad;
@@ -18,15 +17,7 @@ public class hutChoice : MonoBehaviour
       sceneToLoad = 4; // Default scene is Cave
 	}
 	
-	void OnTriggerEnter(Collider other)
-	{
-		if (other.gameObject.CompareTag("Player"))
-      {
-         byChoice = true;
-      }
-	}
-      
-   void OnTriggerStay(Collider other)
+	void OnTriggerStay(Collider other)
    {
       if(other.tag == "Player")
       {
@@ -56,12 +47,4 @@ public class hutChoice : MonoBehaviour
          loadingScene = true;
       }
    }
-
-	void OnTriggerExit(Collider other)
-	{
-		if (other.gameObject.CompareTag("Player"))
-      {
-			byChoice = false;
-      }
-	}
 }

@@ -16,6 +16,7 @@ public class GameOver : MonoBehaviour
 
    //public Text statsText;
    private Text statsText;
+   private Text statsLabels;
    
    private string firstName; // User's entered first name
    private string lastName;  // User's entered last name
@@ -55,15 +56,51 @@ public class GameOver : MonoBehaviour
       // Call the ShowGameOverPanel of the ShowPanels script
       showPanels.ShowGameOverPanel ();
       
+
+      // Set stats label
+      if(globalController.Instance.gameMode == 2)
+      {
+         statsLabels = GameObject.Find("statsText").GetComponent<Text> ();
+         statsLabels.text = "Total Score:\nTime:\nMonkeys Eliminated:\nRounds:";
+      }
+    
       // Set player statistics text
       statsText = GameObject.Find("valuesText").GetComponent<Text> ();
-      statsText.text = "30:88\n324\n5"; // playerTime.ToString() + "\n" + monkeys.ToString() + "\n" + easterEggs.ToString;
+
+      fillStats (globalController.Instance.gameMode);
+
+      // playerTime.ToString() + "\n" + monkeys.ToString() + "\n" + easterEggs.ToString;
       
       // Place cursor in firstName input fields
       firstNameInput.Select();
       firstNameInput.ActivateInputField();
    }
-   
+
+   public void fillStats (int mode)
+   {
+      // Format time
+      float totalTime = (globalController.Instance.endTime - globalController.Instance.startTime);
+      string minutes = Mathf.Floor(totalTime / 60).ToString("00");
+      string seconds = (totalTime % 60).ToString("00");
+      string formattedTime = minutes + ":" + seconds;
+
+      switch (mode) 
+      {
+         case 1:
+            statsText.text = globalController.Instance.playerScore.ToString () + "\n" +
+            formattedTime + "\n" +
+            globalController.Instance.monkeysKilled.ToString () + "\n" +
+            globalController.Instance.easterEggCounter.ToString (); 
+            break;
+         case 2:
+            statsText.text = globalController.Instance.playerScore.ToString () + "\n" +
+            formattedTime + "\n" +
+            globalController.Instance.monkeysKilled.ToString () + "\n" +
+            globalController.Instance.easterEggCounter.ToString () +
+            globalController.Instance.rounds.ToString ();
+            break;
+      }
+   }
    public void submitScore()
    {
       // IF tests to see if the input is valid and acceptible for submission
@@ -80,10 +117,40 @@ public class GameOver : MonoBehaviour
       
          //System.IO.File.AppendAllText("\\\\csweb\\Classes\\SEI\\Castaway\\adventure.txt", firstName + " " + lastName + " 999 99 9 9999999\n");
          
+         int totalTime = (int)(globalController.Instance.endTime - globalController.Instance.startTime);
+         
         //TEST for bad words
-         if (profanityChecker.passesFilter(firstName) && profanityChecker.passesFilter(lastName))
+         if (true)//profanityChecker.passesFilter(firstName) && profanityChecker.passesFilter(lastName))
           {
-                System.IO.File.AppendAllText("C:\\Users\\Kaoru\\Documents\\Unity\\Project-Odyssey\\Assetsadventure.txt", firstName + " " + lastName + " 999 88 7 6666666\n");
+             // Adventure Mode
+             /*if(globalController.Instance.gameMode == 1)
+             {
+               System.IO.File.AppendAllText("\\\\csweb\\Classes\\SEI\\Castaway\\adventure.txt",
+              
+                firstName + " " + 
+                lastName + " " +
+                totalTime.ToString() + " " +
+                globalController.Instance.monkeysKilled.ToString() + " " +
+                globalController.Instance.easterEggCounter.ToString() + " " +
+                globalController.Instance.playerScore.ToString() + "\n");
+             }
+             // Horde Mode
+             else if(globalController.Instance.gameMode == 2)
+             {
+                // Put file path here
+               System.IO.File.AppendAllText("\\\\csweb\\Classes\\SEI\\Castaway\\horde.txt",
+              
+                firstName + " " + 
+                lastName + " " +
+                totalTime.ToString() + " " +
+                globalController.Instance.monkeysKilled.ToString() + " " +
+                globalController.Instance.playerScore.ToString() + "\n");
+             }
+           */     
+          }
+          else
+          {
+            Debug.Log("bad words found");
           }
 
          // Hide submission fields and button

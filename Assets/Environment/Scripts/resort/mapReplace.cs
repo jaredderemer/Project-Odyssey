@@ -49,19 +49,19 @@ public class mapReplace : MonoBehaviour {
          }
          else 
          {
-            if (!displayed) 
+            /*if (!displayed) 
             {           
                messageTemp.GetComponent<noteDisplay>().displayMessage("Find the other half of the map.");
                displayed = true;
-            }
+            }*/
          }
       }
    }
 
    void OnTriggerExit (Collider col)
    {
-      messageTemp.GetComponent<noteDisplay> ().displayMessage ("");
-      displayed = false;
+      //messageTemp.GetComponent<noteDisplay> ().displayMessage ("");
+      //displayed = false;
    }
 
    IEnumerator instantiateObj ()

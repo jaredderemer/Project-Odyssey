@@ -120,10 +120,10 @@ public class GameOver : MonoBehaviour
          int totalTime = (int)(globalController.Instance.endTime - globalController.Instance.startTime);
          
         //TEST for bad words
-         if (true)//profanityChecker.passesFilter(firstName) && profanityChecker.passesFilter(lastName))
+         if (profanityChecker.passesFilter(firstName) && profanityChecker.passesFilter(lastName))
           {
              // Adventure Mode
-             /*if(globalController.Instance.gameMode == 1)
+             if(globalController.Instance.gameMode == 1)
              {
                System.IO.File.AppendAllText("\\\\csweb\\Classes\\SEI\\Castaway\\adventure.txt",
               
@@ -146,7 +146,6 @@ public class GameOver : MonoBehaviour
                 globalController.Instance.monkeysKilled.ToString() + " " +
                 globalController.Instance.playerScore.ToString() + "\n");
              }
-           */     
           }
           else
           {

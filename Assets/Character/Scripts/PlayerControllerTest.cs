@@ -22,6 +22,7 @@ public class PlayerControllerTest : MonoBehaviour
    public LayerMask groundLayer;
    public Transform groundCheck;
    public float jumpHeight;
+	public float trappedTime; // time allowed before jumping is re-enabled
 	[HideInInspector] public bool pushed = false;
 	private bool attacked = false;
 
@@ -39,6 +40,7 @@ public class PlayerControllerTest : MonoBehaviour
       myAnim = GetComponent<Animator>();
       facingRight = true;
       cam = Camera.main;
+		trappedTime = Time.fixedTime;
    }
 
    // Update is called once per frame
@@ -68,12 +70,15 @@ public class PlayerControllerTest : MonoBehaviour
       //   // Call or write throw code here?
       //}
 
-      if (grounded && Input.GetAxisRaw("Jump") > 0)
-      {
-         grounded = false;
-         myAnim.SetBool("grounded", grounded);
-         myRig.AddForce(new Vector3(0, jumpHeight, 0));
-      }
+		if (trappedTime < Time.fixedTime)
+		{
+			if (grounded && Input.GetAxisRaw ("Jump") > 0)
+			{
+				grounded = false;
+				myAnim.SetBool ("grounded", grounded);
+				myRig.AddForce (new Vector3 (0, jumpHeight, 0));
+			}
+		}
 
       groundCollisions = Physics.OverlapSphere(groundCheck.position, groundCheckRadius, groundLayer);
       if (groundCollisions.Length > 0)

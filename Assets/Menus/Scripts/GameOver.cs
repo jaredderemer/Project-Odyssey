@@ -129,7 +129,7 @@ public class GameOver : MonoBehaviour
               
                 firstName + " " + 
                 lastName + " " +
-                totalTime + " " +
+                totalTime.ToString() + " " +
                 globalController.Instance.monkeysKilled.ToString() + " " +
                 globalController.Instance.easterEggCounter.ToString() + " " +
                 globalController.Instance.playerScore.ToString() + "\n");
@@ -142,7 +142,7 @@ public class GameOver : MonoBehaviour
               
                 firstName + " " + 
                 lastName + " " +
-                totalTime + " " +
+                totalTime.ToString() + " " +
                 globalController.Instance.monkeysKilled.ToString() + " " +
                 globalController.Instance.playerScore.ToString() + "\n");
              }

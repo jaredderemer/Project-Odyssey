@@ -28,20 +28,21 @@ public class punchDamage : MonoBehaviour {
    // Push the character away from the damaging object
    void pushBack(Transform pushedObject)
 	{
-	   Rigidbody monkey = gameObject.GetComponentInParent<Rigidbody>().GetComponentInParent<Rigidbody>().GetComponentInParent<Rigidbody>().GetComponentInParent<Rigidbody>().GetComponentInParent<Rigidbody>();
+      Rigidbody monkey = gameObject.GetComponentInParent<Rigidbody>().GetComponentInParent<Rigidbody>().GetComponentInParent<Rigidbody>().GetComponentInParent<Rigidbody>().GetComponentInParent<Rigidbody>().GetComponentInParent<Rigidbody>().GetComponentInParent<Rigidbody>();
       Debug.Log ("pushback");
       // Pushes the character straight up away from the object
-      Vector3 pushDirection = new Vector3(monkey.transform.position.x > pushedObject.position.x ? -100.0f : 100.0f, 5.0f, 0.0f).normalized;
+      Vector3 upDirection = new Vector3(0.0f, 150.0f, 0.0f).normalized;
+      Vector3 backDirection = new Vector3(monkey.transform.position.x > pushedObject.position.x ? -500.0f : 500.0f, 50.0f, 0.0f).normalized;
 
       // Set the direction of the push back
-      pushDirection *= pushBackForce;
+      upDirection *= pushBackForce;
 
       // Access the Rigidbody
       Rigidbody pushedRB = pushedObject.GetComponent<Rigidbody>();
 
       // Zero out the player's movement
       pushedRB.velocity = Vector3.zero;
-
-      pushedRB.AddForce(pushDirection, ForceMode.VelocityChange);
+      pushedRB.AddForce(upDirection, ForceMode.VelocityChange);
+      pushedRB.AddForce(backDirection, ForceMode.VelocityChange);
    }
 }

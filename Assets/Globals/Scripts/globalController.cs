@@ -15,6 +15,7 @@ public class globalController : MonoBehaviour
    public int playerScore;
    public int easterEggCounter;
    public int monkeysKilled;
+   public int rounds;
 
    [HideInInspector]public int clipIndex;
    /*[HideInInspector]*/public float startTime;

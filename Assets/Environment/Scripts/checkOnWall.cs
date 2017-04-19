@@ -29,7 +29,7 @@ public class checkOnWall : MonoBehaviour
       if (other.tag == "Enemy")
       {
          Debug.Log("pushing monkey down");
-		 other.GetComponent<Rigidbody>().velocity = Vector3.zero;
+		   other.GetComponent<Rigidbody>().velocity = Vector3.zero;
          other.GetComponent<Rigidbody>().AddForce(new Vector3(0, -5.0f, 0));
       }
    }

@@ -36,12 +36,12 @@ public class GameManager : MonoBehaviour
 	{
 		player = GameObject.FindGameObjectWithTag ("Player");
 
-		gameWait = new WaitForSeconds(gameDelay);
-      	startWait = new WaitForSeconds(startDelay);
-      	endWait = new WaitForSeconds(endDelay);
+		gameWait  = new WaitForSeconds(gameDelay);
+      startWait = new WaitForSeconds(startDelay);
+      endWait   = new WaitForSeconds(endDelay);
 
 		globalController.Instance.startTime = Time.time;
-      
+      globalController.Instance.rounds    = roundNumber;
 		StartHordeMode ();
 	}
 
@@ -129,13 +129,13 @@ public class GameManager : MonoBehaviour
    
    	private IEnumerator RoundStarting ()
    	{
-		roundNumber++;
+		   roundNumber++;
 
       	if(roundNumber > 0)
       	{
          	message.text = "ROUND " + roundNumber;
       	}
-      
+         globalController.Instance.rounds = roundNumber;
       	monkeyCount = roundMonkeys;
       
       	yield return startWait;

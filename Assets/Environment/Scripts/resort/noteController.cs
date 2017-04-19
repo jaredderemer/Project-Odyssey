@@ -14,6 +14,9 @@ public class noteController : MonoBehaviour {
    private GameObject safe;
    [SerializeField]
    private string note;
+   
+   public GameObject safePrompt;
+   public int safeID; // Temp fix for prompt changing, just ask Jared ;)
 
    void Start ()
    {
@@ -24,6 +27,9 @@ public class noteController : MonoBehaviour {
    {
       if (col.tag == "Player") 
       {
+         // Change prompt for office safe
+         safePrompt.GetComponent<promptInteract>().itemIDNeeded = 0;
+         
          message.GetComponent<noteDisplay>().displayMessage(note);
          safe.tag = "Untagged";
          Destroy (gameObject);

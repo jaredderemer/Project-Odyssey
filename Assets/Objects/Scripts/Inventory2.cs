@@ -97,22 +97,40 @@ public class Inventory2 : MonoBehaviour
 
    // Removes an item to the list, returns a message if successful
    public int removeItem(int itemID)
-   {   
+   {
+      Debug.Log("Looking for ID: " + itemID);
+      Debug.Log("--------------------------");
+      Debug.Log("slot 1: " + inventory[0].itemID + ", " + inventory[0].quantity);
+      Debug.Log("slot 2: " + inventory[1].itemID + ", " + inventory[1].quantity);
+      Debug.Log("slot 3: " + inventory[2].itemID + ", " + inventory[2].quantity);
+      Debug.Log("slot 4: " + inventory[3].itemID + ", " + inventory[3].quantity);
+      Debug.Log("--------------------------");
+      
+      bool test1;
+      int test2;
+      
       for (int i = 0; i < numItemSlots; i++)
       {
          // Looks for item in the inventory and consumes it
          if (inventory[i].itemID == itemID)
          {
+            // Check for single item in inventory
             if (inventory[i].quantity == 1)
-            { 
+            {
+               // Empty the inventory slot and sort list
                sortList(i);
                return 1;
             }
-            inventory[i].quantity -= 1;
+            else if(inventory[i].quantity > 1)
+            {
+               // Decrement the quantity
+               inventory[i].quantity -= 1;
+               return 1;
+            }
          }
          if (i == (numItemSlots - 1))
          {
-             print("Item not found"); 
+             Debug.Log("Item not found"); 
              return 0;     
          }
       }

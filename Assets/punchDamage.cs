@@ -28,9 +28,10 @@ public class punchDamage : MonoBehaviour {
    // Push the character away from the damaging object
    void pushBack(Transform pushedObject)
 	{
+	   Rigidbody monkey = gameObject.GetComponentInParent<Rigidbody>().GetComponentInParent<Rigidbody>().GetComponentInParent<Rigidbody>().GetComponentInParent<Rigidbody>().GetComponentInParent<Rigidbody>();
       Debug.Log ("pushback");
       // Pushes the character straight up away from the object
-      Vector3 pushDirection = new Vector3(thePlayer.GetComponent<PlayerControllerTest>().facingRight? -100.0f:100.0f, (pushedObject.position.y - transform.position.y), 0).normalized;
+      Vector3 pushDirection = new Vector3(monkey.transform.position.x > pushedObject.position.x ? -100.0f : 100.0f, 5.0f, 0.0f).normalized;
 
       // Set the direction of the push back
       pushDirection *= pushBackForce;
@@ -41,6 +42,6 @@ public class punchDamage : MonoBehaviour {
       // Zero out the player's movement
       pushedRB.velocity = Vector3.zero;
 
-      pushedRB.AddForce(pushDirection, ForceMode.Impulse);
+      pushedRB.AddForce(pushDirection, ForceMode.VelocityChange);
    }
 }

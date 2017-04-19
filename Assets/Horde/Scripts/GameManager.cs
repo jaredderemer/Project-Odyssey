@@ -192,12 +192,15 @@ public class GameManager : MonoBehaviour
 						spawnedMonkey.GetComponent<EnemyHealth> ().damageModifier = monkeyDamage * 1.25f;
 						spawnedMonkey.GetComponent<EnemyHealth> ().currentHealth = monkeyHealth * 1.25f;
 						spawnedMonkey.GetComponent<EnemyHealth> ().scoreAmount = 125;
-						spawnedMonkey.GetComponentInChildren<SkinnedMeshRenderer>().material = Resources.Load("tourist", typeof(Material)) as Material;
+						spawnedMonkey.transform.Find ("Cube").gameObject.GetComponent<SkinnedMeshRenderer>().material = Resources.Load("tourist", typeof(Material)) as Material;
+						spawnedMonkey.SetActive (true); // the monkey for whatever reason automatically starts inactive
 					}
 					else // 75% chance of normal monkey
 					{
 						spawnedMonkey.GetComponent<EnemyHealth> ().enemyMaxHealth = monkeyHealth;
 						spawnedMonkey.GetComponent<EnemyHealth> ().damageModifier = monkeyDamage;
+						spawnedMonkey.transform.Find ("Cube").gameObject.GetComponent<SkinnedMeshRenderer>().material = Resources.Load("monkey", typeof(Material)) as Material;
+						spawnedMonkey.SetActive (true); // the monkey for whatever reason automatically starts inactive
 					}
 
 					if (spawn == 1 || spawn == 2) // to face the right direction on spawn

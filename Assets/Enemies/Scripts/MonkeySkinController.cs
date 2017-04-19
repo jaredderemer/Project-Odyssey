@@ -8,19 +8,22 @@ public class MonkeySkinController : MonoBehaviour
 
 	void Start ()
 	{
-		string mat;
-		SkinnedMeshRenderer skin = gameObject.GetComponent<SkinnedMeshRenderer> ();
-
-		if (globalController.Instance.currentSceneIndex == 6) // resort scene
+		if (globalController.Instance.currentSceneIndex != 8) // anything except horde scene
 		{
-			mat = "tourist";
-		}
-		else // any other scene
-		{
-			mat = "monkey";
-		}
+			string mat;
+			SkinnedMeshRenderer skin = gameObject.GetComponent<SkinnedMeshRenderer> ();
 
-		material = Resources.Load(mat, typeof(Material)) as Material;
-		skin.material = material;
+			if (globalController.Instance.currentSceneIndex == 6) // resort scene
+			{
+				mat = "tourist";
+			}
+			else // any other scene
+			{
+				mat = "monkey";
+			}
+
+			material = Resources.Load (mat, typeof(Material)) as Material;
+			skin.material = material;
+		}
 	}
 }

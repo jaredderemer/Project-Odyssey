@@ -81,30 +81,15 @@ public class Inventory2 : MonoBehaviour
 
             return 1;  // Returns 1 if the item has been placed.
          }
-         // Look for same item to increase quantity
-         else if (inventory[i].itemID == itemID)
-         {
-             inventory[i].quantity += itemQuantity;
-             return 1;  // Returns 1 if the item has been placed.
-         }
 
       }
 
       return 0;  // Returns 0 if the item has NOT been placed.
    }
    
-
-
    // Removes an item to the list, returns a message if successful
    public int removeItem(int itemID)
    {
-      Debug.Log("Looking for ID: " + itemID);
-      Debug.Log("--------------------------");
-      Debug.Log("slot 1: " + inventory[0].itemID + ", " + inventory[0].quantity);
-      Debug.Log("slot 2: " + inventory[1].itemID + ", " + inventory[1].quantity);
-      Debug.Log("slot 3: " + inventory[2].itemID + ", " + inventory[2].quantity);
-      Debug.Log("slot 4: " + inventory[3].itemID + ", " + inventory[3].quantity);
-      Debug.Log("--------------------------");
   
       for (int i = 0; i < numItemSlots; i++)
       {

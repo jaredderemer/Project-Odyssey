@@ -43,13 +43,14 @@ public class movieController : MonoBehaviour {
 
       if (!(movie.isPlaying)) 
       {
-         if (index == 1) 
+         // Check if first movie and scene is not yet loading
+         if (index == 1 && !loadingScene) 
          {
             selectScene ();
          } 
-         else 
+         // Check if game has been set to over
+         else if(!globalController.Instance.gameOver)
          {
-            // CANNOT INTERACT
             globalController.Instance.gameOver = true;
             gameOverScript.endGame ();
          }

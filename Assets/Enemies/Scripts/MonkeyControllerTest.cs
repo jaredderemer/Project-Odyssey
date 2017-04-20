@@ -8,6 +8,7 @@ public class MonkeyControllerTest : MonoBehaviour
 	public Collider detectionArea;
 	[HideInInspector]public bool facingRight;
 	[HideInInspector]public bool detected;
+	[HideInInspector]public bool stop = false;
 
 	private GameObject player;
 	private Animator myAnim;
@@ -55,14 +56,14 @@ public class MonkeyControllerTest : MonoBehaviour
    {
 		if (detected)
 		{
-         myAnim.SetFloat("speed", 1.0f);
+			myAnim.SetFloat ("speed", 1.0f);
 			Move ();
 		}
 		else
 		{
 			myRB.velocity = Vector3.zero;
-         // set animation to idle
-         myAnim.SetFloat("speed", 0.0f);
+			// set animation to idle
+			myAnim.SetFloat ("speed", 0.0f);
 		}
    }
 
@@ -81,13 +82,16 @@ public class MonkeyControllerTest : MonoBehaviour
 			myAnim.SetFloat ("speed", 0.0f);
 		}
 
-		if (facingRight)
+		if (!stop)
 		{
-			myRB.velocity = new Vector3 (moveSpeed, myRB.velocity.y, 0.0f);
-		}
-		else
-		{
-			myRB.velocity = new Vector3 (moveSpeed * -1, myRB.velocity.y, 0.0f);
+			if (facingRight)
+			{
+				myRB.velocity = new Vector3 (moveSpeed, myRB.velocity.y, 0.0f);
+			}
+			else
+			{
+				myRB.velocity = new Vector3 (moveSpeed * -1, myRB.velocity.y, 0.0f);
+			}
 		}
 	}
 

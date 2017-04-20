@@ -115,13 +115,13 @@ public class PlayerControllerTest : MonoBehaviour
 			if(!onWall || grounded && onWall)
 			{
 				if (walking > 0)
-            {
-               myRig.velocity = new Vector3 (move * walkSpeed, myRig.velocity.y, 0);
-            }
-            else
-            {
-               myRig.velocity = new Vector3 (move * runSpeed, myRig.velocity.y, 0);
-            }
+	            {
+	               myRig.velocity = new Vector3 (move * walkSpeed, myRig.velocity.y, 0);
+	            }
+	            else
+	            {
+	               myRig.velocity = new Vector3 (move * runSpeed, myRig.velocity.y, 0);
+	            }
 			}
 			else if(onWall)
 			{

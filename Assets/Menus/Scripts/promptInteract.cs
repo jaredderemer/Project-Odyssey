@@ -15,7 +15,7 @@ public class promptInteract : MonoBehaviour
    public string     buttonTextString;    // Text to show on prompt button
    
    public  Transform interactable;        // The interactable object
-   private bool      interacted = false;  // State of object interaction
+   public bool      interacted = false;  // State of object interaction
    public  bool      disappearOnInteract = true; // Default to true
    private Vector3   newPosition;         // The new position of the prompt
    public  float     yPosition; 			   // The height above the object for the prompt

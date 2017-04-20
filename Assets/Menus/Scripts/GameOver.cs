@@ -149,27 +149,27 @@ public class GameOver : MonoBehaviour
              // Adventure Mode
              if(globalController.Instance.gameMode == 1)
              {
-               /*System.IO.File.AppendAllText("\\\\csweb\\Classes\\SEI\\Castaway\\adventure.txt",
+               System.IO.File.AppendAllText("\\\\csweb\\Classes\\SEI\\Castaway\\adventure.txt",
               
                 firstName + " " + 
                 lastName + " " +
                 totalTime.ToString() + " " +
                 globalController.Instance.monkeysKilled.ToString() + " " +
                 globalController.Instance.easterEggCounter.ToString() + " " +
-                globalController.Instance.playerScore.ToString() + "\n");*/
+                globalController.Instance.playerScore.ToString() + "\n");
              }
              // Horde Mode
              else if(globalController.Instance.gameMode == 2)
              {
                // Put file path here
-               //System.IO.File.AppendAllText("\\\\csweb\\Classes\\SEI\\Castaway\\horde.txt",
-               /*System.IO.File.AppendAllText("C:\\Users\\Kaoru\\Desktop\\Cuss.txt",
+               /*System.IO.File.AppendAllText("\\\\csweb\\Classes\\SEI\\Castaway\\horde.txt",
               
                 firstName + " " + 
                 lastName + " " +
                 totalTime.ToString() + " " +
                 globalController.Instance.monkeysKilled.ToString() + " " +
                 globalController.Instance.playerScore.ToString() + "\n");*/
+               Debug.Log ("Submitted");
              }
           }
           else

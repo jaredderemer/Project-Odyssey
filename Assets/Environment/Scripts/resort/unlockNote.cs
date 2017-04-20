@@ -49,7 +49,7 @@ public class unlockNote : MonoBehaviour {
       } 
       else if (gameObject.name == "pool_key(Clone)") 
       {
-         note = "You found the pool house key. Fabrice lost his bedroom key in the pool";
+         note = "You found the pool house key. Fabrice lost his bedroom key in the pool.";
       }
       else 
       {

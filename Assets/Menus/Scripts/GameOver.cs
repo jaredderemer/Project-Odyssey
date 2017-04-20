@@ -162,14 +162,15 @@ public class GameOver : MonoBehaviour
              else if(globalController.Instance.gameMode == 2)
              {
                // Put file path here
-               /*System.IO.File.AppendAllText("\\\\csweb\\Classes\\SEI\\Castaway\\horde.txt",
+               System.IO.File.AppendAllText("\\\\csweb\\Classes\\SEI\\Castaway\\horde.txt",
               
                 firstName + " " + 
                 lastName + " " +
                 totalTime.ToString() + " " +
                 globalController.Instance.monkeysKilled.ToString() + " " +
-                globalController.Instance.playerScore.ToString() + "\n");*/
-               Debug.Log ("Submitted");
+                globalController.Instance.playerScore.ToString() + "\n");
+                
+               //Debug.Log ("Submitted"); // testing
              }
           }
           else

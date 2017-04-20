@@ -36,7 +36,7 @@ public class punchDamage : MonoBehaviour {
 		if(other.tag == "Player" && pushBackTime <= Time.fixedTime)
       {
          thePlayerHealth.addDamage(damageAmount);
-		 pushBack (thePlayer.transform);
+		   //pushBack (thePlayer.transform);
       }
    }
 
@@ -44,7 +44,7 @@ public class punchDamage : MonoBehaviour {
 	{
 		if(other.tag == "Player" && pushBackTime <= Time.fixedTime)
 		{
-			pushBack (thePlayer.transform);
+			//pushBack (thePlayer.transform);
 		}
 	}
 

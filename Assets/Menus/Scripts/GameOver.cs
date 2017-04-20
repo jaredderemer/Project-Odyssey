@@ -23,13 +23,15 @@ public class GameOver : MonoBehaviour
    
    public InputField firstNameInput;
    public InputField lastNameInput;
-   
+
+   public string gameOverText;
+
    public GameObject afterSubmissionText; // Message to be displayed after player submits score
    
    void Awake()
    {
       //Get a component reference to ShowPanels attached to this object, store in showPanels variable
-	  showPanels  = GetComponent<ShowPanels> ();
+	   showPanels  = GetComponent<ShowPanels> ();
       pauseScript = GetComponent<Pause> ();
       profanityChecker = GameObject.Find("UI").GetComponent<profanityFilter>();
    }
@@ -55,11 +57,14 @@ public class GameOver : MonoBehaviour
       
       // Call the ShowGameOverPanel of the ShowPanels script
       showPanels.ShowGameOverPanel ();
-      
+
+      // Set Game Over text
+      GameObject.Find ("GameOverText").GetComponent<Text> ().text = gameOverText;
+
       // Set stats label
       if(globalController.Instance.gameMode == 2)
       {
-         GameObject.Find("GameOverText").GetComponent<Text>().text = "Game Over";
+         //GameObject.Find("GameOverText").GetComponent<Text>().text = "Game Over";
          statsLabels = GameObject.Find("statsText").GetComponent<Text> ();
          statsLabels.text = "Total Score:\nTime:\nMonkeys Eliminated:\nRounds:";
       }

@@ -133,6 +133,7 @@ public class playerHealth : MonoBehaviour
 			// End Gameplay
 			globalController.Instance.endTime = Time.time;
 			globalController.Instance.gameOver = true;
+         gameOverScript.gameOverText = "Game Over";
 			gameOverScript.endGame();
 		}
 		else

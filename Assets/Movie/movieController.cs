@@ -6,6 +6,7 @@ public class movieController : MonoBehaviour {
 
    public int index; // 1 == intro; 2 == end
    public GameObject text;
+
    bool loadingScene = false;
    private GameObject UI;
    private MovieTexture movie;
@@ -52,6 +53,7 @@ public class movieController : MonoBehaviour {
          else if(!globalController.Instance.gameOver)
          {
             globalController.Instance.gameOver = true;
+            gameOverScript.gameOverText = "You've Been Rescued!";
             gameOverScript.endGame ();
          }
       }

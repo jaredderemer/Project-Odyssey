@@ -141,9 +141,13 @@ public class GameOver : MonoBehaviour
          
          int totalTime = (int)(globalController.Instance.endTime - globalController.Instance.startTime);
          
-        //TEST for bad words
-         //if (profanityChecker.passesFilter(firstName) && profanityChecker.passesFilter(lastName))
-          if (profanityChecker.passesFilter(firstName.Replace("'", "").Replace(" ", "")) && profanityChecker.passesFilter(lastName.Replace("'", "").Replace(" ", "")))
+        // Remove spaces from names
+         firstName = firstName.Replace(" ", "");
+         lastName  = lastName.Replace (" ", "");
+        
+        // Write to files if it passes profanity filter
+         if (profanityChecker.passesFilter(firstName.Replace("'", "")) && 
+              profanityChecker.passesFilter(lastName.Replace("'", "")))
           {
              // Adventure Mode
              if(globalController.Instance.gameMode == 1)

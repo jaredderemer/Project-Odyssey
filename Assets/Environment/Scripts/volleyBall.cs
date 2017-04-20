@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class volleyBall : MonoBehaviour {
 
-   public Transform volleyball;
+   public GameObject volleyball;
    public GameObject wilson;
-   public Vector3 position;
+   public Transform position;
 
    private bool isUsed;
 
@@ -21,7 +21,7 @@ public class volleyBall : MonoBehaviour {
       if (col.tag == "Player" && Input.GetKey(KeyCode.E) && !isUsed) 
       {
          // Instantiate a volleyball
-         Instantiate (volleyball, position, volleyball.rotation);
+		 Instantiate (volleyball, position.position, position.rotation);
 
          wilson.SetActive(true);
 

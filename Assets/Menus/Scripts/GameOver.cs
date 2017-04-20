@@ -120,7 +120,11 @@ public class GameOver : MonoBehaviour
          int totalTime = (int)(globalController.Instance.endTime - globalController.Instance.startTime);
          
         //TEST for bad words
+<<<<<<< HEAD
          if (profanityChecker.passesFilter(firstName) && profanityChecker.passesFilter(lastName))//profanityChecker.passesFilter(firstName) && profanityChecker.passesFilter(lastName))
+=======
+         if (profanityChecker.passesFilter(firstName) && profanityChecker.passesFilter(lastName))
+>>>>>>> b79b6ddb44edf63344412d6468956b1a43d3fc0e
           {
              // Adventure Mode
              if(globalController.Instance.gameMode == 1)
@@ -147,7 +151,10 @@ public class GameOver : MonoBehaviour
                 globalController.Instance.monkeysKilled.ToString() + " " +
                 globalController.Instance.playerScore.ToString() + "\n");
              }
+<<<<<<< HEAD
                 
+=======
+>>>>>>> b79b6ddb44edf63344412d6468956b1a43d3fc0e
           }
           else
           {

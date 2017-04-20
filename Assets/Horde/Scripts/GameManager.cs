@@ -185,7 +185,7 @@ public class GameManager : MonoBehaviour
 					spawnedMonkey = Instantiate(monkey, monkeySpawn[spawn].position, monkeySpawn[spawn].rotation) as GameObject;
 					spawnedMonkey.GetComponent<MonkeyControllerTest>().detected = true;
 
-					if (Random.Range (0, 4) == 0) // 25% chance of 'bouncer' monkey
+					if (Random.Range (0, 10) == 0) // 10% chance of 'bouncer' monkey
 					{
 						// 'bouncer' monkey is stronger and gives more points
 						spawnedMonkey.GetComponent<EnemyHealth> ().enemyMaxHealth = monkeyHealth * 1.25f;
@@ -195,7 +195,7 @@ public class GameManager : MonoBehaviour
 						spawnedMonkey.transform.Find ("Cube").gameObject.GetComponent<SkinnedMeshRenderer>().material = Resources.Load("tourist", typeof(Material)) as Material;
 						spawnedMonkey.SetActive (true); // the monkey for whatever reason automatically starts inactive
 					}
-					else // 75% chance of normal monkey
+					else // 90% chance of normal monkey
 					{
 						spawnedMonkey.GetComponent<EnemyHealth> ().enemyMaxHealth = monkeyHealth;
 						spawnedMonkey.GetComponent<EnemyHealth> ().damageModifier = monkeyDamage;

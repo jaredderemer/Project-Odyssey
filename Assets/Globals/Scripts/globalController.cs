@@ -20,7 +20,7 @@ public class globalController : MonoBehaviour
    [HideInInspector]public int clipIndex;
    /*[HideInInspector]*/public float startTime;
    /*[HideInInspector]*/public float endTime;
-	[HideInInspector]public bool gameOver;
+	/*[HideInInspector]*/public bool gameOver;
 
 	[HideInInspector]public Dictionary<int, Vector3> spawnpoints = new Dictionary<int, Vector3> ();
 	public GameObject scene1Spawnpoint;

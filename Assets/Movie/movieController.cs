@@ -50,7 +50,7 @@ public class movieController : MonoBehaviour {
             selectScene ();
          } 
          // Check if game has been set to over
-         else if(!globalController.Instance.gameOver)
+         else if (index == 2 && !globalController.Instance.gameOver)
          {
             globalController.Instance.gameOver = true;
             gameOverScript.gameOverText = "You've Been Rescued!";

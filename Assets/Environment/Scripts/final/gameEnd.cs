@@ -42,6 +42,8 @@ public class gameEnd : MonoBehaviour {
          // Index for the end movie clip to play
          globalController.Instance.clipIndex = 2;
 
+         //globalController.Instance.gameOver = true;
+
          // Assign end time
          globalController.Instance.endTime = Time.time;
          Debug.Log (globalController.Instance.endTime);

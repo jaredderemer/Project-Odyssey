@@ -5,16 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class ShowPanels : MonoBehaviour
 {
-	public GameObject controlsPanel; //Store a reference to the Game Object ControlsPanel
-	public GameObject optionsPanel;	//Store a reference to the Game Object OptionsPanel 
-	public GameObject creditsPanel;	//Store a reference to the Game Object CreditsPanel
-	public GameObject menuPanel;		//Store a reference to the Game Object MenuPanel 
-	public GameObject pausePanel;		//Store a reference to the Game Object PausePanel
-	public GameObject gameOverPanel;	//Store a reference to the Game Object GameOverPanel
-	public GameObject modeChoicePanel;	//Store a reference to the Game Object GameOverPanel
-	public GameObject panelTint;		//Store a reference to the Game Object OptionsTint 
+	public GameObject controlsPanel;   //Store a reference to the Game Object ControlsPanel
+	public GameObject optionsPanel;	  //Store a reference to the Game Object OptionsPanel 
+	public GameObject creditsPanel;	  //Store a reference to the Game Object CreditsPanel
+	public GameObject menuPanel;		  //Store a reference to the Game Object MenuPanel 
+	public GameObject pausePanel;		  //Store a reference to the Game Object PausePanel
+	public GameObject gameOverPanel;	  //Store a reference to the Game Object GameOverPanel
+	public GameObject modeChoicePanel; //Store a reference to the Game Object GameOverPanel
+   public GameObject profanityPanel;  //Convict the potty mouth
+	public GameObject panelTint;		  //Store a reference to the Game Object OptionsTint 
    
-   private Pause pauseScript;			//Reference to the PauseScript script
+   private Pause pauseScript;			  //Reference to the PauseScript script
 
    void Awake()
 	{
@@ -121,6 +122,20 @@ public class ShowPanels : MonoBehaviour
 	public void HideModeChoicePanel()
 	{
 		modeChoicePanel.SetActive (false);
+		panelTint.SetActive(false);
+	}
+   
+   //Call this function to activate and display the ModeChoice panel during game play
+	public void ShowProfanityPanel()
+	{
+		profanityPanel.SetActive (true);
+		panelTint.SetActive(true);
+	}
+
+	//Call this function to deactivate and hide the ModeChoice panel during game play
+	public void HideProfanityPanel()
+	{
+		profanityPanel.SetActive (false);
 		panelTint.SetActive(false);
 	}
 }

@@ -143,8 +143,7 @@ public class GameOver : MonoBehaviour
          
         //TEST for bad words
          //if (profanityChecker.passesFilter(firstName) && profanityChecker.passesFilter(lastName))
-          if (profanityChecker.passesFilter(firstName.Replace("'", "").Replace(" ", "")) && 
-              profanityChecker.passesFilter(lastName.Replace("'", "").Replace(" ", "")))
+          if (profanityChecker.passesFilter(firstName.Replace("'", "").Replace(" ", "")) && profanityChecker.passesFilter(lastName.Replace("'", "").Replace(" ", "")))
           {
              // Adventure Mode
              if(globalController.Instance.gameMode == 1)
@@ -168,6 +167,7 @@ public class GameOver : MonoBehaviour
                 lastName + " " +
                 totalTime.ToString() + " " +
                 globalController.Instance.monkeysKilled.ToString() + " " +
+                globalController.Instance.rounds.ToString() + " " +
                 globalController.Instance.playerScore.ToString() + "\n");
                 
                //Debug.Log ("Submitted"); // testing

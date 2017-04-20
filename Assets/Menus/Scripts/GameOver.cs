@@ -56,10 +56,10 @@ public class GameOver : MonoBehaviour
       // Call the ShowGameOverPanel of the ShowPanels script
       showPanels.ShowGameOverPanel ();
       
-
       // Set stats label
       if(globalController.Instance.gameMode == 2)
       {
+         GameObject.Find("GameOverText").GetComponent<Text>().text = "Game Over";
          statsLabels = GameObject.Find("statsText").GetComponent<Text> ();
          statsLabels.text = "Total Score:\nTime:\nMonkeys Eliminated:\nRounds:";
       }
@@ -83,20 +83,38 @@ public class GameOver : MonoBehaviour
       string minutes = Mathf.Floor(totalTime / 60).ToString("00");
       string seconds = (totalTime % 60).ToString("00");
       string formattedTime = minutes + ":" + seconds;
-
+      
+      int timePoints;
+      
       switch (mode) 
       {
          case 1:
+            // Add time score, if completed in under 15 minutes
+            if(totalTime < 900.0f)
+            {
+               globalController.Instance.playerScore += (int)((2.0f)*(900.0f - totalTime));
+            }
+            
+            // Add easter egg score
+            globalController.Instance.playerScore += (1000)*(globalController.Instance.easterEggCounter);
+            
             statsText.text = globalController.Instance.playerScore.ToString () + "\n" +
             formattedTime + "\n" +
             globalController.Instance.monkeysKilled.ToString () + "\n" +
-            globalController.Instance.easterEggCounter.ToString (); 
+            globalController.Instance.easterEggCounter.ToString ();
+            
             break;
          case 2:
+            // Add time score 
+            globalController.Instance.playerScore += (int)(2.0f * totalTime);
+            
+            // Add round score
+            globalController.Instance.playerScore += (1000)*(globalController.Instance.rounds - 1);
+            
+         
             statsText.text = globalController.Instance.playerScore.ToString () + "\n" +
             formattedTime + "\n" +
             globalController.Instance.monkeysKilled.ToString () + "\n" +
-            globalController.Instance.easterEggCounter.ToString () +
             globalController.Instance.rounds.ToString ();
             break;
       }

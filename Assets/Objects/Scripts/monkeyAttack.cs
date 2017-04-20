@@ -51,7 +51,7 @@ public class monkeyAttack : MonoBehaviour
       {
          playerInRange = false;
          transform.parent.gameObject.GetComponent<MonkeyControllerTest> ().moveSpeed = monkeySpeed;
-      }
+		}
    }
 
    // Damage the character
@@ -79,7 +79,7 @@ public class monkeyAttack : MonoBehaviour
       // Pushes the character straight up away from the object
       // Check if monkey is farther on X than the player
       // Increase Y value so the player actually moves
-      Vector3 pushDirection = new Vector3(thePlayer.GetComponent<PlayerControllerTest>().facingRight? -100.0f:100.0f, (pushedObject.position.y - transform.position.y), 0).normalized;
+		Vector3 pushDirection = new Vector3(thePlayer.GetComponent<PlayerControllerTest>().facingRight? -100.0f:100.0f, (pushedObject.position.y - transform.position.y), 0);//.Normalize();
 
       // Set the direction of the push back
       pushDirection *= pushBackForce;
@@ -90,6 +90,6 @@ public class monkeyAttack : MonoBehaviour
       // Zero out the player's movement
       pushedRB.velocity = Vector3.zero;
 
-      pushedRB.AddForce(pushDirection, ForceMode.Impulse);
+		pushedRB.AddForce(pushDirection, ForceMode.VelocityChange);
    }
 }

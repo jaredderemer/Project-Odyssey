@@ -5,13 +5,10 @@ using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour 
 {
-
-
    private ShowPanels showPanels;
    private Pause pauseScript;
    private StartOptions startScript;
-   private profanityFilter profanityChecker;
-   
+
    [HideInInspector] public bool gameOver = false; // Boolean for game over status
 
    //public Text statsText;
@@ -33,7 +30,7 @@ public class GameOver : MonoBehaviour
       //Get a component reference to ShowPanels attached to this object, store in showPanels variable
 	   showPanels  = GetComponent<ShowPanels> ();
       pauseScript = GetComponent<Pause> ();
-      profanityChecker = GameObject.Find("UI").GetComponent<profanityFilter>();
+      //profanityChecker = GameObject.Find("UI").GetComponent<profanityFilter>();
    }
    
    void Update ()
@@ -126,6 +123,8 @@ public class GameOver : MonoBehaviour
    }
    public void submitScore()
    {
+      profanityFilter profanityChecker = new profanityFilter();
+
       // IF tests to see if the input is valid and acceptible for submission
       if(true) // NICHOLAS!! INSERT FUNCTION HERE
       {

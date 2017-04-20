@@ -81,24 +81,52 @@ public class Inventory2 : MonoBehaviour
 
             return 1;  // Returns 1 if the item has been placed.
          }
+         // Look for same item to increase quantity
+         else if (inventory[i].itemID == itemID)
+         {
+             inventory[i].quantity += itemQuantity;
+             return 1;  // Returns 1 if the item has been placed.
+         }
 
       }
 
       return 0;  // Returns 0 if the item has NOT been placed.
    }
    
+
+
    // Removes an item to the list, returns a message if successful
    public int removeItem(int itemID)
    {
-  
+      Debug.Log("Looking for ID: " + itemID);
+      Debug.Log("--------------------------");
+      Debug.Log("slot 1: " + inventory[0].itemID + ", " + inventory[0].quantity);
+      Debug.Log("slot 2: " + inventory[1].itemID + ", " + inventory[1].quantity);
+      Debug.Log("slot 3: " + inventory[2].itemID + ", " + inventory[2].quantity);
+      Debug.Log("slot 4: " + inventory[3].itemID + ", " + inventory[3].quantity);
+      Debug.Log("--------------------------");
+      
+      bool test1;
+      int test2;
+      
       for (int i = 0; i < numItemSlots; i++)
       {
          // Looks for item in the inventory and consumes it
          if (inventory[i].itemID == itemID)
          {
+            // Check for single item in inventory
+            if (inventory[i].quantity == 1)
+            {
                // Empty the inventory slot and sort list
                sortList(i);
                return 1;
+            }
+            else if(inventory[i].quantity > 1)
+            {
+               // Decrement the quantity
+               inventory[i].quantity -= 1;
+               return 1;
+            }
          }
          if (i == (numItemSlots - 1))
          {
@@ -155,19 +183,18 @@ public class Inventory2 : MonoBehaviour
 
 
    // Drops the first item on the inventory
-   // THIS IS FOR TESTING ONLY
    public void dropItem()
    {
        // Player drops an item
 
-           if (inventory[0].itemID != 0)
-           {
-               removeItem (inventory[0].itemID);
-           }
-           else
-           {
-               print("Iventory is empty, CAN'T drop!!");
-           } 
+      if (inventory[0].itemID != 0)
+      {
+         removeItem (inventory[0].itemID);
+      }
+      else
+      {
+         print("Iventory is empty, CAN'T drop!!");
+      } 
    }
 
 }
@@ -184,5 +211,4 @@ Item ID  ------- Item Name
 005  ------------ Bedroom Key
 006  ------------ Secretary Key
 007  ------------ Poolhouse Key
-
 *************************************/

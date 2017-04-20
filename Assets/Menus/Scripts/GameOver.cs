@@ -138,7 +138,8 @@ public class GameOver : MonoBehaviour
              else if(globalController.Instance.gameMode == 2)
              {
                 // Put file path here
-               System.IO.File.AppendAllText("\\\\csweb\\Classes\\SEI\\Castaway\\horde.txt",
+               //System.IO.File.AppendAllText("\\\\csweb\\Classes\\SEI\\Castaway\\horde.txt",
+               System.IO.File.AppendAllText("C:\\Users\\Kaoru\\Desktop\\Cuss.txt",
               
                 firstName + " " + 
                 lastName + " " +

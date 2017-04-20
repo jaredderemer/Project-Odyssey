@@ -18,24 +18,24 @@ public class profanityFilter : MonoBehaviour
         bool     passesFilter = true;
         string   nextFilterWord;
 
-        print("ITS CHECKING FOR CUSS WORDS!!!!");
-
         StreamReader stream = new StreamReader("filter.txt", Encoding.Default);
 
 
         using (stream)
         {
+
             while (passesFilter && (nextFilterWord = stream.ReadLine()) != null)
             {
                 print("LOOPIES!!!");
-                    if (String.Compare(name, nextFilterWord.ToUpper()) == 0)
-                    {
-                        passesFilter = false;
-                        print("CUSS !@#$");
-
-                    }
+                nextFilterWord = nextFilterWord.ToUpper();
+                if (Regex.IsMatch(name, nextFilterWord))
+                {
+                    print("BAD WORD FOUND!!");
+                    passesFilter = false;
+                    print("CUSS !@#$");
                 }
             }
+       }
             stream.Close();
 
         return passesFilter;

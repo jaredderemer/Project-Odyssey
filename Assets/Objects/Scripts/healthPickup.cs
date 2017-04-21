@@ -34,7 +34,11 @@ public class healthPickup : MonoBehaviour
 
             Destroy(gameObject);
             //Debug.Log(PrefabUtility.GetPrefabType(this as Object));
-            HUD.GetComponent<HUDTest>().updateScore(50);
+
+			if (globalController.Instance.currentSceneIndex != 8) // no points allowed in horde mode!
+			{
+				HUD.GetComponent<HUDTest> ().updateScore (50);
+			}
 
         }
 

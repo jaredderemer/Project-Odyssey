@@ -145,9 +145,9 @@ public class GameOver : MonoBehaviour
          lastName  = lastName.Replace (" ", "");
         
         // Write to files if it passes profanity filter
-         if (profanityChecker.passesFilter(firstName.Replace("'", "")) && 
-              profanityChecker.passesFilter(lastName.Replace("'", "")))
-          {
+         //if (profanityChecker.passesFilter(firstName.Replace("'", "")) && 
+         //     profanityChecker.passesFilter(lastName.Replace("'", "")))
+         // {
              // Adventure Mode
              if(globalController.Instance.gameMode == 1)
              {
@@ -175,11 +175,11 @@ public class GameOver : MonoBehaviour
                 
                //Debug.Log ("Submitted"); // testing
              }
-          }
-          else
-          {
-            Debug.Log("bad words found");
-          }
+          //}
+          //else
+          //{
+            //Debug.Log("bad words found");
+          //}
 
          // Hide submission fields and button
          GameObject.Find("EnterName").SetActive(false);

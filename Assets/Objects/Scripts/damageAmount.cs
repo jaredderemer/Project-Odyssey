@@ -29,6 +29,8 @@ public class damageAmount : MonoBehaviour
        {
            other.GetComponent<EnemyHealth>().AddDamage(damage);
            //this.GetComponent<Collider>().isTrigger = false;
+
+			attackTimer = Time.fixedTime + thePlayer.GetComponent<playerAttacks> ().meleeRate;
        }
 
     }
